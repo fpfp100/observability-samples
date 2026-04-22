@@ -1,0 +1,146 @@
+// ------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ------------------------------------------------------------------------------
+
+import { TurnState, Authorization, AgentApplication, TurnContext, DefaultConversationState } from '@microsoft/agents-hosting';
+import { ActivityTypes } from '@microsoft/agents-activity';
+import { Client, getClient } from './OpenAIClient';
+import { A365_PARENT_SPAN_KEY } from '@microsoft/agents-a365-observability-hosting';
+import {
+  InvokeAgentScope,
+  InvokeAgentScopeDetails,
+  AgentDetails,
+  Request as A365Request,
+  ParentSpanRef,
+} from '@microsoft/agents-a365-observability';
+
+
+interface ConversationState extends DefaultConversationState {
+  count: number;
+}
+type ApplicationTurnState = TurnState<ConversationState>
+
+export class A365Agent extends AgentApplication<ApplicationTurnState> {
+  isApplicationInstalled: boolean = true;
+  termsAndConditionsAccepted: boolean = true;
+  agentName = 'A365 Agent';
+  authHandlerName = 'agentic';
+
+  constructor() {
+    super();
+
+    this.onActivity(ActivityTypes.Message, async (context: TurnContext, state: ApplicationTurnState) => {
+      // Increment count state
+      let count = state.conversation.count ?? 0;
+      state.conversation.count = ++count;
+
+      await this.handleAgentMessageActivity(context, state);
+    });
+
+    this.onActivity(ActivityTypes.InstallationUpdate, async (context: TurnContext, state: TurnState) => {
+      await this.handleInstallationUpdateActivity(context, state);
+    });
+  }
+
+  /**
+   * Handles incoming user messages and sends responses.
+   * Creates an InvokeAgentScope and stores its span context in turnState
+   * so that OutputLoggingMiddleware links output spans as children.
+   */
+  async handleAgentMessageActivity(turnContext: TurnContext, _state: TurnState): Promise<void> {
+    if (!this.isApplicationInstalled) {
+      await turnContext.sendActivity('Please install the application before sending messages.');
+      return;
+    }
+
+    if (!this.termsAndConditionsAccepted) {
+      if (turnContext.activity.text?.trim().toLowerCase() === 'i accept') {
+        this.termsAndConditionsAccepted = true;
+        await turnContext.sendActivity('Thank you for accepting the terms and conditions! How can I assist you today?');
+        return;
+      } else {
+        await turnContext.sendActivity('Please accept the terms and conditions to proceed. Send \'I accept\' to accept.');
+        return;
+      }
+    }
+
+    const userMessage = turnContext.activity.text?.trim() || '';
+
+    if (!userMessage) {
+      await turnContext.sendActivity('Please send me a message and I\'ll help you!');
+      return;
+    }
+
+    // Create InvokeAgentScope to trace the full agent invocation
+    const request: A365Request = {
+      conversationId: turnContext.activity.conversation?.id,
+    };
+    const invokeScopeDetails: InvokeAgentScopeDetails = {};
+    const agentDetails: AgentDetails = {
+      agentId: turnContext.activity.recipient?.agenticAppId || 'openai-agent',
+      agentName: this.agentName,
+      tenantId: turnContext.activity.recipient?.tenantId || 'unknown',
+    };
+
+    const invokeScope = InvokeAgentScope.start(request, invokeScopeDetails, agentDetails);
+    try {
+      // Store the span context so OutputLoggingMiddleware links output to this parent
+      const spanCtx = invokeScope.getSpanContext();
+      const parentSpanRef: ParentSpanRef = {
+        traceId: spanCtx.traceId,
+        spanId: spanCtx.spanId,
+        traceFlags: spanCtx.traceFlags,
+      };
+      turnContext.turnState.set(A365_PARENT_SPAN_KEY, parentSpanRef);
+
+      const client = await getClient(this.getAuthorizationSafe(), this.authHandlerName, turnContext);
+      const response = await this.invokeAgent(client, userMessage);
+      await turnContext.sendActivity(response);
+    } catch (error) {
+      invokeScope.recordError(
+        error instanceof Error ? error : new Error(String(error))
+      );
+      console.error('LLM query error:', error);
+      const err = error as Error;
+      await turnContext.sendActivity(`Error: ${err.message || String(err)}`);
+    } finally {
+      invokeScope.dispose();
+    }
+  }
+
+  /**
+   * Handles agent installation and removal events.
+   */
+  async handleInstallationUpdateActivity(turnContext: TurnContext, _state: TurnState): Promise<void> {
+    if (turnContext.activity.action === 'add') {
+      this.isApplicationInstalled = true;
+      this.termsAndConditionsAccepted = false;
+      await turnContext.sendActivity('Thank you for hiring me! Looking forward to assisting you in your professional journey! Before I begin, could you please confirm that you accept the terms and conditions? Send "I accept" to accept.');
+    } else if (turnContext.activity.action === 'remove') {
+      this.isApplicationInstalled = false;
+      this.termsAndConditionsAccepted = false;
+      await turnContext.sendActivity('Thank you for your time, I enjoyed working with you.');
+    }
+  }
+
+  async invokeAgent(client: Client, prompt: string): Promise<string> {
+    try {
+      return await client.invokeAgent(prompt);
+    } catch (error) {
+      console.error('Error invoking agent:', error);
+      throw error;
+    }
+  }
+
+  private getAuthorizationSafe(): Authorization | undefined {
+    try {
+      // This will return an error if authorization is not set
+      return this.authorization as Authorization;
+    } catch {
+      console.warn('Authorization is not set on the agent application');
+      return undefined;
+    }
+  }
+}
+
+export const agentApplication = new A365Agent();

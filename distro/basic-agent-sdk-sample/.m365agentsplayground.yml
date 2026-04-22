@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=https://aka.ms/teams-app-test-tool-config/0.1.1/config.schema.json
+version: "0.1.1"
+tenantId: badf1f56-284d-4dc5-ac59-0dd53900e743
+bot: 
+  id: pf-obs-agent
+  name: pf-obs-agent
+  role: agenticUser
+  agenticUserId: d6d31512-379f-4994-b901-c098dfd9293f
+  agenticAppId: 354c6bef-6380-458b-809b-c834aae14cf1
+  tenantId: badf1f56-284d-4dc5-ac59-0dd53900e743
+currentUser:
+  id: user-id-0
+  name: Peng Fan
+  userPrincipleName: pefan@a365preview070.onmicrosoft.com
+  aadObjectId: 7fc43f7d-ea51-4aef-9602-214af7e716bf
+  givenName: Peng
+  surname: Fan
+  email: pefan@a365preview070.onmicrosoft.com
+users:
+  - id: user-id-1
+    name: Megan Bowen
+    userPrincipleName: meganb@example.com
+    aadObjectId: 00000000-0000-0000-0000-0000000000021
+    givenName: Megan
+    surname: Bowen
+    email: meganb@example.com
+  - id: user-id-2
+    name: Adele Vance
+    userPrincipleName: adelev@example.com
+    aadObjectId: 00000000-0000-0000-0000-0000000000022
+    givenName: Adele
+    surname: Vance
+    email: adelev@example.com
+  - id: user-id-3
+    name: Isaiah Langer
+    userPrincipleName: isaiah@example.com
+    aadObjectId: 00000000-0000-0000-0000-0000000000023
+    givenName: Isaiah
+    surname: Langer
+    email: isaiahl@example.com
+  - id: user-id-4
+    name: Patti Fernandez
+    userPrincipleName: pattif@example.com
+    aadObjectId: 00000000-0000-0000-0000-0000000000024
+    givenName: Patti
+    surname: Fernandez
+    email: pattif@example.com
+  - id: user-id-5
+    name: Lynne Robbins
+    userPrincipleName: lynner@example.com
+    aadObjectId: 00000000-0000-0000-0000-0000000000025
+    givenName: Lynne
+    surname: Robbins
+    email: lynner@example.com
+personalChat:
+  id: personal-chat-id
+groupChat:
+  id: group-chat-id
+  name: Group Chat
+team:
+  id: team-id
+  name: My Team
+  aadGroupId: 00000000-0000-0000-0000-000000000031
+  channels:
+    - id: channel-announcements-id
+      name: Announcements
