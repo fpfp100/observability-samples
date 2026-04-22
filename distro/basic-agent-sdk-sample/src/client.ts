@@ -11,12 +11,9 @@ import { ChatOpenAI } from "@langchain/openai";
 import * as z from "zod";
 
 const exporterEnabled = process.env.ENABLE_A365_OBSERVABILITY_EXPORTER === 'true';
-const connectionString = process.env.CONNECTION_STRING?.trim() ?? '';
-const hasUsableConnectionString = Boolean(connectionString) && !connectionString.includes('REPLACE-WITH');
 
-if (exporterEnabled && !hasUsableConnectionString) {
-  console.warn('[basic-agent-sdk-sample] ENABLE_A365_OBSERVABILITY_EXPORTER is true, but CONNECTION_STRING is missing or placeholder. Falling back to console span export.');
-  process.env.ENABLE_A365_OBSERVABILITY_EXPORTER = 'false';
+if (!exporterEnabled) {
+  console.warn('[basic-agent-sdk-sample] ENABLE_A365_OBSERVABILITY_EXPORTER is not enabled. Falling back to console span export.');
 }
 
 export interface Client {
