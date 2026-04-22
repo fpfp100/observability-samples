@@ -1,0 +1,36 @@
+# Node.js build artifacts
+node_modules/
+dist/
+publish/
+*.tsbuildinfo
+
+# npm / pnpm / yarn logs & lockfiles
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+package-lock.json.bak
+pnpm-lock.yaml
+
+# Environment files (may contain secrets)
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.copilot.example
+
+# Agent 365 CLI generated config (contains secrets)
+a365.generated.config.json
+**/a365.generated.config.json
+
+# Deployment artifacts
+app.zip
+
+# IDE / editor
+.vscode/
+.idea/
+.claude/
+
+# OS-specific
+.DS_Store
+Thumbs.db

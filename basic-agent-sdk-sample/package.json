@@ -1,0 +1,38 @@
+{
+  "name": "basic-agent-sdk-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "nodemon --watch src/*.ts --exec tsx src/index.ts",
+    "test-tool": "agentsplayground"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@microsoft/agents-a365-observability": "workspace:*",
+    "@microsoft/agents-a365-observability-hosting": "workspace:*",
+    "@microsoft/agents-a365-runtime": "workspace:*",
+    "@microsoft/agents-activity": "catalog:",
+    "@microsoft/agents-hosting": "catalog:",
+    "dotenv": "catalog:",
+    "express": "catalog:",
+    "uuid": "catalog:"
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:",
+    "@microsoft/m365agentsplayground": "catalog:",
+    "@types/express": "catalog:",
+    "@types/node": "catalog:",
+    "@types/uuid": "catalog:",
+    "eslint": "catalog:",
+    "nodemon": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:"
+  }
+}

@@ -1,0 +1,44 @@
+debug Telemetry: agents-playground-cli/cliStart {"cleanProperties":{"isExec":"false","argv":"<REDACTED: user-file-path>,<REDACTED: user-file-path>"}}
+
+log Listening on 56150
+log Microsoft 365 Agents Playground is being launched for you to debug the app: http://localhost:56150
+debug started web socket client
+debug started web socket client
+log Waiting for connection of endpoint: http://127.0.0.1:3978/api/messages
+log waiting for 1 resources: http://127.0.0.1:3978/api/messages
+log wait-on(70776) complete
+log Events recording disabled.
+debug Telemetry: agents-playground-server/eventsRecording {"cleanProperties":{"enabled":"false"}}
+
+debug Telemetry: agents-playground-server/getConfig {"cleanProperties":{"internalConfig":"{\"locale\":\"en-US\",\"localTimezone\":\"America/Los_Angeles\",\"channelId\":\"msteams\",\"debugConfig\":{\"eventsRecordingEnabled\":false}}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"conversationUpdate","conversationId":"personal-chat-id","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"installationUpdate","conversationId":"personal-chat-id","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug stopping web socket client
+debug stopping web socket client
+debug started web socket client
+debug started web socket client
+log Waiting for connection of endpoint: http://127.0.0.1:3978/api/messages
+log waiting for 1 resources: http://127.0.0.1:3978/api/messages
+log wait-on(70776) complete
+log Events recording disabled.
+debug Telemetry: agents-playground-server/eventsRecording {"cleanProperties":{"enabled":"false"}}
+
+debug Telemetry: agents-playground-server/getConfig {"cleanProperties":{"internalConfig":"{\"locale\":\"en-US\",\"localTimezone\":\"America/Los_Angeles\",\"channelId\":\"msteams\",\"debugConfig\":{\"eventsRecordingEnabled\":false}}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"conversationUpdate","conversationId":"personal-chat-id","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"installationUpdate","conversationId":"personal-chat-id","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"message","conversationId":"personal-chat-id","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/error {"cleanProperties":{"stack":"\"Error: Conversation not found\\n    at 23683 (<REDACTED: user-file-path>:8:1855807)\\n    at __webpack_require__ (<REDACTED: user-file-path>:8:4520200)\\n    at 91964 (<REDACTED: user-file-path>:8:1821144)\\n    at __webpack_require__ (<REDACTED: user-file-path>:8:4520200)\\n    at 40862 (<REDACTED: user-file-path>:8:1891974)\\n    at __webpack_require__ (<REDACTED: user-file-path>:8:4520200)\\n    at 87783 (<REDACTED: user-file-path>:8:1464413)\\n    at __webpack_require__ (<REDACTED: user-file-path>:8:4520200)\\n    at <REDACTED: user-file-path>:8:4521101\\n    at <REDACTED: user-file-path>:8:4521151\"","message":"\"Conversation not found\"","code":"\"ConversationNotFound\""}}
+
+debug Telemetry: agents-playground-server/error {"cleanProperties":{"stack":"\"Error: Conversation not found\\n    at ApiError.wrapError (<REDACTED: user-file-path>:8:1855373)\\n    at ConnectorApiValidator.validateConversationId (<REDACTED: user-file-path>:8:1982719)\\n    at ConnectorApiValidator.validateCreateActivityRequest (<REDACTED: user-file-path>:8:1978992)\\n    at _sendToConversationAsync (<REDACTED: user-file-path>:8:1825471)\\n    at sendToConversation (<REDACTED: user-file-path>:8:1826158)\\n    at Layer.handleRequest (<REDACTED: user-file-path>:8:1421290)\\n    at next (<REDACTED: user-file-path>:8:1423417)\\n    at <REDACTED: user-file-path>:8:97914\\n    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)\\n    at invokeCallback (<REDACTED: user-file-path>:8:1381365)\"","message":"\"Conversation not found\"","code":"\"ConversationNotFound\"","statusCode":"404"}}
+
+debug Telemetry: agents-playground-server/error {"cleanProperties":{"stack":"\"Error: Conversation not found\\n    at ApiError.wrapError (<REDACTED: user-file-path>:8:1855373)\\n    at ConnectorApiValidator.validateConversationId (<REDACTED: user-file-path>:8:1982719)\\n    at ConnectorApiValidator.validateCreateActivityRequest (<REDACTED: user-file-path>:8:1978992)\\n    at _sendToConversationAsync (<REDACTED: user-file-path>:8:1825471)\\n    at sendToConversation (<REDACTED: user-file-path>:8:1826158)\\n    at Layer.handleRequest (<REDACTED: user-file-path>:8:1421290)\\n    at next (<REDACTED: user-file-path>:8:1423417)\\n    at <REDACTED: user-file-path>:8:97914\\n    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)\\n    at invokeCallback (<REDACTED: user-file-path>:8:1381365)\"","message":"\"Conversation not found\"","code":"\"ConversationNotFound\"","statusCode":"404"}}
+
+debug stopping web socket client
+debug stopping web socket client
