@@ -36,6 +36,9 @@ useMicrosoftOpenTelemetry({
     'service.name': 'TypeScript Sample Agent',
     'service.version': '1.0.0',
   }),
+  azureMonitor: {
+    enabled: Boolean(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING),
+  },
   instrumentationOptions: {
     langchain: { isContentRecordingEnabled: true },
   },
