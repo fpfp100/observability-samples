@@ -24,8 +24,8 @@ const authConfig: AuthConfiguration = isProduction ? loadAuthConfigFromEnv() : {
 const adapter = new CloudAdapter(authConfig);
 
 // Register observability middleware on the adapter
-const observabilityHostingManager = new ObservabilityHostingManager();
-observabilityHostingManager.configure(adapter, { enableOutputLogging: true });
+//const observabilityHostingManager = new ObservabilityHostingManager();
+//observabilityHostingManager.configure(adapter, { enableOutputLogging: true });
 
 const app = express();
 app.use(express.json());

@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { TurnState, AgentApplication, TurnContext, MemoryStorage } from '@microsoft/agents-hosting';
+import { TurnState, Authorization, AgentApplication, TurnContext, MemoryStorage } from '@microsoft/agents-hosting';
 import { ActivityTypes } from '@microsoft/agents-activity';
 import { getObservabilityAuthenticationScope } from '@microsoft/agents-a365-runtime';
 import tokenCache, { createAgenticTokenCacheKey } from './token-cache.js';
@@ -44,7 +44,7 @@ export class A365Agent extends AgentApplication<TurnState> {
    * Creates an InvokeAgentScope and stores its span context in turnState
    * so that OutputLoggingMiddleware links output spans as children.
    */
-  async handleAgentMessageActivity(turnContext: TurnContext, state: TurnState): Promise<void> {
+  async handleAgentMessageActivity(turnContext: TurnContext, _state: TurnState): Promise<void> {
     const userMessage = turnContext.activity.text?.trim() || '';
     if (!userMessage) {
       return;
@@ -79,13 +79,13 @@ export class A365Agent extends AgentApplication<TurnState> {
       const response = await client.invokeAgent(userMessage);
 
       // Send the response back to the user
-      // await turnContext.sendActivity(response);
+      await turnContext.sendActivity(response);
     } catch (error) {
       invokeScope.recordError(
         error instanceof Error ? error : new Error(String(error))
       );
       console.error('Agent invocation error:', error);
-      // await turnContext.sendActivity(`Error: ${error instanceof Error ? error.message : String(error)}`);
+      await turnContext.sendActivity(`Error: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       invokeScope.dispose();
     }
@@ -95,8 +95,10 @@ export class A365Agent extends AgentApplication<TurnState> {
    * Preloads or refreshes the Observability token used by the Agent 365 Observability exporter.
    */
   private async preloadObservabilityToken(turnContext: TurnContext): Promise<void> {
+    const authorization = this.getAuthorizationSafe();
+
     // Only attempt token preloading if authorization is configured
-    if (!this.authorization) {
+    if (!authorization) {
       console.log('[A365Agent] Authorization not configured, skipping observability token preload');
       return;
     }
@@ -105,7 +107,7 @@ export class A365Agent extends AgentApplication<TurnState> {
     const tenantId = turnContext?.activity?.recipient?.tenantId ?? '';
 
     if (process.env.Use_Custom_Resolver === 'true') {
-      const aauToken = await this.authorization.exchangeToken(turnContext, 'agentic', {
+      const aauToken = await authorization.exchangeToken(turnContext, 'agentic', {
         scopes: getObservabilityAuthenticationScope()
       });
       console.log(`Preloaded Observability token for agentId=${agentId}, tenantId=${tenantId} token=${aauToken?.token?.substring(0, 10)}...`);
@@ -116,9 +118,17 @@ export class A365Agent extends AgentApplication<TurnState> {
         agentId,
         tenantId,
         turnContext,
-        this.authorization,
+        authorization,
         getObservabilityAuthenticationScope()
       );
+    }
+  }
+
+  private getAuthorizationSafe(): Authorization | undefined {
+    try {
+      return this.authorization as Authorization;
+    } catch {
+      return undefined;
     }
   }
 }

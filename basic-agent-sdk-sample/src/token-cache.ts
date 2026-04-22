@@ -1,53 +1,40 @@
-// ------------------------------------------------------------------------------
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// ------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
-/**
- * Simple in-memory token cache with expiration handling
- * In production, use a more robust caching solution like Redis
- */
+export function createAgenticTokenCacheKey(agentId: string, tenantId?: string): string {
+  return tenantId ? `agentic-token-${agentId}-${tenantId}` : `agentic-token-${agentId}`;
+}
+
+// A simple example of custom token resolver which will be called by observability SDK when needing tokens for exporting telemetry
+export const tokenResolver = (agentId: string, tenantId: string): string | null => {
+  try {
+    const cacheKey = createAgenticTokenCacheKey(agentId, tenantId);
+    const cachedToken = tokenCache.get(cacheKey);
+    return cachedToken ?? null;
+  } catch (error) {
+    console.error(`❌ Error resolving token for agent ${agentId}, tenant ${tenantId}:`, error);
+    return null;
+  }
+};
+
 class TokenCache {
   private cache = new Map<string, string>();
-
-  /**
-   * Store a token with expiration
-   */
   set(key: string, token: string): void {
-
     this.cache.set(key, token);
-
     console.log(`🔐 Token cached for key: ${key}`);
   }
-
-  /**
-   * Retrieve a token 
-   */
   get(key: string): string | null {
     const entry = this.cache.get(key);
-    
     if (!entry) {
       console.log(`🔍 Token cache miss for key: ${key}`);
       return null;
     }
-    
     return entry;
   }
-
-  /**
-   * Check if a token exists 
-   */
   has(key: string): boolean {
-    const entry = this.cache.get(key);
-    
-    if (!entry) {
-      return false;
-    }
-
-    return true;
+    return this.cache.has(key);
   }
 }
 
-// Create a singleton instance for the application
 const tokenCache = new TokenCache();
-
 export default tokenCache;

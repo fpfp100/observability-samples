@@ -7,100 +7,53 @@ import { configDotenv } from 'dotenv';
 configDotenv();
 
 import { AuthConfiguration, authorizeJWT, CloudAdapter, loadAuthConfigFromEnv, Request } from '@microsoft/agents-hosting';
-import express, { Response } from 'express';
-import { agentApplication } from './agent';
-import { a365Observability } from './telemetry';
-import { logger, runWithExportToken } from '@microsoft/agents-a365-observability';
-import { getObservabilityAuthenticationScope } from '@microsoft/agents-a365-runtime';
+import express, { Response, Express } from 'express'
+import { agentApplication } from './agent.js';
+import { ObservabilityHostingManager } from '@microsoft/agents-a365-observability-hosting';
 
-// Only NODE_ENV=development explicitly disables authentication
-// All other cases (production, test, unset, etc.) require authentication
-const isDevelopment = process.env.NODE_ENV === 'development';
-const authConfig: AuthConfiguration = isDevelopment ? {} : loadAuthConfigFromEnv();
+// Use request validation middleware only if hosting publicly
+const isProduction = Boolean(process.env.WEBSITE_SITE_NAME) || process.env.NODE_ENV === 'production';
+const authConfig: AuthConfiguration = loadAuthConfigSafely(isProduction);
 
-const app = express();
-app.use(express.json());
+// Register observability middleware on the adapter
+const adapter = agentApplication.adapter as CloudAdapter;
+const observabilityManager = new ObservabilityHostingManager();
+observabilityManager.configure(adapter, { enableOutputLogging: true });
 
-a365Observability.start();
+const server: Express = express()
+server.use(express.json())
+if (isProduction && Object.keys(authConfig).length > 0) {
+  server.use(authorizeJWT(authConfig))
+}
 
-app.use(authorizeJWT(authConfig));
+server.post('/api/messages', (req: Request, res: Response) => {
+  adapter.process(req, res, async (context) => {
+    await agentApplication.run(context)
+  })
+})
 
-app.post('/api/messages', async (req: Request, res: Response) => {
-  const adapter = agentApplication.adapter as CloudAdapter;
-  try {
-    // Check if per-request export is enabled
-    const isPerRequestExportEnabled =
-      process.env.ENABLE_A365_OBSERVABILITY_PER_REQUEST_EXPORT?.toLowerCase() === 'true';
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await adapter.process(req, res as any, async (context) => {
-      const agentApp = agentApplication;
-
-      if (!isPerRequestExportEnabled) {
-        // For batch export, token resolution is handled by exporter/tokenResolver.
-        await agentApp.run(context);
-        return;
-      }
-
-      let token = '';
-      try {
-        const exchanged = await agentApp.authorization.exchangeToken(context, 'agentic', {
-          scopes: getObservabilityAuthenticationScope()
-        });
-        token = exchanged?.token || '';
-      } catch (exchangeErr) {
-        logger.error('[diagnostic] token exchange failed; continuing without export token', exchangeErr);
-        token = '';
-      }
-
-      await runWithExportToken(token, async () => {
-        await agentApp.run(context);
-      });
-    });
-  } catch (err) {
-    // Enhanced diagnostic logging for token acquisition / adapter failures
-    type AdapterProcessError = Error & {
-      status?: number;
-      response?: { status?: number; data?: unknown };
-      config?: { url?: string; data?: unknown };
-    };
-
-    const e = err as AdapterProcessError;
-    const status = e?.status || e?.response?.status;
-    const data = e?.response?.data as Record<string, unknown> | undefined;
-    const message = e?.message || 'Unknown error';
-    const aadError = data?.error || data?.error_description || data;
-    console.error('[diagnostic] adapter.process failed', {
-      message,
-      status,
-      aadError,
-      url: e?.config?.url,
-      scope: e?.config?.data,
-    });
-    // Surface minimal info to caller while keeping internals in log
-    if (!res.headersSent) {
-      res.status(500).json({ error: 'internal_error', detail: status ? `upstream status ${status}` : message });
-    }
-  }
-});
-
-const port = process.env.PORT || 3978;
-const server = app.listen(port, () => {
-  console.log(`\nServer listening to port ${port} for appId ${authConfig.clientId} debug ${process.env.DEBUG}`);
-}).on('error', async (err: Error) => {
+const port = Number(process.env.PORT || 3978)
+const host = isProduction ? '0.0.0.0' : '127.0.0.1';
+server.listen(port, host, async () => {
+  console.log(`\nServer listening on http://${host}:${port} for appId ${authConfig.clientId} debug ${process.env.DEBUG}`)
+}).on('error', async (err: unknown) => {
   console.error(err);
-  await a365Observability.shutdown();
   process.exit(1);
 }).on('close', async () => {
-  console.log('Agent 365 observability is shutting down...');
-    await a365Observability.shutdown();
+  console.log('Server closed');
+  process.exit(0);
 });
 
-process.on('SIGINT', () => {
-  console.log('Received SIGINT. Shutting down gracefully...');
-  server.close(() => {
-    console.log('Server closed.');
-    process.exit(0);
-  });
-});
+function loadAuthConfigSafely(isProductionEnvironment: boolean): AuthConfiguration {
+  if (!isProductionEnvironment) {
+    return {};
+  }
 
+  try {
+    return loadAuthConfigFromEnv();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.warn(`[langchain-sample] Falling back to unauthenticated local mode: ${message}`);
+    return {};
+  }
+}

@@ -21,8 +21,8 @@ interface ConversationState extends DefaultConversationState {
 type ApplicationTurnState = TurnState<ConversationState>
 
 export class A365Agent extends AgentApplication<ApplicationTurnState> {
-  isApplicationInstalled: boolean = false;
-  termsAndConditionsAccepted: boolean = false;
+  isApplicationInstalled: boolean = true;
+  termsAndConditionsAccepted: boolean = true;
   agentName = 'A365 Agent';
   authHandlerName = 'agentic';
 
