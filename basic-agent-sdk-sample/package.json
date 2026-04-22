@@ -14,25 +14,25 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@microsoft/agents-a365-observability": "workspace:*",
-    "@microsoft/agents-a365-observability-hosting": "workspace:*",
-    "@microsoft/agents-a365-runtime": "workspace:*",
-    "@microsoft/agents-activity": "catalog:",
-    "@microsoft/agents-hosting": "catalog:",
-    "dotenv": "catalog:",
-    "express": "catalog:",
-    "uuid": "catalog:"
+    "@microsoft/agents-a365-observability": "^0.2.0-preview.3",
+    "@microsoft/agents-a365-observability-hosting": "^0.2.0-preview.3",
+    "@microsoft/agents-a365-runtime": "^0.2.0-preview.3",
+    "@microsoft/agents-activity": "^1.3.1",
+    "@microsoft/agents-hosting": "^1.3.1",
+    "dotenv": "^17.2.2",
+    "express": "^5.2.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@eslint/js": "catalog:",
-    "@microsoft/m365agentsplayground": "catalog:",
-    "@types/express": "catalog:",
-    "@types/node": "catalog:",
-    "@types/uuid": "catalog:",
-    "eslint": "catalog:",
-    "nodemon": "catalog:",
-    "tsx": "catalog:",
-    "typescript": "catalog:",
-    "typescript-eslint": "catalog:"
+    "@eslint/js": "^9.39.1",
+    "@microsoft/m365agentsplayground": "^0.2.18",
+    "@types/express": "^5.0.0",
+    "@types/node": "^20.17.0",
+    "@types/uuid": "^9.0.8",
+    "eslint": "^9.39.1",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.47.0"
   }
 }
