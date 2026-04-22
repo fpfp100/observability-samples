@@ -1,0 +1,52 @@
+{
+  "name": "langchain-sample",
+  "version": "2025.11.6",
+  "description": "Sample agent integrating LangChain Agents with Microsoft 365 Agents SDK and Microsoft Agent 365 SDK",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon --watch src --exec node --loader ts-node/esm src/index.ts",
+    "test-tool": "agentsplayground",
+    "eval": "node --env-file .env src/evals/index.js",
+    "build": "tsc"
+  },
+  "keywords": [
+    "langchain",
+    "microsoft-365",
+    "agent",
+    "ai"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@langchain/core": "catalog:",
+    "@langchain/langgraph": "catalog:",
+    "@langchain/mcp-adapters": "catalog:",
+    "@langchain/openai": "catalog:",
+    "@microsoft/agents-a365-notifications": "workspace:*",
+    "@microsoft/agents-a365-observability": "workspace:*",
+    "@microsoft/agents-a365-observability-extensions-langchain": "workspace:*",
+    "@microsoft/agents-a365-observability-hosting": "workspace:*",
+    "@microsoft/agents-a365-runtime": "workspace:*",
+    "@microsoft/agents-a365-tooling": "workspace:*",
+    "@microsoft/agents-a365-tooling-extensions-langchain": "workspace:*",
+    "@microsoft/agents-activity": "catalog:",
+    "@microsoft/agents-hosting": "catalog:",
+    "dotenv": "catalog:",
+    "express": "catalog:",
+    "langchain": "catalog:",
+    "node-fetch": "catalog:",
+    "uuid": "catalog:"
+  },
+  "devDependencies": {
+    "@azure/monitor-opentelemetry-exporter": "catalog:",
+    "@babel/cli": "catalog:",
+    "@babel/core": "catalog:",
+    "@babel/preset-env": "catalog:",
+    "@microsoft/m365agentsplayground": "catalog:",
+    "@types/express": "catalog:",
+    "@types/node": "catalog:",
+    "nodemon": "catalog:",
+    "ts-node": "catalog:"
+  }
+}
