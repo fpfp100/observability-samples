@@ -1,24 +1,18 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-// It is important to load environment variables before importing other modules
-import { configDotenv } from 'dotenv';
-
-configDotenv();
+// MUST be first: load environment variables before importing other modules.
+import './otel-init.js';
 
 import { AuthConfiguration, authorizeJWT, CloudAdapter, loadAuthConfigFromEnv, Request } from '@microsoft/agents-hosting';
 import express, { Response, Express } from 'express'
 import { agentApplication } from './agent.js';
-import { ObservabilityHostingManager } from '@microsoft/agents-a365-observability-hosting';
 
 // Use request validation middleware only if hosting publicly
 const isProduction = Boolean(process.env.WEBSITE_SITE_NAME) || process.env.NODE_ENV === 'production';
 const authConfig: AuthConfiguration = loadAuthConfigSafely(isProduction);
 
-// Register observability middleware on the adapter
 const adapter = agentApplication.adapter as CloudAdapter;
-const observabilityManager = new ObservabilityHostingManager();
-observabilityManager.configure(adapter, { enableOutputLogging: true });
 
 const server: Express = express()
 server.use(express.json())

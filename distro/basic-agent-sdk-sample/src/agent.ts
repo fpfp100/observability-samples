@@ -5,15 +5,21 @@ import { TurnState, AgentApplication, TurnContext, MemoryStorage } from '@micros
 import { ActivityTypes } from '@microsoft/agents-activity';
 import { getObservabilityAuthenticationScope } from '@microsoft/agents-a365-runtime';
 import tokenCache, { createAgenticTokenCacheKey } from './token-cache.js';
-import { Client, getClient } from './client.js';
-import { AgenticTokenCacheInstance, A365_PARENT_SPAN_KEY } from '@microsoft/agents-a365-observability-hosting';
+import './client.js';
 import {
+  A365_PARENT_SPAN_KEY,
   InvokeAgentScope,
   InvokeAgentScopeDetails,
+  InferenceScope,
+  InferenceDetails,
+  InferenceOperationType,
+  ExecuteToolScope,
+  ToolCallDetails,
+  OutputScope,
   AgentDetails,
-  Request as A365Request,
+  A365Request,
   ParentSpanRef,
-} from '@microsoft/agents-a365-observability';
+} from '@microsoft/opentelemetry';
 
 export class A365Agent extends AgentApplication<TurnState> {
   static authHandlerName: string = 'agentic';
@@ -74,8 +80,54 @@ export class A365Agent extends AgentApplication<TurnState> {
       };
       turnContext.turnState.set(A365_PARENT_SPAN_KEY, parentSpanRef);
 
-      const client: Client = await getClient();
-      const response = await client.invokeAgent(userMessage);
+      // --- Manual instrumentation: test all scopes ---
+
+      // InferenceScope: simulate an LLM call
+      const inferenceDetails: InferenceDetails = {
+        operationName: InferenceOperationType.CHAT,
+        model: 'gpt-4o',
+        providerName: 'openai',
+        inputTokens: 50,
+        outputTokens: 120,
+        finishReasons: ['stop'],
+      };
+      const inferenceScope = InferenceScope.start(request, inferenceDetails, agentDetails);
+      await inferenceScope.withActiveSpanAsync(async () => {
+        inferenceScope.recordInputMessages([userMessage]);
+        inferenceScope.recordOutputMessages(['Simulated LLM response for: ' + userMessage]);
+        inferenceScope.recordInputTokens(50);
+        inferenceScope.recordOutputTokens(120);
+        inferenceScope.recordFinishReasons(['stop']);
+      });
+      inferenceScope.dispose();
+
+      // ExecuteToolScope: simulate a tool call
+      const toolDetails: ToolCallDetails = {
+        toolName: 'get_weather',
+        arguments: JSON.stringify({ city: 'Seattle' }),
+        toolCallId: 'call_test_001',
+        description: 'Get the current weather for a city',
+        toolType: 'function',
+      };
+      const toolScope = ExecuteToolScope.start(request, toolDetails, agentDetails);
+      await toolScope.withActiveSpanAsync(async () => {
+        toolScope.recordResponse(JSON.stringify({ weather: 'sunny', temperature: '22°C' }));
+      });
+      toolScope.dispose();
+
+      // OutputScope: simulate output message
+      const outputScope = OutputScope.start(
+        request,
+        { messages: ['The weather in Seattle is sunny, 22°C.'] },
+        agentDetails,
+      );
+      outputScope.recordOutputMessages(['The weather in Seattle is sunny, 22°C.']);
+      outputScope.dispose();
+
+      const response = '[manual-instrument-test] Echo: ' + userMessage;
+
+      // Record invoke output
+      invokeScope.recordOutputMessages([response]);
 
       // Send the response back to the user
       await turnContext.sendActivity(response);
@@ -105,22 +157,12 @@ export class A365Agent extends AgentApplication<TurnState> {
     const agentId = turnContext?.activity?.recipient?.agenticAppId ?? '';
     const tenantId = turnContext?.activity?.recipient?.tenantId ?? '';
 
-    if (process.env.Use_Custom_Resolver === 'true') {
-      const aauToken = await authorization.exchangeToken(turnContext, 'agentic', {
-        scopes: getObservabilityAuthenticationScope()
-      });
-      console.log(`Preloaded Observability token for agentId=${agentId}, tenantId=${tenantId} token=${aauToken?.token?.substring(0, 10)}...`);
-      const cacheKey = createAgenticTokenCacheKey(agentId, tenantId);
-      tokenCache.set(cacheKey, aauToken?.token || '');
-    } else {
-      await AgenticTokenCacheInstance.RefreshObservabilityToken(
-        agentId,
-        tenantId,
-        turnContext,
-        authorization,
-        getObservabilityAuthenticationScope()
-      );
-    }
+    const aauToken = await authorization.exchangeToken(turnContext, 'agentic', {
+      scopes: ['api://9b975845-388f-4429-889e-eab1ef63949c/Agent365.Observability.OtelWrite']
+    });
+    console.log(`Preloaded Observability token for agentId=${agentId}, tenantId=${tenantId} token=${aauToken?.token?.substring(0, 10)}...`);
+    const cacheKey = createAgenticTokenCacheKey(agentId, tenantId);
+    tokenCache.set(cacheKey, aauToken?.token || '');
   }
 
   private getAuthorizationSafe() {

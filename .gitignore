@@ -34,3 +34,7 @@ app.zip
 # OS-specific
 .DS_Store
 Thumbs.db
+
+# Local tooling folder
+connector-emulator/
+local-request-tools/
