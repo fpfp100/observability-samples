@@ -41,7 +41,6 @@ useMicrosoftOpenTelemetry({
   },
   a365: {
     enabled: process.env.ENABLE_A365_OBSERVABILITY_EXPORTER !== 'false',
-    perRequestExport: process.env.ENABLE_A365_OBSERVABILITY_PER_REQUEST_EXPORT === 'true',
     tokenResolver: otelTokenResolver,
   },
 });

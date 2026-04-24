@@ -17,35 +17,26 @@
 		<None Remove="wwwroot\**" />
 	</ItemGroup>
 
-	<ItemGroup>		
-    <ProjectReference Include="..\..\..\src\Runtime\Core\Microsoft.Agents.A365.Runtime.csproj" />
-    <ProjectReference Include="..\..\..\src\Notification\Microsoft.Agents.A365.Notifications\Microsoft.Agents.A365.Notifications.csproj" />
-    <ProjectReference Include="..\..\..\src\Tooling\Extensions\SemanticKernel\Microsoft.Agents.A365.Tooling.Extensions.SemanticKernel.csproj" />
-    <ProjectReference Include="..\..\..\src\Observability\Runtime\Microsoft.Agents.A365.Observability.Runtime.csproj" />
-    <ProjectReference Include="..\..\..\src\Observability\Hosting\Microsoft.Agents.A365.Observability.Hosting.csproj" />
-    <ProjectReference Include="..\..\..\src\Observability\Extensions\SemanticKernel\Microsoft.Agents.A365.Observability.Extensions.SemanticKernel.csproj" />
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Agents.A365.Runtime" Version="0.3.4-beta" />
+		<PackageReference Include="Microsoft.Agents.A365.Notifications" Version="0.3.4-beta" />
+		<PackageReference Include="Microsoft.Agents.A365.Tooling.Extensions.SemanticKernel" Version="0.3.4-beta" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Azure.Identity" Version="1.19.0" />
+		<PackageReference Include="Azure.Identity" Version="1.21.0" />
 		<PackageReference Include="AdaptiveCards" Version="3.1.0" />
 		<PackageReference Include="Microsoft.SemanticKernel.Agents.AzureAI" Version="1.74.0-preview" />
 		<PackageReference Include="Microsoft.SemanticKernel.Agents.Core" Version="1.74.0" />
 		<PackageReference Include="Microsoft.SemanticKernel" Version="1.74.0" />
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.AzureOpenAI" Version="1.74.0" />
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.OpenAI" Version="1.74.0" />
-		<PackageReference Include="Microsoft.Agents.Authentication.Msal" Version="1.4.*-*" />
-		<PackageReference Include="Microsoft.Agents.Hosting.AspNetCore" Version="1.4.*-*" />
-		<PackageReference Include="ModelContextProtocol.Core" Version="0.3.0-preview.4" />
+		<PackageReference Include="Microsoft.Agents.Authentication.Msal" Version="1.5.150-beta" />
+		<PackageReference Include="Microsoft.Agents.Hosting.AspNetCore" Version="1.5.150-beta" />
+		<PackageReference Include="ModelContextProtocol.Core" Version="1.2.0" />
 
-		<!-- Telemetry Packages -->
-		<PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.9.0" />
-		<PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="9.5.0" />
-		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
-		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.12.0" />
+		<!-- Telemetry - single distro replaces all individual OTel + A365 observability packages -->
+		<PackageReference Include="Microsoft.OpenTelemetry" Version="1.0.0-alpha.3" />
 	</ItemGroup>
 
 </Project>

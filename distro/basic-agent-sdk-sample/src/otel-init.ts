@@ -50,15 +50,11 @@ useMicrosoftOpenTelemetry({
     enabled: Boolean(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING),
   },
   instrumentationOptions: {
-    // Disable LangChain instrumentation to test span output without it.
-    langchain: true,
+    langchain: { isContentRecordingEnabled: true },
   },
   a365: {
     // Re-read env var at init time; dotenv has already run above.
     enabled: process.env.ENABLE_A365_OBSERVABILITY_EXPORTER !== 'false',
-    // Export spans as each request completes so they are visible immediately
-    // and not delayed by BatchSpanProcessor schedule windows.
-    perRequestExport: process.env.ENABLE_A365_OBSERVABILITY_PER_REQUEST_EXPORT === 'true',
     tokenResolver: otelTokenResolver,
   },
 });

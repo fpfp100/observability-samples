@@ -3,11 +3,7 @@
 
 using Agent365SemanticKernelSampleAgent.Agents;
 using Agent365SemanticKernelSampleAgent.telemetry;
-using Microsoft.Agents.A365.Observability;
-using Microsoft.Agents.A365.Observability.Extensions.SemanticKernel;
-using Microsoft.Agents.A365.Observability.Hosting;
 using Microsoft.Agents.A365.Observability.Hosting.Middleware;
-using Microsoft.Agents.A365.Observability.Runtime;
 using Microsoft.Agents.A365.Tooling.Extensions.SemanticKernel.Services;
 using Microsoft.Agents.A365.Tooling.Services;
 using Microsoft.Agents.Builder;
@@ -19,14 +15,30 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenTelemetry;
 using Microsoft.SemanticKernel;
+using OpenTelemetry;
 using System.Threading;
 
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Setup Aspire service defaults, including OpenTelemetry, Service Discovery, Resilience, and Health Checks
- builder.ConfigureOpenTelemetry();
+// Setup OpenTelemetry via Microsoft.OpenTelemetry distro
+builder.Services.AddOpenTelemetry()
+    .UseMicrosoftOpenTelemetry(o =>
+    {
+        o.Exporters = ExportTarget.Agent365;
+        if (builder.Environment.IsDevelopment())
+        {
+            o.Exporters |= ExportTarget.Console;
+        }
+    })
+    .WithTracing(tracing => tracing
+        .AddSource(
+            "A365.SemanticKernel",
+            "A365.SemanticKernel.MyAgent",
+            "Microsoft.Agents.Builder",
+            "Microsoft.Agents.Hosting"));
 
 if (builder.Environment.IsDevelopment())
 {
@@ -59,26 +71,9 @@ else
         apiKey: builder.Configuration.GetSection("AIServices:OpenAI").GetValue<string>("ApiKey")!);
 }
 
-// Configure observability.
-builder.Services.AddAgenticTracingExporter();
-
 // Read instrumentation mode from config
 var instrumentationMode = builder.Configuration.GetSection("Observability").GetValue<string>("InstrumentationMode") ?? "Auto";
 bool useAutoInstrumentation = string.Equals(instrumentationMode, "Auto", System.StringComparison.OrdinalIgnoreCase);
-
-if (useAutoInstrumentation)
-{
-    // Auto: Add A365 tracing with Semantic Kernel integration (auto-instruments inference + tool calls)
-    builder.AddA365Tracing(config =>
-    {
-        config.WithSemanticKernel();
-    });
-}
-else
-{
-    // Manual: Register base tracing only (no SK auto-instrumentation)
-    builder.AddA365Tracing(config => { });
-}
 
 
 // Add AgentApplicationOptions from appsettings section "AgentApplication".

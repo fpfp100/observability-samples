@@ -118,13 +118,13 @@ export class A365Agent extends AgentApplication<TurnState> {
       toolScope.dispose();
 
       // OutputScope: simulate output message
-      const outputScope = OutputScope.start(
+      /* const outputScope = OutputScope.start(
         request,
         { messages: ['The weather in Seattle is sunny, 22°C.'] },
         agentDetails,
       );
       outputScope.recordOutputMessages(['The weather in Seattle is sunny, 22°C.']);
-      outputScope.dispose();
+      outputScope.dispose(); */
 
       const response = '[manual-instrument-test] Echo: ' + userMessage;
 
