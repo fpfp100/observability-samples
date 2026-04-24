@@ -2,12 +2,14 @@ using System.Net.Http.Json;
 using System.Text.Json;
 
 const string AgentUrl = "http://localhost:3978/api/messages";
-const string ListenUrl = "http://localhost:56150";
 const string ConnectorBase = "/_connector";
+
+// Use port 0 so the OS assigns an available port automatically.
+string ListenUrl = Environment.GetEnvironmentVariable("EMULATOR_LISTEN_URL") ?? "http://127.0.0.1:0";
 
 // Loop knobs — override via env var if you want something different without editing code.
 int loopIntervalSeconds = int.TryParse(Environment.GetEnvironmentVariable("LOOP_INTERVAL_SECONDS"), out var iv) && iv > 0 ? iv : 10;
-int loopCount = int.TryParse(Environment.GetEnvironmentVariable("LOOP_COUNT"), out var lc) && lc >= 0 ? lc : 0; // 0 = infinite
+int loopCount = int.TryParse(Environment.GetEnvironmentVariable("LOOP_COUNT"), out var lc) && lc >= 0 ? lc : 1; // default 1; 0 = infinite
 string[] loopMessages = (Environment.GetEnvironmentVariable("LOOP_MESSAGES") ??
     "what can you do|summarize my inbox|list my unread emails|draft an email to my team|what time is it")
     .Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
@@ -18,6 +20,9 @@ builder.Logging.AddSimpleConsole(o => { o.SingleLine = true; o.TimestampFormat =
 
 var app = builder.Build();
 app.Urls.Add(ListenUrl);
+
+// Resolved after the server starts — holds the actual base URL (with real port).
+string resolvedListenUrl = ListenUrl;
 
 var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
 
@@ -79,6 +84,14 @@ app.MapMethods("/{**catch}", new[] { "GET", "POST", "PUT", "DELETE" },
 
 app.Lifetime.ApplicationStarted.Register(() =>
 {
+    // Resolve the actual listen URL (important when using port 0).
+    var addr = app.Urls.FirstOrDefault() ?? ListenUrl;
+    var serverFeature = ((IApplicationBuilder)app).ServerFeatures.Get<Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>();
+    if (serverFeature?.Addresses.Count > 0)
+        addr = serverFeature.Addresses.First();
+    resolvedListenUrl = addr;
+    Console.WriteLine($"  Callback URL: {resolvedListenUrl}{ConnectorBase}");
+
     _ = Task.Run(async () =>
     {
         await Task.Delay(500);
@@ -86,9 +99,15 @@ app.Lifetime.ApplicationStarted.Register(() =>
         while (!app.Lifetime.ApplicationStopping.IsCancellationRequested)
         {
             var text = loopMessages[i % loopMessages.Length];
-            await SendActivity(text);
+            await SendActivity(text, resolvedListenUrl);
             i++;
-            if (loopCount > 0 && i >= loopCount) break;
+            if (loopCount > 0 && i >= loopCount)
+            {
+                // Give the agent a moment to send callbacks, then shut down.
+                await Task.Delay(TimeSpan.FromSeconds(5));
+                app.Lifetime.StopApplication();
+                break;
+            }
             try { await Task.Delay(TimeSpan.FromSeconds(loopIntervalSeconds), app.Lifetime.ApplicationStopping); }
             catch (TaskCanceledException) { break; }
         }
@@ -97,7 +116,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
 
 app.Run();
 
-static async Task SendActivity(string text)
+static async Task SendActivity(string text, string listenUrl)
 {
     var tenantId = Environment.GetEnvironmentVariable("AGENT_TENANT_ID") ?? "badf1f56-284d-4dc5-ac59-0dd53900e743";
 
@@ -116,7 +135,7 @@ static async Task SendActivity(string text)
         timestamp = "2025-10-03T16:33:10.550Z",
         localTimestamp = "2025-10-03T09:33:10.550-07:00",
         localTimezone = "America/Los_Angeles",
-        serviceUrl = $"{ListenUrl}{ConnectorBase}",
+        serviceUrl = $"{listenUrl}{ConnectorBase}",
         conversation = new
         {
             conversationType = "personal",
