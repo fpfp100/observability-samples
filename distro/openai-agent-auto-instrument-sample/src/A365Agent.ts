@@ -5,14 +5,14 @@
 import { TurnState, Authorization, AgentApplication, TurnContext, DefaultConversationState } from '@microsoft/agents-hosting';
 import { ActivityTypes } from '@microsoft/agents-activity';
 import { Client, getClient } from './OpenAIClient';
-import { A365_PARENT_SPAN_KEY } from '@microsoft/agents-a365-observability-hosting';
 import {
+  A365_PARENT_SPAN_KEY,
   InvokeAgentScope,
   InvokeAgentScopeDetails,
   AgentDetails,
-  Request as A365Request,
+  A365Request,
   ParentSpanRef,
-} from '@microsoft/agents-a365-observability';
+} from '@microsoft/opentelemetry';
 
 
 interface ConversationState extends DefaultConversationState {

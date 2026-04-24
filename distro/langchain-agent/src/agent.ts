@@ -6,15 +6,14 @@ import { ActivityTypes } from '@microsoft/agents-activity';
 import { getObservabilityAuthenticationScope } from '@microsoft/agents-a365-runtime';
 import tokenCache, { createAgenticTokenCacheKey } from './token-cache.js';
 import { Client, getClient } from './client.js';
-import { AgenticTokenCacheInstance, BaggageBuilderUtils, A365_PARENT_SPAN_KEY } from '@microsoft/agents-a365-observability-hosting';
 import {
-  BaggageBuilder,
+  A365_PARENT_SPAN_KEY,
   InvokeAgentScope,
   InvokeAgentScopeDetails,
   AgentDetails,
-  Request as A365Request,
+  A365Request,
   ParentSpanRef,
-} from '@microsoft/agents-a365-observability';
+} from '@microsoft/opentelemetry';
 
 export class A365Agent extends AgentApplication<TurnState> {
   static authHandlerName: string = 'agentic';
@@ -106,22 +105,13 @@ export class A365Agent extends AgentApplication<TurnState> {
     const agentId = turnContext?.activity?.recipient?.agenticAppId ?? '';
     const tenantId = turnContext?.activity?.recipient?.tenantId ?? '';
 
-    if (process.env.Use_Custom_Resolver === 'true') {
-      const aauToken = await authorization.exchangeToken(turnContext, 'agentic', {
-        scopes: getObservabilityAuthenticationScope()
-      });
-      console.log(`Preloaded Observability token for agentId=${agentId}, tenantId=${tenantId} token=${aauToken?.token?.substring(0, 10)}...`);
-      const cacheKey = createAgenticTokenCacheKey(agentId, tenantId);
-      tokenCache.set(cacheKey, aauToken?.token || '');
-    } else {
-      await AgenticTokenCacheInstance.RefreshObservabilityToken(
-        agentId,
-        tenantId,
-        turnContext,
-        authorization,
-        getObservabilityAuthenticationScope()
-      );
-    }
+    const observabilityScopes = ['api://9b975845-388f-4429-889e-eab1ef63949c/Agent365.Observability.OtelWrite'];
+    const aauToken = await authorization.exchangeToken(turnContext, 'agentic', {
+      scopes: observabilityScopes
+    });
+    console.log(`Preloaded Observability token for agentId=${agentId}, tenantId=${tenantId} token=${aauToken?.token?.substring(0, 10)}...`);
+    const cacheKey = createAgenticTokenCacheKey(agentId, tenantId);
+    tokenCache.set(cacheKey, aauToken?.token || '');
   }
 
   private getAuthorizationSafe(): Authorization | undefined {

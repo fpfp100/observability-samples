@@ -8,8 +8,7 @@ import {
   ObservabilityManager,
   Agent365ExporterOptions,
 } from '@microsoft/agents-a365-observability';
-import { createAgenticTokenCacheKey } from './agent';
-import tokenCache from './token-cache';
+import tokenCache, { createAgenticTokenCacheKey } from './token-cache.js';
 import { ClusterCategory } from '@microsoft/agents-a365-runtime';
 import { AgenticTokenCacheInstance } from '@microsoft/agents-a365-observability-hosting';
 

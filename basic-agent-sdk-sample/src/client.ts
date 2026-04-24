@@ -17,15 +17,6 @@ import {
 import { AgenticTokenCacheInstance } from '@microsoft/agents-a365-observability-hosting';
 import { tokenResolver } from './token-cache.js';
 
-const exporterEnabled = process.env.ENABLE_A365_OBSERVABILITY_EXPORTER === 'true';
-const connectionString = process.env.CONNECTION_STRING?.trim() ?? '';
-const hasUsableConnectionString = Boolean(connectionString) && !connectionString.includes('REPLACE-WITH');
-
-if (exporterEnabled && !hasUsableConnectionString) {
-  console.warn('[langchain-sample] ENABLE_A365_OBSERVABILITY_EXPORTER is true, but CONNECTION_STRING is missing or placeholder. Falling back to console span export.');
-  process.env.ENABLE_A365_OBSERVABILITY_EXPORTER = 'false';
-}
-
 export interface Client {
   invokeAgent(prompt: string): Promise<string>;
 }

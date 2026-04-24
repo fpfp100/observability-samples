@@ -99,6 +99,8 @@ app.Run();
 
 static async Task SendActivity(string text)
 {
+    var tenantId = Environment.GetEnvironmentVariable("AGENT_TENANT_ID") ?? "badf1f56-284d-4dc5-ac59-0dd53900e743";
+
     var payload = new
     {
         type = "message",
@@ -118,7 +120,7 @@ static async Task SendActivity(string text)
         conversation = new
         {
             conversationType = "personal",
-            tenantId = "badf1f56-284d-4dc5-ac59-0dd53900e743",
+            tenantId = tenantId,
             id = "d6134d32-d455-49a0-9988-d8bd542ca4b0"
         },
         recipient = new
@@ -136,7 +138,7 @@ static async Task SendActivity(string text)
         {
             new { type = "clientInfo", locale = "en-US", country = "US", platform = "Web", timezone = "America/Los_Angeles" }
         },
-        channelData = new { tenant = new { id = "00000000-0000-0000-0000-0000000000001" } }
+        channelData = new { tenant = new { id = tenantId } }
     };
 
     using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(60) };

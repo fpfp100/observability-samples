@@ -1,9 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { useMicrosoftOpenTelemetry } from '@microsoft/opentelemetry';
-import { resourceFromAttributes } from '@opentelemetry/resources';
-import { AgenticTokenCacheInstance } from '@microsoft/agents-a365-observability-hosting';
 import { tokenResolver as customTokenResolver } from './token-cache.js';
 
 import { createAgent, tool } from "langchain";
@@ -15,9 +12,9 @@ import {
   InferenceOperationType,
   InferenceDetails,
   AgentDetails,
-  Request as A365Request,
+  A365Request,
   InferenceScope,
-} from '@microsoft/agents-a365-observability';
+} from '@microsoft/opentelemetry';
 import { TurnContext } from "@microsoft/agents-hosting";
 
 export interface Client {
@@ -25,29 +22,11 @@ export interface Client {
   invokeInferenceScope(prompt: string, turnContext: TurnContext): Promise<string>;
 }
 
-// Configure observability via the Microsoft OpenTelemetry distribution.
-// Replaces ObservabilityManager.configure + Agent365ExporterOptions +
-// LangChainTraceInstrumentor. The built-in langchain instrumentation hooks
-// LangChain calls automatically.
-const resolvedTokenResolver =
-  process.env.Use_Custom_Resolver === 'true'
-    ? (agentId: string, tenantId: string): string => customTokenResolver(agentId, tenantId) ?? ''
-    : async (agentId: string, tenantId: string): Promise<string> =>
-        (await AgenticTokenCacheInstance.getObservabilityToken(agentId, tenantId)) ?? '';
-
-useMicrosoftOpenTelemetry({
-  resource: resourceFromAttributes({
-    'service.name': 'TypeScript Sample Agent',
-    'service.version': '1.0.0',
-  }),
-  instrumentationOptions: {
-    langchain: { isContentRecordingEnabled: true },
-  },
-  a365: {
-    enabled: process.env.ENABLE_A365_OBSERVABILITY_EXPORTER === 'true',
-    tokenResolver: resolvedTokenResolver,
-  },
-});
+// Observability is configured in otel-init.ts (loaded as the FIRST import in
+// index.ts), so this file only needs to expose the LangChain agent. The
+// custom token resolver is referenced here only as a guard against tree-shaking
+// removing the import side-effect from token-cache.ts.
+void customTokenResolver;
 
 
  const getWeather = tool(

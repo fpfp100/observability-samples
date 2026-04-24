@@ -43,15 +43,14 @@ const otelTokenResolver = async (agentId: string, tenantId: string): Promise<str
 
 useMicrosoftOpenTelemetry({
   resource: resourceFromAttributes({
-    'service.name': 'TypeScript Sample Agent',
+    'service.name': 'LangChain Sample Agent',
     'service.version': '1.0.0',
   }),
   azureMonitor: {
     enabled: Boolean(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING),
   },
   instrumentationOptions: {
-    // Disable LangChain instrumentation to test span output without it.
-    langchain: true,
+    langchain: { isContentRecordingEnabled: true },
   },
   a365: {
     // Re-read env var at init time; dotenv has already run above.

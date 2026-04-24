@@ -5,6 +5,7 @@
 import './otel-init.js';
 
 import { AuthConfiguration, authorizeJWT, CloudAdapter, loadAuthConfigFromEnv, Request } from '@microsoft/agents-hosting';
+import { ObservabilityHostingManager } from '@microsoft/opentelemetry';
 import express, { Response, Express } from 'express'
 import { agentApplication } from './agent.js';
 
@@ -13,6 +14,18 @@ const isProduction = Boolean(process.env.WEBSITE_SITE_NAME) || process.env.NODE_
 const authConfig: AuthConfiguration = loadAuthConfigSafely(isProduction);
 
 const adapter = agentApplication.adapter as CloudAdapter;
+
+// Register A365 observability middleware on the adapter:
+//  - BaggageMiddleware: propagates A365 baggage across activities
+//  - OutputLoggingMiddleware: emits output_messages spans for outgoing activities
+// Cast: CloudAdapter.use signature differs slightly from the MiddlewareLike
+// shape ObservabilityHostingManager.configure expects across SDK versions;
+// the runtime contract (.use(...middlewares)) matches.
+const observabilityHostingManager = new ObservabilityHostingManager();
+observabilityHostingManager.configure(adapter as unknown as { use(...m: unknown[]): void }, {
+  enableBaggage: true,
+  enableOutputLogging: true,
+});
 
 const server: Express = express()
 server.use(express.json())

@@ -15,6 +15,7 @@ import { shutdownMicrosoftOpenTelemetry } from '@microsoft/opentelemetry';
 import { AuthConfiguration, authorizeJWT, CloudAdapter, loadAuthConfigFromEnv, Request } from '@microsoft/agents-hosting';
 import express, { Response } from 'express';
 import { agentApplication } from './A365Agent';
+import { ObservabilityHostingManager } from '@microsoft/opentelemetry';
 
 // Use request validation middleware only if hosting publicly
 const isProduction = Boolean(process.env.WEBSITE_SITE_NAME) || process.env.NODE_ENV === 'production';
@@ -22,8 +23,11 @@ const authConfig: AuthConfiguration = isProduction ? loadAuthConfigFromEnv() : {
 const adapter = new CloudAdapter(authConfig);
 
 // Register observability middleware on the adapter
-//const observabilityHostingManager = new ObservabilityHostingManager();
-//observabilityHostingManager.configure(adapter, { enableOutputLogging: true });
+const observabilityHostingManager = new ObservabilityHostingManager();
+observabilityHostingManager.configure(
+  adapter as unknown as { use(...m: unknown[]): void },
+  { enableOutputLogging: true },
+);
 
 const app = express();
 app.use(express.json());

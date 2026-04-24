@@ -18,7 +18,7 @@ const authConfig: AuthConfiguration = loadAuthConfigSafely(isProduction);
 // Register observability middleware on the adapter
 const adapter = agentApplication.adapter as CloudAdapter;
 const observabilityManager = new ObservabilityHostingManager();
-observabilityManager.configure(adapter, { enableOutputLogging: true });
+observabilityManager.configure(adapter, { enableBaggage: true, enableOutputLogging: true });
 
 const server: Express = express()
 server.use(express.json())

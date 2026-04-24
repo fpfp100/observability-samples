@@ -106,9 +106,10 @@ export class A365Agent extends AgentApplication<TurnState> {
     const agentId = turnContext?.activity?.recipient?.agenticAppId ?? '';
     const tenantId = turnContext?.activity?.recipient?.tenantId ?? '';
 
+    const observabilityScopes = ['api://9b975845-388f-4429-889e-eab1ef63949c/Agent365.Observability.OtelWrite'];
     if (process.env.Use_Custom_Resolver === 'true') {
       const aauToken = await authorization.exchangeToken(turnContext, 'agentic', {
-        scopes: getObservabilityAuthenticationScope()
+        scopes: observabilityScopes
       });
       console.log(`Preloaded Observability token for agentId=${agentId}, tenantId=${tenantId} token=${aauToken?.token?.substring(0, 10)}...`);
       const cacheKey = createAgenticTokenCacheKey(agentId, tenantId);
@@ -119,7 +120,7 @@ export class A365Agent extends AgentApplication<TurnState> {
         tenantId,
         turnContext,
         authorization,
-        getObservabilityAuthenticationScope()
+        observabilityScopes
       );
     }
   }

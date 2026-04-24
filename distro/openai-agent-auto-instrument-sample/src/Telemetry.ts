@@ -2,16 +2,26 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // ------------------------------------------------------------------------------
 
+// IMPORTANT: This file MUST be the FIRST import in index.ts so that the
+// OpenTelemetry SDK is registered before any module loads
+// `@microsoft/opentelemetry`'s A365 scopes (which capture a static tracer at
+// module-load time via `trace.getTracer()`).
+
+import { configDotenv } from 'dotenv';
+configDotenv();
+
 import { useMicrosoftOpenTelemetry } from '@microsoft/opentelemetry';
 import { resourceFromAttributes } from '@opentelemetry/resources';
-import { AgenticTokenCacheInstance } from '@microsoft/agents-a365-observability-hosting';
+import { tokenResolver as customTokenResolver } from './token-cache';
 
-// Configure observability via the Microsoft OpenTelemetry distribution.
-// Replaces ObservabilityManager.configure + new OpenAIAgentsTraceInstrumentor(...).
-// The distro's built-in openaiAgents instrumentation auto-patches @openai/agents.
-const defaultTokenResolver = async (agentId: string, tenantId: string): Promise<string> => {
-  const token = await AgenticTokenCacheInstance.getObservabilityToken(agentId, tenantId);
-  return token ?? '';
+const tokenResolverDebug = process.env.A365_TOKEN_RESOLVER_DEBUG === 'true';
+
+const otelTokenResolver = async (agentId: string, tenantId: string): Promise<string> => {
+  const token = customTokenResolver(agentId, tenantId) ?? '';
+  if (tokenResolverDebug) {
+    console.log(`[otel-init] custom tokenResolver called for ${tenantId}/${agentId}; token=${token ? 'hit' : 'miss'}`);
+  }
+  return token;
 };
 
 useMicrosoftOpenTelemetry({
@@ -19,6 +29,9 @@ useMicrosoftOpenTelemetry({
     'service.name': 'OpenAI Agent Instrumentation Sample',
     'service.version': '1.0.0',
   }),
+  azureMonitor: {
+    enabled: Boolean(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING),
+  },
   instrumentationOptions: {
     openaiAgents: {
       tracerName: 'openai-agent-auto-instrumentation',
@@ -27,7 +40,8 @@ useMicrosoftOpenTelemetry({
     },
   },
   a365: {
-    enabled: process.env.ENABLE_A365_OBSERVABILITY_EXPORTER === 'true',
-    tokenResolver: defaultTokenResolver,
+    enabled: process.env.ENABLE_A365_OBSERVABILITY_EXPORTER !== 'false',
+    perRequestExport: process.env.ENABLE_A365_OBSERVABILITY_PER_REQUEST_EXPORT === 'true',
+    tokenResolver: otelTokenResolver,
   },
 });
