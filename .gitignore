@@ -30,6 +30,11 @@ app.zip
 .vscode/
 .idea/
 .claude/
+.vs/
+
+# .NET build artifacts
+bin/
+obj/
 
 # OS-specific
 .DS_Store

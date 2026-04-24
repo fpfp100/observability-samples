@@ -1,0 +1,8 @@
+﻿ActivityEvent,ActivityEvent._tags,ActivityEvent.Name,ActivityEvent.Timestamp,ActivityEvent.Tags
+System.Diagnostics.ActivityEvent,[...],gen_ai.system.message,"3/24/2026 3:20:17 PM +00:00",[...]
+System.Diagnostics.ActivityEvent,"[[gen_ai.event.content, {""role"":""user"",""name"":null,""content"":""Calcualte 3 modlus 29"",""tool_calls"":[]}], [gen_ai.system, openai]]",gen_ai.user.message,"3/24/2026 3:20:17 PM +00:00","[[gen_ai.event.content, {""role"":""user"",""name"":null,""content"":""Calcualte 3 modlus 29"",""tool_calls"":[]}], [gen_ai.system, openai]]"
+System.Diagnostics.ActivityEvent,[...],gen_ai.assistant.message,"3/24/2026 3:20:17 PM +00:00",[...]
+System.Diagnostics.ActivityEvent,"[[gen_ai.event.content, {""role"":""user"",""name"":null,""content"":""Calcualte 3 modlus 29"",""tool_calls"":[]}], [gen_ai.system, openai]]",gen_ai.user.message,"3/24/2026 3:20:17 PM +00:00","[[gen_ai.event.content, {""role"":""user"",""name"":null,""content"":""Calcualte 3 modlus 29"",""tool_calls"":[]}], [gen_ai.system, openai]]"
+System.Diagnostics.ActivityEvent,[...],gen_ai.assistant.message,"3/24/2026 3:20:17 PM +00:00",[...]
+System.Diagnostics.ActivityEvent,"[[gen_ai.event.content, {""role"":""user"",""name"":null,""content"":""Calcualte 3 modlus 29"",""tool_calls"":[]}], [gen_ai.system, openai]]",gen_ai.user.message,"3/24/2026 3:20:17 PM +00:00","[[gen_ai.event.content, {""role"":""user"",""name"":null,""content"":""Calcualte 3 modlus 29"",""tool_calls"":[]}], [gen_ai.system, openai]]"
+System.Diagnostics.ActivityEvent,[...],gen_ai.choice,"3/24/2026 3:20:43 PM +00:00",[...]
