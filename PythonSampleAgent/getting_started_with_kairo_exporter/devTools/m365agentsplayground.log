@@ -1,0 +1,28 @@
+debug Telemetry: agents-playground-cli/cliStart {"cleanProperties":{"isExec":"true","argv":"<REDACTED: user-file-path>,<REDACTED: user-file-path>,-e,http://localhost:3978/api/messages,-c,emulator"}}
+
+log Listening on 56150
+log Microsoft 365 Agents Playground is being launched for you to debug the app: http://localhost:56150
+debug started web socket client
+debug started web socket client
+log Waiting for connection of endpoint: http://localhost:3978/api/messages
+log waiting for 1 resources: http://localhost:3978/api/messages
+log wait-on(42708) complete
+log Events recording disabled.
+debug Telemetry: agents-playground-server/eventsRecording {"cleanProperties":{"enabled":"false"}}
+
+debug Telemetry: agents-playground-server/getConfig {"cleanProperties":{"internalConfig":"{\"locale\":\"en-US\",\"localTimezone\":\"America/Los_Angeles\",\"channelId\":\"emulator\",\"debugConfig\":{\"eventsRecordingEnabled\":false}}"}}
+
+debug Telemetry: agents-playground-server/error {"cleanProperties":{"stack":"\"Error: Request failed with status code 500\\n    at UserBotError (<REDACTED: user-file-path> (<REDACTED: user-file-path> (<REDACTED: user-file-path> (node:internal/process/task_queues:95:5)\\n    at async ConversationUpdateUserBotAccessor.sendInstallationMemberAddedActivity (<REDACTED: user-file-path>)\"","message":"\"Request failed with status code 500\"","code":"\"UserBotError\"","innerHttpError":"{\"statusCode\":500,\"body\":\"500 Internal Server Error\\n\\nServer got itself in trouble\"}"}}
+
+log InternalServiceError: Request failed with status code 500
+    at UserBotError (C:\snapshot\packages\cli\dist\bundled.js)
+    at ConversationUpdateUserBotAccessor.handleAxiosError (C:\snapshot\packages\cli\dist\bundled.js)
+    at ConversationUpdateUserBotAccessor.sendActivity (C:\snapshot\packages\cli\dist\bundled.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConversationUpdateUserBotAccessor.sendInstallationMemberAddedActivity (C:\snapshot\packages\cli\dist\bundled.js) {
+  code: 'UserBotError',
+  innerHttpError: {
+    statusCode: 500,
+    body: '500 Internal Server Error\n\nServer got itself in trouble'
+  }
+}

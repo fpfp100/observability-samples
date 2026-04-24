@@ -1,0 +1,16 @@
+aiohttp
+openai
+microsoft-agents-hosting-aiohttp==0.9.0
+microsoft-agents-hosting-core==0.9.0
+microsoft-agents-authentication-msal==0.9.0
+microsoft-agents-activity==0.9.0
+microsoft-agents-a365-runtime==0.3.0.dev6
+microsoft-opentelemetry==0.1.0a3
+uvicorn[standard]~=0.35.0
+starlette>=0.27.0
+python-dotenv==1.1.1
+
+[dev]
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+ruff>=0.6.0
