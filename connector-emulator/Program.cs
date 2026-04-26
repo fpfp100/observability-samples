@@ -1,7 +1,7 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 
-const string AgentUrl = "http://localhost:3978/api/messages";
+string AgentUrl = Environment.GetEnvironmentVariable("AGENT_URL") ?? "http://localhost:3978/api/messages";
 const string ConnectorBase = "/_connector";
 
 // Use port 0 so the OS assigns an available port automatically.
@@ -11,7 +11,7 @@ string ListenUrl = Environment.GetEnvironmentVariable("EMULATOR_LISTEN_URL") ?? 
 int loopIntervalSeconds = int.TryParse(Environment.GetEnvironmentVariable("LOOP_INTERVAL_SECONDS"), out var iv) && iv > 0 ? iv : 10;
 int loopCount = int.TryParse(Environment.GetEnvironmentVariable("LOOP_COUNT"), out var lc) && lc >= 0 ? lc : 1; // default 1; 0 = infinite
 string[] loopMessages = (Environment.GetEnvironmentVariable("LOOP_MESSAGES") ??
-    "what can you do|summarize my inbox|list my unread emails|draft an email to my team|what time is it")
+    "what is the current date and time|summarize my inbox|list my unread emails|draft an email to my team|what time is it")
     .Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
 var builder = WebApplication.CreateBuilder(args);
@@ -116,7 +116,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
 
 app.Run();
 
-static async Task SendActivity(string text, string listenUrl)
+async Task SendActivity(string text, string listenUrl)
 {
     var tenantId = Environment.GetEnvironmentVariable("AGENT_TENANT_ID") ?? "badf1f56-284d-4dc5-ac59-0dd53900e743";
 
@@ -125,7 +125,7 @@ static async Task SendActivity(string text, string listenUrl)
         type = "message",
         text = text,
         id = Guid.NewGuid().ToString(),
-        channelId = "msteams",
+        channelId = "emulator",
         from = new
         {
             id = "user-id-0",

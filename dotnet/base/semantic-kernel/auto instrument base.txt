@@ -1,0 +1,1058 @@
+
+      Queued Hosted Service is running.
+info: Microsoft.Agents.Hosting.AspNetCore.BackgroundQueue.HostedTaskService[0]
+      Queued Hosted Service is running.
+
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:3978
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\bin\Debug\net8.0
+info: Microsoft.Agents.Authentication.ConfigurationConnections[0]
+      No assembly name given in config for connection `ServiceConnection`.  Using default assembly lib: `Microsoft.Agents.Authentication.Msal`
+info: Microsoft.Agents.Authentication.ConfigurationConnections[0]
+      No type name given in config for connection `ServiceConnection`.  Using default type name: `MsalAuth`
+info: Microsoft.Agents.Builder.UserAuth.UserAuthorizationDispatcher[0]
+      No assembly name given in config for connection `agentic`.  Using default assembly lib: `Microsoft.Agents.Builder`
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             428f9362a1bd181a
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       02044f75a71a43a4
+Activity.DisplayName:        agent.process_message
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T00:29:29.5752636Z
+Activity.Duration:           00:00:00.1452704
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+StatusCode: Ok
+Instrumentation scope (ActivitySource):
+    Name: A365.SemanticKernel
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+warn: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      Anonymous access is enabled for channel: msteams.
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             02044f75a71a43a4
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /api/messages
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T00:29:29.4568235Z
+Activity.Duration:           00:00:00.2951274
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: POST
+    url.scheme: http
+    url.path: /api/messages
+    network.protocol.version: 1.1
+    user_agent:
+    http.route: /api/messages
+    http.response.status_code: 202
+    http.response.body.size: 0
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             09a0bf6f4e94e638
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       8449c55821ced796
+Activity.DisplayName:        GET
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:30.0823338Z
+Activity.Duration:           00:00:00.2950711
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: GET
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/common/discovery/instance?api-version=Redacted&authorization_endpoint=Redacted
+    http.request.host: login.microsoftonline.com
+    http.request.useragent:
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Content-Length=980"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             151a16836d9fcb5c
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       8449c55821ced796
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:30.4281649Z
+Activity.Duration:           00:00:00.1192829
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent:
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=1553"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             c89dd9de36aa22f8
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       8449c55821ced796
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:30.6096632Z
+Activity.Duration:           00:00:00.1083705
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent:
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=1564"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             4ca0c33e1e8f9bb7
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       8449c55821ced796
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:30.7228722Z
+Activity.Duration:           00:00:00.1823764
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent:
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=3361"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             94f63628c950926c
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       8449c55821ced796
+Activity.DisplayName:        MessageProcessor
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T00:29:30.9130470Z
+Activity.Duration:           00:00:00.3600920
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    Activity.Type: message
+    Agent.IsAgentic: true
+    Caller.Id: user-id-0
+    Conversation.Id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    Channel.Id: msteams
+    Message.Text.Length: 15
+StatusCode: Ok
+Activity.Events:
+    Message.Processed [2026/4/26 0:29:30 +00:00]
+        Agent.IsAgentic: true
+        Caller.Id: user-id-0
+        Channel.Id: msteams
+        Message.Id: 3a3c1ea0-df3c-4f5d-a6a0-8fc471b27391
+        Message.Text: what can you do
+Instrumentation scope (ActivitySource):
+    Name: A365.SemanticKernel
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             7346a5aab37cfe33
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       94f63628c950926c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:31.2614277Z
+Activity.Duration:           00:00:00.2415106
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent:
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=2298"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+      Start processing HTTP request GET https://agent365.svc.cloud.microsoft/agents/v2/d6d31512-379f-4994-b901-c098dfd9293f/mcpServers
+info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+      Sending HTTP request GET https://agent365.svc.cloud.microsoft/agents/v2/d6d31512-379f-4994-b901-c098dfd9293f/mcpServers
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             aa410fe00d3955ff
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       94f63628c950926c
+Activity.DisplayName:        GET
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:31.5255259Z
+Activity.Duration:           00:00:02.0844643
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: GET
+    server.address: agent365.svc.cloud.microsoft
+    server.port: 443
+    url.full: https://agent365.svc.cloud.microsoft/agents/v2/d6d31512-379f-4994-b901-c098dfd9293f/mcpServers
+    http.request.host: agent365.svc.cloud.microsoft
+    http.request.useragent: Agent365SDK/0.3.4.11531 (Microsoft Windows 10.0.26200; .NET 8.0.26; SemanticKernel)
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+      Received HTTP response headers after 2090.3679ms - 200
+info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+      End processing HTTP request after 2105.4668ms - 200
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Creating custom MCP client for: mcp_MailTools at https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Configured authentication handler for MCP endpoint https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             f322ba27eda3fd42
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       94f63628c950926c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:33.8602886Z
+Activity.Duration:           00:00:00.6374708
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: agent365.svc.cloud.microsoft
+    server.port: 443
+    url.full: https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools
+    http.request.host: agent365.svc.cloud.microsoft
+    http.request.useragent: Agent365SDK/0.3.4.11531 (Microsoft Windows 10.0.26200; .NET 8.0.26; SemanticKernel)
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=text/event-stream","Content-Encoding=identity"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      HTTP Response: OK
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Response Headers: Date: Sun, 26 Apr 2026 00:29:34 GMT, Cache-Control: no-store, no-cache, Transfer-Encoding: chunked, Strict-Transport-Security: max-age=31536000; includeSubDomains, x-ms-islandgateway: _prdcm001wusgb0_0,_prdil110cusgb0_1, x-ms-igw-tracking-id: f3f5d98c-54a0-4407-baae-e35f8a46965d20260426002933_prdcm001wusgb0_0,016dcec3-840f-4563-8efd-49d350e1911220260426002934_prdil110cusgb0_1, mise-correlation-id: b80764a8-8849-4f79-b12d-95f8c51e4d0b, x-ms-ppapigateway: _prdcm001wusgb0_2,_prdil110cusgb0_6, x-ms-gateway-clusters: prdcm001wus,prdil110cus, x-ms-mcpservice: zb0000005 - 2026-04-26T00:29:34.1608323Z, x-accel-buffering: no, x-servicefabric: NoRetry, x-ms-service-request-id: f3f5d98c-54a0-4407-baae-e35f8a46965d, x-ms-correlation-id: aae65c20-8b8b-413f-966a-75baefc03d65, x-ms-activity-vector: 00.00.00, Server-Timing: x-ms-igw-upstream-headers;dur=315.2,x-ms-igw-req-overhead;dur=0.4, X-Content-Type-Options: nosniff
+info: ModelContextProtocol.Client.McpClient[1434756563]
+      https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools client received server '{"name":"Microsoft.MCPPlatform.WebApi","version":"0.1.3400.1833"}' capabilities: '{"logging":{},"prompts":{},"resources":{},"tools":{}}'.
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             e20ee25b641b7f66
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       94f63628c950926c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:34.5564493Z
+Activity.Duration:           00:00:00.3544033
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: agent365.svc.cloud.microsoft
+    server.port: 443
+    url.full: https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools
+    http.request.host: agent365.svc.cloud.microsoft
+    http.request.useragent: Agent365SDK/0.3.4.11531 (Microsoft Windows 10.0.26200; .NET 8.0.26; SemanticKernel)
+    network.protocol.version: 1.1
+    http.response.status_code: 202
+    http.response.headers: ["Content-Length=0","Content-Encoding=identity"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             2684fbbb57ff8aeb
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       94f63628c950926c
+Activity.DisplayName:        GET
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:34.5407693Z
+Activity.Duration:           00:00:00.3704890
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: GET
+    server.address: agent365.svc.cloud.microsoft
+    server.port: 443
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      HTTP Response: Accepted
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Response Headers: Date: Sun, 26 Apr 2026 00:29:34 GMT, Cache-Control: no-store, no-cache, Strict-Transport-Security: max-age=31536000; includeSubDomains, x-ms-islandgateway: _prdcm001wusgb0_0,_prdil110cusgb0_4, x-ms-igw-tracking-id: 62b6c787-c9c0-4b45-a749-a34ca75ccf3a20260426002934_prdcm001wusgb0_0,cf1d60b9-560d-400e-ba02-d6cd0381712120260426002934_prdil110cusgb0_4, mise-correlation-id: f2f889bb-f0d5-4dc7-ab21-cf8be796a35d, x-ms-ppapigateway: _prdcm001wusgb0_1,_prdil110cusgb0_3, x-ms-gateway-clusters: prdcm001wus,prdil110cus, x-ms-mcpservice: zb0000005 - 2026-04-26T00:29:34.7120616Z, x-accel-buffering: no, x-servicefabric: NoRetry, x-ms-service-request-id: 62b6c787-c9c0-4b45-a749-a34ca75ccf3a, x-ms-correlation-id: eaf151ef-dc83-4996-b0db-204af84ee4e0, x-ms-activity-vector: 00.00.00, Server-Timing: x-ms-igw-upstream-headers;dur=175.3,x-ms-igw-req-overhead;dur=0.4, X-Content-Type-Options: nosniff
+    url.full: https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools
+    http.request.host: agent365.svc.cloud.microsoft
+    http.request.useragent: Agent365SDK/0.3.4.11531 (Microsoft Windows 10.0.26200; .NET 8.0.26; SemanticKernel)
+    network.protocol.version: 1.1
+    http.response.status_code: 405
+    error.type: 405
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Allow=POST,DELETE"]
+StatusCode: Error
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      HTTP Response: MethodNotAllowed
+info: ModelContextProtocol.Client.McpClientFactory[1458305598]
+      https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools client created and connected.
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Response Headers: Date: Sun, 26 Apr 2026 00:29:34 GMT, Cache-Control: no-store, no-cache, Transfer-Encoding: chunked, Strict-Transport-Security: max-age=31536000; includeSubDomains, x-ms-islandgateway: _prdcm001wusgb0_0,_prdil110cusgb0_4, x-ms-igw-tracking-id: aa46c837-1dbd-4269-b681-33ffc20ba66020260426002934_prdcm001wusgb0_0,f57cd689-8897-4a44-86a6-64201bb6015520260426002934_prdil110cusgb0_4, mise-correlation-id: 5aa3c7f3-7f8c-42b1-af9a-2a905c1b7888, x-ms-ppapigateway: _prdcm001wusgb0_1,_prdil110cusgb0_8, x-ms-gateway-clusters: prdcm001wus,prdil110cus, x-ms-mcpservice: zb0000005 - 2026-04-26T00:29:34.6739944Z, x-servicefabric: NoRetry, x-ms-service-request-id: aa46c837-1dbd-4269-b681-33ffc20ba660, x-ms-correlation-id: 6fb5edc0-6648-45db-b61d-5c48fc128a94, x-ms-activity-vector: 00.00.00, Server-Timing: x-ms-igw-upstream-headers;dur=214.8,x-ms-igw-req-overhead;dur=0.4, X-Content-Type-Options: nosniff
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             5db138f7069db2e6
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       94f63628c950926c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:34.9383204Z
+Activity.Duration:           00:00:00.3359278
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: agent365.svc.cloud.microsoft
+    server.port: 443
+    url.full: https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools
+    http.request.host: agent365.svc.cloud.microsoft
+    http.request.useragent: Agent365SDK/0.3.4.11531 (Microsoft Windows 10.0.26200; .NET 8.0.26; SemanticKernel)
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=text/event-stream","Content-Encoding=identity"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      HTTP Response: OK
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Response Headers: Date: Sun, 26 Apr 2026 00:29:35 GMT, Cache-Control: no-store, no-cache, Transfer-Encoding: chunked, Strict-Transport-Security: max-age=31536000; includeSubDomains, x-ms-islandgateway: _prdcm001wusgb0_0,_prdil110cusgb0_1, x-ms-igw-tracking-id: babfa1a1-af31-492c-a354-2cea292d0c7b20260426002934_prdcm001wusgb0_0,bc38979b-325a-451b-9746-d0850773b0bd20260426002934_prdil110cusgb0_1, mise-correlation-id: 83ce16ab-b992-4139-8ec9-c168d0fcd1ea, x-ms-ppapigateway: _prdcm001wusgb0_2,_prdil110cusgb0_8, x-ms-gateway-clusters: prdcm001wus,prdil110cus, x-ms-mcpservice: zb0000005 - 2026-04-26T00:29:34.9821971Z, x-accel-buffering: no, x-servicefabric: NoRetry, x-ms-service-request-id: babfa1a1-af31-492c-a354-2cea292d0c7b, x-ms-correlation-id: e1c5f100-6415-410d-9d74-ae7885584264, x-ms-activity-vector: 00.00.00, Server-Timing: x-ms-igw-upstream-headers;dur=268.2,x-ms-igw-req-overhead;dur=0.5, X-Content-Type-Options: nosniff
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Successfully retrieved 22 tools from mcp_MailTools
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Successfully loaded 22 tools from MCP server 'mcp_MailTools'
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      MCP server discovery completed: Total servers=1, Servers with tools=1
+info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+      Start processing HTTP request POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?*
+info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+      Sending HTTP request POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?*
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             0b9734fba2bba837
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       d38788432cd9c100
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:42.7380598Z
+Activity.Duration:           00:00:02.4107066
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    url.full: https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=Redacted
+    http.request.host: a365-hw-openai-sentinel.openai.azure.com
+    http.request.useragent: Semantic-Kernel azsdk-net-AI.OpenAI/2.9.0-beta.1 (.NET 8.0.26; Microsoft Windows 10.0.26200)
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Length=1861","Content-Type=application/json"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+      Received HTTP response headers after 2437.3936ms - 200
+info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+      End processing HTTP request after 2444.9914ms - 200
+info: Microsoft.SemanticKernel.Connectors.AzureOpenAI.AzureOpenAIChatCompletionService[0]
+      Prompt tokens: 3684. Completion tokens: 139. Total tokens: 3823.
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             d38788432cd9c100
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       5a88b2a0a8fbf190
+Activity.DisplayName:        Chat gpt-4o-mini
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:42.6470829Z
+Activity.Duration:           00:00:02.5385168
+Activity.Tags:
+    gen_ai.operation.name: Chat
+    gen_ai.system: openai
+    gen_ai.request.model: gpt-4o-mini
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    gen_ai.usage.input_tokens: 3684
+    gen_ai.usage.output_tokens: 139
+    gen_ai.response.finish_reason: ["Stop"]
+    gen_ai.response.id: chatcmpl-DYhfTYi7qxdWJ8eQlFDNOm4BmE7Te
+    gen_ai.input.messages: {"messages":[{"role":"system","parts":[{"content":"\r\n        You are a friendly assistant that helps office workers with their daily tasks.\r\n        You may ask follow up questions until you have enough information to answer the user\u0027s question.\r\n\r\n        Respond in JSON format with the following JSON schema:\r\n        \r\n        {\r\n            \u0022contentType\u0022: \u0022\u0027Text\u0027\u0022,\r\n            \u0022content\u0022: \u0022{The content of the response in plain text}\u0022\r\n        }\r\n        ","type":"text"}],"name":"Agent365Agent"},{"role":"user","parts":[{"content":"what can you do","type":"text"}]}],"version":"0.1.0"}
+    gen_ai.output.messages: {"messages":[{"finish_reason":"stop","role":"assistant","parts":[{"content":"{\n    \u0022contentType\u0022: \u0022Text\u0022,\n    \u0022content\u0022: \u0022I can assist you with various office-related tasks such as:\\n1. Sending, drafting, and replying to emails.\\n2. Managing attachments, including adding and removing them from emails.\\n3. Searching for specific messages in your mailbox.\\n4. Updating email details like subject, body, and recipients.\\n5. Flagging messages and marking them as complete.\\n6. Deleting messages from your mailbox.\\n7. Providing help with organizing your inbox and managing calendar events.\\n\\nIf you have a specific task in mind, just let me know, and I\u0027ll be happy to assist!\u0022\n}","type":"text"}]}],"version":"0.1.0"}
+Activity.Events:
+    gen_ai.system.message [2026/4/26 0:29:42 +00:00]
+        gen_ai.event.content: {"role":"system","name":"Agent365Agent","content":"\r\n        You are a friendly assistant that helps office workers with their daily tasks.\r\n        You may ask follow up questions until you have enough information to answer the user\u0027s question.\r\n\r\n        Respond in JSON format with the following JSON schema:\r\n        \r\n        {\r\n            \u0022contentType\u0022: \u0022\u0027Text\u0027\u0022,\r\n            \u0022content\u0022: \u0022{The content of the response in plain text}\u0022\r\n        }\r\n        ","tool_calls":[]}
+        gen_ai.system: openai
+    gen_ai.user.message [2026/4/26 0:29:42 +00:00]
+        gen_ai.event.content: {"role":"user","name":null,"content":"what can you do","tool_calls":[]}
+        gen_ai.system: openai
+    gen_ai.choice [2026/4/26 0:29:45 +00:00]
+        gen_ai.event.content: {"index":0,"message":{"role":"Assistant","name":null,"content":"{\n    \u0022contentType\u0022: \u0022Text\u0022,\n    \u0022content\u0022: \u0022I can assist you with various office-related tasks such as:\\n1. Sending, drafting, and replying to emails.\\n2. Managing attachments, including adding and removing them from emails.\\n3. Searching for specific messages in your mailbox.\\n4. Updating email details like subject, body, and recipients.\\n5. Flagging messages and marking them as complete.\\n6. Deleting messages from your mailbox.\\n7. Providing help with organizing your inbox and managing calendar events.\\n\\nIf you have a specific task in mind, just let me know, and I\u0027ll be happy to assist!\u0022\n}","tool_calls":[]},"tool_calls":[],"finish_reason":"Stop"}
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.SemanticKernel.Diagnostics
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             5a88b2a0a8fbf190
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       94f63628c950926c
+Activity.DisplayName:        invoke_agent Agent365Agent
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T00:29:42.5823953Z
+Activity.Duration:           00:00:02.6264209
+Activity.Tags:
+    gen_ai.operation.name: invoke_agent
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    gen_ai.tool.definitions: [{"type":"function","name":"reject_terms_and_conditions","description":"Reject the terms and conditions on behalf of the user. Use when the user indicates they do not accept the terms and conditions.","parameters":{"type":"object","properties":{},"required":[]}},{"type":"function","name":"AddDraftAttachments","description":"Add attachments (URI) to an existing draft message.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Graph message ID (draft) to update."},"attachmentUris":{"type":"array","description":"List of direct file URIs to attach (must be Microsoft 365 file links: OneDrive, SharePoint, Teams, or Graph /drives/{id}/items/{id}).","items":{"type":"string"}}},"required":["messageId","attachmentUris"]}},{"type":"function","name":"UpdateDraft","description":"Update a draft\u0027s recipients, subject, body, sensitivity, and attachments. Supports both file URIs (OneDrive/SharePoint) and direct file uploads (base64-encoded). Recipients can be provided as names or email addresses - names will be automatically resolved to email addresses using Microsoft Graph.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Graph message ID (draft) to update."},"to":{"type":"array","description":"List of To recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"cc":{"type":"array","description":"List of Cc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"bcc":{"type":"array","description":"List of Bcc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"subject":{"type":"string","description":"Subject of the draft"},"body":{"type":"string","description":"Body of the draft. Replaces the entire body. IMPORTANT: For reply/reply-all drafts, the existing draft body already contains HTML with the quoted thread. You must preserve the quoted thread content or it will be lost."},"sensitivity":{"type":"string","description":"Sensitivity level: Normal, Personal, Private, or Confidential"},"attachmentUris":{"type":"array","description":"List of file URIs to attach (OneDrive, SharePoint, Teams, or Graph /drives/{id}/items/{id})","items":{"type":"string"}},"directAttachments":{"type":"array","description":"List of direct file attachments with format: [{\u0022fileName\u0022: \u0022file.pdf\u0022, \u0022contentBase64\u0022: \u0022base64data\u0022, \u0022contentType\u0022: \u0022application/pdf\u0022}]","items":{"type":"object","properties":{"FileName":{"type":"string","description":""},"ContentBase64":{"type":"string","description":""},"ContentType":{"type":"string","description":""}},"required":[]}}},"required":["messageId"]}},{"type":"function","name":"SendEmailWithAttachments","description":"Create and send an email with optional attachments. Supports both file URIs (OneDrive/SharePoint) and direct file uploads (base64-encoded). Recipients can be provided as names or email addresses - names will be automatically resolved to email addresses using Microsoft Graph.","parameters":{"type":"object","properties":{"to":{"type":"array","description":"List of To recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"cc":{"type":"array","description":"List of Cc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"bcc":{"type":"array","description":"List of Bcc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"subject":{"type":"string","description":"Subject of the email"},"body":{"type":"string","description":"Body of the email"},"contentType":{"type":"string","description":"Body content type: Text or HTML"},"attachmentUris":{"type":"array","description":"List of file URIs to attach (OneDrive, SharePoint, Teams, or Graph /drives/{id}/items/{id})","items":{"type":"string"}},"directAttachments":{"type":"array","description":"List of direct file attachments with format: [{\u0022fileName\u0022: \u0022file.pdf\u0022, \u0022contentBase64\u0022: \u0022base64data\u0022, \u0022contentType\u0022: \u0022application/pdf\u0022}]","items":{"type":"object","properties":{"FileName":{"type":"string","description":""},"ContentBase64":{"type":"string","description":""},"ContentType":{"type":"string","description":""}},"required":[]}}},"required":[]}},{"type":"function","name":"CreateDraftMessage","description":"Create a draft email in the signed-in user\u0027s mailbox without sending it. Recipients can be provided as names or email addresses - names will be automatically resolved to email addresses using Microsoft Graph.","parameters":{"type":"object","properties":{"subject":{"type":"string","description":"Subject of the email"},"body":{"type":"string","description":"Body of the email"},"to":{"type":"array","description":"List of To recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"cc":{"type":"array","description":"List of Cc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"bcc":{"type":"array","description":"List of Bcc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"contentType":{"type":"string","description":"Body content type: Text or HTML"}},"required":[]}},{"type":"function","name":"GetMessage","description":"Get a message by ID from the signed-in user\u0027s mailbox.","parameters":{"type":"object","properties":{"id":{"type":"string","description":"Message ID"},"preferHtml":{"type":"boolean","description":"If true, request HTML body format"},"bodyPreviewOnly":{"type":"boolean","description":"If true, returns only the body preview (~255 chars) instead of the full body. Useful for reducing payload size."}},"required":["id"]}},{"type":"function","name":"UpdateMessage","description":"Update a message\u0027s mutable properties (subject, body, categories, importance, sensitivity).","parameters":{"type":"object","properties":{"id":{"type":"string","description":"Message ID"},"subject":{"type":"string","description":"New subject"},"body":{"type":"string","description":"Body of the message. Replaces the entire body. IMPORTANT: For reply/reply-all messages, the existing body already contains HTML with the quoted thread. You must preserve the quoted thread content or it will be lost."},"contentType":{"type":"string","description":"Body content type: Text or HTML"},"categories":{"type":"array","description":"Message categories","items":{"type":"string"}},"importance":{"type":"string","description":"Importance level: Low, Normal, or High"},"sensitivity":{"type":"string","description":"Sensitivity level: Normal, Personal, Private, or Confidential"}},"required":["id"]}},{"type":"function","name":"FlagEmail","description":"Update the flag status on an email message. Supports flagging, completing, or clearing a flag.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Id of the email to be flagged."},"flagStatus":{"type":"string","description":"Flag status to set: NotFlagged, Complete, or Flagged."},"mailboxAddress":{"type":"string","description":"Address of the shared mailbox to update mail."}},"required":["messageId","flagStatus"]}},{"type":"function","name":"DeleteMessage","description":"Delete a message from the signed-in user\u0027s mailbox.","parameters":{"type":"object","properties":{"id":{"type":"string","description":"Message ID"}},"required":["id"]}},{"type":"function","name":"ReplyToMessage","description":"Reply to an existing message. By default creates a reply draft. Set sendImmediately=true to send the reply immediately instead of creating a draft. Recipients can be provided as names or email addresses - names will be automatically resolved using Microsoft Graph.","parameters":{"type":"object","properties":{"id":{"type":"string","description":"Message ID to reply to"},"comment":{"type":"string","description":"Reply text content"},"preferHtml":{"type":"boolean","description":"If true, treat comment as HTML"},"toRecipients":{"type":"array","description":"Optional override list of To recipients (can be names or email addresses - names will be automatically resolved). If provided, a reply draft is created and patched before sending.","items":{"type":"string"}},"ccRecipients":{"type":"array","description":"Optional override list of Cc recipients (can be names or email addresses - names will be automatically resolved). Used only when modifying recipients.","items":{"type":"string"}},"bccRecipients":{"type":"array","description":"Optional override list of Bcc recipients (can be names or email addresses - names will be automatically resolved). Used only when modifying recipients.","items":{"type":"string"}},"sendImmediately":{"type":"boolean","description":"If true, sends the reply immediately. If false (default), creates a reply draft without sending."}},"required":["id"]}},{"type":"function","name":"ReplyAllToMessage","description":"Reply-all to an existing message. By default creates a reply-all draft. Set sendImmediately=true to send the reply-all immediately instead of creating a draft. Recipients can be provided as names or email addresses - names will be automatically resolved using Microsoft Graph.","parameters":{"type":"object","properties":{"id":{"type":"string","description":"Message ID to reply-all to"},"comment":{"type":"string","description":"Reply text content"},"preferHtml":{"type":"boolean","description":"If true, treat comment as HTML"},"toRecipients":{"type":"array","description":"Optional override list of To recipients (can be names or email addresses - names will be automatically resolved). If provided, a reply-all draft is created and patched before sending.","items":{"type":"string"}},"ccRecipients":{"type":"array","description":"Optional override list of Cc recipients (can be names or email addresses - names will be automatically resolved). Used only when modifying recipients.","items":{"type":"string"}},"bccRecipients":{"type":"array","description":"Optional override list of Bcc recipients (can be names or email addresses - names will be automatically resolved). Used only when modifying recipients.","items":{"type":"string"}},"sendImmediately":{"type":"boolean","description":"If true, sends the reply-all immediately. If false (default), creates a reply-all draft without sending."}},"required":["id"]}},{"type":"function","name":"SendDraftMessage","description":"Send an existing draft message by ID.","parameters":{"type":"object","properties":{"id":{"type":"string","description":"Draft message ID to send"}},"required":["id"]}},{"type":"function","name":"SearchMessages","description":"If the user\u0027s prompt can be deterministically expressed as OData filters or using KQL search syntax, always try SearchMessagesQueryParameters first as it is faster and does not have indexing delays. Use SearchMessages only when the query requires interpretation, relevance ranking, or intent understanding that cannot be expressed deterministically using OData filters (e.g., \u0027most urgent emails from last week\u0027, \u0027messages needing my response\u0027). SearchMessages uses natural language powered by Microsoft 365 Copilot. Can be slow (up to 30 seconds) and recent messages may not appear immediately due to indexing delay.","parameters":{"type":"object","properties":{"message":{"type":"string","description":"Natural language search query for finding emails (e.g., \u0027emails from John about the project\u0027, \u0027unread messages from last week\u0027)"},"conversationId":{"type":"string","description":"Existing conversation id (GUID). Auto-created if missing."}},"required":["message"]}},{"type":"function","name":"SearchMessagesQueryParameters","description":"Searches the current user\u0027s mailbox for email messages by passing OData query parameters directly to https://graph.microsoft.com/v1.0/me/messages. This tool does not interpret, rank, or infer intent. IMPORTANT RESTRICTIONS: (1) $search performs keyword matching and supports KQL syntax (from:, to:, subject:, cc:, bcc:). It CANNOT be combined with $filter, $orderBy, or $skip. Use $search alone: \u0027?$search=\u0022from:alice subject:budget\u0022\u0027. (2) $filter supported properties: subject, from/emailAddress/address, sender/emailAddress/address, receivedDateTime, isRead, isDraft, hasAttachments, importance, parentFolderId, categories. NOT filterable: body, bodyPreview, displayName, folder. COLLECTION PROPERTIES NOT FILTERABLE: toRecipients, ccRecipients, bccRecipients are collections and cannot be used in $filter (neither direct path nor any()/all()). To search by recipient, use $search instead: \u0027?$search=\u0022to:user@example.com\u0022\u0027. (3) Combining $filter with $orderby may fail with \u0027InefficientFilter\u0027. Prefer $filter alone and sort results client-side. EXAMPLES: \u0027?$filter=isRead eq false\u0027, \u0027?$filter=receivedDateTime ge 2025-01-01T00:00:00Z\u0026$top=25\u0027. PAGING: When the response contains hasMoreResults: true, call this tool again passing the nextLink value as the nextLink parameter to retrieve the next page. ","parameters":{"type":"object","properties":{"queryParameters":{"type":"string","description":"OData query parameters for searching messages. Must start with \u0027?\u0027. See tool description for supported properties and restrictions. Ignored when nextLink is provided."},"nextLink":{"type":"string","description":"The full @odata.nextLink URL from a previous response. When provided, queryParameters is ignored."},"preferTextBody":{"type":"boolean","description":"When true (default), message bodies are returned as plain text, which is shorter and easier to read. Set to false to return HTML when you need to interpret structured content such as tables or formatted lists."}},"required":[]}},{"type":"function","name":"GetAttachments","description":"Get all attachments from a message, returning attachment metadata (ID, name, size, type).","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Message ID"}},"required":["messageId"]}},{"type":"function","name":"DownloadAttachment","description":"Download attachment content from a message. Returns the content as base64-encoded string.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Message ID"},"attachmentId":{"type":"string","description":"Attachment ID"}},"required":["messageId","attachmentId"]}},{"type":"function","name":"UploadAttachment","description":"Upload a small file attachment (less than 3 MB) to a message. File content must be base64-encoded.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Message ID to attach to"},"fileName":{"type":"string","description":"File name"},"contentBase64":{"type":"string","description":"Base64-encoded file content"},"contentType":{"type":"string","description":"MIME type (optional)"}},"required":["messageId","fileName","contentBase64"]}},{"type":"function","name":"UploadLargeAttachment","description":"Upload a large file attachment (3-150 MB) to a message using chunked upload. File content must be base64-encoded.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Message ID to attach to"},"fileName":{"type":"string","description":"File name"},"contentBase64":{"type":"string","description":"Base64-encoded file content"},"contentType":{"type":"string","description":"MIME type (optional)"}},"required":["messageId","fileName","contentBase64"]}},{"type":"function","name":"DeleteAttachment","description":"Delete an attachment from a message.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Message ID"},"attachmentId":{"type":"string","description":"Attachment ID"}},"required":["messageId","attachmentId"]}},{"type":"function","name":"ReplyWithFullThread","description":"Reply (or reply-all) adding new recipients while preserving full quoted thread and optionally re-attaching original files. By default creates a reply draft. Set sendImmediately=true to send the reply immediately instead of creating a draft. Recipients can be provided as names or email addresses - names will be automatically resolved using Microsoft Graph.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Original message ID to reply to"},"introComment":{"type":"string","description":"Introductory comment placed above quoted thread"},"preferHtml":{"type":"boolean","description":"Deprecated: introComment is always rendered as HTML. Plain text is automatically formatted. This parameter is ignored."},"additionalTo":{"type":"array","description":"Additional To recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"additionalCc":{"type":"array","description":"Additional Cc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"additionalBcc":{"type":"array","description":"Additional Bcc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"replyAll":{"type":"boolean","description":"If true, perform reply-all; otherwise a direct reply"},"includeOriginalNonInlineAttachments":{"type":"boolean","description":"If true, re-attach original non-inline attachments (files)"},"sendImmediately":{"type":"boolean","description":"If true, sends the reply immediately. If false (default), creates a reply draft without sending."}},"required":["messageId"]}},{"type":"function","name":"ReplyAllWithFullThread","description":"Reply-all adding new recipients while preserving full quoted thread and optionally re-attaching original files. By default creates a reply-all draft. Set sendImmediately=true to send immediately.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Original message ID to reply-all to"},"introComment":{"type":"string","description":"Introductory comment placed above quoted thread"},"preferHtml":{"type":"boolean","description":"Deprecated: introComment is always rendered as HTML. Plain text is automatically formatted. This parameter is ignored."},"additionalTo":{"type":"array","description":"Additional To recipients (email addresses)","items":{"type":"string"}},"additionalCc":{"type":"array","description":"Additional Cc recipients (email addresses)","items":{"type":"string"}},"additionalBcc":{"type":"array","description":"Additional Bcc recipients (email addresses)","items":{"type":"string"}},"includeOriginalNonInlineAttachments":{"type":"boolean","description":"If true, re-attach original non-inline attachments (files)"},"sendImmediately":{"type":"boolean","description":"If true, sends the reply-all immediately. If false (default), creates a reply-all draft without sending."}},"required":["messageId"]}},{"type":"function","name":"ForwardMessageWithFullThread","description":"Forward a message adding new recipients and an optional intro comment while preserving full quoted thread; returns sensitivity label. Recipients can be provided as names or email addresses - names will be automatically resolved using Microsoft Graph.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Original message ID to forward"},"introComment":{"type":"string","description":"Introductory comment placed above quoted thread"},"preferHtml":{"type":"boolean","description":"If true, introComment is treated as HTML"},"additionalTo":{"type":"array","description":"Additional To recipients (can be names or email addresses - names will be automatically resolved) - required","items":{"type":"string"}},"additionalCc":{"type":"array","description":"Additional Cc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"additionalBcc":{"type":"array","description":"Additional Bcc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"includeOriginalNonInlineAttachments":{"type":"boolean","description":"If true, re-attach original non-inline attachments (files)"}},"required":["messageId"]}},{"type":"function","name":"ForwardMessage","description":"Forward an existing message, optionally adding a comment, recipients, and new attachments while preserving the quoted thread. Recipients can be provided as names or email addresses - names will be automatically resolved using Microsoft Graph.","parameters":{"type":"object","properties":{"messageId":{"type":"string","description":"Original message ID to forward"},"introComment":{"type":"string","description":"Introductory comment placed above quoted thread"},"preferHtml":{"type":"boolean","description":"If true, introComment is treated as HTML"},"additionalTo":{"type":"array","description":"Additional To recipients (can be names or email addresses - names will be automatically resolved) - required","items":{"type":"string"}},"additionalCc":{"type":"array","description":"Additional Cc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"additionalBcc":{"type":"array","description":"Additional Bcc recipients (can be names or email addresses - names will be automatically resolved)","items":{"type":"string"}},"attachmentUris":{"type":"array","description":"List of file URIs to attach (OneDrive, SharePoint, Teams, or Graph /drives/{id}/items/{id})","items":{"type":"string"}},"directAttachments":{"type":"array","description":"List of direct file attachments with format: [{\u0022fileName\u0022: \u0022file.pdf\u0022, \u0022contentBase64\u0022: \u0022base64data\u0022, \u0022contentType\u0022: \u0022application/pdf\u0022}]","items":{"type":"object","properties":{"FileName":{"type":"string","description":""},"ContentBase64":{"type":"string","description":""},"ContentType":{"type":"string","description":""}},"required":[]}}},"required":["messageId"]}}]
+    gen_ai.input.messages: {"messages":[{"role":"system","parts":[{"content":"\r\n        You are a friendly assistant that helps office workers with their daily tasks.\r\n        You may ask follow up questions until you have enough information to answer the user\u0027s question.\r\n\r\n        Respond in JSON format with the following JSON schema:\r\n        \r\n        {\r\n            \u0022contentType\u0022: \u0022\u0027Text\u0027\u0022,\r\n            \u0022content\u0022: \u0022{The content of the response in plain text}\u0022\r\n        }\r\n        ","type":"text"}],"name":"Agent365Agent"},{"role":"user","parts":[{"content":"what can you do","type":"text"}]}],"version":"0.1.0"}
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"content":"I can assist you with various office-related tasks such as:\n1. Sending, drafting, and replying to emails.\n2. Managing attachments, including adding and removing them from emails.\n3. Searching for specific messages in your mailbox.\n4. Updating email details like subject, body, and recipients.\n5. Flagging messages and marking them as complete.\n6. Deleting messages from your mailbox.\n7. Providing help with organizing your inbox and managing calendar events.\n\nIf you have a specific task in mind, just let me know, and I\u0027ll be happy to assist!","type":"text"}]}],"version":"0.1.0"}
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.SemanticKernel.Diagnostics
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             77622ebfb5559009
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       9167d895a4e93245
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:45.2530154Z
+Activity.Duration:           00:00:00.1937002
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent:
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=2360"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:58319/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/3a3c1ea0-df3c-4f5d-a6a0-8fc471b27391
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:58319/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/3a3c1ea0-df3c-4f5d-a6a0-8fc471b27391
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             da5ea97915b00c58
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       9167d895a4e93245
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:45.4585496Z
+Activity.Duration:           00:00:02.0664292
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 58319
+    url.full: http://127.0.0.1:58319/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/3a3c1ea0-df3c-4f5d-a6a0-8fc471b27391
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.4.83.56266 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    error.type: connection_error
+StatusCode: Error
+Activity.Events:
+    exception [2026/4/26 0:29:47 +00:00]
+        exception.message: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+        exception.stacktrace: System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+        exception.type: System.Net.Http.HttpRequestException
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[104]
+      HTTP request failed after 2070.0615ms
+      System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+       ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         --- End of inner exception stack trace ---
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+         at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+         at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+         at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[104]
+      HTTP request failed after 2081.8597ms
+      System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+       ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         --- End of inner exception stack trace ---
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+         at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+         at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+         at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             9167d895a4e93245
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       94f63628c950926c
+Activity.DisplayName:        output_messages d6d31512-379f-4994-b901-c098dfd9293f
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:45.2330482Z
+Activity.Duration:           00:00:02.3127407
+Activity.Tags:
+    gen_ai.operation.name: output_messages
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.email: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    user.id: user-id-0
+    user.email:
+    user.name: Alex Wilber
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:58319/_connector
+    microsoft.channel.name: msteams
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"content":"I can assist you with various office-related tasks such as:\n1. Sending, drafting, and replying to emails.\n2. Managing attachments, including adding and removing them from emails.\n3. Searching for specific messages in your mailbox.\n4. Updating email details like subject, body, and recipients.\n5. Flagging messages and marking them as complete.\n6. Deleting messages from your mailbox.\n7. Providing help with organizing your inbox and managing calendar events.\n\nIf you have a specific task in mind, just let me know, and I\u0027ll be happy to assist!","type":"text"}]}],"version":"0.1.0"}
+    error.type: System.Net.Http.HttpRequestException
+StatusCode: Error
+Activity.StatusDescription:  No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+fail: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      No connection could be made because the target machine actively refused it. (127.0.0.1:58319) => No connection could be made because the target machine actively refused it.
+      =====================================
+      ErrorCode: -2147467259
+      Source: System.Net.Http
+      Method: MoveNext
+      TimeStamp: 2026-04-26T00:29:47.9219492Z
+      Error: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+      HelpLink Url: Not Provided
+      Stack Trace: at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+         at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+         at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+         at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+         at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+         at Microsoft.Agents.Connector.RestClients.ConversationsRestClient.ReplyToActivityAsync(String conversationId, String activityId, IActivity body, CancellationToken cancellationToken)
+         at Microsoft.Agents.Connector.RestClients.ConversationsRestClient.ReplyToActivityAsync(IActivity activity, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.ChannelServiceAdapterBase.SendActivitiesAsync(ITurnContext turnContext, IActivity[] activities, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.TurnContext.<>c__DisplayClass34_0.<<SendActivitiesAsync>g__SendActivitiesThroughAdapter|1>d.MoveNext()
+      --- End of stack trace from previous location ---
+         at Microsoft.Agents.Builder.TranscriptLoggerMiddleware.<>c__DisplayClass2_0.<<OnTurnAsync>b__0>d.MoveNext()
+      --- End of stack trace from previous location ---
+         at Microsoft.Agents.A365.Observability.Hosting.Middleware.OutputLoggingMiddleware.<>c__DisplayClass5_0.<<CreateSendHandler>b__0>d.MoveNext() in C:\__w\1\s\Agent365-dotnet\src\Observability\Hosting\Middleware\OutputLoggingMiddleware.cs:line 171
+      --- End of stack trace from previous location ---
+         at Microsoft.Agents.Builder.TurnContext.SendActivityAsync(IActivity activity, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.StreamingResponse.EndStreamAsync(CancellationToken cancellationToken)
+         at Agent365SemanticKernelSampleAgent.Agents.MyAgent.TeamsMessageActivityAsync(Agent365Agent agent365Agent, ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\MyAgent.cs:line 348
+         at Agent365SemanticKernelSampleAgent.Agents.MyAgent.<>c__DisplayClass17_0.<<MessageActivityAsync>b__0>d.MoveNext() in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\MyAgent.cs:line 138
+      --- End of stack trace from previous location ---
+         at Agent365SemanticKernelSampleAgent.telemetry.A365OtelWrapper.<>c__DisplayClass0_0.<<InvokeObservedAgentOperation>b__0>d.MoveNext() in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\telemetry\A365OtelWrapper.cs:line 56
+      --- End of stack trace from previous location ---
+         at Agent365SemanticKernelSampleAgent.telemetry.A365OtelWrapper.InvokeObservedAgentOperation(String operationName, ITurnContext turnContext, ITurnState turnState, IExporterTokenCache`1 agentTokenCache, UserAuthorization authSystem, String authHandlerName, ILogger logger, Func`1 func) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\telemetry\A365OtelWrapper.cs:line 29
+         at Agent365SemanticKernelSampleAgent.Agents.MyAgent.MessageActivityAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\MyAgent.cs:line 92
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.TranscriptLoggerMiddleware.OnTurnAsync(ITurnContext turnContext, NextDelegate nextTurn, CancellationToken cancellationToken)
+         at Microsoft.Agents.A365.Observability.Hosting.Middleware.OutputLoggingMiddleware.OnTurnAsync(ITurnContext turnContext, NextDelegate next, CancellationToken cancellationToken) in C:\__w\1\s\Agent365-dotnet\src\Observability\Hosting\Middleware\OutputLoggingMiddleware.cs:line 64
+         at Microsoft.Agents.A365.Observability.Hosting.Middleware.BaggageTurnMiddleware.OnTurnAsync(ITurnContext turnContext, NextDelegate next, CancellationToken cancellationToken) in C:\__w\1\s\Agent365-dotnet\src\Observability\Hosting\Middleware\BaggageTurnMiddleware.cs:line 42
+         at Microsoft.Agents.Builder.MiddlewareSet.ReceiveActivityWithStatusAsync(ITurnContext turnContext, AgentCallbackHandler callback, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.ChannelAdapter.RunPipelineAsync(ITurnContext turnContext, AgentCallbackHandler callback, CancellationToken cancellationToken)
+      =====================================
+      Inner Exception Level 1   :
+      ErrorCode: -2147467259
+      Source: System.Net.Sockets
+      Method: ThrowException
+      TimeStamp: 2026-04-26T00:29:47.9226069Z
+      Error: No connection could be made because the target machine actively refused it.
+      HelpLink Url: Not Provided
+      Stack Trace: at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+      =====================================
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:58319/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/3a3c1ea0-df3c-4f5d-a6a0-8fc471b27391
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:58319/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/3a3c1ea0-df3c-4f5d-a6a0-8fc471b27391
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             5acac9a783e70aa0
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       6a802e591fea47f8
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:47.9349581Z
+Activity.Duration:           00:00:02.0336848
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 58319
+    url.full: http://127.0.0.1:58319/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/3a3c1ea0-df3c-4f5d-a6a0-8fc471b27391
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.4.83.56266 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    error.type: connection_error
+StatusCode: Error
+Activity.Events:
+    exception [2026/4/26 0:29:49 +00:00]
+        exception.message: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+        exception.stacktrace: System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+        exception.type: System.Net.Http.HttpRequestException
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[104]
+      HTTP request failed after 2036.6953ms
+      System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+       ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         --- End of inner exception stack trace ---
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+         at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+         at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+         at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[104]
+      HTTP request failed after 2045.6347ms
+      System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+       ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         --- End of inner exception stack trace ---
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+         at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+         at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+         at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+Activity.TraceId:            e7e52313727016f03cdedf34b3a7fe2c
+Activity.SpanId:             6a802e591fea47f8
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       8449c55821ced796
+Activity.DisplayName:        output_messages d6d31512-379f-4994-b901-c098dfd9293f
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:29:47.9286988Z
+Activity.Duration:           00:00:02.0542829
+Activity.Tags:
+    gen_ai.operation.name: output_messages
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.email: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    user.id: user-id-0
+    user.email:
+    user.name: Alex Wilber
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.channel.name: msteams
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"content":"No connection could be made because the target machine actively refused it. (127.0.0.1:58319) =\u003E No connection could be made because the target machine actively refused it.","type":"text"}]}],"version":"0.1.0"}
+    error.type: System.Net.Http.HttpRequestException
+StatusCode: Error
+Activity.StatusDescription:  No connection could be made because the target machine actively refused it. (127.0.0.1:58319)
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Production
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC

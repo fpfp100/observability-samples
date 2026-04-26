@@ -1,0 +1,1273 @@
+info: Microsoft.Agents.Hosting.AspNetCore.BackgroundQueue.HostedActivityService[0]
+      Queued Hosted Service is running.
+info: Microsoft.Agents.Hosting.AspNetCore.BackgroundQueue.HostedTaskService[0]
+      Queued Hosted Service is running.
+      
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:3978
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\repos\pf_sample_nodejs\dotnet\base\agent-framework\sample-agent
+Activity.TraceId:            7f04f3ad8befae217c5ce2b8cbfd0333
+Activity.SpanId:             9df98c4696786744
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        GET /api/health
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T06:30:32.3341360Z
+Activity.Duration:           00:00:00.0937724
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: GET
+    url.scheme: http
+    url.path: /api/health
+    network.protocol.version: 1.1
+    user_agent.original: curl/8.19.0
+    user_agent: curl/8.19.0
+    http.route: /api/health
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: Microsoft.Agents.Authentication.ConfigurationConnections[0]
+      No assembly name given in config for connection `ServiceConnection`.  Using default assembly lib: `Microsoft.Agents.Authentication.Msal`
+info: Microsoft.Agents.Authentication.ConfigurationConnections[0]
+      No type name given in config for connection `ServiceConnection`.  Using default type name: `MsalAuth`
+info: Microsoft.Agents.Builder.UserAuth.UserAuthorizationDispatcher[0]
+      No assembly name given in config for connection `agentic`.  Using default assembly lib: `Microsoft.Agents.Builder`
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             58833f948e0c6f2f
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       6b7ddf9cc450bec9
+Activity.DisplayName:        agent.process_message
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T06:30:37.2679739Z
+Activity.Duration:           00:00:00.1017981
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+StatusCode: Ok
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             6b7ddf9cc450bec9
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /api/messages
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T06:30:36.8680517Z
+Activity.Duration:           00:00:00.5033736
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: POST
+    url.scheme: http
+    url.path: /api/messages
+    network.protocol.version: 1.1
+    user_agent: 
+    http.route: /api/messages
+    http.response.status_code: 202
+    http.response.body.size: 0
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+warn: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      Anonymous access is enabled for channel: emulator.
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             25a590f371649922
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       d0e02f9ee4d6c478
+Activity.DisplayName:        MessageProcessor
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T06:30:37.4864758Z
+Activity.Duration:           00:00:00.2603456
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    Activity.Type: message
+    Agent.IsAgentic: true
+    Caller.Id: user-id-0
+    Conversation.Id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    Channel.Id: emulator
+    Message.Text.Length: 33
+StatusCode: Ok
+Activity.Events:
+    Message.Processed [2026/4/26 6:30:37 +00:00]
+        Agent.IsAgentic: true
+        Caller.Id: user-id-0
+        Channel.Id: emulator
+        Message.Id: 0261d0ca-ac82-48f6-8189-c2b4628f337a
+        Message.Text: what is the current date and time
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             7647a8ee92dcfbfd
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       e7d3ea708746dfed
+Activity.DisplayName:        GET
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:37.7149203Z
+Activity.Duration:           00:00:00.2017111
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: GET
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/common/discovery/instance?api-version=Redacted&authorization_endpoint=Redacted
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Content-Length=980"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             7386f50a242f9684
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       e7d3ea708746dfed
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:37.9605788Z
+Activity.Duration:           00:00:00.0971327
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=1495"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             893bd8be9bdeed1e
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       e7d3ea708746dfed
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:38.1198709Z
+Activity.Duration:           00:00:00.1024850
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=1560"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             ca9c35e7f9e0b604
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       e7d3ea708746dfed
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:38.2265830Z
+Activity.Duration:           00:00:00.2739046
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=2358"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             27badadf34ff4fd7
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       e7d3ea708746dfed
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:38.5148848Z
+Activity.Duration:           00:00:00.1220425
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 55008
+    url.full: http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.5.150.57415 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 122.7867ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 133.4208ms - 200
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             e7d3ea708746dfed
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       25a590f371649922
+Activity.DisplayName:        output_messages d6d31512-379f-4994-b901-c098dfd9293f
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:37.4965525Z
+Activity.Duration:           00:00:01.1542953
+Activity.Tags:
+    gen_ai.operation.name: output_messages
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.email: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    user.id: user-id-0
+    user.email: 
+    user.name: Alex Wilber
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"content":"Got it - working on it...","type":"text"}]}],"version":"0.1.0"}
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             ea942f85b2d1cce8
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       25a590f371649922
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:38.6542657Z
+Activity.Duration:           00:00:00.0046125
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 55008
+    url.full: http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.5.150.57415 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 5.1569ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 5.3234ms - 200
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             bde97583496e4b67
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       d6fedde1a0ae765f
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:38.8356089Z
+Activity.Duration:           00:00:00.5464065
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    url.full: https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=Redacted
+    http.request.host: a365-hw-openai-sentinel.openai.azure.com
+    http.request.useragent: azsdk-net-AI.OpenAI/2.7.0-beta.2 (.NET 8.0.26; Microsoft Windows 10.0.26200) MEAI/10.0.1-preview.1.25571.5
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=text/event-stream; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             d6fedde1a0ae765f
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       265ebc57c0c11a98
+Activity.DisplayName:        chat gpt-4o-mini
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:38.7519189Z
+Activity.Duration:           00:00:00.9937286
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    gen_ai.operation.name: chat
+    gen_ai.request.model: gpt-4o-mini
+    gen_ai.provider.name: openai
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    gen_ai.system_instructions: [
+  {
+    "type": "text",
+    "content": "You are a friendly assistant that helps office workers with their daily tasks.\n\nThe user's name is Alex Wilber. Use their name naturally where appropriate.\n\nYou may ask follow up questions until you have enough information to answer the user's question.\n\nIf you are working with weather information, the following instructions apply:\nLocation is a city name, 2 letter US state codes should be resolved to the full name of the United States State.\n- For current weather, Use the {{WeatherLookupTool.GetCurrentWeatherForLocation}}, you should include the current temperature, low and high temperatures, wind speed, humidity, and a short description of the weather.\n- You should use the {{DateTimePlugin.GetDateTime}} to get the current date and time.\n\nOtherwise you should use the tools available to you to help answer the user's questions."
+  }
+]
+    gen_ai.input.messages: [
+  {
+    "role": "user",
+    "parts": [
+      {
+        "type": "text",
+        "content": "what is the current date and time"
+      }
+    ]
+  }
+]
+    gen_ai.output.messages: [
+  {
+    "role": "assistant",
+    "parts": [
+      {
+        "type": "text",
+        "content": "The current date and time is {{DateTimePlugin.GetDateTime}}."
+      }
+    ],
+    "finish_reason": "stop"
+  }
+]
+    gen_ai.response.finish_reasons: ["stop"]
+    gen_ai.response.id: chatcmpl-DYnIlcaBV5vXMmZmCqs41TqaPcjxD
+    gen_ai.response.model: 
+    gen_ai.usage.input_tokens: 181
+    gen_ai.usage.output_tokens: 16
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             265ebc57c0c11a98
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       25a590f371649922
+Activity.DisplayName:        invoke_agent a080f63f0d7d435ca3cb1d242dbdabb7
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:38.7232441Z
+Activity.Duration:           00:00:01.0287268
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: a080f63f0d7d435ca3cb1d242dbdabb7
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    gen_ai.operation.name: invoke_agent
+    gen_ai.request.model: gpt-4o-mini
+    gen_ai.provider.name: openai
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    gen_ai.input.messages: [
+  {
+    "role": "user",
+    "parts": [
+      {
+        "type": "text",
+        "content": "what is the current date and time"
+      }
+    ]
+  }
+]
+    gen_ai.output.messages: [
+  {
+    "role": "assistant",
+    "parts": [
+      {
+        "type": "text",
+        "content": "The current date and time is {{DateTimePlugin.GetDateTime}}."
+      }
+    ],
+    "finish_reason": "stop"
+  }
+]
+    gen_ai.response.finish_reasons: ["stop"]
+    gen_ai.response.id: chatcmpl-DYnIlcaBV5vXMmZmCqs41TqaPcjxD
+    gen_ai.response.model: 
+    gen_ai.usage.input_tokens: 181
+    gen_ai.usage.output_tokens: 16
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             daff56a042256aff
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       a65c514b1201bb35
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:39.7928422Z
+Activity.Duration:           00:00:00.0025232
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 55008
+    url.full: http://127.0.0.1:55008/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/0261d0ca-ac82-48f6-8189-c2b4628f337a
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.5.150.57415 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 3.1138ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 3.289ms - 200
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             a65c514b1201bb35
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       25a590f371649922
+Activity.DisplayName:        output_messages d6d31512-379f-4994-b901-c098dfd9293f
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:30:39.7903840Z
+Activity.Duration:           00:00:00.0067167
+Activity.Tags:
+    gen_ai.operation.name: output_messages
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.email: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    user.id: user-id-0
+    user.email: 
+    user.name: Alex Wilber
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:55008/_connector
+    microsoft.channel.name: emulator
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"content":"The current date and time is {{DateTimePlugin.GetDateTime}}.","type":"text"}]}],"version":"0.1.0"}
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            879ce782a6bc9bb3069707b311f77142
+Activity.SpanId:             d0e02f9ee4d6c478
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       6b7ddf9cc450bec9
+Activity.DisplayName:        agent.process_message
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T06:30:37.3863613Z
+Activity.Duration:           00:00:02.4760046
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            299acbb86a2e5fe37dcc36a60b111318
+Activity.SpanId:             4dfce96405416e71
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        GET /api/health
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T06:38:34.2981426Z
+Activity.Duration:           00:00:00.0030497
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: GET
+    url.scheme: http
+    url.path: /api/health
+    network.protocol.version: 1.1
+    user_agent.original: curl/8.19.0
+    user_agent: curl/8.19.0
+    http.route: /api/health
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             a86e85f245437349
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       32d8ca88679a184d
+Activity.DisplayName:        agent.process_message
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T06:41:37.3377966Z
+Activity.Duration:           00:00:00.0022759
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+StatusCode: Ok
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             32d8ca88679a184d
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /api/messages
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T06:41:37.3362744Z
+Activity.Duration:           00:00:00.0042138
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: POST
+    url.scheme: http
+    url.path: /api/messages
+    network.protocol.version: 1.1
+    user_agent: 
+    http.route: /api/messages
+    http.response.status_code: 202
+    http.response.body.size: 0
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+warn: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      Anonymous access is enabled for channel: emulator.
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             433f2da55f172fd2
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       b9d424f420f98cf5
+Activity.DisplayName:        MessageProcessor
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T06:41:37.3480917Z
+Activity.Duration:           00:00:00.0042965
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    Activity.Type: message
+    Agent.IsAgentic: true
+    Caller.Id: user-id-0
+    Conversation.Id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    Channel.Id: emulator
+    Message.Text.Length: 33
+StatusCode: Ok
+Activity.Events:
+    Message.Processed [2026/4/26 6:41:37 +00:00]
+        Agent.IsAgentic: true
+        Caller.Id: user-id-0
+        Channel.Id: emulator
+        Message.Id: 5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+        Message.Text: what is the current date and time
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             cdf2b7e012ad58a3
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       3bc474641caf4a15
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:41:37.3510378Z
+Activity.Duration:           00:00:00.1153157
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 52395
+    url.full: http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.5.150.57415 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 115.9781ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 116.1761ms - 200
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             3bc474641caf4a15
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       433f2da55f172fd2
+Activity.DisplayName:        output_messages d6d31512-379f-4994-b901-c098dfd9293f
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:41:37.3483580Z
+Activity.Duration:           00:00:00.1196607
+Activity.Tags:
+    gen_ai.operation.name: output_messages
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.email: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    user.id: user-id-0
+    user.email: 
+    user.name: Alex Wilber
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"content":"Got it - working on it...","type":"text"}]}],"version":"0.1.0"}
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             5c7585ea248a0781
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       433f2da55f172fd2
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:41:37.4709002Z
+Activity.Duration:           00:00:00.0045262
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 52395
+    url.full: http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.5.150.57415 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 5.0434ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 5.3226ms - 200
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             74e73be1f4b92a2a
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       7ca256efcf9f4cde
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:41:37.4920183Z
+Activity.Duration:           00:00:00.4893949
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    url.full: https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=Redacted
+    http.request.host: a365-hw-openai-sentinel.openai.azure.com
+    http.request.useragent: azsdk-net-AI.OpenAI/2.7.0-beta.2 (.NET 8.0.26; Microsoft Windows 10.0.26200) MEAI/10.0.1-preview.1.25571.5
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=text/event-stream; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             7ca256efcf9f4cde
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       58e20bb9367bbd69
+Activity.DisplayName:        chat gpt-4o-mini
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:41:37.4909995Z
+Activity.Duration:           00:00:00.8218969
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    gen_ai.operation.name: chat
+    gen_ai.request.model: gpt-4o-mini
+    gen_ai.provider.name: openai
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    gen_ai.system_instructions: [
+  {
+    "type": "text",
+    "content": "You are a friendly assistant that helps office workers with their daily tasks.\n\nThe user's name is Alex Wilber. Use their name naturally where appropriate.\n\nYou may ask follow up questions until you have enough information to answer the user's question.\n\nIf you are working with weather information, the following instructions apply:\nLocation is a city name, 2 letter US state codes should be resolved to the full name of the United States State.\n- For current weather, Use the {{WeatherLookupTool.GetCurrentWeatherForLocation}}, you should include the current temperature, low and high temperatures, wind speed, humidity, and a short description of the weather.\n- You should use the {{DateTimePlugin.GetDateTime}} to get the current date and time.\n\nOtherwise you should use the tools available to you to help answer the user's questions."
+  }
+]
+    gen_ai.input.messages: [
+  {
+    "role": "user",
+    "parts": [
+      {
+        "type": "text",
+        "content": "what is the current date and time"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "type": "text",
+        "content": "what is the current date and time"
+      }
+    ]
+  }
+]
+    gen_ai.output.messages: [
+  {
+    "role": "assistant",
+    "parts": [
+      {
+        "type": "text",
+        "content": "Let me check that for you, Alex. One moment please. \n\nThe current date and time is {{DateTimePlugin.GetDateTime}}."
+      }
+    ],
+    "finish_reason": "stop"
+  }
+]
+    gen_ai.response.finish_reasons: ["stop"]
+    gen_ai.response.id: chatcmpl-DYnTNJQUSuUWI8AKOOb5DE9JGkDTc
+    gen_ai.response.model: 
+    gen_ai.usage.input_tokens: 192
+    gen_ai.usage.output_tokens: 30
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             58e20bb9367bbd69
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       433f2da55f172fd2
+Activity.DisplayName:        invoke_agent 78aeee3aa7954fda8ee481b81eb8a6de
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:41:37.4904972Z
+Activity.Duration:           00:00:00.8235335
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: 78aeee3aa7954fda8ee481b81eb8a6de
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    gen_ai.operation.name: invoke_agent
+    gen_ai.request.model: gpt-4o-mini
+    gen_ai.provider.name: openai
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    gen_ai.input.messages: [
+  {
+    "role": "user",
+    "parts": [
+      {
+        "type": "text",
+        "content": "what is the current date and time"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "type": "text",
+        "content": "what is the current date and time"
+      }
+    ]
+  }
+]
+    gen_ai.output.messages: [
+  {
+    "role": "assistant",
+    "parts": [
+      {
+        "type": "text",
+        "content": "Let me check that for you, Alex. One moment please. \n\nThe current date and time is {{DateTimePlugin.GetDateTime}}."
+      }
+    ],
+    "finish_reason": "stop"
+  }
+]
+    gen_ai.response.finish_reasons: ["stop"]
+    gen_ai.response.id: chatcmpl-DYnTNJQUSuUWI8AKOOb5DE9JGkDTc
+    gen_ai.response.model: 
+    gen_ai.usage.input_tokens: 192
+    gen_ai.usage.output_tokens: 30
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             0954412bc8401186
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       1003ed28614809a2
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:41:38.3162230Z
+Activity.Duration:           00:00:00.0023744
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 52395
+    url.full: http://127.0.0.1:52395/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5ff5fcd2-5865-432f-9c18-c5b0093f8ef2
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.5.150.57415 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 2.8498ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 3.0409ms - 200
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             1003ed28614809a2
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       433f2da55f172fd2
+Activity.DisplayName:        output_messages d6d31512-379f-4994-b901-c098dfd9293f
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T06:41:38.3145730Z
+Activity.Duration:           00:00:00.0050761
+Activity.Tags:
+    gen_ai.operation.name: output_messages
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.email: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    user.id: user-id-0
+    user.email: 
+    user.name: Alex Wilber
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:52395/_connector
+    microsoft.channel.name: emulator
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"content":"Let me check that for you, Alex. One moment please. \n\nThe current date and time is {{DateTimePlugin.GetDateTime}}.","type":"text"}]}],"version":"0.1.0"}
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            81fa8c0a2b374384cbaa035988953fa8
+Activity.SpanId:             b9d424f420f98cf5
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       32d8ca88679a184d
+Activity.DisplayName:        agent.process_message
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T06:41:37.3406606Z
+Activity.Duration:           00:00:01.0492711
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+Instrumentation scope (ActivitySource):
+    Name: A365.AgentFramework
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.AgentFramework
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+

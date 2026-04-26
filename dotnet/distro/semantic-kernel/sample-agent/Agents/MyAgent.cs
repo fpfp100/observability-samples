@@ -53,6 +53,10 @@ public class MyAgent : AgentApplication
             "Manual",
             StringComparison.OrdinalIgnoreCase);
 
+        // DateTimePlugin provides a tool the LLM can call to get the current date/time,
+        // useful for generating ExecuteToolScope spans without external dependencies.
+        _kernel.ImportPluginFromType<Plugins.DateTimePlugin>();
+
         // Disable for development purpose. In production, you would typically want to have the user accept the terms and conditions on first use and then store that in a retrievable location. 
         TermsAndConditionsAccepted = true;
 

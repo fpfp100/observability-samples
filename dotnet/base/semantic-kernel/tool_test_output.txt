@@ -1,0 +1,996 @@
+Using launch settings from C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Properties\launchSettings.json...
+info: Microsoft.Agents.Hosting.AspNetCore.BackgroundQueue.HostedActivityService[0]
+      Queued Hosted Service is running.
+info: Microsoft.Agents.Hosting.AspNetCore.BackgroundQueue.HostedTaskService[0]
+      Queued Hosted Service is running.
+      
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:3978
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent
+Activity.TraceId:            8d7bf44aa293982cc66568d36896bacf
+Activity.SpanId:             f853d9886248cd09
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        GET /
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T05:44:02.2685882Z
+Activity.Duration:           00:00:00.0344397
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: GET
+    url.scheme: http
+    url.path: /
+    network.protocol.version: 1.1
+    user_agent.original: curl/8.19.0
+    user_agent: curl/8.19.0
+    http.route: /
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: Microsoft.Agents.Authentication.ConfigurationConnections[0]
+      No assembly name given in config for connection `ServiceConnection`.  Using default assembly lib: `Microsoft.Agents.Authentication.Msal`
+info: Microsoft.Agents.Authentication.ConfigurationConnections[0]
+      No type name given in config for connection `ServiceConnection`.  Using default type name: `MsalAuth`
+info: Microsoft.Agents.Builder.UserAuth.UserAuthorizationDispatcher[0]
+      No assembly name given in config for connection `agentic`.  Using default assembly lib: `Microsoft.Agents.Builder`
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             d21694d5c4e78eff
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       849c1183e9952e07
+Activity.DisplayName:        agent.process_message
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T05:44:06.5505856Z
+Activity.Duration:           00:00:00.0702860
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+StatusCode: Ok
+Instrumentation scope (ActivitySource):
+    Name: A365.SemanticKernel
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             849c1183e9952e07
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /api/messages
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T05:44:06.4562395Z
+Activity.Duration:           00:00:00.1660775
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: POST
+    url.scheme: http
+    url.path: /api/messages
+    network.protocol.version: 1.1
+    user_agent: 
+    http.route: /api/messages
+    http.response.status_code: 202
+    http.response.body.size: 0
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+warn: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      Anonymous access is enabled for channel: emulator.
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             e7d1ddf96bfdda6c
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       ef358a2778d57877
+Activity.DisplayName:        GET
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:06.8781846Z
+Activity.Duration:           00:00:00.5678356
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: GET
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/common/discovery/instance?api-version=Redacted&authorization_endpoint=Redacted
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Content-Length=980"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             a4d2b5c394e52a4a
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       ef358a2778d57877
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:07.4949916Z
+Activity.Duration:           00:00:00.1643751
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=1559"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             7e6e39da14632077
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       ef358a2778d57877
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:07.7136552Z
+Activity.Duration:           00:00:00.1647160
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=1565"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             03771397ae63e6f3
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       ef358a2778d57877
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:07.8816843Z
+Activity.Duration:           00:00:00.2339419
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=3359"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Loading MCP servers from: C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\bin\Debug\net8.0\ToolingManifest.json
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Found 'mcpServers' section in ToolingManifest.json
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Loaded 1 MCP server configurations
+fail: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Failed to list MCP tool servers for AgentInstanceId=d6d31512-379f-4994-b901-c098dfd9293f
+      System.InvalidOperationException: No dev token found for MCP server 'mcp_MailTools'. Set environment variable 'BEARER_TOKEN_MCP_MAILTOOLS' or 'BEARER_TOKEN'.
+         at Microsoft.Agents.A365.Tooling.Services.DevMcpTokenProvider.GetTokenAsync(MCPServerConfig server, CancellationToken cancellationToken) in C:\__w\1\s\Agent365-dotnet\src\Tooling\Core\Services\DevMcpTokenProvider.cs:line 58
+         at Microsoft.Agents.A365.Tooling.Services.McpToolServerConfigurationService.AttachPerAudienceTokensAsync(List`1 servers, IMcpTokenProvider tokenProvider, CancellationToken cancellationToken) in C:\__w\1\s\Agent365-dotnet\src\Tooling\Core\Services\McpToolServerConfigurationService.cs:line 562
+         at Microsoft.Agents.A365.Tooling.Services.McpToolServerConfigurationService.ListToolServersWithTokensAsync(String agentInstanceId, String authToken, IMcpTokenProvider tokenProvider, ToolOptions toolOptions, CancellationToken cancellationToken) in C:\__w\1\s\Agent365-dotnet\src\Tooling\Core\Services\McpToolServerConfigurationService.cs:line 76
+         at Microsoft.Agents.A365.Tooling.Services.McpToolServerConfigurationService.EnumerateToolsFromServersAsync(String agentInstanceId, String authToken, IMcpTokenProvider tokenProvider, ITurnContext turnContext, ToolOptions toolOptions) in C:\__w\1\s\Agent365-dotnet\src\Tooling\Core\Services\McpToolServerConfigurationService.ToolEnumeration.cs:line 35
+info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+      Start processing HTTP request POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?*
+info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+      Sending HTTP request POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?*
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             1d5cf2e47368881e
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       ef358a2778d57877
+Activity.DisplayName:        MessageProcessor
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T05:44:08.1211803Z
+Activity.Duration:           00:00:00.5448914
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    Activity.Type: message
+    Agent.IsAgentic: true
+    Caller.Id: user-id-0
+    Conversation.Id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    Channel.Id: emulator
+    Message.Text.Length: 33
+StatusCode: Ok
+Activity.Events:
+    Message.Processed [2026/4/26 5:44:08 +00:00]
+        Agent.IsAgentic: true
+        Caller.Id: user-id-0
+        Channel.Id: emulator
+        Message.Id: 91478184-e23a-4702-971d-95671fd622f4
+        Message.Text: what is the current date and time
+Instrumentation scope (ActivitySource):
+    Name: A365.SemanticKernel
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             0d8969c9c8861d3a
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       d05f0c0aee277216
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:08.6565771Z
+Activity.Duration:           00:00:00.7683794
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    url.full: https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=Redacted
+    http.request.host: a365-hw-openai-sentinel.openai.azure.com
+    http.request.useragent: Semantic-Kernel azsdk-net-AI.OpenAI/2.9.0-beta.1 (.NET 8.0.26; Microsoft Windows 10.0.26200)
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Length=1082","Content-Type=application/json"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+      Received HTTP response headers after 795.0724ms - 200
+info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+      End processing HTTP request after 806.8251ms - 200
+info: Microsoft.SemanticKernel.Connectors.AzureOpenAI.AzureOpenAIChatCompletionService[0]
+      Prompt tokens: 97. Completion tokens: 15. Total tokens: 112.
+info: Microsoft.SemanticKernel.KernelFunction[0]
+      Function DateTimePlugin-get_current_datetime invoking.
+info: Microsoft.SemanticKernel.KernelFunction[0]
+      Function DateTimePlugin-get_current_datetime succeeded.
+info: Microsoft.SemanticKernel.KernelFunction[0]
+      Function DateTimePlugin-get_current_datetime completed. Duration: 0.0032114s
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             adf6d233678e968f
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       d05f0c0aee277216
+Activity.DisplayName:        execute_tool DateTimePlugin-get_current_datetime
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T05:44:09.4693528Z
+Activity.Duration:           00:00:00.0179478
+Activity.Tags:
+    gen_ai.operation.name: execute_tool
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    gen_ai.agent.description: A365 Semantic Kernel sample agent
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.tool.name: DateTimePlugin-get_current_datetime
+    gen_ai.tool.arguments: {}
+    gen_ai.tool.call.id: call_MQfLpi8FOwO0cvREu7JaSnXa
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.channel.name: emulator
+    gen_ai.tool.call.result: {"result":"Current UTC date/time: 2026-04-26 05:44:09 | Local date/time: 2026-04-25 22:44:09 ((UTC-08:00) Pacific Time (US \u0026 Canada))"}
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             d05f0c0aee277216
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       71a2b0168a7635a6
+Activity.DisplayName:        Chat gpt-4o-mini
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:08.5338373Z
+Activity.Duration:           00:00:00.9539179
+Activity.Tags:
+    gen_ai.operation.name: Chat
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    gen_ai.agent.description: A365 Semantic Kernel sample agent
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.request.model: gpt-4o-mini
+    gen_ai.provider.name: Azure OpenAI
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    gen_ai.input.messages: {"messages":[{"role":"user","parts":[{"content":"what is the current date and time","type":"text"}]}],"version":"0.1.0"}
+    microsoft.channel.name: emulator
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"name":"DateTimePlugin-get_current_datetime","id":"call_MQfLpi8FOwO0cvREu7JaSnXa","arguments":{},"type":"tool_call"}]}],"version":"0.1.0"}
+    gen_ai.usage.input_tokens: 97
+    gen_ai.usage.output_tokens: 15
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             26a8cd484695f625
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       71a2b0168a7635a6
+Activity.DisplayName:        Chat gpt-4o-mini
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:09.4879539Z
+Activity.Duration:           00:00:00.0026580
+Activity.Tags:
+    gen_ai.operation.name: Chat
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    gen_ai.agent.description: A365 Semantic Kernel sample agent
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.request.model: gpt-4o-mini
+    gen_ai.provider.name: Azure OpenAI
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    gen_ai.input.messages: {"messages":[{"role":"user","parts":[{"content":"what is the current date and time","type":"text"}]}],"version":"0.1.0"}
+    microsoft.channel.name: emulator
+    error.type: System.NotSupportedException
+StatusCode: Error
+Activity.StatusDescription:  No function result provided in the tool message.
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             71a2b0168a7635a6
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       1d5cf2e47368881e
+Activity.DisplayName:        invoke_agent Agent365Agent
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:08.5000738Z
+Activity.Duration:           00:00:00.9908035
+Activity.Tags:
+    gen_ai.operation.name: invoke_agent
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    gen_ai.agent.description: A365 Semantic Kernel sample agent
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.channel.name: emulator
+    gen_ai.input.messages: {"messages":[{"role":"user","parts":[{"content":"what is the current date and time","type":"text"}]}],"version":"0.1.0"}
+    error.type: System.NotSupportedException
+StatusCode: Error
+Activity.StatusDescription:  No function result provided in the tool message.
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+fail: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      No function result provided in the tool message.
+      =====================================
+      ErrorCode: -2146233067
+      Source: Microsoft.SemanticKernel.Connectors.OpenAI
+      Method: CreateRequestMessages
+      TimeStamp: 2026-04-26T05:44:09.5099365Z
+      Error: No function result provided in the tool message.
+      HelpLink Url: Not Provided
+      Stack Trace: at Microsoft.SemanticKernel.Connectors.OpenAI.ClientCore.CreateRequestMessages(ChatMessageContent message)
+         at Microsoft.SemanticKernel.Connectors.OpenAI.ClientCore.CreateChatCompletionMessages(OpenAIPromptExecutionSettings executionSettings, ChatHistory chatHistory)
+         at Microsoft.SemanticKernel.Connectors.OpenAI.ClientCore.GetChatMessageContentsAsync(String targetModel, ChatHistory chatHistory, PromptExecutionSettings executionSettings, Kernel kernel, CancellationToken cancellationToken)
+         at Agent365SemanticKernelSampleAgent.Agents.ManualInstrumentationAgent.InvokeAgentAsync(String input, ChatHistory chatHistory, ITurnContext context) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\ManualInstrumentationAgent.cs:line 91
+         at Agent365SemanticKernelSampleAgent.Agents.MyAgent.<>c__DisplayClass17_0.<<MessageActivityAsync>b__0>d.MoveNext() in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\MyAgent.cs:line 149
+      --- End of stack trace from previous location ---
+         at Agent365SemanticKernelSampleAgent.telemetry.A365OtelWrapper.<>c__DisplayClass0_0.<<InvokeObservedAgentOperation>b__0>d.MoveNext() in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\telemetry\A365OtelWrapper.cs:line 56
+      --- End of stack trace from previous location ---
+         at Agent365SemanticKernelSampleAgent.telemetry.A365OtelWrapper.InvokeObservedAgentOperation(String operationName, ITurnContext turnContext, ITurnState turnState, IExporterTokenCache`1 agentTokenCache, UserAuthorization authSystem, String authHandlerName, ILogger logger, Func`1 func) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\telemetry\A365OtelWrapper.cs:line 29
+         at Agent365SemanticKernelSampleAgent.Agents.MyAgent.MessageActivityAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\MyAgent.cs:line 97
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.TranscriptLoggerMiddleware.OnTurnAsync(ITurnContext turnContext, NextDelegate nextTurn, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.MiddlewareSet.ReceiveActivityWithStatusAsync(ITurnContext turnContext, AgentCallbackHandler callback, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.ChannelAdapter.RunPipelineAsync(ITurnContext turnContext, AgentCallbackHandler callback, CancellationToken cancellationToken)
+      =====================================
+      
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             f5f9fc6a7e56f102
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       ef358a2778d57877
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:09.5234656Z
+Activity.Duration:           00:00:00.2671774
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    http.request.host: login.microsoftonline.com
+    http.request.useragent: 
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8","Expires=-1","Content-Length=2358"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:57970/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/91478184-e23a-4702-971d-95671fd622f4
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:57970/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/91478184-e23a-4702-971d-95671fd622f4
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             5dbe73a419ce0da3
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       ef358a2778d57877
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:09.7979182Z
+Activity.Duration:           00:00:00.1003890
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 57970
+    url.full: http://127.0.0.1:57970/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/91478184-e23a-4702-971d-95671fd622f4
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.4.83.56266 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 100.971ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 101.1936ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:57970/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/91478184-e23a-4702-971d-95671fd622f4
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:57970/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/91478184-e23a-4702-971d-95671fd622f4
+Activity.TraceId:            0a8a3ca20d856ead29dcd499df33a20c
+Activity.SpanId:             bd9488845963f193
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       ef358a2778d57877
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:44:09.9075813Z
+Activity.Duration:           00:00:00.0053381
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 57970
+    url.full: http://127.0.0.1:57970/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/91478184-e23a-4702-971d-95671fd622f4
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.4.83.56266 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 5.7631ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 5.9382ms - 200
+Activity.TraceId:            72ff20a84bbfb566b2c7bc8f96ba1ef2
+Activity.SpanId:             4363bd3eec072491
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        GET /
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T05:47:04.2019531Z
+Activity.Duration:           00:00:00.0018448
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: GET
+    url.scheme: http
+    url.path: /
+    network.protocol.version: 1.1
+    user_agent.original: curl/8.19.0
+    user_agent: curl/8.19.0
+    http.route: /
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             8b950ae5ed283cc5
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       2bc1c83564937e8f
+Activity.DisplayName:        agent.process_message
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T05:48:28.0474980Z
+Activity.Duration:           00:00:00.0014219
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+StatusCode: Ok
+Instrumentation scope (ActivitySource):
+    Name: A365.SemanticKernel
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             2bc1c83564937e8f
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /api/messages
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T05:48:28.0448260Z
+Activity.Duration:           00:00:00.0044252
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    server.address: localhost
+    server.port: 3978
+    http.request.method: POST
+    url.scheme: http
+    url.path: /api/messages
+    network.protocol.version: 1.1
+    user_agent: 
+    http.route: /api/messages
+    http.response.status_code: 202
+    http.response.body.size: 0
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+warn: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      Anonymous access is enabled for channel: emulator.
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Loading MCP servers from: C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\bin\Debug\net8.0\ToolingManifest.json
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Found 'mcpServers' section in ToolingManifest.json
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Loaded 1 MCP server configurations
+fail: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Failed to list MCP tool servers for AgentInstanceId=d6d31512-379f-4994-b901-c098dfd9293f
+      System.InvalidOperationException: No dev token found for MCP server 'mcp_MailTools'. Set environment variable 'BEARER_TOKEN_MCP_MAILTOOLS' or 'BEARER_TOKEN'.
+         at Microsoft.Agents.A365.Tooling.Services.DevMcpTokenProvider.GetTokenAsync(MCPServerConfig server, CancellationToken cancellationToken) in C:\__w\1\s\Agent365-dotnet\src\Tooling\Core\Services\DevMcpTokenProvider.cs:line 58
+         at Microsoft.Agents.A365.Tooling.Services.McpToolServerConfigurationService.AttachPerAudienceTokensAsync(List`1 servers, IMcpTokenProvider tokenProvider, CancellationToken cancellationToken) in C:\__w\1\s\Agent365-dotnet\src\Tooling\Core\Services\McpToolServerConfigurationService.cs:line 562
+         at Microsoft.Agents.A365.Tooling.Services.McpToolServerConfigurationService.ListToolServersWithTokensAsync(String agentInstanceId, String authToken, IMcpTokenProvider tokenProvider, ToolOptions toolOptions, CancellationToken cancellationToken) in C:\__w\1\s\Agent365-dotnet\src\Tooling\Core\Services\McpToolServerConfigurationService.cs:line 76
+         at Microsoft.Agents.A365.Tooling.Services.McpToolServerConfigurationService.EnumerateToolsFromServersAsync(String agentInstanceId, String authToken, IMcpTokenProvider tokenProvider, ITurnContext turnContext, ToolOptions toolOptions) in C:\__w\1\s\Agent365-dotnet\src\Tooling\Core\Services\McpToolServerConfigurationService.ToolEnumeration.cs:line 35
+info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+      Start processing HTTP request POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?*
+info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+      Sending HTTP request POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?*
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             eb933cac35a42d0f
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       7507795568cc7f3d
+Activity.DisplayName:        MessageProcessor
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T05:48:28.0529708Z
+Activity.Duration:           00:00:00.0061203
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    Activity.Type: message
+    Agent.IsAgentic: true
+    Caller.Id: user-id-0
+    Conversation.Id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    Channel.Id: emulator
+    Message.Text.Length: 33
+StatusCode: Ok
+Activity.Events:
+    Message.Processed [2026/4/26 5:48:28 +00:00]
+        Agent.IsAgentic: true
+        Caller.Id: user-id-0
+        Channel.Id: emulator
+        Message.Id: fd59503c-7089-424f-bf2c-82bde3822c5c
+        Message.Text: what is the current date and time
+Instrumentation scope (ActivitySource):
+    Name: A365.SemanticKernel
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             51645c00b59a452f
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       424713fcbd01d4f0
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:48:28.0578441Z
+Activity.Duration:           00:00:00.7855975
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    url.full: https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=Redacted
+    http.request.host: a365-hw-openai-sentinel.openai.azure.com
+    http.request.useragent: Semantic-Kernel azsdk-net-AI.OpenAI/2.9.0-beta.1 (.NET 8.0.26; Microsoft Windows 10.0.26200)
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Length=1082","Content-Type=application/json"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+      Received HTTP response headers after 786.2107ms - 200
+info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+      End processing HTTP request after 786.3861ms - 200
+info: Microsoft.SemanticKernel.Connectors.AzureOpenAI.AzureOpenAIChatCompletionService[0]
+      Prompt tokens: 97. Completion tokens: 15. Total tokens: 112.
+info: Microsoft.SemanticKernel.KernelFunction[0]
+      Function DateTimePlugin-get_current_datetime invoking.
+info: Microsoft.SemanticKernel.KernelFunction[0]
+      Function DateTimePlugin-get_current_datetime succeeded.
+info: Microsoft.SemanticKernel.KernelFunction[0]
+      Function DateTimePlugin-get_current_datetime completed. Duration: 0.0002676s
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             a8bff583a2233962
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       424713fcbd01d4f0
+Activity.DisplayName:        execute_tool DateTimePlugin-get_current_datetime
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T05:48:28.8450515Z
+Activity.Duration:           00:00:00.0008469
+Activity.Tags:
+    gen_ai.operation.name: execute_tool
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    gen_ai.agent.description: A365 Semantic Kernel sample agent
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.tool.name: DateTimePlugin-get_current_datetime
+    gen_ai.tool.arguments: {}
+    gen_ai.tool.call.id: call_V51JErbvwkXA3SQZzT2Apx8T
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.channel.name: emulator
+    gen_ai.tool.call.result: {"result":"Current UTC date/time: 2026-04-26 05:48:28 | Local date/time: 2026-04-25 22:48:28 ((UTC-08:00) Pacific Time (US \u0026 Canada))"}
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             424713fcbd01d4f0
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       6dde06a6590985ed
+Activity.DisplayName:        Chat gpt-4o-mini
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:48:28.0567606Z
+Activity.Duration:           00:00:00.7893057
+Activity.Tags:
+    gen_ai.operation.name: Chat
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    gen_ai.agent.description: A365 Semantic Kernel sample agent
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.request.model: gpt-4o-mini
+    gen_ai.provider.name: Azure OpenAI
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    gen_ai.input.messages: {"messages":[{"role":"user","parts":[{"content":"what is the current date and time","type":"text"}]}],"version":"0.1.0"}
+    microsoft.channel.name: emulator
+    gen_ai.output.messages: {"messages":[{"role":"assistant","parts":[{"name":"DateTimePlugin-get_current_datetime","id":"call_V51JErbvwkXA3SQZzT2Apx8T","arguments":{},"type":"tool_call"}]}],"version":"0.1.0"}
+    gen_ai.usage.input_tokens: 97
+    gen_ai.usage.output_tokens: 15
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             96b9921eb840a8ee
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       6dde06a6590985ed
+Activity.DisplayName:        Chat gpt-4o-mini
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:48:28.8462076Z
+Activity.Duration:           00:00:00.0002936
+Activity.Tags:
+    gen_ai.operation.name: Chat
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    gen_ai.agent.description: A365 Semantic Kernel sample agent
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.request.model: gpt-4o-mini
+    gen_ai.provider.name: Azure OpenAI
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    gen_ai.input.messages: {"messages":[{"role":"user","parts":[{"content":"what is the current date and time","type":"text"}]}],"version":"0.1.0"}
+    microsoft.channel.name: emulator
+    error.type: System.NotSupportedException
+StatusCode: Error
+Activity.StatusDescription:  No function result provided in the tool message.
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             6dde06a6590985ed
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       eb933cac35a42d0f
+Activity.DisplayName:        invoke_agent Agent365Agent
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:48:28.0566009Z
+Activity.Duration:           00:00:00.7900537
+Activity.Tags:
+    gen_ai.operation.name: invoke_agent
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    gen_ai.agent.description: A365 Semantic Kernel sample agent
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.channel.name: emulator
+    gen_ai.input.messages: {"messages":[{"role":"user","parts":[{"content":"what is the current date and time","type":"text"}]}],"version":"0.1.0"}
+    error.type: System.NotSupportedException
+StatusCode: Error
+Activity.StatusDescription:  No function result provided in the tool message.
+Instrumentation scope (ActivitySource):
+    Name: Agent365Sdk
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+fail: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      No function result provided in the tool message.
+      =====================================
+      ErrorCode: -2146233067
+      Source: Microsoft.SemanticKernel.Connectors.OpenAI
+      Method: CreateRequestMessages
+      TimeStamp: 2026-04-26T05:48:28.8508480Z
+      Error: No function result provided in the tool message.
+      HelpLink Url: Not Provided
+      Stack Trace: at Microsoft.SemanticKernel.Connectors.OpenAI.ClientCore.CreateRequestMessages(ChatMessageContent message)
+         at Microsoft.SemanticKernel.Connectors.OpenAI.ClientCore.CreateChatCompletionMessages(OpenAIPromptExecutionSettings executionSettings, ChatHistory chatHistory)
+         at Microsoft.SemanticKernel.Connectors.OpenAI.ClientCore.GetChatMessageContentsAsync(String targetModel, ChatHistory chatHistory, PromptExecutionSettings executionSettings, Kernel kernel, CancellationToken cancellationToken)
+         at Agent365SemanticKernelSampleAgent.Agents.ManualInstrumentationAgent.InvokeAgentAsync(String input, ChatHistory chatHistory, ITurnContext context) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\ManualInstrumentationAgent.cs:line 91
+         at Agent365SemanticKernelSampleAgent.Agents.MyAgent.<>c__DisplayClass17_0.<<MessageActivityAsync>b__0>d.MoveNext() in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\MyAgent.cs:line 149
+      --- End of stack trace from previous location ---
+         at Agent365SemanticKernelSampleAgent.telemetry.A365OtelWrapper.<>c__DisplayClass0_0.<<InvokeObservedAgentOperation>b__0>d.MoveNext() in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\telemetry\A365OtelWrapper.cs:line 56
+      --- End of stack trace from previous location ---
+         at Agent365SemanticKernelSampleAgent.telemetry.A365OtelWrapper.InvokeObservedAgentOperation(String operationName, ITurnContext turnContext, ITurnState turnState, IExporterTokenCache`1 agentTokenCache, UserAuthorization authSystem, String authHandlerName, ILogger logger, Func`1 func) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\telemetry\A365OtelWrapper.cs:line 29
+         at Agent365SemanticKernelSampleAgent.Agents.MyAgent.MessageActivityAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken) in C:\repos\pf_sample_nodejs\dotnet\base\semantic-kernel\sample-agent\Agents\MyAgent.cs:line 97
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.App.AgentApplication.OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.TranscriptLoggerMiddleware.OnTurnAsync(ITurnContext turnContext, NextDelegate nextTurn, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.MiddlewareSet.ReceiveActivityWithStatusAsync(ITurnContext turnContext, AgentCallbackHandler callback, CancellationToken cancellationToken)
+         at Microsoft.Agents.Builder.ChannelAdapter.RunPipelineAsync(ITurnContext turnContext, AgentCallbackHandler callback, CancellationToken cancellationToken)
+      =====================================
+      
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:64840/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/fd59503c-7089-424f-bf2c-82bde3822c5c
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:64840/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/fd59503c-7089-424f-bf2c-82bde3822c5c
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             2c9c3df8ffa8a5a2
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       7507795568cc7f3d
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:48:28.8532070Z
+Activity.Duration:           00:00:00.1018835
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 64840
+    url.full: http://127.0.0.1:64840/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/fd59503c-7089-424f-bf2c-82bde3822c5c
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.4.83.56266 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 102.3954ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 102.5484ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:64840/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/fd59503c-7089-424f-bf2c-82bde3822c5c
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:64840/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/fd59503c-7089-424f-bf2c-82bde3822c5c
+Activity.TraceId:            db2294a0b999c357549bb9ad26352f59
+Activity.SpanId:             a03b32a97c571af9
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       7507795568cc7f3d
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T05:48:28.9582348Z
+Activity.Duration:           00:00:00.0045304
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 0.3.4.11531
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 64840
+    url.full: http://127.0.0.1:64840/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/fd59503c-7089-424f-bf2c-82bde3822c5c
+    http.request.host: 127.0.0.1
+    http.request.useragent: agents-sdk-net/1.4.83.56266 .NETCoreAppVersion/v8.0 Win32NT/10.0.26200
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+    http.response.headers: ["Content-Type=application/json; charset=utf-8"]
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    deployment.environment: Development
+    service.namespace: Microsoft.Agents
+    service.name: A365.SemanticKernel
+    service.version: 1.0.0
+    service.instance.id: CPC-pefan-QECKC
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 4.8677ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 5.0303ms - 200

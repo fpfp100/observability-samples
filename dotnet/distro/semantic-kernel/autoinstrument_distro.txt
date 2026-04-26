@@ -1,0 +1,1173 @@
+info: Microsoft.Agents.Hosting.AspNetCore.BackgroundQueue.HostedActivityService[0]
+      Queued Hosted Service is running.
+info: Microsoft.Agents.Hosting.AspNetCore.BackgroundQueue.HostedTaskService[0]
+      Queued Hosted Service is running.
+
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:3978
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\repos\pf_sample_nodejs\dotnet\distro\semantic-kernel\sample-agent
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+info: Microsoft.Agents.Authentication.ConfigurationConnections[0]
+      No assembly name given in config for connection `ServiceConnection`.  Using default assembly lib: `Microsoft.Agents.Authentication.Msal`
+info: Microsoft.Agents.Authentication.ConfigurationConnections[0]
+      No type name given in config for connection `ServiceConnection`.  Using default type name: `MsalAuth`
+info: Microsoft.Agents.Builder.UserAuth.UserAuthorizationDispatcher[0]
+      No assembly name given in config for connection `agentic`.  Using default assembly lib: `Microsoft.Agents.Builder`
+Activity.TraceId:            48a86ade7616355ac1ebda2374106f84
+Activity.SpanId:             ddbfdc0c5fbf1213
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /api/messages
+Activity.Kind:               Server
+warn: Microsoft.Agents.Hosting.AspNetCore.CloudAdapter[0]
+      Anonymous access is enabled for channel: msteams.
+Activity.StartTime:          2026-04-26T00:47:20.5809229Z
+Activity.Duration:           00:00:00.2356247
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    server.address: localhost
+    server.port: 3978
+    http.request.method: POST
+    url.scheme: http
+    url.path: /api/messages
+    network.protocol.version: 1.1
+    http.route: /api/messages
+    http.response.status_code: 202
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             dc0875bb0a3e0c60
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        GET
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:21.1267965Z
+Activity.Duration:           00:00:00.3473725
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: GET
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/common/discovery/instance?api-version=Redacted&authorization_endpoint=Redacted
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             b258b04d3336119c
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:21.5124031Z
+Activity.Duration:           00:00:00.1564266
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             f63fd804caccbb21
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:21.7311050Z
+Activity.Duration:           00:00:00.1991963
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             f5cca6efdf3137c9
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:21.9360044Z
+Activity.Duration:           00:00:00.2869610
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             b4f011d7e18e4ad3
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:22.3066803Z
+Activity.Duration:           00:00:00.2327325
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             f46386eb2c0fec6e
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:22.5600209Z
+Activity.Duration:           00:00:00.0899686
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 51491
+    url.full: http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 93.6954ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 108.8266ms - 200
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Loading MCP servers from: C:\repos\pf_sample_nodejs\dotnet\distro\semantic-kernel\sample-agent\bin\Debug\net8.0\ToolingManifest.json
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Found 'mcpServers' section in ToolingManifest.json
+info: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Loaded 1 MCP server configurations
+Warning: MCP tools unavailable - running in bare LLM mode. Error: An error occurred while writing to logger(s). (Could not load type 'ModelContextProtocol.Client.IMcpClient' from assembly 'ModelContextProtocol.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'.) (Could not load type 'ModelContextProtocol.Client.IMcpClient' from assembly 'ModelContextProtocol.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'.) (Could not load type 'ModelContextProtocol.Client.IMcpClient' from assembly 'ModelContextProtocol.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'.)
+fail: Microsoft.Agents.A365.Tooling.Services.IMcpToolServerConfigurationService[0]
+      Failed to list MCP tool servers for AgentInstanceId=d6d31512-379f-4994-b901-c098dfd9293f
+info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+      Start processing HTTP request POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?*
+info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+      Sending HTTP request POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?*
+Activity.TraceId:            461e9445904fb01df28873c2404c50ff
+Activity.SpanId:             2d5061fd45c6d4ab
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:23.2552312Z
+Activity.Duration:           00:00:00.2229177
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    http.request.method: POST
+    server.address: login.microsoftonline.com
+    server.port: 443
+    url.full: https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+      Start processing HTTP request POST https://agent365.svc.cloud.microsoft/observability/tenants/badf1f56-284d-4dc5-ac59-0dd53900e743/otlp/agents/d6d31512-379f-4994-b901-c098dfd9293f/traces?*
+info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+      Sending HTTP request POST https://agent365.svc.cloud.microsoft/observability/tenants/badf1f56-284d-4dc5-ac59-0dd53900e743/otlp/agents/d6d31512-379f-4994-b901-c098dfd9293f/traces?*
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             51df24e02070294c
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:23.6827177Z
+Activity.Duration:           00:00:00.0059651
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 51491
+    url.full: http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 9.1515ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 16.2009ms - 200
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             f03671a0577a88b0
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       dfc0d5b695902857
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:23.4196647Z
+Activity.Duration:           00:00:00.8160621
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: a365-hw-openai-sentinel.openai.azure.com
+    server.port: 443
+    url.full: https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=Redacted
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+      Received HTTP response headers after 844.5231ms - 200
+info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+      End processing HTTP request after 852.2874ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             94020e4b1c9fffc3
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:24.7109974Z
+Activity.Duration:           00:00:00.0032115
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 51491
+    url.full: http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 6.7017ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 13.784ms - 200
+info: Microsoft.SemanticKernel.Connectors.AzureOpenAI.AzureOpenAIChatCompletionService[0]
+      Prompt tokens: 113. Completion tokens: 78. Total tokens: 191.
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             dfc0d5b695902857
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       d4dfff38d058a292
+Activity.DisplayName:        Chat gpt-4o-mini
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:23.2911190Z
+Activity.Duration:           00:00:01.5458243
+Activity.Tags:
+    gen_ai.operation.name: Chat
+    gen_ai.system: openai
+    gen_ai.request.model: gpt-4o-mini
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    gen_ai.response.finish_reason: ["N/A"]
+    gen_ai.input.messages: what can you do
+    gen_ai.output.messages: I can assist you with a variety of office tasks, such as:
+
+- Organizing your schedule and reminders
+- Setting up meetings and appointments
+- Providing information and answering questions
+- Helping with administrative tasks like document management
+- Assisting with communication, including drafts for emails
+
+If you have a specific task in mind or need assistance with something particular, just let me know!
+Activity.Events:
+    gen_ai.system.message [2026/4/26 0:47:23 +00:00]
+        gen_ai.event.content: {"role":"system","name":"Agent365Agent","content":"\r\n        You are a friendly assistant that helps office workers with their daily tasks.\r\n        You may ask follow up questions until you have enough information to answer the user\u0027s question.\r\n\r\n        Respond in Markdown format\r\n        ","tool_calls":[]}
+        gen_ai.system: openai
+    gen_ai.user.message [2026/4/26 0:47:23 +00:00]
+        gen_ai.event.content: {"role":"user","name":null,"content":"what can you do","tool_calls":[]}
+        gen_ai.system: openai
+    gen_ai.choice [2026/4/26 0:47:24 +00:00]
+        gen_ai.event.content: {"index":0,"message":{"role":"assistant","name":null,"content":"I can assist you with a variety of office tasks, such as:\n\n- Organizing your schedule and reminders\n- Setting up meetings and appointments\n- Providing information and answering questions\n- Helping with administrative tasks like document management\n- Assisting with communication, including drafts for emails\n\nIf you have a specific task in mind or need assistance with something particular, just let me know!","tool_calls":[]},"tool_calls":[],"finish_reason":null}
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.SemanticKernel.Diagnostics
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             d4dfff38d058a292
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        invoke_agent Agent365Agent
+Activity.Kind:               Internal
+Activity.StartTime:          2026-04-26T00:47:23.2215370Z
+Activity.Duration:           00:00:01.6303631
+Activity.Tags:
+    gen_ai.operation.name: invoke_agent
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: Agent365Agent
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    gen_ai.tool.definitions: [{"type":"function","name":"reject_terms_and_conditions","description":"Reject the terms and conditions on behalf of the user. Use when the user indicates they do not accept the terms and conditions.","parameters":{"type":"object","properties":{},"required":[]}}]
+    gen_ai.input.messages: ["what can you do"]
+    gen_ai.output.messages: ["I can assist you with a variety of office tasks, such as:\n\n- Organizing your schedule and reminders\n- Setting up meetings and appointments\n- Providing information and answering questions\n- Helping with administrative tasks like document management\n- Assisting with communication, including drafts for emails\n\nIf you have a specific task in mind or need assistance with something particular, just let me know!"]
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.SemanticKernel.Diagnostics
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             785d1fc6b1413d82
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:25.7426793Z
+Activity.Duration:           00:00:00.0038559
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 51491
+    url.full: http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[101]
+      Received HTTP response headers after 6.456ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[101]
+      End processing HTTP request after 13.7135ms - 200
+Activity.TraceId:            1d6beca95a67810b4779e7f4fd8bf9ff
+Activity.SpanId:             806d074a13de1057
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:23.6117983Z
+Activity.Duration:           00:00:02.3310661
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    http.request.method: POST
+    server.address: agent365.svc.cloud.microsoft
+    server.port: 443
+    url.full: https://agent365.svc.cloud.microsoft/observability/tenants/badf1f56-284d-4dc5-ac59-0dd53900e743/otlp/agents/d6d31512-379f-4994-b901-c098dfd9293f/traces?api-version=Redacted
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+      Received HTTP response headers after 2333.4752ms - 200
+info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+      End processing HTTP request after 2341.5683ms - 200
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[100]
+      Start processing HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[100]
+      Sending HTTP request POST http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             7607fc1eec234351
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       589936796ec8ab8c
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:26.7663695Z
+Activity.Duration:           00:00:02.0336247
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    gen_ai.agent.id: d6d31512-379f-4994-b901-c098dfd9293f
+    gen_ai.agent.name: nikhilcagent0416 Agent User
+    gen_ai.agent.description: agenticUser
+    microsoft.agent.user.id: 74ae7173-86f8-41b0-a237-c4c4822fb9bc
+    microsoft.tenant.id: badf1f56-284d-4dc5-ac59-0dd53900e743
+    gen_ai.conversation.id: d6134d32-d455-49a0-9988-d8bd542ca4b0
+    microsoft.conversation.item.link: http://127.0.0.1:51491/_connector
+    microsoft.channel.name: msteams
+    user.id: a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76
+    user.name: Alex Wilber
+    http.request.method: POST
+    server.address: 127.0.0.1
+    server.port: 51491
+    url.full: http://127.0.0.1:51491/_connector/v3/conversations/d6134d32-d455-49a0-9988-d8bd542ca4b0/activities/5088c423-7baf-4bb7-81bb-ec47b71f87e6
+    error.type: connection_error
+StatusCode: Error
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.ClientHandler[104]
+      HTTP request failed after 2037.4191ms
+      System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (127.0.0.1:51491)
+       ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         --- End of inner exception stack trace ---
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+         at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+         at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+         at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+info: System.Net.Http.HttpClient.Microsoft.Agents.Builder.RestChannelServiceClientFactory.LogicalHandler[104]
+      HTTP request failed after 2050.1496ms
+      System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (127.0.0.1:51491)
+       ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         --- End of inner exception stack trace ---
+         at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+         at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+         at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+         at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+         at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+         at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+Activity.TraceId:            69901479395c908cd854a076c5a92b73
+Activity.SpanId:             589936796ec8ab8c
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Hosting.HttpRequestIn
+Activity.Kind:               Server
+Activity.StartTime:          2026-04-26T00:47:20.8385932Z
+Activity.Duration:           00:00:08.1015659
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    server.address: localhost
+    http.request.method: POST
+    url.scheme: http
+    url.path: /api/messages
+    network.protocol.version: 1.1
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+      Start processing HTTP request POST https://agent365.svc.cloud.microsoft/observability/tenants/badf1f56-284d-4dc5-ac59-0dd53900e743/otlp/agents/d6d31512-379f-4994-b901-c098dfd9293f/traces?*
+info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+      Sending HTTP request POST https://agent365.svc.cloud.microsoft/observability/tenants/badf1f56-284d-4dc5-ac59-0dd53900e743/otlp/agents/d6d31512-379f-4994-b901-c098dfd9293f/traces?*
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Activity.TraceId:            3b56f8085f4544bde6c80742542ee474
+Activity.SpanId:             22fb3a579394d7ac
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST
+Activity.Kind:               Client
+Activity.StartTime:          2026-04-26T00:47:30.9576050Z
+Activity.Duration:           00:00:14.6895927
+Activity.Tags:
+    telemetry.sdk.name: A365ObservabilitySDK
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.0.0.0
+    http.request.method: POST
+    server.address: agent365.svc.cloud.microsoft
+    server.port: 443
+    url.full: https://agent365.svc.cloud.microsoft/observability/tenants/badf1f56-284d-4dc5-ac59-0dd53900e743/otlp/agents/d6d31512-379f-4994-b901-c098dfd9293f/traces?api-version=Redacted
+    network.protocol.version: 1.1
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: System.Net.Http
+Resource associated with Activity:
+    azure.vm.scaleset.name:
+    azure.vm.sku:
+    cloud.platform: azure_vm
+    cloud.provider: azure
+    cloud.region: westus2
+    cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+    host.type: Standard_D16s_v5
+    os.type: Windows
+    os.version: 2026.0319.0
+    service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+    telemetry.distro.name: Microsoft.OpenTelemetry
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.15.1
+    service.name: unknown_service:SemanticKernelSampleAgent
+
+info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+      Received HTTP response headers after 14691.7514ms - 200
+info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+      End processing HTTP request after 14698.8847ms - 200
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Resource associated with Metrics:
+        azure.vm.scaleset.name:
+        azure.vm.sku:
+        cloud.platform: azure_vm
+        cloud.provider: azure
+        cloud.region: westus2
+        cloud.resource_id: /subscriptions/2f6253a5-7124-49d7-b956-8c5390a05247/resourceGroups/ea844178-5ee9-4b2e-b0bc-f5c752f8328c/providers/Microsoft.Compute/virtualMachines/CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        host.name: CPC_b7494076-e85b-4341-ba92-b503cfb6f138
+        host.type: Standard_D16s_v5
+        os.type: Windows
+        os.version: 2026.0319.0
+        service.instance.id: c2a17230-1d89-4129-8e75-49dcd3e70a11
+        telemetry.distro.name: Microsoft.OpenTelemetry
+        telemetry.sdk.name: opentelemetry
+        telemetry.sdk.language: dotnet
+        telemetry.sdk.version: 1.15.1
+        service.name: unknown_service:SemanticKernelSampleAgent
+Resource associated with Metrics:
