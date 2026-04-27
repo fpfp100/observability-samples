@@ -8,6 +8,7 @@ from utils.azure_openai_client import get_deployment_name
 
 logger = logging.getLogger(__name__)
 
+
 async def call_semantic_kernel(user_message: str, context: TurnContext) -> str:
     try:
         kernel = sk.Kernel()

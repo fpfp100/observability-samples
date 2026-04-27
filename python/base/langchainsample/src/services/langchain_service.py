@@ -6,6 +6,7 @@ from microsoft_agents.hosting.core import TurnContext
 
 logger = logging.getLogger(__name__)
 
+
 async def call_langchain(user_message: str, context: TurnContext) -> str:
     try:
         llm = AzureChatOpenAI(
