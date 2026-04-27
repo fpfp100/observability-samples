@@ -60,6 +60,17 @@ Attaches context that flows through all spans in a request.
 
 ## 4. Baggage Middleware
 
+### Middleware Registration (Important Difference)
+
+**Neither the base SDK nor the distro auto-registers BaggageMiddleware or OutputLoggingMiddleware.** Both require explicit registration by the developer:
+
+- **Python (base)**: `ObservabilityHostingManager.configure(adapter.middleware_set, ObservabilityHostingOptions(enable_baggage=True, enable_output_logging=True))` — defaults are `False, False`
+- **Python (distro)**: Same API via `microsoft.opentelemetry.a365.hosting.middleware` — also defaults `False, False`
+- **.NET (both)**: Manual DI registration of `BaggageTurnMiddleware` and `OutputLoggingMiddleware` as singletons, then added to the adapter middleware pipeline
+- **Node.js**: TBD
+
+When testing middleware, ensure the test sample has middleware explicitly enabled. If a sample was written for manual instrumentation only (no middleware), add the registration before testing middleware behavior. Without this, spans will be missing baggage fields and `output_messages` spans will not be emitted.
+
 ### BaggageTurnMiddleware
 - `BaggageTurnMiddleware` (.NET) / `BaggageMiddleware` (Python/JS) auto-populates baggage from TurnContext for every incoming request
 - **ContinueConversation skip**: middleware skips baggage setup for async replies (`ContinueConversation` events) to avoid overwriting baggage from originating request
