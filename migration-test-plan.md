@@ -152,10 +152,10 @@ For each supported combination:
 
 ## 11. Configuration Options
 
-- `suppress_invoke_agent_input`: when `true`, suppresses input messages on InvokeAgent spans (Python confirmed; verify .NET/JS support)
-- `ClusterCategory`: prod vs other cluster routing (JS confirmed; verify .NET/Python support)
-- `A365_OBSERVABILITY_DOMAIN_OVERRIDE`: custom endpoint for testing (.NET)
-- `A365_OBSERVABILITY_SCOPE_OVERRIDE`: custom token scope for testing (.NET)
+- `suppress_invoke_agent_input`: when `true`, suppresses input messages on InvokeAgent spans (Python confirmed; JS available in OpenAI extension; NOT in .NET)
+- `ClusterCategory`: prod vs other cluster routing (JS base only via `withClusterCategory()`; NOT in .NET or JS distro)
+- `A365_OBSERVABILITY_DOMAIN_OVERRIDE`: custom endpoint for testing (JS/Python only; NOT in .NET)
+- `A365_OBSERVABILITY_SCOPES_OVERRIDE`: custom token scope for testing (JS/Python only; NOT in .NET — note: plural "SCOPES" not singular)
 - Log level configuration works per platform
 
 ## 12. Edge Cases

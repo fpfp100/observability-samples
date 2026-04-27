@@ -4,6 +4,11 @@ using System.Text.Json;
 string AgentUrl = Environment.GetEnvironmentVariable("AGENT_URL") ?? "http://localhost:3978/api/messages";
 const string ConnectorBase = "/_connector";
 
+// Tester identity — set these env vars to distinguish your data in Defender/Purview when multiple testers share the same app ID.
+string testerName = Environment.GetEnvironmentVariable("TESTER_NAME") ?? Environment.MachineName;
+string conversationId = Environment.GetEnvironmentVariable("CONVERSATION_ID") ?? $"conv-{testerName}-{Guid.NewGuid().ToString("N")[..8]}";
+string sessionId = Environment.GetEnvironmentVariable("SESSION_ID") ?? $"session-{testerName}-{DateTime.UtcNow:yyyyMMdd-HHmmss}";
+
 // Use port 0 so the OS assigns an available port automatically.
 string ListenUrl = Environment.GetEnvironmentVariable("EMULATOR_LISTEN_URL") ?? "http://127.0.0.1:0";
 
@@ -91,25 +96,44 @@ app.Lifetime.ApplicationStarted.Register(() =>
         addr = serverFeature.Addresses.First();
     resolvedListenUrl = addr;
     Console.WriteLine($"  Callback URL: {resolvedListenUrl}{ConnectorBase}");
+    Console.WriteLine($"  Tester: {testerName}");
+    Console.WriteLine($"  ConversationId: {conversationId}");
+    Console.WriteLine($"  SessionId: {sessionId}");
 
     _ = Task.Run(async () =>
     {
         await Task.Delay(500);
-        int i = 0;
-        while (!app.Lifetime.ApplicationStopping.IsCancellationRequested)
+
+        bool concurrentMode = Environment.GetEnvironmentVariable("CONCURRENT_TEST") == "true";
+        if (concurrentMode)
         {
-            var text = loopMessages[i % loopMessages.Length];
-            await SendActivity(text, resolvedListenUrl);
-            i++;
-            if (loopCount > 0 && i >= loopCount)
+            // Send 2 messages concurrently with different user/conversation contexts
+            var task1 = SendActivityWithContext("hello from user A", resolvedListenUrl,
+                userId: "user-A", userName: "User Alpha", conversationId: "conv-AAAA-1111");
+            var task2 = SendActivityWithContext("hello from user B", resolvedListenUrl,
+                userId: "user-B", userName: "User Beta", conversationId: "conv-BBBB-2222");
+            await Task.WhenAll(task1, task2);
+            await Task.Delay(TimeSpan.FromSeconds(8));
+            app.Lifetime.StopApplication();
+        }
+        else
+        {
+            int i = 0;
+            while (!app.Lifetime.ApplicationStopping.IsCancellationRequested)
             {
-                // Give the agent a moment to send callbacks, then shut down.
-                await Task.Delay(TimeSpan.FromSeconds(5));
-                app.Lifetime.StopApplication();
-                break;
+                var text = loopMessages[i % loopMessages.Length];
+                await SendActivity(text, resolvedListenUrl);
+                i++;
+                if (loopCount > 0 && i >= loopCount)
+                {
+                    // Wait for agent to send callbacks and A365 exporter to flush batch (5s delay + ~15s export).
+                    await Task.Delay(TimeSpan.FromSeconds(30));
+                    app.Lifetime.StopApplication();
+                    break;
+                }
+                try { await Task.Delay(TimeSpan.FromSeconds(loopIntervalSeconds), app.Lifetime.ApplicationStopping); }
+                catch (TaskCanceledException) { break; }
             }
-            try { await Task.Delay(TimeSpan.FromSeconds(loopIntervalSeconds), app.Lifetime.ApplicationStopping); }
-            catch (TaskCanceledException) { break; }
         }
     });
 });
@@ -128,19 +152,19 @@ async Task SendActivity(string text, string listenUrl)
         channelId = "emulator",
         from = new
         {
-            id = "user-id-0",
-            name = "Alex Wilber",
+            id = $"user-{testerName}",
+            name = $"Tester {testerName}",
             aadObjectId = "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76"
         },
-        timestamp = "2025-10-03T16:33:10.550Z",
-        localTimestamp = "2025-10-03T09:33:10.550-07:00",
-        localTimezone = "America/Los_Angeles",
+        timestamp = DateTime.UtcNow.ToString("o"),
+        localTimestamp = DateTimeOffset.Now.ToString("o"),
+        localTimezone = TimeZoneInfo.Local.Id,
         serviceUrl = $"{listenUrl}{ConnectorBase}",
         conversation = new
         {
             conversationType = "personal",
             tenantId = tenantId,
-            id = "d6134d32-d455-49a0-9988-d8bd542ca4b0"
+            id = conversationId
         },
         recipient = new
         {
@@ -176,5 +200,62 @@ async Task SendActivity(string text, string listenUrl)
     catch (Exception ex)
     {
         Console.WriteLine($"  ✗ {ex.GetType().Name}: {ex.Message}");
+    }
+}
+
+async Task SendActivityWithContext(string text, string listenUrl, string userId, string userName, string conversationId)
+{
+    var tenantId = Environment.GetEnvironmentVariable("AGENT_TENANT_ID") ?? "badf1f56-284d-4dc5-ac59-0dd53900e743";
+
+    var payload = new
+    {
+        type = "message",
+        text = text,
+        id = Guid.NewGuid().ToString(),
+        channelId = "emulator",
+        from = new
+        {
+            id = userId,
+            name = userName,
+            aadObjectId = userId
+        },
+        timestamp = "2025-10-03T16:33:10.550Z",
+        localTimestamp = "2025-10-03T09:33:10.550-07:00",
+        localTimezone = "America/Los_Angeles",
+        serviceUrl = $"{listenUrl}{ConnectorBase}",
+        conversation = new
+        {
+            conversationType = "personal",
+            tenantId = tenantId,
+            id = conversationId
+        },
+        recipient = new
+        {
+            id = "nikhilcagent0416@a365preview070.onmicrosoft.com",
+            name = "nikhilcagent0416 Agent User",
+            tenantId = tenantId,
+            agenticUserId = "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+            agenticAppId = "d6d31512-379f-4994-b901-c098dfd9293f",
+            role = "agenticUser"
+        },
+        textFormat = "plain",
+        locale = "en-US",
+        entities = new object[]
+        {
+            new { type = "clientInfo", locale = "en-US", country = "US", platform = "Web", timezone = "America/Los_Angeles" }
+        },
+        channelData = new { tenant = new { id = tenantId } }
+    };
+
+    using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(60) };
+    Console.WriteLine($"━━━ POST {AgentUrl} — \"{text}\" (user={userId}, conv={conversationId}) ━━━");
+    try
+    {
+        var response = await client.PostAsJsonAsync(AgentUrl, payload);
+        Console.WriteLine($"  ← {(int)response.StatusCode} {response.ReasonPhrase} (user={userId})");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"  ✗ {ex.GetType().Name}: {ex.Message} (user={userId})");
     }
 }
