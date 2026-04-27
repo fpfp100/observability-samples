@@ -15,8 +15,7 @@ from microsoft_agents_a365.observability.hosting.middleware import (
     ObservabilityHostingOptions,
 )
 from microsoft_agents_a365.observability.hosting.token_cache_helpers import AgenticTokenCache
-# OpenAIAgentsTraceInstrumentor removed — ImportError GEN_AI_SYSTEM_KEY (P-6).
-# Using manual InferenceScope in agents_service.py instead.
+from microsoft_agents_a365.observability.extensions.openai import OpenAIAgentsTraceInstrumentor
 from utils.token_cache import get_cached_agentic_token
 
 logger = logging.getLogger(__name__)
@@ -78,7 +77,7 @@ def start_server(agent_application: AgentApplication, auth_configuration: AgentA
         token_resolver=token_resolver_func,
     )
 
-    # OpenAIAgentsTraceInstrumentor disabled — see import comment above.
+    OpenAIAgentsTraceInstrumentor().instrument()
 
     ObservabilityHostingManager.configure(
         agent_application.adapter.middleware_set, ObservabilityHostingOptions(True, True)

@@ -993,7 +993,7 @@ wheels = [
 
 [[package]]
 name = "microsoft-agents-a365-observability-extensions-openai"
-version = "0.1.0"
+version = "0.3.0.dev6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "microsoft-agents-a365-observability-core" },
@@ -1002,9 +1002,8 @@ dependencies = [
     { name = "opentelemetry-instrumentation" },
     { name = "opentelemetry-sdk" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7e/a7/609fea8f4857562b2ed38e709ba10e30aa6c7e02471ee5bcd1165e7b8183/microsoft_agents_a365_observability_extensions_openai-0.1.0.tar.gz", hash = "sha256:16f30dafad1560f37415dac86a216c5dc3173b81154b38d850216c38ef239f07", size = 11150, upload-time = "2025-11-18T19:59:21.249Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/36/e5/19f3b4c9ae054dd3d821b5fc212fa03d8867ebe2662d8730b9c5622b0195/microsoft_agents_a365_observability_extensions_openai-0.1.0-py3-none-any.whl", hash = "sha256:a5d4db0dc9e927dac4f5c66fe41b5040ae7086bd1fe16cee3d11d47690dcef7c", size = 11283, upload-time = "2025-11-18T19:59:34.7Z" },
+    { url = "https://files.pythonhosted.org/packages/93/47/45a8cd05096aa725a7c23882b6fb1dfecb80593a7777f49eb2d0f0d33b4c/microsoft_agents_a365_observability_extensions_openai-0.3.0.dev6-py3-none-any.whl", hash = "sha256:5815d0c30d336ad6b73fb122020280347ad04ed1bb1c3be17e81684b3d053cad", size = 13023, upload-time = "2026-04-22T09:17:23.988Z" },
 ]
 
 [[package]]
@@ -1335,7 +1334,7 @@ requires-dist = [
     { name = "azure-monitor-opentelemetry" },
     { name = "azure-monitor-opentelemetry-exporter", specifier = "==1.0.0b39" },
     { name = "microsoft-agents-a365-observability-core", specifier = "==0.3.0.dev6" },
-    { name = "microsoft-agents-a365-observability-extensions-openai" },
+    { name = "microsoft-agents-a365-observability-extensions-openai", specifier = "==0.3.0.dev6" },
     { name = "microsoft-agents-a365-observability-hosting", specifier = "==0.3.0.dev6" },
     { name = "microsoft-agents-a365-runtime", specifier = "==0.3.0.dev6" },
     { name = "microsoft-agents-activity", specifier = "==0.9.0" },

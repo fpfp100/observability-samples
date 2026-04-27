@@ -14,7 +14,7 @@ dependencies = [
   "azure-monitor-opentelemetry",
   "aiohttp",
   "openai",
-  "semantic-kernel>=1.0.0",
+  "semantic-kernel>=1.0.0,<1.40",
   "microsoft-agents-hosting-aiohttp==0.9.0",
   "microsoft-agents-hosting-core==0.9.0",
   "microsoft-agents-authentication-msal==0.9.0",
@@ -22,7 +22,7 @@ dependencies = [
   "microsoft-agents-a365-runtime==0.3.0.dev6",
   "microsoft-agents-a365-observability-core==0.3.0.dev6",
   "microsoft-agents-a365-observability-hosting==0.3.0.dev6",
-  "microsoft-agents-a365-observability-extensions-semantic-kernel",
+  "microsoft-agents-a365-observability-extensions-semantic-kernel==0.3.0.dev6",
 
   # HTTP/server stack
   "uvicorn[standard]~=0.35.0",

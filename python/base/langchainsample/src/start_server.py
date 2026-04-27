@@ -15,8 +15,7 @@ from microsoft_agents_a365.observability.hosting.middleware import (
     ObservabilityHostingOptions,
 )
 from microsoft_agents_a365.observability.hosting.token_cache_helpers import AgenticTokenCache
-# CustomLangChainInstrumentor removed — crashes with wrap_function_wrapper incompatibility (P-5).
-# Using manual InferenceScope in langchain_service.py instead.
+from microsoft_agents_a365.observability.extensions.langchain import CustomLangChainInstrumentor
 from utils.token_cache import get_cached_agentic_token
 
 logger = logging.getLogger(__name__)
@@ -78,7 +77,7 @@ def start_server(agent_application: AgentApplication, auth_configuration: AgentA
         token_resolver=token_resolver_func,
     )
 
-    # CustomLangChainInstrumentor disabled — see import comment above.
+    CustomLangChainInstrumentor()  # instrument() is called in __init__
 
     ObservabilityHostingManager.configure(
         agent_application.adapter.middleware_set, ObservabilityHostingOptions(True, True)

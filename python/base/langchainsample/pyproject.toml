@@ -24,7 +24,8 @@ dependencies = [
   # LangChain
   "langchain>=0.3.0",
   "langchain-openai>=0.3.0",
-  "microsoft-agents-a365-observability-extensions-langchain",
+  "microsoft-agents-a365-observability-extensions-langchain==0.3.0.dev6",
+  "wrapt<2",  # P-5: extensions-langchain uses wrapt v1.x 'module=' kwarg, renamed to 'target' in v2
 
   # HTTP/server stack
   "uvicorn[standard]~=0.35.0",
