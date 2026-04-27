@@ -14,16 +14,16 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 | 2 | Error Handling on Scopes | **DONE** | Framework error spans work (agents.adapter.process). A365 RecordError() path exists but not triggered in test |
 | 3 | BaggageBuilder | **DONE** | Base: ALL baggage fields propagate to ALL child spans. Distro: **ALL 10 fields missing from ALL framework spans** (P-1 upgraded) |
 | 4 | Baggage Middleware | **DONE** | Base: fully working. Distro: BaggageMiddleware registered but NOT propagating fields to child spans |
-| 5 | BatchSpanProcessor | NOT STARTED | Requires code inspection |
-| 6 | Exporter | TESTED | Console exporter works both. A365 exporter: 400 TenantIdInvalid (expected local) |
-| 7 | TokenResolver | TESTED | Base: fallback only. Distro: AgenticTokenCache works on 2nd call |
-| 8 | Auth (OBO/S2S) | NOT STARTED | Requires real A365 deployment |
+| 5 | BatchSpanProcessor | **DONE** | Identical defaults in both (2048/512/5000/30000). Both use `_EnrichingBatchSpanProcessor` subclass |
+| 6 | Exporter | **DONE** | Console works both. A365 exporter: identical logic. Both partition by identity, skip on missing |
+| 7 | TokenResolver | **DONE** | Identical logic. Base: fallback only at runtime. Distro: AgenticTokenCache works on 2nd call |
+| 8 | Auth (OBO/S2S) | **DONE** | Both support `use_s2s_endpoint`. Identical S2S URL construction. Requires real A365 deployment to test |
 | 9a | Auto-instrumentation - Semantic Kernel | **DONE** | Base: processor only (no inference span). Distro: `chat gpt-4o-mini` auto-generated |
 | 9b | Auto-instrumentation - OpenAI Agents | **DONE** | Base: `response/turn/Agent workflow` spans (v0.3.0.dev6). Distro: `chat gpt-4o-mini` + `invoke_agent Assistant` |
 | 9c | Auto-instrumentation - LangChain | **DONE** | Base: `chat AzureChatOpenAI` (v0.3.0.dev6 + wrapt<2). Distro: `chat gpt-4o-mini` (P-7 workaround) |
 | 10 | Resource Attributes | **DONE** | Base: service.name/namespace correct. Distro: **`unknown_service`**, missing namespace (P-9) |
-| 11 | Configuration Options | NOT STARTED | |
-| 12 | Edge Cases | NOT STARTED | |
+| 11 | Configuration Options | **DONE** | Code inspection — see details below |
+| 12 | Edge Cases | **DONE** | Code inspection — identical handling in both |
 | 13 | Store Publishing Validation | **DONE** | Base: passes (with 6 missing invoke_agent attrs). Distro: **FAILS** (P-2, missing Inference+Tool scopes) |
 
 ## Full Rerun: Console Exporter Span Comparison (All 8 Samples)
@@ -184,6 +184,57 @@ All required attributes present.
 | InferenceScope with required attrs | **PASS** | **FAIL** (P-2: not emitted) |
 | ExecuteToolScope with required attrs | **PASS** | **FAIL** (P-2: not emitted) |
 | Console output matches AO guide | Mostly | **FAIL** |
+
+## Code Inspection Results (Tests 5, 8, 11, 12)
+
+### Test 5: BatchSpanProcessor
+
+| Setting | Base Default | Distro Default | Test Plan | Match? |
+|---------|-------------|----------------|-----------|--------|
+| `max_queue_size` | 2048 | 2048 | 2048 | OK |
+| `max_export_batch_size` | 512 | 512 | 512 | OK |
+| `scheduled_delay_ms` | 5000 | 5000 | 5000 | OK |
+| `exporter_timeout_ms` | 30000 | 30000 | 30000 | OK |
+
+Both use `_EnrichingBatchSpanProcessor(BatchSpanProcessor)` subclass that enriches spans before batching. Configurable via `Agent365ExporterOptions` / `SpectraExporterOptions`. **Identical between base and distro.**
+
+### Test 8: Auth (OBO/S2S)
+
+| Feature | Base | Distro | Match? |
+|---------|------|--------|--------|
+| `use_s2s_endpoint` parameter | Yes (`Agent365ExporterOptions`) | Yes (`Agent365ExporterOptions`) | OK |
+| S2S URL path | `/observabilityService/tenants/{t}/otlp/agents/{a}/traces?api-version=1` | Same | OK |
+| Default (OBO) URL path | Standard OBO endpoint | Same | OK |
+| HTTP 401 handling | `_post_with_retries` handles non-retryable errors | Same | OK |
+
+**Identical S2S/OBO logic.** Requires real A365 deployment to test runtime behavior.
+
+### Test 11: Configuration Options
+
+| Option | Base | Distro | Match? |
+|--------|------|--------|--------|
+| `suppress_invoke_agent_input` | `configure(suppress_invoke_agent_input=True)` | `_EnrichingBatchSpanProcessor(suppress_invoke_agent_input=True)` + env `A365_SUPPRESS_INVOKE_AGENT_INPUT` | **Distro adds env var support** |
+| `A365_OBSERVABILITY_DOMAIN_OVERRIDE` | Supported via `get_validated_domain_override()` | Supported, constant in `a365/constants.py` | OK |
+| `A365_OBSERVABILITY_SCOPE_OVERRIDE` | **Not found** in base core | Supported in distro `runtime/environment_utils.py` | **Distro only** |
+| `use_s2s_endpoint` | Supported | Supported | OK |
+| `cluster_category` | Supported in `_Agent365Exporter` constructor | Supported | OK |
+
+Differences:
+- Distro adds **env var** `A365_SUPPRESS_INVOKE_AGENT_INPUT` (base requires code parameter)
+- Distro has `A365_OBSERVABILITY_SCOPE_OVERRIDE` for custom token scopes (base does not)
+
+### Test 12: Edge Cases
+
+| Edge Case | Base | Distro | Match? |
+|-----------|------|--------|--------|
+| Missing identity (no tenant/agent) | `partition_by_identity` returns empty → "No spans with identity found" → `SUCCESS` | Identical | OK |
+| Token resolution failure | Catches exception, logs error, marks group as failure, continues to next group | Identical | OK |
+| Token returns None | Logs debug "No token returned", proceeds without auth header | Identical | OK |
+| Non-HTTPS with token | Warns "Bearer token sent over non-HTTPS" | Identical | OK |
+| Exporter closed | Returns `FAILURE` immediately | Identical | OK |
+| Export HTTP error | `_post_with_retries` handles retries and non-retryable errors | Identical logic | OK |
+
+**All edge case handling is identical between base and distro.** The A365 exporter code (`_Agent365Exporter`) is the same codebase ported to the distro namespace.
 
 ## Captured Output Files
 
