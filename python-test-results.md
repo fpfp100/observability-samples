@@ -6,31 +6,124 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - **DM** — Distro + Manual
 - **DA** — Distro + Auto
 
-## Test Progress (as of 2026-04-26)
+## Test Progress (as of 2026-04-27)
 
 | # | Test Area | Status | Notes |
 |---|-----------|--------|-------|
-| 1 | Scopes (InvokeAgent, Inference, ExecuteTool, Output) | NOT STARTED | |
+| 1 | Scopes (InvokeAgent, Inference, ExecuteTool, Output) | IN PROGRESS | See Phase 1 results below |
 | 2 | Error Handling on Scopes | NOT STARTED | |
-| 3 | BaggageBuilder | NOT STARTED | |
-| 4 | Baggage Middleware | NOT STARTED | |
+| 3 | BaggageBuilder | IN PROGRESS | Baggage propagation differs between base and distro |
+| 4 | Baggage Middleware | IN PROGRESS | Both registered, but distro invoke_agent missing baggage attrs |
 | 5 | BatchSpanProcessor | NOT STARTED | |
-| 6 | Exporter | NOT STARTED | |
-| 7 | TokenResolver | NOT STARTED | |
+| 6 | Exporter | TESTED | Console exporter works both. A365 exporter: 400 TenantIdInvalid (expected local) |
+| 7 | TokenResolver | TESTED | Base: fallback only. Distro: AgenticTokenCache works on 2nd call |
 | 8 | Auth (OBO/S2S) | NOT STARTED | |
-| 9a | Auto-instrumentation - Semantic Kernel | NOT STARTED | `SemanticKernelInstrumentor` |
-| 9b | Auto-instrumentation - OpenAI | NOT STARTED | `OpenAIAgentsTraceInstrumentor` |
-| 9c | Auto-instrumentation - LangChain | NOT STARTED | `CustomLangChainInstrumentor` |
-| 10 | Resource Attributes | NOT STARTED | |
+| 9a | Auto-instrumentation - Semantic Kernel | TESTED | See findings below |
+| 9b | Auto-instrumentation - OpenAI Agents | BLOCKED | Base: ImportError (GEN_AI_SYSTEM_KEY). Distro: needs OPENAI_API_KEY |
+| 9c | Auto-instrumentation - LangChain | BLOCKED | Base: crash (wrap_function_wrapper). Distro: KeyError gen_ai.request.model |
+| 10 | Resource Attributes | IN PROGRESS | See attribute comparison below |
 | 11 | Configuration Options | NOT STARTED | |
 | 12 | Edge Cases | NOT STARTED | |
 | 13 | Store Publishing Validation | NOT STARTED | |
 
+## Phase 1: Console Exporter Span Comparison (OpenAI + SK)
+
+### Test Setup
+- Console exporter enabled (A365 exporter disabled)
+- Message sent: "What is 2+2?" via connector emulator
+- Both base and distro use same credentials and agent identity
+
+### OpenAI Sample: Span Comparison
+
+| Span | Base (manual) | Distro (manual) |
+|------|--------------|-----------------|
+| `invoke_agent` | Yes, all attrs | Yes, **missing baggage attrs** (see Issue #1) |
+| `Chat gpt-4o-mini` (InferenceScope) | Yes, full attrs | **MISSING** (see Issue #2) |
+| `output_messages` | Yes | Yes |
+| HTTP client spans | No | Yes (GET/POST from requests instrumentor) |
+| Metrics | No | Yes (turn.count, duration, etc.) |
+
+### Semantic Kernel Sample: Span Comparison
+
+| Span | Base (auto) | Distro (auto) |
+|------|------------|---------------|
+| `invoke_agent` | Yes, all attrs | Yes, **missing baggage attrs** |
+| Inference span | **No** (instrumentor is span-processor only) | **No** (same — SK instrumentor doesn't create spans) |
+| `output_messages` | Yes | Yes |
+
+### Attribute Comparison: `invoke_agent` span
+
+| Attribute | Base | Distro | Match? |
+|-----------|------|--------|--------|
+| `gen_ai.agent.id` | Yes | Yes | OK |
+| `gen_ai.agent.name` | Yes | Yes | OK |
+| `gen_ai.agent.description` | Yes | Yes | OK |
+| `gen_ai.operation.name` | `invoke_agent` | `invoke_agent` | OK |
+| `gen_ai.input.messages` | Yes | Yes | OK |
+| `gen_ai.conversation.id` | Yes | **Missing** | DIFF |
+| `microsoft.tenant.id` | Yes | Yes | OK |
+| `microsoft.session.id` | Yes | Yes | OK |
+| `microsoft.a365.agent.blueprint.id` | Yes | `microsoft.opentelemetry.a365.agent.blueprint.id` | RENAMED |
+| `microsoft.agent.user.email` | Yes | **Missing** | DIFF |
+| `microsoft.channel.name` | Yes | **Missing** | DIFF |
+| `microsoft.conversation.item.link` | Yes | **Missing** | DIFF |
+| `user.id` | Yes | **Missing** | DIFF |
+| `user.name` | Yes | **Missing** | DIFF |
+| `telemetry.sdk.version` | `0.3.0.dev6` | `0.0.0-unknown` | DIFF |
+
 ## Issues Found
 
-None yet.
+### Issue P-1: Distro `invoke_agent` span missing baggage attributes
+- **Severity:** HIGH
+- **Affects:** All distro samples
+- **Details:** The distro's `invoke_agent` span is missing `gen_ai.conversation.id`, `user.id`, `user.name`, `microsoft.agent.user.email`, `microsoft.channel.name`, `microsoft.conversation.item.link`. The base SDK has all of these. Baggage middleware is registered in both, but the distro doesn't propagate baggage into manually-created A365 scopes.
+
+### Issue P-2: Distro missing `Chat gpt-4o-mini` InferenceScope span
+- **Severity:** HIGH
+- **Affects:** distro/openaisample
+- **Details:** Both samples call `InferenceScope.start()` manually with identical patterns, but the distro doesn't emit the span. The base SDK emits it correctly with full attributes (model, tokens, messages, finish reasons).
+
+### Issue P-3: Blueprint ID attribute renamed in distro
+- **Severity:** MEDIUM
+- **Affects:** All distro samples
+- **Details:** Base uses `microsoft.a365.agent.blueprint.id`, distro uses `microsoft.opentelemetry.a365.agent.blueprint.id`. Breaking change for downstream span consumers.
+
+### Issue P-4: Distro SDK version reports `0.0.0-unknown`
+- **Severity:** LOW
+- **Affects:** All distro samples
+- **Details:** `telemetry.sdk.version` is `0.0.0-unknown` in distro vs `0.3.0.dev6` in base.
+
+### Issue P-5: Base `CustomLangChainInstrumentor` crash on init
+- **Severity:** HIGH
+- **Affects:** base/langchainsample
+- **Details:** `TypeError: wrap_function_wrapper() got an unexpected keyword argument 'module'` — the base LangChain extension is incompatible with the installed `opentelemetry-instrumentation` version.
+- **File:** `microsoft-agents-a365-observability-extensions-langchain` v0.1.0
+
+### Issue P-6: Base `OpenAIAgentsTraceInstrumentor` import crash
+- **Severity:** HIGH
+- **Affects:** base/openaiagentssample
+- **Details:** `ImportError: cannot import name 'GEN_AI_SYSTEM_KEY' from 'microsoft_agents_a365.observability.core.constants'` — the OpenAI extensions package references a constant that doesn't exist in `observability-core` v0.3.0.dev6.
+- **File:** `microsoft-agents-a365-observability-extensions-openai` v0.1.0
+
+### Issue P-7: Distro LangChain `KeyError: 'gen_ai.request.model'`
+- **Severity:** HIGH
+- **Affects:** distro/langchainsample
+- **Details:** `opentelemetry-instrumentation-openai-v2` crashes in `traced_method` when `gen_ai.request.model` attribute is not set. Happens when LangChain calls Azure OpenAI through its `AzureChatOpenAI` wrapper (model name not in the span attributes dict).
+- **File:** `opentelemetry-instrumentation-openai-v2` v2.3b0, `patch.py:118`
+
+### Issue P-8: Distro OpenAI Agents requires OPENAI_API_KEY (not Azure)
+- **Severity:** INFO
+- **Affects:** distro/openaiagentssample
+- **Details:** The `agents` SDK uses OpenAI's API directly, not Azure OpenAI. Needs `OPENAI_API_KEY` env var. Not a bug — just needs different credentials.
+
+### Architecture Finding: Base instrumentors are span processors, not span creators
+- Base SDK `SemanticKernelInstrumentor`, `CustomLangChainInstrumentor`, `OpenAIAgentsTraceInstrumentor` add SpanProcessors that enrich existing spans — they do NOT create inference spans.
+- Distro `use_microsoft_opentelemetry()` auto-enables OTel contrib instrumentors (`opentelemetry-instrumentation-openai-v2`, etc.) that DO create inference spans.
+- Base framework samples without manual `InferenceScope` will have NO inference spans.
 
 ## Captured Output Files
 
 | Config | File |
 |--------|------|
+| base/openaisample console spans | `python/base/openaisample/console_spans.log` |
+| distro/openaisample console spans | `python/distro/openaisample/console_spans.log` |

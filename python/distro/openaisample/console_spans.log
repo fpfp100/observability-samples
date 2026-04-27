@@ -1,0 +1,3080 @@
+2026-04-26 23:20:34,229 - microsoft.opentelemetry._distro - INFO - Azure Monitor exporter explicitly disabled. (_distro.py:250)
+2026-04-26 23:20:34,229 - microsoft.opentelemetry.a365.hosting.middleware.observability_hosting_manager - INFO - [ObservabilityHostingManager] BaggageMiddleware registered. (observability_hosting_manager.py:82)
+2026-04-26 23:20:34,229 - microsoft.opentelemetry.a365.hosting.middleware.observability_hosting_manager - INFO - [ObservabilityHostingManager] OutputLoggingMiddleware registered. (observability_hosting_manager.py:86)
+2026-04-26 23:20:34,229 - microsoft.opentelemetry.a365.hosting.middleware.observability_hosting_manager - INFO - [ObservabilityHostingManager] Configured. Baggage: True, OutputLogging: True. (observability_hosting_manager.py:88)
+2026-04-26 23:20:39,763 - microsoft_agents.activity.activity - ERROR - Validation error for Activity: 1 validation error for ValidatorCallable
+type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing (activity.py:230)
+Traceback (most recent call last):
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\.venv\Lib\site-packages\microsoft_agents\activity\activity.py", line 209, in _validate_channel_id
+    activity = handler(data)
+               ^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ValidatorCallable
+type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-04-26 23:20:39,763 - microsoft_agents.activity.activity - ERROR - Validation error for Activity: 1 validation error for ValidatorCallable
+type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing (activity.py:230)
+Traceback (most recent call last):
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\.venv\Lib\site-packages\microsoft_agents\activity\activity.py", line 209, in _validate_channel_id
+    activity = handler(data)
+               ^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ValidatorCallable
+type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+======== Running on http://localhost:3978 ========
+(Press CTRL+C to quit)
+{
+    "name": "agents.adapter.process",
+    "context": {
+        "trace_id": "0xf649f8482a4b38831c5737f570ab578c",
+        "span_id": "0x44451f8a68dc2975",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-27T06:20:39.763615Z",
+    "end_time": "2026-04-27T06:20:39.772301Z",
+    "status": {
+        "status_code": "ERROR"
+    },
+    "attributes": {},
+    "events": [
+        {
+            "name": "exception",
+            "timestamp": "2026-04-27T06:20:39.772301Z",
+            "attributes": {
+                "exception.type": "pydantic_core._pydantic_core.ValidationError",
+                "exception.message": "1 validation error for Activity\ntype\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"C:\\repos\\pf_sample_nodejs\\python\\distro\\openaisample\\.venv\\Lib\\site-packages\\microsoft_agents\\hosting\\core\\telemetry\\core\\_agents_telemetry.py\", line 64, in start_as_current_span\n    yield span  # execute the operation in the with block\n    ^^^^^^^^^^\n  File \"C:\\repos\\pf_sample_nodejs\\python\\distro\\openaisample\\.venv\\Lib\\site-packages\\microsoft_agents\\hosting\\core\\telemetry\\core\\simple_span_wrapper.py\", line 37, in _start_span\n    yield span\n  File \"C:\\repos\\pf_sample_nodejs\\python\\distro\\openaisample\\.venv\\Lib\\site-packages\\microsoft_agents\\hosting\\core\\http\\_http_adapter_base.py\", line 100, in process_request\n    activity: Activity = Activity.model_validate(body)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\repos\\pf_sample_nodejs\\python\\distro\\openaisample\\.venv\\Lib\\site-packages\\pydantic\\main.py\", line 716, in model_validate\n    return cls.__pydantic_validator__.validate_python(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npydantic_core._pydantic_core.ValidationError: 1 validation error for Activity\ntype\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+2026-04-26 23:20:39,773 - aiohttp.server - ERROR - Error handling request from ::1 (web_protocol.py:481)
+Traceback (most recent call last):
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\.venv\Lib\site-packages\aiohttp\web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\.venv\Lib\site-packages\aiohttp\web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\src\start_server.py", line 80, in entry_point
+    return await start_agent_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\.venv\Lib\site-packages\microsoft_agents\hosting\aiohttp\_start_agent_process.py", line 24, in start_agent_process
+    return await adapter.process(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\.venv\Lib\site-packages\microsoft_agents\hosting\aiohttp\cloud_adapter.py", line 77, in process
+    http_response: HttpResponse = await self.process_request(adapted_request, agent)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\.venv\Lib\site-packages\microsoft_agents\hosting\core\http\_http_adapter_base.py", line 100, in process_request
+    activity: Activity = Activity.model_validate(body)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\distro\openaisample\.venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Activity
+type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-04-26 23:20:39,780 - aiohttp.access - INFO - ::1 [26/Apr/2026:22:20:39 -0800] "POST /api/messages HTTP/1.1" 500 246 "-" "curl/8.19.0" (web_log.py:214)
+{
+    "resource_metrics": [
+        {
+            "resource": {
+                "attributes": {
+                    "telemetry.sdk.language": "python",
+                    "telemetry.sdk.name": "opentelemetry",
+                    "telemetry.sdk.version": "1.40.0",
+                    "service.name": "unknown_service"
+                },
+                "schema_url": ""
+            },
+            "scope_metrics": [
+                {
+                    "scope": {
+                        "name": "opentelemetry-sdk",
+                        "version": null,
+                        "schema_url": "",
+                        "attributes": null
+                    },
+                    "metrics": [
+                        {
+                            "name": "otel.sdk.span.started",
+                            "description": "The number of created spans.",
+                            "unit": "{span}",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "otel.span.parent.origin": "none",
+                                            "otel.span.sampling_result": "RECORD_AND_SAMPLE"
+                                        },
+                                        "start_time_unix_nano": 1777270839763614800,
+                                        "time_unix_nano": 1777270893002287800,
+                                        "value": 1,
+                                        "exemplars": []
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": true
+                            }
+                        },
+                        {
+                            "name": "otel.sdk.span.live",
+                            "description": "The number of created spans with `recording=true` for which the end operation has not been called yet.",
+                            "unit": "{span}",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "otel.span.sampling_result": "RECORD_AND_SAMPLE"
+                                        },
+                                        "start_time_unix_nano": 1777270839763614800,
+                                        "time_unix_nano": 1777270893002287800,
+                                        "value": 0,
+                                        "exemplars": []
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": false
+                            }
+                        }
+                    ],
+                    "schema_url": ""
+                },
+                {
+                    "scope": {
+                        "name": "microsoft_agents",
+                        "version": "1.0.0",
+                        "schema_url": "",
+                        "attributes": null
+                    },
+                    "metrics": [
+                        {
+                            "name": "agents.adapter.process.duration",
+                            "description": "Duration of adapter processing in milliseconds",
+                            "unit": "ms",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "activity.type": "unknown",
+                                            "activity.channel_id": "unknown"
+                                        },
+                                        "start_time_unix_nano": 1777270839766298500,
+                                        "time_unix_nano": 1777270893002287800,
+                                        "count": 1,
+                                        "sum": 2.683877944946289,
+                                        "bucket_counts": [
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 2.683877944946289,
+                                        "max": 2.683877944946289,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 2.683877944946289,
+                                                "time_unix_nano": 1777270839766298500,
+                                                "span_id": 4919372847297341813,
+                                                "trace_id": 327374160388861060512572975628440786828
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2
+                            }
+                        },
+                        {
+                            "name": "agents.activities.received",
+                            "description": "Number of activities received by the adapter",
+                            "unit": "",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "activity.type": "unknown",
+                                            "activity.channel_id": "unknown"
+                                        },
+                                        "start_time_unix_nano": 1777270839766298500,
+                                        "time_unix_nano": 1777270893002287800,
+                                        "value": 1,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270839766298500,
+                                                "span_id": 4919372847297341813,
+                                                "trace_id": 327374160388861060512572975628440786828
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": true
+                            }
+                        }
+                    ],
+                    "schema_url": ""
+                }
+            ],
+            "schema_url": ""
+        }
+    ]
+}
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x9414a5ce165df9a7",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x67580cfe1c8ed377",
+    "start_time": "2026-04-27T06:21:35.233365Z",
+    "end_time": "2026-04-27T06:21:35.915686Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xbb982a10484f7490",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x67580cfe1c8ed377",
+    "start_time": "2026-04-27T06:21:35.929333Z",
+    "end_time": "2026-04-27T06:21:36.069501Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x2a8c74b39f440d4b",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x67580cfe1c8ed377",
+    "start_time": "2026-04-27T06:21:36.071492Z",
+    "end_time": "2026-04-27T06:21:36.642828Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x16f5f9c3bf1f46ea",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x67580cfe1c8ed377",
+    "start_time": "2026-04-27T06:21:36.644824Z",
+    "end_time": "2026-04-27T06:21:36.770506Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_instance_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x67580cfe1c8ed377",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x0816d7884a2f528b",
+    "start_time": "2026-04-27T06:21:35.230502Z",
+    "end_time": "2026-04-27T06:21:36.771506Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xf05d9051c13fd4c2",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x0816d7884a2f528b",
+    "start_time": "2026-04-27T06:21:36.773507Z",
+    "end_time": "2026-04-27T06:21:37.350758Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x752fe2a6cf99212e",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x0816d7884a2f528b",
+    "start_time": "2026-04-27T06:21:37.352758Z",
+    "end_time": "2026-04-27T06:21:37.553042Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_user_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x0816d7884a2f528b",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x51a1ff74db603c93",
+    "start_time": "2026-04-27T06:21:35.230502Z",
+    "end_time": "2026-04-27T06:21:37.554034Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "agentic.user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "auth.scopes": "5a807f24-c9de-44ee-a3a7-329e88a00ffc/.default"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.create_user_token_client",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x51a1ff74db603c93",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x8fb089521f6fe3cf",
+    "start_time": "2026-04-27T06:21:35.230502Z",
+    "end_time": "2026-04-27T06:21:37.555042Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agents.token_service.endpoint": "https://api.botframework.com",
+        "auth.scopes": "https://api.botframework.com/.default"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x8d02cfe5edf81579",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x6011cad108f04e86",
+    "start_time": "2026-04-27T06:21:37.558041Z",
+    "end_time": "2026-04-27T06:21:38.152191Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x0aa336756dacca23",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x6011cad108f04e86",
+    "start_time": "2026-04-27T06:21:38.154191Z",
+    "end_time": "2026-04-27T06:21:38.256258Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_instance_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x6011cad108f04e86",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x1316e3402b2d53c1",
+    "start_time": "2026-04-27T06:21:37.556042Z",
+    "end_time": "2026-04-27T06:21:38.257257Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xdd739321f17d2330",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x1316e3402b2d53c1",
+    "start_time": "2026-04-27T06:21:38.258257Z",
+    "end_time": "2026-04-27T06:21:38.889995Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x4724f36175273fc1",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x1316e3402b2d53c1",
+    "start_time": "2026-04-27T06:21:38.891995Z",
+    "end_time": "2026-04-27T06:21:39.062472Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_user_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x1316e3402b2d53c1",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x68a623cbd5cac125",
+    "start_time": "2026-04-27T06:21:37.556042Z",
+    "end_time": "2026-04-27T06:21:39.063472Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "agentic.user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "auth.scopes": "5a807f24-c9de-44ee-a3a7-329e88a00ffc/.default"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.create_connector_client",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x68a623cbd5cac125",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x8fb089521f6fe3cf",
+    "start_time": "2026-04-27T06:21:37.556042Z",
+    "end_time": "2026-04-27T06:21:39.064471Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "service_url": "http://127.0.0.1:60586/_connector",
+        "auth.scopes": "https://api.botframework.com/.default",
+        "activity.is_agentic_request": true
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.before_turn",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x6ebd2418334acd0c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x63ab2908310694e1",
+    "start_time": "2026-04-27T06:21:39.065472Z",
+    "end_time": "2026-04-27T06:21:39.065472Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {},
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.download_files",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x5b22ced46e8b1b71",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x63ab2908310694e1",
+    "start_time": "2026-04-27T06:21:39.065472Z",
+    "end_time": "2026-04-27T06:21:39.065472Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activity.attachments.count": 0
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x5c7360fccd8d2bb0",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x6943e037e8c62dca",
+    "start_time": "2026-04-27T06:21:39.071472Z",
+    "end_time": "2026-04-27T06:21:39.669657Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.connector.reply_to_activity",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xa9177f2e4c37f043",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0xb7069ac13ea4ae12",
+    "start_time": "2026-04-27T06:21:39.068472Z",
+    "end_time": "2026-04-27T06:21:39.748987Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f",
+        "activity.id": "f6fab10c-bf8a-4c1a-9853-7ae50b4032d1"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.send_activities",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xb7069ac13ea4ae12",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x505e7ba80af9d8c2",
+    "start_time": "2026-04-27T06:21:39.068472Z",
+    "end_time": "2026-04-27T06:21:39.748987Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activities.count": 1,
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.turn.send_activities",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x505e7ba80af9d8c2",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x63ab2908310694e1",
+    "start_time": "2026-04-27T06:21:39.068472Z",
+    "end_time": "2026-04-27T06:21:39.749985Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x87e83131f3031d75",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x6943e037e8c62dca",
+    "start_time": "2026-04-27T06:21:39.672346Z",
+    "end_time": "2026-04-27T06:21:39.795357Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_instance_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x6943e037e8c62dca",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x95fe2b515b6bdbe3",
+    "start_time": "2026-04-27T06:21:39.067472Z",
+    "end_time": "2026-04-27T06:21:39.796411Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x75c3c43003a367ee",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x95fe2b515b6bdbe3",
+    "start_time": "2026-04-27T06:21:39.797410Z",
+    "end_time": "2026-04-27T06:21:40.417273Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xad605bd6551aee56",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x95fe2b515b6bdbe3",
+    "start_time": "2026-04-27T06:21:40.420008Z",
+    "end_time": "2026-04-27T06:21:40.591211Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_user_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x95fe2b515b6bdbe3",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x8b39f7902e3e5234",
+    "start_time": "2026-04-27T06:21:39.067472Z",
+    "end_time": "2026-04-27T06:21:40.592211Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "agentic.user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "auth.scopes": "https://graph.microsoft.com/.default"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authorization.agentic_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x8b39f7902e3e5234",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x63ab2908310694e1",
+    "start_time": "2026-04-27T06:21:39.067472Z",
+    "end_time": "2026-04-27T06:21:40.592211Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "auth.handler.id": "AGENTIC",
+        "auth.connection.name": "unknown"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+2026-04-26 23:21:40,593 - microsoft.opentelemetry.a365.core.opentelemetry_scope - INFO - Span started: 'invoke_agent Azure OpenAI Agent' (016393035df2f108) (opentelemetry_scope.py:161)
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xa9ff7d0b507b0746",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0xec44c47bb72edfb8",
+    "start_time": "2026-04-27T06:21:40.597210Z",
+    "end_time": "2026-04-27T06:21:41.206653Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xd66c2f0a43818e86",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0xec44c47bb72edfb8",
+    "start_time": "2026-04-27T06:21:41.208656Z",
+    "end_time": "2026-04-27T06:21:41.330593Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_instance_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xec44c47bb72edfb8",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x824f56c698536705",
+    "start_time": "2026-04-27T06:21:40.596212Z",
+    "end_time": "2026-04-27T06:21:41.331592Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "GET",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x80740c4f7e445698",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x824f56c698536705",
+    "start_time": "2026-04-27T06:21:41.332594Z",
+    "end_time": "2026-04-27T06:21:41.885872Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/v2.0/.well-known/openid-configuration",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "POST",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xa1f4d714e76eb07d",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x824f56c698536705",
+    "start_time": "2026-04-27T06:21:41.888378Z",
+    "end_time": "2026-04-27T06:21:42.084643Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "https://login.microsoftonline.com/badf1f56-284d-4dc5-ac59-0dd53900e743/oauth2/v2.0/token",
+        "user_agent.original": "python-requests/2.32.5",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_user_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x824f56c698536705",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x2ee72690338bc65f",
+    "start_time": "2026-04-27T06:21:40.594211Z",
+    "end_time": "2026-04-27T06:21:42.090643Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "agentic.user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "auth.scopes": "api://9b975845-388f-4429-889e-eab1ef63949c/Agent365.Observability.OtelWrite"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authorization.agentic_token",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x2ee72690338bc65f",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x016393035df2f108",
+    "start_time": "2026-04-27T06:21:40.594211Z",
+    "end_time": "2026-04-27T06:21:42.090643Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "auth.handler.id": "AGENTIC",
+        "auth.connection.name": "unknown",
+        "auth.scopes": "api://9b975845-388f-4429-889e-eab1ef63949c/Agent365.Observability.OtelWrite"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+2026-04-26 23:21:42,091 - agent - INFO - Processing user message: What is 2+2? (agent.py:162)
+2026-04-26 23:21:42,091 - microsoft.opentelemetry.a365.core.opentelemetry_scope - INFO - Span started: 'Chat gpt-4o-mini' (41def6e14b74f7f5) (opentelemetry_scope.py:161)
+{
+    "body": null,
+    "severity_number": null,
+    "severity_text": null,
+    "attributes": {
+        "gen_ai.system": "openai"
+    },
+    "dropped_attributes": 0,
+    "timestamp": null,
+    "observed_timestamp": "2026-04-27T06:21:42.551024Z",
+    "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+    "span_id": "0xb75f154fe3d7104c",
+    "trace_flags": 1,
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    },
+    "event_name": "gen_ai.system.message"
+}
+{
+    "body": null,
+    "severity_number": null,
+    "severity_text": null,
+    "attributes": {
+        "gen_ai.system": "openai"
+    },
+    "dropped_attributes": 0,
+    "timestamp": null,
+    "observed_timestamp": "2026-04-27T06:21:42.552024Z",
+    "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+    "span_id": "0xb75f154fe3d7104c",
+    "trace_flags": 1,
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    },
+    "event_name": "gen_ai.user.message"
+}
+2026-04-26 23:21:43,450 - httpx - INFO - HTTP Request: POST https://a365-hw-openai-sentinel.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK" (_client.py:1740)
+{
+    "body": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+            "role": "assistant"
+        }
+    },
+    "severity_number": null,
+    "severity_text": null,
+    "attributes": {
+        "gen_ai.system": "openai"
+    },
+    "dropped_attributes": 0,
+    "timestamp": null,
+    "observed_timestamp": "2026-04-27T06:21:43.457933Z",
+    "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+    "span_id": "0xb75f154fe3d7104c",
+    "trace_flags": 1,
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    },
+    "event_name": "gen_ai.choice"
+}
+{
+    "name": "chat gpt-4o-mini",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xb75f154fe3d7104c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x41def6e14b74f7f5",
+    "start_time": "2026-04-27T06:21:42.551024Z",
+    "end_time": "2026-04-27T06:21:43.458929Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.system": "openai",
+        "gen_ai.request.model": "gpt-4o-mini",
+        "gen_ai.request.temperature": 0.7,
+        "gen_ai.request.top_p": 0.95,
+        "gen_ai.request.max_tokens": 16384,
+        "gen_ai.request.presence_penalty": 0,
+        "gen_ai.request.frequency_penalty": 0,
+        "server.address": "a365-hw-openai-sentinel.openai.azure.com",
+        "gen_ai.response.model": "gpt-4o-mini-2024-07-18",
+        "gen_ai.response.finish_reasons": [
+            "stop"
+        ],
+        "gen_ai.response.id": "chatcmpl-DZ9dfKnluCCJMY31203uok2D2CUo0",
+        "gen_ai.openai.response.service_tier": "default",
+        "gen_ai.usage.input_tokens": 34,
+        "gen_ai.usage.output_tokens": 9
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+2026-04-26 23:21:43,458 - microsoft.opentelemetry.a365.core.opentelemetry_scope - INFO - Span ended: 'Chat gpt-4o-mini' (41def6e14b74f7f5) (opentelemetry_scope.py:267)
+{
+    "name": "Chat gpt-4o-mini",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x41def6e14b74f7f5",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x016393035df2f108",
+    "start_time": "2026-04-27T06:21:42.091652Z",
+    "end_time": "2026-04-27T06:21:43.458929Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "telemetry.sdk.name": "A365ObservabilitySDK",
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.version": "0.0.0-unknown",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "Azure OpenAI Agent",
+        "gen_ai.agent.description": "An AI agent powered by Azure OpenAI",
+        "microsoft.opentelemetry.a365.agent.blueprint.id": "4a380e3b-7092-4d73-bb9d-b6a54702684af",
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.input.messages": "{\"messages\": [{\"role\": \"user\", \"parts\": [{\"content\": \"What is 2+2?\", \"type\": \"text\"}]}], \"version\": \"0.1.0\"}",
+        "gen_ai.operation.name": "Chat",
+        "gen_ai.request.model": "gpt-4o-mini",
+        "gen_ai.provider.name": "Azure OpenAI",
+        "gen_ai.output.messages": "{\"messages\": [{\"role\": \"assistant\", \"parts\": [{\"content\": \"2 + 2 equals 4.\", \"type\": \"text\"}]}], \"version\": \"0.1.0\"}",
+        "gen_ai.usage.input_tokens": 34,
+        "gen_ai.usage.output_tokens": 9,
+        "gen_ai.response.finish_reasons": "[\"stop\"]"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+2026-04-26 23:21:43,459 - microsoft.opentelemetry.a365.hosting.middleware.output_logging_middleware - WARNING - [OutputLoggingMiddleware] No traceparent in turn_state under 'A365ParentTraceparent'. OutputScope will not be linked to a parent. (output_logging_middleware.py:155)
+2026-04-26 23:21:43,459 - microsoft.opentelemetry.a365.core.opentelemetry_scope - INFO - Span started: 'output_messages d6d31512-379f-4994-b901-c098dfd9293f' (ebaaef96992eaa26) (opentelemetry_scope.py:161)
+2026-04-26 23:21:43,460 - microsoft.opentelemetry.a365.core.opentelemetry_scope - INFO - Span ended: 'output_messages d6d31512-379f-4994-b901-c098dfd9293f' (ebaaef96992eaa26) (opentelemetry_scope.py:267)
+{
+    "name": "output_messages d6d31512-379f-4994-b901-c098dfd9293f",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xebaaef96992eaa26",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x34cacee881b39b8b",
+    "start_time": "2026-04-27T06:21:43.459929Z",
+    "end_time": "2026-04-27T06:21:43.460930Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.operation.name": "output_messages",
+        "telemetry.sdk.name": "A365ObservabilitySDK",
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.version": "0.0.0-unknown",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f",
+        "gen_ai.output.messages": "{\"messages\": [{\"role\": \"assistant\", \"parts\": [{\"content\": \"2 + 2 equals 4.\", \"type\": \"text\"}]}], \"version\": \"0.1.0\"}",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "microsoft.channel.name": "emulator"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.connector.reply_to_activity",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x5d4142bbd1b52468",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0xb1fee11b187decb2",
+    "start_time": "2026-04-27T06:21:43.461928Z",
+    "end_time": "2026-04-27T06:21:43.465929Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f",
+        "activity.id": "f6fab10c-bf8a-4c1a-9853-7ae50b4032d1"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.send_activities",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0xb1fee11b187decb2",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x34cacee881b39b8b",
+    "start_time": "2026-04-27T06:21:43.461928Z",
+    "end_time": "2026-04-27T06:21:43.465929Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activities.count": 1,
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.turn.send_activities",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x34cacee881b39b8b",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x016393035df2f108",
+    "start_time": "2026-04-27T06:21:43.459929Z",
+    "end_time": "2026-04-27T06:21:43.465929Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+2026-04-26 23:21:43,465 - microsoft.opentelemetry.a365.core.opentelemetry_scope - INFO - Span ended: 'invoke_agent Azure OpenAI Agent' (016393035df2f108) (opentelemetry_scope.py:267)
+{
+    "name": "invoke_agent Azure OpenAI Agent",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x016393035df2f108",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x384aa55c30675af4",
+    "start_time": "2026-04-27T06:21:40.593210Z",
+    "end_time": "2026-04-27T06:21:43.465929Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.operation.name": "invoke_agent",
+        "telemetry.sdk.name": "A365ObservabilitySDK",
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.version": "0.0.0-unknown",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "Azure OpenAI Agent",
+        "gen_ai.agent.description": "An AI agent powered by Azure OpenAI",
+        "microsoft.opentelemetry.a365.agent.blueprint.id": "4a380e3b-7092-4d73-bb9d-b6a54702684af",
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "microsoft.session.id": "conv-CPC-pefan-QECKC-b0039a9f",
+        "gen_ai.input.messages": "{\"messages\": [{\"role\": \"user\", \"parts\": [{\"content\": \"What is 2+2?\", \"type\": \"text\"}]}], \"version\": \"0.1.0\"}"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.route_handler",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x384aa55c30675af4",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x63ab2908310694e1",
+    "start_time": "2026-04-27T06:21:40.593210Z",
+    "end_time": "2026-04-27T06:21:43.466941Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "route.is_invoke": false,
+        "route.is_agentic": false
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.after_turn",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x5863c41ac4e709be",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x63ab2908310694e1",
+    "start_time": "2026-04-27T06:21:43.466941Z",
+    "end_time": "2026-04-27T06:21:43.466941Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {},
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.run",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x63ab2908310694e1",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x8fb089521f6fe3cf",
+    "start_time": "2026-04-27T06:21:39.065472Z",
+    "end_time": "2026-04-27T06:21:43.466941Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "route.authorized": true,
+        "route.matched": true,
+        "activity.type": "message",
+        "activity.id": "f6fab10c-bf8a-4c1a-9853-7ae50b4032d1"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "type": "message",
+    "id": "f6fab10c-bf8a-4c1a-9853-7ae50b4032d1",
+    "timestamp": "2026-04-27T06:21:35.144283Z",
+    "local_timestamp": "2026-04-26T23:21:35.144747-07:00",
+    "local_timezone": "Pacific Standard Time",
+    "service_url": "http://127.0.0.1:60586/_connector",
+    "from_property": {
+        "id": "user-CPC-pefan-QECKC",
+        "name": "Tester CPC-pefan-QECKC",
+        "aad_object_id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "role": "user",
+        "agentic_user_id": null,
+        "agentic_app_id": null,
+        "tenant_id": null
+    },
+    "conversation": {
+        "is_group": null,
+        "conversation_type": "personal",
+        "id": "conv-CPC-pefan-QECKC-b0039a9f",
+        "name": null,
+        "aad_object_id": null,
+        "role": null,
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "properties": null
+    },
+    "recipient": {
+        "id": "nikhilcagent0416@a365preview070.onmicrosoft.com",
+        "name": "nikhilcagent0416 Agent User",
+        "aad_object_id": null,
+        "role": "agenticUser",
+        "agentic_user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "agentic_app_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743"
+    },
+    "text_format": "plain",
+    "attachment_layout": null,
+    "members_added": null,
+    "members_removed": null,
+    "reactions_added": null,
+    "reactions_removed": null,
+    "topic_name": null,
+    "history_disclosed": null,
+    "locale": "en-US",
+    "text": "What is 2+2?",
+    "speak": null,
+    "input_hint": null,
+    "summary": null,
+    "suggested_actions": null,
+    "attachments": null,
+    "entities": [
+        {
+            "type": "clientInfo",
+            "locale": "en-US",
+            "country": "US",
+            "platform": "Web",
+            "timezone": "America/Los_Angeles"
+        }
+    ],
+    "channel_data": {
+        "tenant": {
+            "id": "badf1f56-284d-4dc5-ac59-0dd53900e743"
+        }
+    },
+    "action": null,
+    "reply_to_id": null,
+    "label": null,
+    "value_type": null,
+    "value": null,
+    "name": null,
+    "relates_to": null,
+    "code": null,
+    "expiration": null,
+    "importance": null,
+    "delivery_mode": null,
+    "listen_for": null,
+    "text_highlights": null,
+    "semantic_action": null,
+    "caller_id": null,
+    "channel_id": "emulator"
+}
+{
+    "type": "typing",
+    "id": "g_08lo91777270899068.472",
+    "timestamp": null,
+    "local_timestamp": null,
+    "local_timezone": null,
+    "service_url": "http://127.0.0.1:60586/_connector",
+    "from_property": {
+        "id": "nikhilcagent0416@a365preview070.onmicrosoft.com",
+        "name": "nikhilcagent0416 Agent User",
+        "aad_object_id": null,
+        "role": "agenticUser",
+        "agentic_user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "agentic_app_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743"
+    },
+    "conversation": {
+        "is_group": null,
+        "conversation_type": "personal",
+        "id": "conv-CPC-pefan-QECKC-b0039a9f",
+        "name": null,
+        "aad_object_id": null,
+        "role": null,
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "properties": null
+    },
+    "recipient": {
+        "id": "user-CPC-pefan-QECKC",
+        "name": "Tester CPC-pefan-QECKC",
+        "aad_object_id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "role": "user",
+        "agentic_user_id": null,
+        "agentic_app_id": null,
+        "tenant_id": null
+    },
+    "text_format": null,
+    "attachment_layout": null,
+    "members_added": null,
+    "members_removed": null,
+    "reactions_added": null,
+    "reactions_removed": null,
+    "topic_name": null,
+    "history_disclosed": null,
+    "locale": "en-US",
+    "text": null,
+    "speak": null,
+    "input_hint": "acceptingInput",
+    "summary": null,
+    "suggested_actions": null,
+    "attachments": null,
+    "entities": null,
+    "channel_data": null,
+    "action": null,
+    "reply_to_id": "f6fab10c-bf8a-4c1a-9853-7ae50b4032d1",
+    "label": null,
+    "value_type": null,
+    "value": null,
+    "name": null,
+    "relates_to": null,
+    "code": null,
+    "expiration": null,
+    "importance": null,
+    "delivery_mode": null,
+    "listen_for": null,
+    "text_highlights": null,
+    "semantic_action": null,
+    "caller_id": null,
+    "channel_id": "emulator"
+}
+{
+    "type": "message",
+    "id": "g_zqla71777270903460.929",
+    "timestamp": null,
+    "local_timestamp": null,
+    "local_timezone": null,
+    "service_url": "http://127.0.0.1:60586/_connector",
+    "from_property": {
+        "id": "nikhilcagent0416@a365preview070.onmicrosoft.com",
+        "name": "nikhilcagent0416 Agent User",
+        "aad_object_id": null,
+        "role": "agenticUser",
+        "agentic_user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "agentic_app_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743"
+    },
+    "conversation": {
+        "is_group": null,
+        "conversation_type": "personal",
+        "id": "conv-CPC-pefan-QECKC-b0039a9f",
+        "name": null,
+        "aad_object_id": null,
+        "role": null,
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "properties": null
+    },
+    "recipient": {
+        "id": "user-CPC-pefan-QECKC",
+        "name": "Tester CPC-pefan-QECKC",
+        "aad_object_id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "role": "user",
+        "agentic_user_id": null,
+        "agentic_app_id": null,
+        "tenant_id": null
+    },
+    "text_format": null,
+    "attachment_layout": null,
+    "members_added": null,
+    "members_removed": null,
+    "reactions_added": null,
+    "reactions_removed": null,
+    "topic_name": null,
+    "history_disclosed": null,
+    "locale": "en-US",
+    "text": "2 + 2 equals 4.",
+    "speak": null,
+    "input_hint": "acceptingInput",
+    "summary": null,
+    "suggested_actions": null,
+    "attachments": null,
+    "entities": null,
+    "channel_data": null,
+    "action": null,
+    "reply_to_id": "f6fab10c-bf8a-4c1a-9853-7ae50b4032d1",
+    "label": null,
+    "value_type": null,
+    "value": null,
+    "name": null,
+    "relates_to": null,
+    "code": null,
+    "expiration": null,
+    "importance": null,
+    "delivery_mode": null,
+    "listen_for": null,
+    "text_highlights": null,
+    "semantic_action": null,
+    "caller_id": null,
+    "channel_id": "emulator"
+}
+{
+    "name": "agents.adapter.process",
+    "context": {
+        "trace_id": "0x9d3267750a15dcd248ec0dc1657c799f",
+        "span_id": "0x8fb089521f6fe3cf",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-27T06:21:35.229502Z",
+    "end_time": "2026-04-27T06:21:43.468939Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activity.type": "message",
+        "activity.channel_id": "emulator",
+        "activity.delivery_mode": "unknown",
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f",
+        "activity.is_agentic_request": true
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.40.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+2026-04-26 23:21:43,468 - aiohttp.access - INFO - ::1 [26/Apr/2026:22:21:35 -0800] "POST /api/messages HTTP/1.1" 202 117 "-" "-" (web_log.py:214)
+{
+    "resource_metrics": [
+        {
+            "resource": {
+                "attributes": {
+                    "telemetry.sdk.language": "python",
+                    "telemetry.sdk.name": "opentelemetry",
+                    "telemetry.sdk.version": "1.40.0",
+                    "service.name": "unknown_service"
+                },
+                "schema_url": ""
+            },
+            "scope_metrics": [
+                {
+                    "scope": {
+                        "name": "opentelemetry-sdk",
+                        "version": null,
+                        "schema_url": "",
+                        "attributes": null
+                    },
+                    "metrics": [
+                        {
+                            "name": "otel.sdk.span.started",
+                            "description": "The number of created spans.",
+                            "unit": "{span}",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "otel.span.parent.origin": "none",
+                                            "otel.span.sampling_result": "RECORD_AND_SAMPLE"
+                                        },
+                                        "start_time_unix_nano": 1777270839763614800,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 2,
+                                        "exemplars": []
+                                    },
+                                    {
+                                        "attributes": {
+                                            "otel.span.parent.origin": "local",
+                                            "otel.span.sampling_result": "RECORD_AND_SAMPLE"
+                                        },
+                                        "start_time_unix_nano": 1777270895230501700,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 45,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270897556042600,
+                                                "span_id": 7540753984450642213,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": true
+                            }
+                        },
+                        {
+                            "name": "otel.sdk.span.live",
+                            "description": "The number of created spans with `recording=true` for which the end operation has not been called yet.",
+                            "unit": "{span}",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "otel.span.sampling_result": "RECORD_AND_SAMPLE"
+                                        },
+                                        "start_time_unix_nano": 1777270839763614800,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 0,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270902091652300,
+                                                "span_id": 100085259402670344,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": false
+                            }
+                        }
+                    ],
+                    "schema_url": ""
+                },
+                {
+                    "scope": {
+                        "name": "microsoft_agents",
+                        "version": "1.0.0",
+                        "schema_url": "",
+                        "attributes": null
+                    },
+                    "metrics": [
+                        {
+                            "name": "agents.adapter.process.duration",
+                            "description": "Duration of adapter processing in milliseconds",
+                            "unit": "ms",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "activity.type": "unknown",
+                                            "activity.channel_id": "unknown"
+                                        },
+                                        "start_time_unix_nano": 1777270839766298500,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 1,
+                                        "sum": 2.683877944946289,
+                                        "bucket_counts": [
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 2.683877944946289,
+                                        "max": 2.683877944946289,
+                                        "exemplars": []
+                                    },
+                                    {
+                                        "attributes": {
+                                            "activity.type": "message",
+                                            "activity.channel_id": "emulator"
+                                        },
+                                        "start_time_unix_nano": 1777270903468939100,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 1,
+                                        "sum": 8239.436864852905,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            1,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 8239.436864852905,
+                                        "max": 8239.436864852905,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 8239.436864852905,
+                                                "time_unix_nano": 1777270903468939100,
+                                                "span_id": 10353926529132520399,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2
+                            }
+                        },
+                        {
+                            "name": "agents.activities.received",
+                            "description": "Number of activities received by the adapter",
+                            "unit": "",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "activity.type": "unknown",
+                                            "activity.channel_id": "unknown"
+                                        },
+                                        "start_time_unix_nano": 1777270839766298500,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 1,
+                                        "exemplars": []
+                                    },
+                                    {
+                                        "attributes": {
+                                            "activity.type": "message",
+                                            "activity.channel_id": "emulator"
+                                        },
+                                        "start_time_unix_nano": 1777270903468939100,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 1,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270903468939100,
+                                                "span_id": 10353926529132520399,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": true
+                            }
+                        },
+                        {
+                            "name": "agents.auth.token.request.count",
+                            "description": "Total number of auth token requests made by the AuthTokenClient",
+                            "unit": "request",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "auth.method": "agentic_instance",
+                                            "auth.success": true
+                                        },
+                                        "start_time_unix_nano": 1777270896771506200,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 4,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270896771506200,
+                                                "span_id": 7446716269397463927,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "attributes": {
+                                            "auth.method": "agentic_user",
+                                            "auth.success": true
+                                        },
+                                        "start_time_unix_nano": 1777270897554034100,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 4,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270902090642600,
+                                                "span_id": 9389819159049889541,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": true
+                            }
+                        },
+                        {
+                            "name": "agents.auth.token.request.duration",
+                            "description": "Duration of auth token requests in milliseconds",
+                            "unit": "ms",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "auth.method": "agentic_instance",
+                                            "auth.success": true
+                                        },
+                                        "start_time_unix_nano": 1777270896771506200,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 4,
+                                        "sum": 3706.5374851226807,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            3,
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 701.2147903442383,
+                                        "max": 1541.0044193267822,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 735.3799343109131,
+                                                "time_unix_nano": 1777270901331592300,
+                                                "span_id": 17024948527000641464,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            },
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1541.0044193267822,
+                                                "time_unix_nano": 1777270896771506200,
+                                                "span_id": 7446716269397463927,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "attributes": {
+                                            "auth.method": "agentic_user",
+                                            "auth.success": true
+                                        },
+                                        "start_time_unix_nano": 1777270897554034100,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 4,
+                                        "sum": 6852.132797241211,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            4,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 1496.4320659637451,
+                                        "max": 2323.5325813293457,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1496.4320659637451,
+                                                "time_unix_nano": 1777270902090642600,
+                                                "span_id": 9389819159049889541,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2
+                            }
+                        },
+                        {
+                            "name": "agents.connector.request.duration",
+                            "description": "Duration of connector requests in milliseconds",
+                            "unit": "ms",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "http.method": "POST",
+                                            "http.status_code": 200,
+                                            "operation": "agents.connector.reply_to_activity"
+                                        },
+                                        "start_time_unix_nano": 1777270899748986500,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 2,
+                                        "sum": 684.5149993896484,
+                                        "bucket_counts": [
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 4.000425338745117,
+                                        "max": 680.5145740509033,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 4.000425338745117,
+                                                "time_unix_nano": 1777270903465928500,
+                                                "span_id": 6719725493458117736,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            },
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 680.5145740509033,
+                                                "time_unix_nano": 1777270899748986500,
+                                                "span_id": 12184347153698123843,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2
+                            }
+                        },
+                        {
+                            "name": "agents.connector.request.count",
+                            "description": "Total number of connector requests made by the ConnectorClient",
+                            "unit": "request",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "http.method": "POST",
+                                            "http.status_code": 200,
+                                            "operation": "agents.connector.reply_to_activity"
+                                        },
+                                        "start_time_unix_nano": 1777270899748986500,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 2,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270903465928500,
+                                                "span_id": 6719725493458117736,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": true
+                            }
+                        },
+                        {
+                            "name": "agents.activities.sent",
+                            "description": "Number of activities sent by the adapter",
+                            "unit": "",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "activity.type": "typing",
+                                            "activity.channel_id": "emulator"
+                                        },
+                                        "start_time_unix_nano": 1777270899748986500,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 1,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270899748986500,
+                                                "span_id": 13188398713571421714,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "attributes": {
+                                            "activity.type": "message",
+                                            "activity.channel_id": "emulator"
+                                        },
+                                        "start_time_unix_nano": 1777270903465928500,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 1,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270903465928500,
+                                                "span_id": 12825936295289023666,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": true
+                            }
+                        },
+                        {
+                            "name": "agents.turn.count",
+                            "description": "Total number of turns processed by the agent",
+                            "unit": "turn",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "activity.type": "message",
+                                            "activity.channel_id": "emulator",
+                                            "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f",
+                                            "success": true
+                                        },
+                                        "start_time_unix_nano": 1777270903466941400,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "value": 1,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 1,
+                                                "time_unix_nano": 1777270903466941400,
+                                                "span_id": 7181879145931379937,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2,
+                                "is_monotonic": true
+                            }
+                        },
+                        {
+                            "name": "agents.turn.duration",
+                            "description": "Duration of agent turns in milliseconds",
+                            "unit": "ms",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "activity.type": "message",
+                                            "activity.channel_id": "emulator",
+                                            "activity.conversation.id": "conv-CPC-pefan-QECKC-b0039a9f",
+                                            "success": true
+                                        },
+                                        "start_time_unix_nano": 1777270903466941400,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 1,
+                                        "sum": 4401.469469070435,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 4401.469469070435,
+                                        "max": 4401.469469070435,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 4401.469469070435,
+                                                "time_unix_nano": 1777270903466941400,
+                                                "span_id": 7181879145931379937,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2
+                            }
+                        }
+                    ],
+                    "schema_url": ""
+                },
+                {
+                    "scope": {
+                        "name": "opentelemetry.instrumentation.requests",
+                        "version": "0.61b0",
+                        "schema_url": "https://opentelemetry.io/schemas/1.11.0",
+                        "attributes": null
+                    },
+                    "metrics": [
+                        {
+                            "name": "http.client.duration",
+                            "description": "measures the duration of the outbound HTTP request",
+                            "unit": "ms",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "http.method": "GET",
+                                            "http.scheme": "https",
+                                            "http.host": "login.microsoftonline.com",
+                                            "net.peer.name": "login.microsoftonline.com",
+                                            "http.status_code": 200,
+                                            "http.flavor": "1.1"
+                                        },
+                                        "start_time_unix_nano": 1777270895915685800,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 9,
+                                        "sum": 5435,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            9,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 553,
+                                        "max": 683,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 553,
+                                                "time_unix_nano": 1777270901885871800,
+                                                "span_id": 9256036669713569432,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "attributes": {
+                                            "http.method": "POST",
+                                            "http.scheme": "https",
+                                            "http.host": "login.microsoftonline.com",
+                                            "net.peer.name": "login.microsoftonline.com",
+                                            "http.status_code": 200,
+                                            "http.flavor": "1.1"
+                                        },
+                                        "start_time_unix_nano": 1777270896069501000,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 9,
+                                        "sum": 1349,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            9,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.0,
+                                            5.0,
+                                            10.0,
+                                            25.0,
+                                            50.0,
+                                            75.0,
+                                            100.0,
+                                            250.0,
+                                            500.0,
+                                            750.0,
+                                            1000.0,
+                                            2500.0,
+                                            5000.0,
+                                            7500.0,
+                                            10000.0
+                                        ],
+                                        "min": 101,
+                                        "max": 200,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 196,
+                                                "time_unix_nano": 1777270902084643300,
+                                                "span_id": 11670189019205906557,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2
+                            }
+                        }
+                    ],
+                    "schema_url": "https://opentelemetry.io/schemas/1.11.0"
+                },
+                {
+                    "scope": {
+                        "name": "opentelemetry.instrumentation.openai_v2",
+                        "version": "",
+                        "schema_url": "https://opentelemetry.io/schemas/1.30.0",
+                        "attributes": null
+                    },
+                    "metrics": [
+                        {
+                            "name": "gen_ai.client.operation.duration",
+                            "description": "GenAI operation duration",
+                            "unit": "s",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "gen_ai.operation.name": "chat",
+                                            "gen_ai.system": "openai",
+                                            "gen_ai.request.model": "gpt-4o-mini",
+                                            "gen_ai.response.model": "gpt-4o-mini-2024-07-18",
+                                            "gen_ai.openai.response.service_tier": "default",
+                                            "gen_ai.openai.response.system_fingerprint": "fp_eb37e061ec",
+                                            "server.address": "a365-hw-openai-sentinel.openai.azure.com"
+                                        },
+                                        "start_time_unix_nano": 1777270903458929000,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 1,
+                                        "sum": 0.9069400998996571,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            0.01,
+                                            0.02,
+                                            0.04,
+                                            0.08,
+                                            0.16,
+                                            0.32,
+                                            0.64,
+                                            1.28,
+                                            2.56,
+                                            5.12,
+                                            10.24,
+                                            20.48,
+                                            40.96,
+                                            81.92
+                                        ],
+                                        "min": 0.9069400998996571,
+                                        "max": 0.9069400998996571,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 0.9069400998996571,
+                                                "time_unix_nano": 1777270903458929000,
+                                                "span_id": 13213303264597446732,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2
+                            }
+                        },
+                        {
+                            "name": "gen_ai.client.token.usage",
+                            "description": "Measures number of input and output tokens used",
+                            "unit": "{token}",
+                            "data": {
+                                "data_points": [
+                                    {
+                                        "attributes": {
+                                            "gen_ai.operation.name": "chat",
+                                            "gen_ai.system": "openai",
+                                            "gen_ai.request.model": "gpt-4o-mini",
+                                            "gen_ai.response.model": "gpt-4o-mini-2024-07-18",
+                                            "gen_ai.openai.response.service_tier": "default",
+                                            "gen_ai.openai.response.system_fingerprint": "fp_eb37e061ec",
+                                            "server.address": "a365-hw-openai-sentinel.openai.azure.com",
+                                            "gen_ai.token.type": "input"
+                                        },
+                                        "start_time_unix_nano": 1777270903458929000,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 1,
+                                        "sum": 34,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            1,
+                                            4,
+                                            16,
+                                            64,
+                                            256,
+                                            1024,
+                                            4096,
+                                            16384,
+                                            65536,
+                                            262144,
+                                            1048576,
+                                            4194304,
+                                            16777216,
+                                            67108864
+                                        ],
+                                        "min": 34,
+                                        "max": 34,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 34,
+                                                "time_unix_nano": 1777270903458929000,
+                                                "span_id": 13213303264597446732,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "attributes": {
+                                            "gen_ai.operation.name": "chat",
+                                            "gen_ai.system": "openai",
+                                            "gen_ai.request.model": "gpt-4o-mini",
+                                            "gen_ai.response.model": "gpt-4o-mini-2024-07-18",
+                                            "gen_ai.openai.response.service_tier": "default",
+                                            "gen_ai.openai.response.system_fingerprint": "fp_eb37e061ec",
+                                            "server.address": "a365-hw-openai-sentinel.openai.azure.com",
+                                            "gen_ai.token.type": "output"
+                                        },
+                                        "start_time_unix_nano": 1777270903458929000,
+                                        "time_unix_nano": 1777270953016866300,
+                                        "count": 1,
+                                        "sum": 9,
+                                        "bucket_counts": [
+                                            0,
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ],
+                                        "explicit_bounds": [
+                                            1,
+                                            4,
+                                            16,
+                                            64,
+                                            256,
+                                            1024,
+                                            4096,
+                                            16384,
+                                            65536,
+                                            262144,
+                                            1048576,
+                                            4194304,
+                                            16777216,
+                                            67108864
+                                        ],
+                                        "min": 9,
+                                        "max": 9,
+                                        "exemplars": [
+                                            {
+                                                "filtered_attributes": {},
+                                                "value": 9,
+                                                "time_unix_nano": 1777270903458929000,
+                                                "span_id": 13213303264597446732,
+                                                "trace_id": 208950508542164004058427832982386276767
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "aggregation_temporality": 2
+                            }
+                        }
+                    ],
+                    "schema_url": "https://opentelemetry.io/schemas/1.30.0"
+                }
+            ],
+            "schema_url": ""
+        }
+    ]
+}

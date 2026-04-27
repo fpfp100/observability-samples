@@ -1,0 +1,1356 @@
+is_agent365_exporter_enabled() not enabled or token_resolver not set. Falling back to console exporter.
+Validation error for Activity: 1 validation error for ValidatorCallable
+type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+Traceback (most recent call last):
+  File "C:\repos\pf_sample_nodejs\python\base\openaisample\.venv\Lib\site-packages\microsoft_agents\activity\activity.py", line 209, in _validate_channel_id
+    activity = handler(data)
+               ^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ValidatorCallable
+type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+Error handling request from ::1
+Traceback (most recent call last):
+  File "C:\repos\pf_sample_nodejs\python\base\openaisample\.venv\Lib\site-packages\aiohttp\web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\base\openaisample\.venv\Lib\site-packages\aiohttp\web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\base\openaisample\src\start_server.py", line 59, in entry_point
+    return await start_agent_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\base\openaisample\.venv\Lib\site-packages\microsoft_agents\hosting\aiohttp\_start_agent_process.py", line 24, in start_agent_process
+    return await adapter.process(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\base\openaisample\.venv\Lib\site-packages\microsoft_agents\hosting\aiohttp\cloud_adapter.py", line 77, in process
+    http_response: HttpResponse = await self.process_request(adapted_request, agent)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\base\openaisample\.venv\Lib\site-packages\microsoft_agents\hosting\core\http\_http_adapter_base.py", line 100, in process_request
+    activity: Activity = Activity.model_validate(body)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repos\pf_sample_nodejs\python\base\openaisample\.venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Activity
+type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+======== Running on http://localhost:3978 ========
+(Press CTRL+C to quit)
+{
+    "name": "agents.adapter.process",
+    "context": {
+        "trace_id": "0x4e31a9be8df712d72ee8146b9fe58d70",
+        "span_id": "0x9e897e3e591ee7d9",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-27T06:16:01.421950Z",
+    "end_time": "2026-04-27T06:16:01.529196Z",
+    "status": {
+        "status_code": "ERROR"
+    },
+    "attributes": {},
+    "events": [
+        {
+            "name": "exception",
+            "timestamp": "2026-04-27T06:16:01.529196Z",
+            "attributes": {
+                "exception.type": "pydantic_core._pydantic_core.ValidationError",
+                "exception.message": "1 validation error for Activity\ntype\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"C:\\repos\\pf_sample_nodejs\\python\\base\\openaisample\\.venv\\Lib\\site-packages\\microsoft_agents\\hosting\\core\\telemetry\\core\\_agents_telemetry.py\", line 64, in start_as_current_span\n    yield span  # execute the operation in the with block\n    ^^^^^^^^^^\n  File \"C:\\repos\\pf_sample_nodejs\\python\\base\\openaisample\\.venv\\Lib\\site-packages\\microsoft_agents\\hosting\\core\\telemetry\\core\\simple_span_wrapper.py\", line 37, in _start_span\n    yield span\n  File \"C:\\repos\\pf_sample_nodejs\\python\\base\\openaisample\\.venv\\Lib\\site-packages\\microsoft_agents\\hosting\\core\\http\\_http_adapter_base.py\", line 100, in process_request\n    activity: Activity = Activity.model_validate(body)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\repos\\pf_sample_nodejs\\python\\base\\openaisample\\.venv\\Lib\\site-packages\\pydantic\\main.py\", line 716, in model_validate\n    return cls.__pydantic_validator__.validate_python(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npydantic_core._pydantic_core.ValidationError: 1 validation error for Activity\ntype\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_instance_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xc76632baa82e6db7",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x459286cce43053e9",
+    "start_time": "2026-04-27T06:16:41.069114Z",
+    "end_time": "2026-04-27T06:16:42.499228Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_user_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x459286cce43053e9",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x3b37ba0b2221205a",
+    "start_time": "2026-04-27T06:16:41.069114Z",
+    "end_time": "2026-04-27T06:16:43.383765Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "agentic.user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "auth.scopes": "5a807f24-c9de-44ee-a3a7-329e88a00ffc/.default"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.create_user_token_client",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x3b37ba0b2221205a",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x798bc73bfdd93bac",
+    "start_time": "2026-04-27T06:16:41.069114Z",
+    "end_time": "2026-04-27T06:16:43.384766Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agents.token_service.endpoint": "https://api.botframework.com",
+        "auth.scopes": "https://api.botframework.com/.default"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_instance_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x019cfd977cbe31a9",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x563dd1d45c08799c",
+    "start_time": "2026-04-27T06:16:43.385765Z",
+    "end_time": "2026-04-27T06:16:44.118069Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_user_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x563dd1d45c08799c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0xa3c5dcb1e3a2a6f8",
+    "start_time": "2026-04-27T06:16:43.385765Z",
+    "end_time": "2026-04-27T06:16:44.976810Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "agentic.user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "auth.scopes": "5a807f24-c9de-44ee-a3a7-329e88a00ffc/.default"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.create_connector_client",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xa3c5dcb1e3a2a6f8",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x798bc73bfdd93bac",
+    "start_time": "2026-04-27T06:16:43.385765Z",
+    "end_time": "2026-04-27T06:16:44.977809Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "service_url": "http://127.0.0.1:62564/_connector",
+        "auth.scopes": "https://api.botframework.com/.default",
+        "activity.is_agentic_request": true
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.before_turn",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x51ce39baf9ec88d2",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x05c54948d05161d2",
+    "start_time": "2026-04-27T06:16:44.977809Z",
+    "end_time": "2026-04-27T06:16:44.977809Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.download_files",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xfb92f22f0d1b4f98",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x05c54948d05161d2",
+    "start_time": "2026-04-27T06:16:44.977809Z",
+    "end_time": "2026-04-27T06:16:44.978810Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "activity.attachments.count": 0
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.connector.reply_to_activity",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xbf0c9e0f32df696b",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0xba4df11ffdd0bbdd",
+    "start_time": "2026-04-27T06:16:44.979809Z",
+    "end_time": "2026-04-27T06:16:45.624790Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "activity.id": "c6734871-c200-4899-bce3-f207a9ae1ab8"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.send_activities",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xba4df11ffdd0bbdd",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x9ee8917ed1920a66",
+    "start_time": "2026-04-27T06:16:44.979809Z",
+    "end_time": "2026-04-27T06:16:45.624790Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "activities.count": 1,
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-0365aa00"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.turn.send_activities",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x9ee8917ed1920a66",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x05c54948d05161d2",
+    "start_time": "2026-04-27T06:16:44.978810Z",
+    "end_time": "2026-04-27T06:16:45.624790Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-0365aa00"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_instance_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xb9a1dd024be0ce29",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x80f505ac3dd41829",
+    "start_time": "2026-04-27T06:16:44.978810Z",
+    "end_time": "2026-04-27T06:16:45.715940Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_user_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x80f505ac3dd41829",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x4f40e89347cf3ae0",
+    "start_time": "2026-04-27T06:16:44.978810Z",
+    "end_time": "2026-04-27T06:16:46.511071Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "agentic.user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "auth.scopes": "https://graph.microsoft.com/.default"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authorization.agentic_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x4f40e89347cf3ae0",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x05c54948d05161d2",
+    "start_time": "2026-04-27T06:16:44.978810Z",
+    "end_time": "2026-04-27T06:16:46.511071Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "auth.handler.id": "AGENTIC",
+        "auth.connection.name": "unknown"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+[OutputLoggingMiddleware] No traceparent in turn_state under 'A365ParentTraceparent'. OutputScope will not be linked to a parent.
+{
+    "type": "message",
+    "id": "c6734871-c200-4899-bce3-f207a9ae1ab8",
+    "timestamp": "2026-04-27T06:16:40.972953Z",
+    "local_timestamp": "2026-04-26T23:16:40.973418-07:00",
+    "local_timezone": "Pacific Standard Time",
+    "service_url": "http://127.0.0.1:62564/_connector",
+    "from_property": {
+        "id": "user-CPC-pefan-QECKC",
+        "name": "Tester CPC-pefan-QECKC",
+        "aad_object_id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "role": "user",
+        "agentic_user_id": null,
+        "agentic_app_id": null,
+        "tenant_id": null
+    },
+    "conversation": {
+        "is_group": null,
+        "conversation_type": "personal",
+        "id": "conv-CPC-pefan-QECKC-0365aa00",
+        "name": null,
+        "aad_object_id": null,
+        "role": null,
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "properties": null
+    },
+    "recipient": {
+        "id": "nikhilcagent0416@a365preview070.onmicrosoft.com",
+        "name": "nikhilcagent0416 Agent User",
+        "aad_object_id": null,
+        "role": "agenticUser",
+        "agentic_user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "agentic_app_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743"
+    },
+    "text_format": "plain",
+    "attachment_layout": null,
+    "members_added": null,
+    "members_removed": null,
+    "reactions_added": null,
+    "reactions_removed": null,
+    "topic_name": null,
+    "history_disclosed": null,
+    "locale": "en-US",
+    "text": "What is 2+2?",
+    "speak": null,
+    "input_hint": null,
+    "summary": null,
+    "suggested_actions": null,
+    "attachments": null,
+    "entities": [
+        {
+            "type": "clientInfo",
+            "locale": "en-US",
+            "country": "US",
+            "platform": "Web",
+            "timezone": "America/Los_Angeles"
+        }
+    ],
+    "channel_data": {
+        "tenant": {
+            "id": "badf1f56-284d-4dc5-ac59-0dd53900e743"
+        }
+    },
+    "action": null,
+    "reply_to_id": null,
+    "label": null,
+    "value_type": null,
+    "value": null,
+    "name": null,
+    "relates_to": null,
+    "code": null,
+    "expiration": null,
+    "importance": null,
+    "delivery_mode": null,
+    "listen_for": null,
+    "text_highlights": null,
+    "semantic_action": null,
+    "caller_id": null,
+    "channel_id": "emulator"
+}
+{
+    "type": "typing",
+    "id": "g_r74hw1777270604979.808",
+    "timestamp": null,
+    "local_timestamp": null,
+    "local_timezone": null,
+    "service_url": "http://127.0.0.1:62564/_connector",
+    "from_property": {
+        "id": "nikhilcagent0416@a365preview070.onmicrosoft.com",
+        "name": "nikhilcagent0416 Agent User",
+        "aad_object_id": null,
+        "role": "agenticUser",
+        "agentic_user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "agentic_app_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743"
+    },
+    "conversation": {
+        "is_group": null,
+        "conversation_type": "personal",
+        "id": "conv-CPC-pefan-QECKC-0365aa00",
+        "name": null,
+        "aad_object_id": null,
+        "role": null,
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "properties": null
+    },
+    "recipient": {
+        "id": "user-CPC-pefan-QECKC",
+        "name": "Tester CPC-pefan-QECKC",
+        "aad_object_id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "role": "user",
+        "agentic_user_id": null,
+        "agentic_app_id": null,
+        "tenant_id": null
+    },
+    "text_format": null,
+    "attachment_layout": null,
+    "members_added": null,
+    "members_removed": null,
+    "reactions_added": null,
+    "reactions_removed": null,
+    "topic_name": null,
+    "history_disclosed": null,
+    "locale": "en-US",
+    "text": null,
+    "speak": null,
+    "input_hint": "acceptingInput",
+    "summary": null,
+    "suggested_actions": null,
+    "attachments": null,
+    "entities": null,
+    "channel_data": null,
+    "action": null,
+    "reply_to_id": "c6734871-c200-4899-bce3-f207a9ae1ab8",
+    "label": null,
+    "value_type": null,
+    "value": null,
+    "name": null,
+    "relates_to": null,
+    "code": null,
+    "expiration": null,
+    "importance": null,
+    "delivery_mode": null,
+    "listen_for": null,
+    "text_highlights": null,
+    "semantic_action": null,
+    "caller_id": null,
+    "channel_id": "emulator"
+}
+{
+    "type": "message",
+    "id": "g_vpnlm1777270609895.174",
+    "timestamp": null,
+    "local_timestamp": null,
+    "local_timezone": null,
+    "service_url": "http://127.0.0.1:62564/_connector",
+    "from_property": {
+        "id": "nikhilcagent0416@a365preview070.onmicrosoft.com",
+        "name": "nikhilcagent0416 Agent User",
+        "aad_object_id": null,
+        "role": "agenticUser",
+        "agentic_user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "agentic_app_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743"
+    },
+    "conversation": {
+        "is_group": null,
+        "conversation_type": "personal",
+        "id": "conv-CPC-pefan-QECKC-0365aa00",
+        "name": null,
+        "aad_object_id": null,
+        "role": null,
+        "tenant_id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "properties": null
+    },
+    "recipient": {
+        "id": "user-CPC-pefan-QECKC",
+        "name": "Tester CPC-pefan-QECKC",
+        "aad_object_id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "role": "user",
+        "agentic_user_id": null,
+        "agentic_app_id": null,
+        "tenant_id": null
+    },
+    "text_format": null,
+    "attachment_layout": null,
+    "members_added": null,
+    "members_removed": null,
+    "reactions_added": null,
+    "reactions_removed": null,
+    "topic_name": null,
+    "history_disclosed": null,
+    "locale": "en-US",
+    "text": "2 + 2 equals 4.",
+    "speak": null,
+    "input_hint": "acceptingInput",
+    "summary": null,
+    "suggested_actions": null,
+    "attachments": null,
+    "entities": null,
+    "channel_data": null,
+    "action": null,
+    "reply_to_id": "c6734871-c200-4899-bce3-f207a9ae1ab8",
+    "label": null,
+    "value_type": null,
+    "value": null,
+    "name": null,
+    "relates_to": null,
+    "code": null,
+    "expiration": null,
+    "importance": null,
+    "delivery_mode": null,
+    "listen_for": null,
+    "text_highlights": null,
+    "semantic_action": null,
+    "caller_id": null,
+    "channel_id": "emulator"
+}
+{
+    "name": "agents.authentication.get_agentic_instance_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xf492bc4deea20213",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x5ac83e4331941395",
+    "start_time": "2026-04-27T06:16:46.532323Z",
+    "end_time": "2026-04-27T06:16:47.274937Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authentication.get_agentic_user_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x5ac83e4331941395",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x7ff9326d0dc9dfde",
+    "start_time": "2026-04-27T06:16:46.532323Z",
+    "end_time": "2026-04-27T06:16:48.073691Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "agentic.instance_id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "agentic.user_id": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "auth.scopes": "api://9b975845-388f-4429-889e-eab1ef63949c/Agent365.Observability.OtelWrite"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.authorization.agentic_token",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x7ff9326d0dc9dfde",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0xee4ffcf47e0259de",
+    "start_time": "2026-04-27T06:16:46.532323Z",
+    "end_time": "2026-04-27T06:16:48.073691Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "auth.handler.id": "AGENTIC",
+        "auth.connection.name": "unknown",
+        "auth.scopes": "api://9b975845-388f-4429-889e-eab1ef63949c/Agent365.Observability.OtelWrite"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "Chat gpt-4o-mini",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x28311e50ac93a17d",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0xee4ffcf47e0259de",
+    "start_time": "2026-04-27T06:16:48.073691Z",
+    "end_time": "2026-04-27T06:16:49.893174Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "telemetry.sdk.name": "A365ObservabilitySDK",
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.version": "0.3.0.dev6",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "Azure OpenAI Agent",
+        "gen_ai.agent.description": "An AI agent powered by Azure OpenAI",
+        "microsoft.a365.agent.blueprint.id": "4a380e3b-7092-4d73-bb9d-b6a54702684af",
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.input.messages": "{\"messages\": [{\"role\": \"user\", \"parts\": [{\"content\": \"What is 2+2?\", \"type\": \"text\"}]}], \"version\": \"0.1.0\"}",
+        "gen_ai.operation.name": "Chat",
+        "gen_ai.request.model": "gpt-4o-mini",
+        "gen_ai.provider.name": "Azure OpenAI",
+        "gen_ai.output.messages": "{\"messages\": [{\"role\": \"assistant\", \"parts\": [{\"content\": \"2 + 2 equals 4.\", \"type\": \"text\"}]}], \"version\": \"0.1.0\"}",
+        "gen_ai.usage.input_tokens": 34,
+        "gen_ai.usage.output_tokens": 9,
+        "gen_ai.response.finish_reasons": "[\"stop\"]"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "output_messages d6d31512-379f-4994-b901-c098dfd9293f",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x1b841ece1b359159",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x7a6745011ed2a31b",
+    "start_time": "2026-04-27T06:16:49.893174Z",
+    "end_time": "2026-04-27T06:16:49.895175Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.operation.name": "output_messages",
+        "telemetry.sdk.name": "A365ObservabilitySDK",
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.version": "0.3.0.dev6",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "gen_ai.output.messages": "{\"messages\": [{\"role\": \"assistant\", \"parts\": [{\"content\": \"2 + 2 equals 4.\", \"type\": \"text\"}]}], \"version\": \"0.1.0\"}",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "microsoft.channel.name": "emulator"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.connector.reply_to_activity",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x20ca81fc49f174fa",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x6f808a0a648959d3",
+    "start_time": "2026-04-27T06:16:49.895175Z",
+    "end_time": "2026-04-27T06:16:49.900173Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "activity.id": "c6734871-c200-4899-bce3-f207a9ae1ab8"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.send_activities",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x6f808a0a648959d3",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x7a6745011ed2a31b",
+    "start_time": "2026-04-27T06:16:49.895175Z",
+    "end_time": "2026-04-27T06:16:49.900173Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "activities.count": 1,
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-0365aa00"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.turn.send_activities",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x7a6745011ed2a31b",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0xee4ffcf47e0259de",
+    "start_time": "2026-04-27T06:16:49.893174Z",
+    "end_time": "2026-04-27T06:16:49.900173Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-0365aa00"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "invoke_agent Azure OpenAI Agent",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xee4ffcf47e0259de",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.CLIENT",
+    "parent_id": "0x63526a0e5f3e4ce2",
+    "start_time": "2026-04-27T06:16:46.511071Z",
+    "end_time": "2026-04-27T06:16:49.900173Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "gen_ai.operation.name": "invoke_agent",
+        "telemetry.sdk.name": "A365ObservabilitySDK",
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.version": "0.3.0.dev6",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "Azure OpenAI Agent",
+        "gen_ai.agent.description": "An AI agent powered by Azure OpenAI",
+        "microsoft.a365.agent.blueprint.id": "4a380e3b-7092-4d73-bb9d-b6a54702684af",
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "microsoft.session.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "gen_ai.input.messages": "{\"messages\": [{\"role\": \"user\", \"parts\": [{\"content\": \"What is 2+2?\", \"type\": \"text\"}]}], \"version\": \"0.1.0\"}"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.route_handler",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x63526a0e5f3e4ce2",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x05c54948d05161d2",
+    "start_time": "2026-04-27T06:16:46.511071Z",
+    "end_time": "2026-04-27T06:16:49.900173Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "route.is_invoke": false,
+        "route.is_agentic": false
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.after_turn",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0xf9da10a9bf4eb3a5",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x05c54948d05161d2",
+    "start_time": "2026-04-27T06:16:49.900173Z",
+    "end_time": "2026-04-27T06:16:49.900173Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.app.run",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x05c54948d05161d2",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x798bc73bfdd93bac",
+    "start_time": "2026-04-27T06:16:44.977809Z",
+    "end_time": "2026-04-27T06:16:49.900173Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "microsoft.tenant.id": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+        "gen_ai.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "microsoft.conversation.item.link": "http://127.0.0.1:62564/_connector",
+        "gen_ai.agent.id": "d6d31512-379f-4994-b901-c098dfd9293f",
+        "gen_ai.agent.name": "nikhilcagent0416 Agent User",
+        "gen_ai.agent.description": "agenticUser",
+        "microsoft.agent.user.email": "74ae7173-86f8-41b0-a237-c4c4822fb9bc",
+        "microsoft.channel.name": "emulator",
+        "user.id": "a92962f3-9ed4-4bcd-9ae0-ad0002b6ca76",
+        "user.name": "Tester CPC-pefan-QECKC",
+        "route.authorized": true,
+        "route.matched": true,
+        "activity.type": "message",
+        "activity.id": "c6734871-c200-4899-bce3-f207a9ae1ab8"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "agents.adapter.process",
+    "context": {
+        "trace_id": "0x9db93b16cb449d42860a8808ebe16985",
+        "span_id": "0x798bc73bfdd93bac",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-27T06:16:41.067114Z",
+    "end_time": "2026-04-27T06:16:49.901174Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "activity.type": "message",
+        "activity.channel_id": "emulator",
+        "activity.delivery_mode": "unknown",
+        "activity.conversation.id": "conv-CPC-pefan-QECKC-0365aa00",
+        "activity.is_agentic_request": true
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.38.0",
+            "service.namespace": "AzureOpenAiKairoTesting",
+            "service.name": "AzureOpenAiKairoTracing"
+        },
+        "schema_url": ""
+    }
+}
