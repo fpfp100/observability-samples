@@ -7,19 +7,19 @@ import { createAgent, tool } from "langchain";
 import { ChatOpenAI } from "@langchain/openai";
 import * as z from "zod";
 
-// Observability Imports — manual primitives still used elsewhere (InferenceScope etc.).
-import {
-  InferenceOperationType,
-  InferenceDetails,
-  AgentDetails,
-  A365Request,
-  InferenceScope,
-} from '@microsoft/opentelemetry';
-import { TurnContext } from "@microsoft/agents-hosting";
+// Manual instrumentation commented out — testing auto-instrumentation only
+// import {
+//   InferenceOperationType,
+//   InferenceDetails,
+//   AgentDetails,
+//   A365Request,
+//   InferenceScope,
+// } from '@microsoft/opentelemetry';
+// import { TurnContext } from "@microsoft/agents-hosting";
 
 export interface Client {
   invokeAgent(prompt: string): Promise<string>;
-  invokeInferenceScope(prompt: string, turnContext: TurnContext): Promise<string>;
+  // invokeInferenceScope(prompt: string, turnContext: TurnContext): Promise<string>;
 }
 
 // Observability is configured in otel-init.ts (loaded as the FIRST import in
@@ -128,41 +128,38 @@ class LangChainClient implements Client {
     return agentMessage;
   }
 
-  async invokeInferenceScope(prompt: string, turnContext: TurnContext) {
-    const request: A365Request = {
-      conversationId: turnContext?.activity?.conversation?.id || `conv-${Date.now()}`,
-    };
-
-    const inferenceDetails: InferenceDetails = {
-      operationName: InferenceOperationType.CHAT,
-      model: "gpt-4o-mini",
-    };
-
-    const agentDetails: AgentDetails = {
-      agentId: turnContext?.activity?.recipient?.agenticAppId || agentName,
-      agentName: agentName,
-      tenantId: turnContext?.activity?.recipient?.tenantId || 'sample-tenant',
-    };
-
-    let response = '';
-    const scope = InferenceScope.start(request, inferenceDetails, agentDetails);
-    try {
-      await scope.withActiveSpanAsync(async () => {
-      response = await this.invokeAgent(prompt);
-      // Record the inference response with token usage
-      scope.recordOutputMessages([response]);
-      scope.recordInputMessages([prompt]);
-      scope.recordInputTokens(45);
-      scope.recordOutputTokens(78);
-      scope.recordFinishReasons(['stop']);
-      });
-    } catch (error) {
-      scope.recordError(error as Error);
-      throw error;
-    } finally {
-      scope.dispose();
-    }
-    return response;
-  }
+  // Manual InferenceScope commented out — testing auto-instrumentation only
+  // async invokeInferenceScope(prompt: string, turnContext: TurnContext) {
+  //   const request: A365Request = {
+  //     conversationId: turnContext?.activity?.conversation?.id || `conv-${Date.now()}`,
+  //   };
+  //   const inferenceDetails: InferenceDetails = {
+  //     operationName: InferenceOperationType.CHAT,
+  //     model: "gpt-4o-mini",
+  //   };
+  //   const agentDetails: AgentDetails = {
+  //     agentId: turnContext?.activity?.recipient?.agenticAppId || agentName,
+  //     agentName: agentName,
+  //     tenantId: turnContext?.activity?.recipient?.tenantId || 'sample-tenant',
+  //   };
+  //   let response = '';
+  //   const scope = InferenceScope.start(request, inferenceDetails, agentDetails);
+  //   try {
+  //     await scope.withActiveSpanAsync(async () => {
+  //       response = await this.invokeAgent(prompt);
+  //       scope.recordOutputMessages([response]);
+  //       scope.recordInputMessages([prompt]);
+  //       scope.recordInputTokens(45);
+  //       scope.recordOutputTokens(78);
+  //       scope.recordFinishReasons(['stop']);
+  //     });
+  //   } catch (error) {
+  //     scope.recordError(error as Error);
+  //     throw error;
+  //   } finally {
+  //     scope.dispose();
+  //   }
+  //   return response;
+  // }
 }
 

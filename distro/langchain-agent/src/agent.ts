@@ -6,14 +6,15 @@ import { ActivityTypes } from '@microsoft/agents-activity';
 import { getObservabilityAuthenticationScope } from '@microsoft/agents-a365-runtime';
 import tokenCache, { createAgenticTokenCacheKey } from './token-cache.js';
 import { Client, getClient } from './client.js';
-import {
-  A365_PARENT_SPAN_KEY,
-  InvokeAgentScope,
-  InvokeAgentScopeDetails,
-  AgentDetails,
-  A365Request,
-  ParentSpanRef,
-} from '@microsoft/opentelemetry';
+// Manual instrumentation commented out — testing auto-instrumentation only
+// import {
+//   A365_PARENT_SPAN_KEY,
+//   InvokeAgentScope,
+//   InvokeAgentScopeDetails,
+//   AgentDetails,
+//   A365Request,
+//   ParentSpanRef,
+// } from '@microsoft/opentelemetry';
 
 export class A365Agent extends AgentApplication<TurnState> {
   static authHandlerName: string = 'agentic';
@@ -49,30 +50,30 @@ export class A365Agent extends AgentApplication<TurnState> {
       return;
     }
 
-    // Create InvokeAgentScope to trace the full agent invocation
-    const request: A365Request = {
-      conversationId: turnContext.activity.conversation?.id,
-    };
-    const invokeScopeDetails: InvokeAgentScopeDetails = {};
-    const agentDetails: AgentDetails = {
-      agentId: turnContext.activity.recipient?.agenticAppId || 'langchain-agent',
-      agentName: 'LangChainA365Agent',
-      tenantId: turnContext.activity.recipient?.tenantId || 'unknown',
-    };
+    // Manual instrumentation commented out — testing auto-instrumentation only
+    // const request: A365Request = {
+    //   conversationId: turnContext.activity.conversation?.id,
+    // };
+    // const invokeScopeDetails: InvokeAgentScopeDetails = {};
+    // const agentDetails: AgentDetails = {
+    //   agentId: turnContext.activity.recipient?.agenticAppId || 'langchain-agent',
+    //   agentName: 'LangChainA365Agent',
+    //   tenantId: turnContext.activity.recipient?.tenantId || 'unknown',
+    // };
+    //
+    // const invokeScope = InvokeAgentScope.start(request, invokeScopeDetails, agentDetails);
+    // try {
+    //   const spanCtx = invokeScope.getSpanContext();
+    //   const parentSpanRef: ParentSpanRef = {
+    //     traceId: spanCtx.traceId,
+    //     spanId: spanCtx.spanId,
+    //     traceFlags: spanCtx.traceFlags,
+    //   };
+    //   turnContext.turnState.set(A365_PARENT_SPAN_KEY, parentSpanRef);
 
-    const invokeScope = InvokeAgentScope.start(request, invokeScopeDetails, agentDetails);
     try {
       // Preload observability token so the exporter can resolve agent identity
       await this.preloadObservabilityToken(turnContext);
-
-      // Store the span context so OutputLoggingMiddleware links output spans as children
-      const spanCtx = invokeScope.getSpanContext();
-      const parentSpanRef: ParentSpanRef = {
-        traceId: spanCtx.traceId,
-        spanId: spanCtx.spanId,
-        traceFlags: spanCtx.traceFlags,
-      };
-      turnContext.turnState.set(A365_PARENT_SPAN_KEY, parentSpanRef);
 
       const client: Client = await getClient();
       const response = await client.invokeAgent(userMessage);
@@ -80,14 +81,15 @@ export class A365Agent extends AgentApplication<TurnState> {
       // Send the response back to the user
       await turnContext.sendActivity(response);
     } catch (error) {
-      invokeScope.recordError(
-        error instanceof Error ? error : new Error(String(error))
-      );
+      // invokeScope.recordError(
+      //   error instanceof Error ? error : new Error(String(error))
+      // );
       console.error('Agent invocation error:', error);
       await turnContext.sendActivity(`Error: ${error instanceof Error ? error.message : String(error)}`);
-    } finally {
-      invokeScope.dispose();
     }
+    // } finally {
+    //   invokeScope.dispose();
+    // }
   }
 
   /**

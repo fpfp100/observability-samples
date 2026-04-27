@@ -5,14 +5,15 @@
 import { TurnState, Authorization, AgentApplication, TurnContext, DefaultConversationState } from '@microsoft/agents-hosting';
 import { ActivityTypes } from '@microsoft/agents-activity';
 import { Client, getClient } from './OpenAIClient';
-import {
-  A365_PARENT_SPAN_KEY,
-  InvokeAgentScope,
-  InvokeAgentScopeDetails,
-  AgentDetails,
-  A365Request,
-  ParentSpanRef,
-} from '@microsoft/opentelemetry';
+// Manual instrumentation commented out — testing auto-instrumentation only
+// import {
+//   A365_PARENT_SPAN_KEY,
+//   InvokeAgentScope,
+//   InvokeAgentScopeDetails,
+//   AgentDetails,
+//   A365Request,
+//   ParentSpanRef,
+// } from '@microsoft/opentelemetry';
 
 
 interface ConversationState extends DefaultConversationState {
@@ -71,41 +72,42 @@ export class A365Agent extends AgentApplication<ApplicationTurnState> {
       return;
     }
 
-    // Create InvokeAgentScope to trace the full agent invocation
-    const request: A365Request = {
-      conversationId: turnContext.activity.conversation?.id,
-    };
-    const invokeScopeDetails: InvokeAgentScopeDetails = {};
-    const agentDetails: AgentDetails = {
-      agentId: turnContext.activity.recipient?.agenticAppId || 'openai-agent',
-      agentName: this.agentName,
-      tenantId: turnContext.activity.recipient?.tenantId || 'unknown',
-    };
+    // Manual instrumentation commented out — testing auto-instrumentation only
+    // const request: A365Request = {
+    //   conversationId: turnContext.activity.conversation?.id,
+    // };
+    // const invokeScopeDetails: InvokeAgentScopeDetails = {};
+    // const agentDetails: AgentDetails = {
+    //   agentId: turnContext.activity.recipient?.agenticAppId || 'openai-agent',
+    //   agentName: this.agentName,
+    //   tenantId: turnContext.activity.recipient?.tenantId || 'unknown',
+    // };
+    //
+    // const invokeScope = InvokeAgentScope.start(request, invokeScopeDetails, agentDetails);
+    // try {
+    //   const spanCtx = invokeScope.getSpanContext();
+    //   const parentSpanRef: ParentSpanRef = {
+    //     traceId: spanCtx.traceId,
+    //     spanId: spanCtx.spanId,
+    //     traceFlags: spanCtx.traceFlags,
+    //   };
+    //   turnContext.turnState.set(A365_PARENT_SPAN_KEY, parentSpanRef);
 
-    const invokeScope = InvokeAgentScope.start(request, invokeScopeDetails, agentDetails);
     try {
-      // Store the span context so OutputLoggingMiddleware links output to this parent
-      const spanCtx = invokeScope.getSpanContext();
-      const parentSpanRef: ParentSpanRef = {
-        traceId: spanCtx.traceId,
-        spanId: spanCtx.spanId,
-        traceFlags: spanCtx.traceFlags,
-      };
-      turnContext.turnState.set(A365_PARENT_SPAN_KEY, parentSpanRef);
-
       const client = await getClient(this.getAuthorizationSafe(), this.authHandlerName, turnContext);
       const response = await this.invokeAgent(client, userMessage);
       await turnContext.sendActivity(response);
     } catch (error) {
-      invokeScope.recordError(
-        error instanceof Error ? error : new Error(String(error))
-      );
+      // invokeScope.recordError(
+      //   error instanceof Error ? error : new Error(String(error))
+      // );
       console.error('LLM query error:', error);
       const err = error as Error;
       await turnContext.sendActivity(`Error: ${err.message || String(err)}`);
-    } finally {
-      invokeScope.dispose();
     }
+    // } finally {
+    //   invokeScope.dispose();
+    // }
   }
 
   /**
