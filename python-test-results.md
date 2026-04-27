@@ -10,21 +10,21 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 
 | # | Test Area | Status | Notes |
 |---|-----------|--------|-------|
-| 1 | Scopes (InvokeAgent, Inference, ExecuteTool, Output) | IN PROGRESS | See Phase 1 results below |
-| 2 | Error Handling on Scopes | NOT STARTED | |
-| 3 | BaggageBuilder | IN PROGRESS | Baggage propagation differs between base and distro |
-| 4 | Baggage Middleware | IN PROGRESS | Both registered, but distro invoke_agent missing baggage attrs |
-| 5 | BatchSpanProcessor | NOT STARTED | |
+| 1 | Scopes (InvokeAgent, Inference, ExecuteTool, Output) | **DONE** | Base: Inference/Tool/Output all required attrs present. InvokeAgent missing 6. Distro: P-2 missing Inference+Tool |
+| 2 | Error Handling on Scopes | **DONE** | Framework error spans work (agents.adapter.process). A365 RecordError() path exists but not triggered in test |
+| 3 | BaggageBuilder | **DONE** | Base: ALL baggage fields propagate to ALL child spans. Distro: **ALL 10 fields missing from ALL framework spans** (P-1 upgraded) |
+| 4 | Baggage Middleware | **DONE** | Base: fully working. Distro: BaggageMiddleware registered but NOT propagating fields to child spans |
+| 5 | BatchSpanProcessor | NOT STARTED | Requires code inspection |
 | 6 | Exporter | TESTED | Console exporter works both. A365 exporter: 400 TenantIdInvalid (expected local) |
 | 7 | TokenResolver | TESTED | Base: fallback only. Distro: AgenticTokenCache works on 2nd call |
-| 8 | Auth (OBO/S2S) | NOT STARTED | |
-| 9a | Auto-instrumentation - Semantic Kernel | TESTED | Base: no inference span (processor only). Distro: `chat gpt-4o-mini` auto-generated |
-| 9b | Auto-instrumentation - OpenAI Agents | TESTED | Base: broken (P-6). Distro: `chat gpt-4o-mini` + `invoke_agent Assistant` auto-generated |
-| 9c | Auto-instrumentation - LangChain | BLOCKED | Base: crash P-5. Distro: crash P-7 (KeyError gen_ai.request.model) |
-| 10 | Resource Attributes | IN PROGRESS | See attribute comparison below |
+| 8 | Auth (OBO/S2S) | NOT STARTED | Requires real A365 deployment |
+| 9a | Auto-instrumentation - Semantic Kernel | **DONE** | Base: processor only (no inference span). Distro: `chat gpt-4o-mini` auto-generated |
+| 9b | Auto-instrumentation - OpenAI Agents | **DONE** | Base: `response/turn/Agent workflow` spans (v0.3.0.dev6). Distro: `chat gpt-4o-mini` + `invoke_agent Assistant` |
+| 9c | Auto-instrumentation - LangChain | **DONE** | Base: `chat AzureChatOpenAI` (v0.3.0.dev6 + wrapt<2). Distro: `chat gpt-4o-mini` (P-7 workaround) |
+| 10 | Resource Attributes | **DONE** | Base: service.name/namespace correct. Distro: **`unknown_service`**, missing namespace (P-9) |
 | 11 | Configuration Options | NOT STARTED | |
 | 12 | Edge Cases | NOT STARTED | |
-| 13 | Store Publishing Validation | NOT STARTED | |
+| 13 | Store Publishing Validation | **DONE** | Base: passes (with 6 missing invoke_agent attrs). Distro: **FAILS** (P-2, missing Inference+Tool scopes) |
 
 ## Full Rerun: Console Exporter Span Comparison (All 8 Samples)
 
@@ -125,6 +125,65 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - LangChain/OpenAI Agents get spans from both distro instrumentor and openai-v2
 
 **No auto tool spans** — `ExecuteToolScope` requires manual code in all cases.
+
+### Issue P-9: Distro resource attributes missing service.name/namespace
+- **Severity:** HIGH
+- **Affects:** All distro samples
+- **Details:** Distro resource shows `service.name: unknown_service` and missing `service.namespace`. Base SDK correctly sets both from `configure(service_name=..., service_namespace=...)`. The distro's `use_microsoft_opentelemetry()` doesn't propagate these to the OTel resource.
+
+### Issue P-1 (UPGRADED): Distro baggage not propagating to ANY child spans
+- **Severity:** CRITICAL
+- **Affects:** All distro samples
+- **Original:** Distro `invoke_agent` span missing baggage attributes
+- **Updated finding:** ALL 10 baggage fields are missing from ALL framework spans in the distro (`agents.app.*`, `agents.turn.*`, `agents.connector.*`, `agents.adapter.send_activities`). Only `output_messages` has partial baggage (missing `microsoft.conversation.item.link`). The base SDK propagates all 10 fields to all spans. The distro's BaggageMiddleware is registered but appears non-functional.
+
+## Attribute Completeness (Test 1 + Test 13)
+
+### Base SDK `invoke_agent` — 6 required attributes missing
+
+| Missing Attribute | Notes |
+|-------------------|-------|
+| `microsoft.agent.user.id` | Not set; `user.id` is set from baggage |
+| `client.address` | Not populated from emulator activity |
+| `user.email` | Not set; `microsoft.agent.user.email` is set (different key) |
+| `gen_ai.output.messages` | Not recorded on invoke_agent; handled by output_messages scope |
+| `server.address` | Not set by sample (developer must configure) |
+| `server.port` | Not set by sample (developer must configure) |
+
+### Base SDK InferenceScope, ExecuteToolScope, OutputScope
+All required attributes present.
+
+### Resource Attributes
+
+| Attribute | Base | Distro | Required |
+|-----------|------|--------|----------|
+| `service.name` | `AzureOpenAiKairoTracing` | **`unknown_service`** (P-9) | Yes |
+| `service.namespace` | `AzureOpenAiKairoTesting` | **Missing** (P-9) | Yes |
+| `service.version` | Missing | Missing | Yes |
+| `telemetry.sdk.language` | `python` | `python` | — |
+| `telemetry.sdk.name` | `opentelemetry` | `opentelemetry` | — |
+| `telemetry.sdk.version` | `1.38.0` | `1.40.0` | — |
+
+### Baggage Propagation
+
+| Span Category | Base (10 fields) | Distro (10 fields) |
+|---------------|-----------------|-------------------|
+| `agents.app.*` | ALL present | **ALL 10 missing** |
+| `agents.turn.*` | ALL present | **ALL 10 missing** |
+| `agents.connector.*` | ALL present | **ALL 10 missing** |
+| `agents.adapter.send_activities` | ALL present | **ALL 10 missing** |
+| `invoke_agent` (A365) | ALL present | **6 missing** |
+| `output_messages` (A365) | ALL present | 1 missing (`conversation.item.link`) |
+| `Chat / execute_tool` (A365) | ALL present | **Not emitted** (P-2) |
+
+### Store Publishing Readiness
+
+| Requirement | Base | Distro |
+|-------------|------|--------|
+| InvokeAgentScope with required attrs | Partial (6 missing) | Partial (6+ missing, no baggage) |
+| InferenceScope with required attrs | **PASS** | **FAIL** (P-2: not emitted) |
+| ExecuteToolScope with required attrs | **PASS** | **FAIL** (P-2: not emitted) |
+| Console output matches AO guide | Mostly | **FAIL** |
 
 ## Captured Output Files
 
