@@ -18,9 +18,9 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 | 6 | Exporter | TESTED | Console exporter works both. A365 exporter: 400 TenantIdInvalid (expected local) |
 | 7 | TokenResolver | TESTED | Base: fallback only. Distro: AgenticTokenCache works on 2nd call |
 | 8 | Auth (OBO/S2S) | NOT STARTED | |
-| 9a | Auto-instrumentation - Semantic Kernel | TESTED | See findings below |
-| 9b | Auto-instrumentation - OpenAI Agents | BLOCKED | Base: ImportError (GEN_AI_SYSTEM_KEY). Distro: needs OPENAI_API_KEY |
-| 9c | Auto-instrumentation - LangChain | BLOCKED | Base: crash (wrap_function_wrapper). Distro: KeyError gen_ai.request.model |
+| 9a | Auto-instrumentation - Semantic Kernel | TESTED | Base: no inference span (processor only). Distro: `chat gpt-4o-mini` auto-generated |
+| 9b | Auto-instrumentation - OpenAI Agents | TESTED | Base: broken (P-6). Distro: `chat gpt-4o-mini` + `invoke_agent Assistant` auto-generated |
+| 9c | Auto-instrumentation - LangChain | BLOCKED | Base: crash P-5. Distro: crash P-7 (KeyError gen_ai.request.model) |
 | 10 | Resource Attributes | IN PROGRESS | See attribute comparison below |
 | 11 | Configuration Options | NOT STARTED | |
 | 12 | Edge Cases | NOT STARTED | |
@@ -120,6 +120,34 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - Base SDK `SemanticKernelInstrumentor`, `CustomLangChainInstrumentor`, `OpenAIAgentsTraceInstrumentor` add SpanProcessors that enrich existing spans — they do NOT create inference spans.
 - Distro `use_microsoft_opentelemetry()` auto-enables OTel contrib instrumentors (`opentelemetry-instrumentation-openai-v2`, etc.) that DO create inference spans.
 - Base framework samples without manual `InferenceScope` will have NO inference spans.
+
+## Phase 2: Auto-Instrumentation Results (All Frameworks)
+
+Tested with console exporter, `ENABLE_A365_OBSERVABILITY_EXPORTER=false`, 30s flush wait.
+
+### Base SDK (auto-instrumentation only, no manual InferenceScope/ExecuteToolScope)
+
+| Sample | Reply | Total Spans | Inference Span | Tool Span |
+|--------|-------|-------------|----------------|-----------|
+| base/semantickernelsample | "2 + 2 equals 4." | 25 | **No** (processor only) | No |
+| base/langchainsample | "2 + 2 equals 4." | 25 | **No** (processor only) | No |
+| base/openaiagentssample | "2+2 equals 4." | 25 | **No** (processor only) | No |
+
+All base framework samples produce `invoke_agent` + `output_messages` A365 spans but **no inference or tool spans**. The base SDK instrumentors are span processors — they enrich but don't create.
+
+### Distro (auto-instrumentation via `use_microsoft_opentelemetry()`)
+
+| Sample | Reply | Total Spans | Inference Span | Tool Span |
+|--------|-------|-------------|----------------|-----------|
+| distro/semantickernelsample | "2 + 2 equals 4." | 71 | **Yes**: `chat gpt-4o-mini` | No |
+| distro/langchainsample | Error (P-7) | 40 | **No** (crash before inference) | No |
+| distro/openaiagentssample | "2 + 2 = 4." | 44 | **Yes**: `chat gpt-4o-mini-2024-07-18` + `invoke_agent Assistant` | No |
+
+Key findings:
+- **distro/semantickernelsample**: The `opentelemetry-instrumentation-openai-v2` auto-instrumentor successfully creates `chat gpt-4o-mini` inference spans for SK's underlying OpenAI client calls. Requires 30s flush wait — SimpleSpanProcessor is immediate but batched OTel processing introduces delay.
+- **distro/openaiagentssample**: Produces both a `chat` inference span from `openai-v2` instrumentor AND an `invoke_agent Assistant` span from the OpenAI Agents SDK's own tracing bridge.
+- **distro/langchainsample**: Still crashes with P-7 (`KeyError: 'gen_ai.request.model'`) — the `openai-v2` instrumentor fails when LangChain's `AzureChatOpenAI` wrapper calls the API without setting the model attribute in span attributes.
+- **No tool spans** in any framework sample — auto-instrumentation does not create `ExecuteToolScope` spans. Tool spans require manual `ExecuteToolScope` code.
 
 ## Captured Output Files
 
