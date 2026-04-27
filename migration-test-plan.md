@@ -147,11 +147,41 @@ When testing middleware, ensure the test sample has middleware explicitly enable
 | Agent Framework | `WithAgentFramework()` | `AgentFrameworkInstrumentor` | N/A |
 | LangChain | N/A | `CustomLangChainInstrumentor` | `LangChainTraceInstrumentor` |
 
+### Base vs Distro Auto-Instrumentation Behavior (Important Difference)
+
+**Base SDK:** Auto-instrumentation is opt-in. The developer must explicitly call `Instrumentor().instrument()` after `configure()`. Without this call, no framework-level spans (inference, tool) are created — only manually coded scopes produce spans.
+
+**Distro (Python):** `use_microsoft_opentelemetry()` **automatically discovers and instruments all supported libraries** via OTel entry points. The supported list includes: `openai`, `semantic_kernel`, `langchain`, `openai_agents`, `agent_framework`, `requests`, `urllib3`, `django`, `fastapi`, `flask`, `psycopg2`.
+
+This means:
+- Distro samples that also call `.instrument()` manually will see "Attempting to instrument while already instrumented" warnings — harmless but redundant.
+- Distro openaisample gets OpenAI auto-instrumentation even without an explicit `OpenAIInstrumentor()` call. If the sample also uses manual `InferenceScope`, check for **duplicate inference spans** (one from auto, one from manual).
+- When comparing base vs distro, ensure the base sample has `Instrumentor().instrument()` called to match the distro's auto-instrumentation. Without it, the base will have fewer spans.
+
+### Instrumentor Architecture Difference
+
+**Base SDK instrumentors** (e.g., `SemanticKernelInstrumentor`, `OpenAIAgentsTraceInstrumentor`) are **span processors** — they enrich existing spans with A365-specific attributes but do NOT create new spans. The base SDK relies on:
+- Manual `InferenceScope`/`ExecuteToolScope` for explicit span creation, OR
+- The underlying library emitting its own OTel spans (which the processor then enriches)
+
+**Distro instrumentors** also use span processors for enrichment, BUT `use_microsoft_opentelemetry()` additionally auto-enables **`opentelemetry-instrumentation-openai-v2`** (and other OTel contrib instrumentors) which DO create inference spans. So the distro gets inference spans from two layers:
+1. OTel contrib instrumentors (create `chat` / `embeddings` spans)
+2. A365 span processors (enrich those spans with agent/tenant attributes)
+
+**Implication for testing:**
+- Base SDK framework samples (SK, LangChain, etc.) that DON'T use manual `InferenceScope` will have **no inference spans** — only `invoke_agent` and `output_messages`. The instrumentor only enriches; it doesn't create.
+- Distro framework samples get inference spans automatically from the OTel contrib layer.
+- To get inference spans in the base SDK without manual scopes, you would need to add `opentelemetry-instrumentation-openai-v2` as a dependency and call its `.instrument()` separately — this is not built into the base SDK.
+
+### Test matrix per framework
+
 For each supported combination:
-- Auto-instrumentation captures inference + tool call spans without manual code
+- **Manual only (no instrumentor):** Verify manual `InferenceScope`/`ExecuteToolScope` produce correct spans with all required attributes
+- **Auto only (instrumentor, no manual scopes):** Verify auto-instrumentation captures inference + tool call spans without manual code. **Note:** In the base SDK, this may produce NO inference spans since the instrumentor is a span processor only.
+- **Both (instrumentor + manual scopes):** Verify no duplicate spans, or document known duplicates
+- **Distro auto vs base manual:** Compare span attributes between distro auto-instrumented inference spans and base manually-scoped inference spans — ensure attribute parity
 - Requires BaggageBuilder with agent_id and tenant_id set
 - Agent ID in ChatCompletionAgent / agent config must match BaggageBuilder agent_id
-- Auto and manual instrumentation can coexist (verify no duplicate spans, or document known duplicates)
 
 ## 10. Resource Attributes
 
