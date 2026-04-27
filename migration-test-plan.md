@@ -96,6 +96,12 @@ When testing middleware, ensure the test sample has middleware explicitly enable
 
 ## 5. BatchSpanProcessor
 
+### Console Exporter Flush Timing (Test Infrastructure Note)
+
+When testing with console exporter, spans may not appear in stdout immediately after the request completes. The `SimpleSpanProcessor` exports spans synchronously, but the OTel batch processing pipeline and aiohttp's async event loop introduce delays. **Wait at least 30 seconds after the emulator message completes before capturing console output.** Failing to wait long enough produces misleadingly low span counts (e.g., 0 spans when 40+ actually exist).
+
+This applies to both base SDK (console fallback) and distro (`enable_console=True`). The distro's auto-instrumented spans (e.g., `chat gpt-4o-mini` from `opentelemetry-instrumentation-openai-v2`) are particularly affected because they are emitted after the A365 scope spans.
+
 ### Default values set correctly
 - `max_queue_size`: 2048
 - `max_export_batch_size`: 512
