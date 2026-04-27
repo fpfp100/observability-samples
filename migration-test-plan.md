@@ -166,18 +166,16 @@ This means:
 
 ### Instrumentor Architecture Difference
 
-**Base SDK instrumentors** (e.g., `SemanticKernelInstrumentor`, `OpenAIAgentsTraceInstrumentor`) are **span processors** — they enrich existing spans with A365-specific attributes but do NOT create new spans. The base SDK relies on:
-- Manual `InferenceScope`/`ExecuteToolScope` for explicit span creation, OR
-- The underlying library emitting its own OTel spans (which the processor then enriches)
+Instrumentor behavior varies by framework and SDK version:
 
-**Distro instrumentors** also use span processors for enrichment, BUT `use_microsoft_opentelemetry()` additionally auto-enables **`opentelemetry-instrumentation-openai-v2`** (and other OTel contrib instrumentors) which DO create inference spans. So the distro gets inference spans from two layers:
-1. OTel contrib instrumentors (create `chat` / `embeddings` spans)
-2. A365 span processors (enrich those spans with agent/tenant attributes)
+**Base SDK (v0.3.0.dev6):**
+- `SemanticKernelInstrumentor`: **Span processor only** — enriches existing spans but does NOT create inference spans. Base SK samples without manual `InferenceScope` will have no inference spans.
+- `CustomLangChainInstrumentor`: **Creates spans** — wraps `BaseCallbackManager.__init__` to attach a tracer that produces `chat` spans (e.g., `chat AzureChatOpenAI`). Requires `wrapt<2` (v2.x renamed `module` parameter to `target`).
+- `OpenAIAgentsTraceInstrumentor`: **Creates spans** — bridges the OpenAI Agents SDK's internal tracing to OTel, producing `response`, `turn`, `invoke_agent`, `Agent workflow` spans.
 
-**Implication for testing:**
-- Base SDK framework samples (SK, LangChain, etc.) that DON'T use manual `InferenceScope` will have **no inference spans** — only `invoke_agent` and `output_messages`. The instrumentor only enriches; it doesn't create.
-- Distro framework samples get inference spans automatically from the OTel contrib layer.
-- To get inference spans in the base SDK without manual scopes, you would need to add `opentelemetry-instrumentation-openai-v2` as a dependency and call its `.instrument()` separately — this is not built into the base SDK.
+**Distro:** `use_microsoft_opentelemetry()` auto-enables OTel contrib instrumentors (`opentelemetry-instrumentation-openai-v2`, etc.) that create inference spans (`chat gpt-4o-mini`). The A365 span processors enrich those spans with agent/tenant attributes. Both layers work together.
+
+**Version compatibility:** Base SDK extensions v0.1.0 are incompatible with core v0.3.0.dev6. Always use matching versions (all at v0.3.0.dev6).
 
 ### Test matrix per framework
 

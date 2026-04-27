@@ -26,30 +26,26 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 | 12 | Edge Cases | NOT STARTED | |
 | 13 | Store Publishing Validation | NOT STARTED | |
 
-## Phase 1: Console Exporter Span Comparison (OpenAI + SK)
+## Full Rerun: Console Exporter Span Comparison (All 8 Samples)
 
 ### Test Setup
-- Console exporter enabled (A365 exporter disabled)
-- Message sent: "What is 2+2?" via connector emulator
-- Both base and distro use same credentials and agent identity
+- Console exporter enabled (`ENABLE_A365_OBSERVABILITY_EXPORTER=false` for base, `enable_a365=False, enable_console=True` for distro)
+- Message sent: "What is the weather today?" via connector emulator (triggers tool execution in openaisamples)
+- 30s flush wait after emulator completes
+- All packages at v0.3.0.dev6 (base extensions, core, hosting, runtime)
 
-### OpenAI Sample: Span Comparison
+### Key Span Comparison
 
-| Span | Base (manual) | Distro (manual) |
-|------|--------------|-----------------|
-| `invoke_agent` | Yes, all attrs | Yes, **missing baggage attrs** (see Issue #1) |
-| `Chat gpt-4o-mini` (InferenceScope) | Yes, full attrs | **MISSING** (see Issue #2) |
-| `output_messages` | Yes | Yes |
-| HTTP client spans | No | Yes (GET/POST from requests instrumentor) |
-| Metrics | No | Yes (turn.count, duration, etc.) |
-
-### Semantic Kernel Sample: Span Comparison
-
-| Span | Base (auto) | Distro (auto) |
-|------|------------|---------------|
-| `invoke_agent` | Yes, all attrs | Yes, **missing baggage attrs** |
-| Inference span | **No** (instrumentor is span-processor only) | **No** (same — SK instrumentor doesn't create spans) |
-| `output_messages` | Yes | Yes |
+| Sample | Total | `invoke_agent` | Inference | Tool | `output_messages` |
+|--------|-------|----------------|-----------|------|-------------------|
+| **base/openaisample** | 27 | Yes (manual) | `Chat gpt-4o-mini` (manual) | `execute_tool get_weather` (manual) | Yes |
+| **distro/openaisample** | 40 | Yes (manual) | **MISSING** (P-2) | **MISSING** (P-2) | Yes |
+| base/semantickernelsample | 25 | Yes | None (processor only) | None | Yes |
+| distro/semantickernelsample | 40 | Yes | `chat gpt-4o-mini` (intermittent, flush timing) | None | Yes |
+| base/langchainsample | 26 | Yes | `chat AzureChatOpenAI` (auto) | None | Yes |
+| distro/langchainsample | 41 | Yes | `chat gpt-4o-mini` (auto) | None | Yes |
+| base/openaiagentssample | 28 | Yes | `response`, `turn`, `invoke_agent Assistant`, `Agent workflow` (auto) | None | Yes |
+| distro/openaiagentssample | 44 | Yes | `chat gpt-4o-mini`, `invoke_agent Assistant` (auto) | None | Yes |
 
 ### Attribute Comparison: `invoke_agent` span
 
@@ -93,17 +89,17 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - **Affects:** All distro samples
 - **Details:** `telemetry.sdk.version` is `0.0.0-unknown` in distro vs `0.3.0.dev6` in base.
 
-### Issue P-5: Base `CustomLangChainInstrumentor` crash on init
-- **Severity:** HIGH
+### Issue P-5: Base `CustomLangChainInstrumentor` requires `wrapt<2`
+- **Severity:** MEDIUM (workaround available)
 - **Affects:** base/langchainsample
-- **Details:** `TypeError: wrap_function_wrapper() got an unexpected keyword argument 'module'` — the base LangChain extension is incompatible with the installed `opentelemetry-instrumentation` version.
-- **File:** `microsoft-agents-a365-observability-extensions-langchain` v0.1.0
+- **Details:** `TypeError: wrap_function_wrapper() got an unexpected keyword argument 'module'` — `wrapt` v2.x renamed the `module` parameter to `target`. Extensions v0.3.0.dev6 still uses the old keyword.
+- **Workaround:** Pin `wrapt<2` in pyproject.toml. Applied in sample.
+- **File:** `microsoft-agents-a365-observability-extensions-langchain` v0.3.0.dev6
 
-### Issue P-6: Base `OpenAIAgentsTraceInstrumentor` import crash
-- **Severity:** HIGH
-- **Affects:** base/openaiagentssample
-- **Details:** `ImportError: cannot import name 'GEN_AI_SYSTEM_KEY' from 'microsoft_agents_a365.observability.core.constants'` — the OpenAI extensions package references a constant that doesn't exist in `observability-core` v0.3.0.dev6.
-- **File:** `microsoft-agents-a365-observability-extensions-openai` v0.1.0
+### Issue P-6: Base extensions v0.1.0 incompatible with core v0.3.0.dev6 — RESOLVED
+- **Severity:** ~~HIGH~~ RESOLVED
+- **Details:** Extensions v0.1.0 was missing constants and had API mismatches with core v0.3.0.dev6. Fixed by upgrading all extensions to v0.3.0.dev6.
+- **Resolution:** Pin all extension packages to `==0.3.0.dev6` to match core.
 
 ### Issue P-7: Distro LangChain `KeyError: 'gen_ai.request.model'`
 - **Severity:** HIGH
@@ -116,38 +112,19 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - **Affects:** distro/openaiagentssample
 - **Details:** The `agents` SDK uses OpenAI's API directly, not Azure OpenAI. Needs `OPENAI_API_KEY` env var. Not a bug — just needs different credentials.
 
-### Architecture Finding: Base instrumentors are span processors, not span creators
-- Base SDK `SemanticKernelInstrumentor`, `CustomLangChainInstrumentor`, `OpenAIAgentsTraceInstrumentor` add SpanProcessors that enrich existing spans — they do NOT create inference spans.
-- Distro `use_microsoft_opentelemetry()` auto-enables OTel contrib instrumentors (`opentelemetry-instrumentation-openai-v2`, etc.) that DO create inference spans.
-- Base framework samples without manual `InferenceScope` will have NO inference spans.
+### Architecture Finding: Instrumentor behavior varies by framework (v0.3.0.dev6)
 
-## Phase 2: Auto-Instrumentation Results (All Frameworks)
+**Base SDK:**
+- `SemanticKernelInstrumentor`: Span processor only — enriches but does NOT create inference spans
+- `CustomLangChainInstrumentor`: **Creates** `chat AzureChatOpenAI` spans (requires `wrapt<2`)
+- `OpenAIAgentsTraceInstrumentor`: **Creates** `response`, `turn`, `invoke_agent Assistant`, `Agent workflow` spans
 
-Tested with console exporter, `ENABLE_A365_OBSERVABILITY_EXPORTER=false`, 30s flush wait.
+**Distro (`use_microsoft_opentelemetry()`):**
+- Auto-enables `opentelemetry-instrumentation-openai-v2` which creates `chat gpt-4o-mini` spans
+- SK instrumentor is processor only (same as base); inference comes from openai-v2
+- LangChain/OpenAI Agents get spans from both distro instrumentor and openai-v2
 
-### Base SDK (auto-instrumentation only, no manual InferenceScope/ExecuteToolScope)
-
-| Sample | Reply | Total Spans | Inference Span | Tool Span |
-|--------|-------|-------------|----------------|-----------|
-| base/semantickernelsample | "2 + 2 equals 4." | 25 | **No** (processor only) | No |
-| base/langchainsample | "2 + 2 equals 4." | 25 | **No** (processor only) | No |
-| base/openaiagentssample | "2+2 equals 4." | 25 | **No** (processor only) | No |
-
-All base framework samples produce `invoke_agent` + `output_messages` A365 spans but **no inference or tool spans**. The base SDK instrumentors are span processors — they enrich but don't create.
-
-### Distro (auto-instrumentation via `use_microsoft_opentelemetry()`)
-
-| Sample | Reply | Total Spans | Inference Span | Tool Span |
-|--------|-------|-------------|----------------|-----------|
-| distro/semantickernelsample | "2 + 2 equals 4." | 71 | **Yes**: `chat gpt-4o-mini` | No |
-| distro/langchainsample | Error (P-7) | 40 | **No** (crash before inference) | No |
-| distro/openaiagentssample | "2 + 2 = 4." | 44 | **Yes**: `chat gpt-4o-mini-2024-07-18` + `invoke_agent Assistant` | No |
-
-Key findings:
-- **distro/semantickernelsample**: The `opentelemetry-instrumentation-openai-v2` auto-instrumentor successfully creates `chat gpt-4o-mini` inference spans for SK's underlying OpenAI client calls. Requires 30s flush wait — SimpleSpanProcessor is immediate but batched OTel processing introduces delay.
-- **distro/openaiagentssample**: Produces both a `chat` inference span from `openai-v2` instrumentor AND an `invoke_agent Assistant` span from the OpenAI Agents SDK's own tracing bridge.
-- **distro/langchainsample**: Still crashes with P-7 (`KeyError: 'gen_ai.request.model'`) — the `openai-v2` instrumentor fails when LangChain's `AzureChatOpenAI` wrapper calls the API without setting the model attribute in span attributes.
-- **No tool spans** in any framework sample — auto-instrumentation does not create `ExecuteToolScope` spans. Tool spans require manual `ExecuteToolScope` code.
+**No auto tool spans** — `ExecuteToolScope` requires manual code in all cases.
 
 ## Captured Output Files
 
