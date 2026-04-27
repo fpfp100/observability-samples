@@ -1,0 +1,61 @@
+[project]
+name = "getting-started-with-kairo-exporter"
+version = "0.1.0"
+description = "Sample demonstrating Kairo exporter configuration and span scopes."
+authors = [{ name = "Microsoft", email = "example@microsoft.com" }]
+readme = "README.md"
+requires-python = ">=3.11"
+# Runtime dependencies (mirror existing requirements.txt content)
+dependencies = [
+  # Core SDKs / tracing
+  "opentelemetry-sdk>=1.20.0",
+  "azure-identity>=1.17.1",
+  "azure-monitor-ingestion>=1.0.4",
+  "azure-monitor-opentelemetry-exporter==1.0.0b39",
+  "azure-monitor-opentelemetry",
+  "aiohttp",
+  "openai",
+  "microsoft-agents-hosting-aiohttp==0.9.0",
+  "microsoft-agents-hosting-core==0.9.0",
+  "microsoft-agents-authentication-msal==0.9.0",
+  "microsoft-agents-activity==0.9.0",
+  "microsoft-agents-a365-runtime==0.3.0.dev6",
+  "microsoft-agents-a365-observability-core==0.3.0.dev6",
+  "microsoft-agents-a365-observability-hosting==0.3.0.dev6",
+
+  # HTTP/server stack
+  "uvicorn[standard]~=0.35.0",
+  "starlette>=0.27.0",
+  "python-dotenv==1.1.1",
+
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "pytest-asyncio>=0.21.0",
+  "ruff>=0.6.0"
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# Sample isn't meant to package library modules; treat it as scripts
+py-modules = []
+
+[tool.setuptools.packages.find]
+where = ["src"]         # put code under src/ for clarity
+include = ["*"]
+exclude = ["__pycache__"]
+
+# The SDK library packages use a custom build backend (versioning/helper/build_backend.py).
+# Before running `uv sync`, set PYTHONPATH so the backend is discoverable:
+#   $env:PYTHONPATH = "../../versioning/helper"   (PowerShell)
+#   export PYTHONPATH="../../versioning/helper"    (bash)
+
+# [tool.uv.sources]
+# microsoft-agents-a365-runtime = { path = "../../libraries/microsoft-agents-a365-runtime", editable = true }
+# microsoft-agents-a365-observability-core = { path = "../../libraries/microsoft-agents-a365-observability-core", editable = true }
+# microsoft-agents-a365-observability-hosting = { path = "../../libraries/microsoft-agents-a365-observability-hosting", editable = true }

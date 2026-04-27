@@ -36,6 +36,12 @@ app.zip
 bin/
 obj/
 
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+
 # OS-specific
 .DS_Store
 Thumbs.db

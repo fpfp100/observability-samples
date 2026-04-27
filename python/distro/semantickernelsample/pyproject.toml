@@ -1,0 +1,53 @@
+[project]
+name = "semantic-kernel-sample"
+version = "0.1.0"
+description = "Sample demonstrating Semantic Kernel with Microsoft OpenTelemetry distro and SemanticKernelInstrumentor."
+authors = [{ name = "Microsoft", email = "example@microsoft.com" }]
+readme = "README.md"
+requires-python = ">=3.11"
+# Runtime dependencies
+dependencies = [
+  # Core SDKs / tracing
+  "aiohttp",
+  "openai",
+  "semantic-kernel>=1.0.0",
+  "microsoft-agents-hosting-aiohttp==0.9.0",
+  "microsoft-agents-hosting-core==0.9.0",
+  "microsoft-agents-authentication-msal==0.9.0",
+  "microsoft-agents-activity==0.9.0",
+  "microsoft-agents-a365-runtime==0.3.0.dev6",
+
+  # OTel Distro
+  "microsoft-opentelemetry==0.1.0a3",
+
+  # HTTP/server stack
+  "uvicorn[standard]~=0.35.0",
+  "starlette>=0.27.0",
+  "python-dotenv==1.1.1",
+
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "pytest-asyncio>=0.21.0",
+  "ruff>=0.6.0"
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# Sample isn't meant to package library modules; treat it as scripts
+py-modules = []
+
+[tool.setuptools.packages.find]
+where = ["src"]         # put code under src/ for clarity
+include = ["*"]
+exclude = ["__pycache__"]
+
+# The SDK library packages use a custom build backend (versioning/helper/build_backend.py).
+# Before running `uv sync`, set PYTHONPATH so the backend is discoverable:
+#   $env:PYTHONPATH = "../../versioning/helper"   (PowerShell)
+#   export PYTHONPATH="../../versioning/helper"    (bash)

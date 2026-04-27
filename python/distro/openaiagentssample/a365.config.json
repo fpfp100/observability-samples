@@ -1,0 +1,21 @@
+{
+  "tenantId": "badf1f56-284d-4dc5-ac59-0dd53900e743",
+  "subscriptionId": "964de8b4-c259-4d89-a809-697ef73502f6",
+  "resourceGroup": "nikhilc-rg",
+  "location": "eastus",
+  "environment": "prod",
+  "needDeployment": true,
+  "graphBaseUrl": "https://graph.microsoft.com",
+  "clientAppId": "217fa152-bd72-431a-8329-82b6fbc2db95",
+  "appServicePlanName": "nikhilc-rg-plan",
+  "appServicePlanSku": "B1",
+  "webAppName": "nikhilcagent0416-webapp",
+  "agentIdentityDisplayName": "nikhilcagent0416 Identity",
+  "agentBlueprintDisplayName": "nikhilcagent0416 Blueprint",
+  "agentUserPrincipalName": "nikhilcagent0416@a365preview070.onmicrosoft.com",
+  "agentUserDisplayName": "nikhilcagent0416 Agent User",
+  "managerEmail": "Nikhilc@a365preview070.onmicrosoft.com",
+  "agentUserUsageLocation": "US",
+  "deploymentProjectPath": "C:\\Users\\nikhilc\\repos\\Agent365SDK\\Agent365-python\\build\\openai_agents_sample",
+  "agentDescription": "nikhilcagent0416 - Agent 365 Agent (OpenAI Agents SDK)"
+}

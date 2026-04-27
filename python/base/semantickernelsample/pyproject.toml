@@ -1,0 +1,51 @@
+[project]
+name = "semantic-kernel-sample"
+version = "0.1.0"
+description = "Sample demonstrating Semantic Kernel with A365 base SDK observability and SemanticKernelInstrumentor."
+authors = [{ name = "Microsoft", email = "example@microsoft.com" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  # Core SDKs / tracing
+  "opentelemetry-sdk>=1.20.0",
+  "azure-identity>=1.17.1",
+  "azure-monitor-ingestion>=1.0.4",
+  "azure-monitor-opentelemetry-exporter==1.0.0b39",
+  "azure-monitor-opentelemetry",
+  "aiohttp",
+  "openai",
+  "semantic-kernel>=1.0.0",
+  "microsoft-agents-hosting-aiohttp==0.9.0",
+  "microsoft-agents-hosting-core==0.9.0",
+  "microsoft-agents-authentication-msal==0.9.0",
+  "microsoft-agents-activity==0.9.0",
+  "microsoft-agents-a365-runtime==0.3.0.dev6",
+  "microsoft-agents-a365-observability-core==0.3.0.dev6",
+  "microsoft-agents-a365-observability-hosting==0.3.0.dev6",
+  "microsoft-agents-a365-observability-extensions-semantic-kernel",
+
+  # HTTP/server stack
+  "uvicorn[standard]~=0.35.0",
+  "starlette>=0.27.0",
+  "python-dotenv==1.1.1",
+
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "pytest-asyncio>=0.21.0",
+  "ruff>=0.6.0"
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+exclude = ["__pycache__"]
