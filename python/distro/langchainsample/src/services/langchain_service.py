@@ -25,8 +25,10 @@ async def call_langchain(user_message: str, context: TurnContext) -> str:
     traces this invocation, so no manual InferenceScope is required.
     """
     try:
+        deployment = environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o")
         llm = AzureChatOpenAI(
-            azure_deployment=environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o"),
+            azure_deployment=deployment,
+            model=deployment,  # Workaround P-7: openai-v2 instrumentor crashes if model is None
             azure_endpoint=environ.get("AZURE_OPENAI_ENDPOINT"),
             api_key=environ.get("AZURE_OPENAI_API_KEY"),
             api_version="2025-01-01-preview",
