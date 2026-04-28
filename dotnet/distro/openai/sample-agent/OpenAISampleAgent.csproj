@@ -30,7 +30,7 @@
 		<PackageReference Include="Microsoft.Agents.Hosting.AspNetCore" Version="1.5.150-beta" />
 
 		<!-- Telemetry - single distro replaces all individual OTel + A365 observability packages -->
-		<PackageReference Include="Microsoft.OpenTelemetry" Version="1.0.0-alpha.3" />
+		<PackageReference Include="Microsoft.OpenTelemetry" Version="1.0.0-beta.1" />
 	</ItemGroup>
 
 </Project>

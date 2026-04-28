@@ -34,10 +34,10 @@ namespace Agent365SemanticKernelSampleAgent.telemetry
                     // Resolve the tenant and agent id being used to communicate with A365 services. 
                     (string agentId, string tenantId) = await ResolveTenantAndAgentId(turnContext, authSystem, authHandlerName);
 
-                    //using var baggageScope = new BaggageBuilder()
-                    //.TenantId(tenantId)
-                    //.AgentId(agentId)
-                    //.Build();
+                    using var baggageScope = new BaggageBuilder()
+                    .TenantId(tenantId)
+                    .AgentId(agentId)
+                    .Build();
 
                     try
                     {

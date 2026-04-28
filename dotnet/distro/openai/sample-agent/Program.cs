@@ -21,7 +21,9 @@ using OpenAI;
 using OpenAI.Chat;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 // Enable OpenAI SDK telemetry (required for OpenAI.* activity source to emit spans)
@@ -31,6 +33,17 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Setup OpenTelemetry via Microsoft.OpenTelemetry distro
 builder.Services.AddOpenTelemetry()
+    .ConfigureResource(r => r
+        .Clear()
+        .AddService(
+            serviceName: "A365.OpenAI",
+            serviceVersion: "1.0.0",
+            serviceInstanceId: Environment.MachineName)
+        .AddAttributes(new Dictionary<string, object>
+        {
+            ["deployment.environment"] = builder.Environment.EnvironmentName,
+            ["service.namespace"] = "Microsoft.Agents"
+        }))
     .UseMicrosoftOpenTelemetry(o =>
     {
         o.Exporters = ExportTarget.Agent365;
@@ -100,33 +113,22 @@ builder.Services.AddControllers();
 builder.Services.AddAgentAspNetAuthentication(builder.Configuration);
 builder.Services.AddSingleton<IAgentHttpAdapter, CloudAdapter>();
 
-if (useAutoInstrumentation)
-{
-    // Auto: Register the A365 Scope Middleware for auto-instrumentation
-    builder.Services.AddSingleton<BaggageTurnMiddleware>();
-    builder.Services.AddSingleton<OutputLoggingMiddleware>();
+// Always register observability middleware — BaggageTurnMiddleware populates baggage context
+// on all spans (including auto-instrumented ones). OutputLoggingMiddleware emits output_messages.
+// Both are needed in auto AND manual modes so auto spans get identity attributes.
+builder.Services.AddSingleton<BaggageTurnMiddleware>();
+builder.Services.AddSingleton<OutputLoggingMiddleware>();
 
-    builder.Services.AddSingleton<Microsoft.Agents.Builder.IMiddleware[]>(sp =>
-    {
-        var scopeMiddleware = sp.GetRequiredService<BaggageTurnMiddleware>();
-        var outputMiddleware = sp.GetRequiredService<OutputLoggingMiddleware>();
-        return [
-            scopeMiddleware,
-            outputMiddleware,
-            new TranscriptLoggerMiddleware(new FileTranscriptLogger())
-        ];
-    });
-}
-else
+builder.Services.AddSingleton<Microsoft.Agents.Builder.IMiddleware[]>(sp =>
 {
-    // Manual: No observability middleware - scopes are created explicitly in the agent
-    builder.Services.AddSingleton<Microsoft.Agents.Builder.IMiddleware[]>(sp =>
-    {
-        return [
-            new TranscriptLoggerMiddleware(new FileTranscriptLogger())
-        ];
-    });
-}
+    var scopeMiddleware = sp.GetRequiredService<BaggageTurnMiddleware>();
+    var outputMiddleware = sp.GetRequiredService<OutputLoggingMiddleware>();
+    return [
+        scopeMiddleware,
+        outputMiddleware,
+        new TranscriptLoggerMiddleware(new FileTranscriptLogger())
+    ];
+});
 
 WebApplication app = builder.Build();
 
@@ -148,13 +150,15 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Playg
     app.MapGet("/", () => "Agent 365 OpenAI Example Agent (Distro)");
     app.UseDeveloperExceptionPage();
     app.MapControllers().AllowAnonymous();
-    app.Urls.Add("http://localhost:3978");
+    var port = Environment.GetEnvironmentVariable("AGENT_PORT") ?? "3980";
+    app.Urls.Add($"http://localhost:{port}");
 }
 else
 {
     app.MapGet("/", () => "Agent 365 OpenAI Example Agent (Distro)");
     app.MapControllers().AllowAnonymous();
-    app.Urls.Add("http://localhost:3978");
+    var port = Environment.GetEnvironmentVariable("AGENT_PORT") ?? "3980";
+    app.Urls.Add($"http://localhost:{port}");
 }
 
 app.Run();

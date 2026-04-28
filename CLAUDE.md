@@ -37,6 +37,35 @@ Compare telemetry output across 4 configurations:
 
 Controlled via `appsettings.json` > `Observability:InstrumentationMode` ("Manual" or "Auto").
 
+**Important:** `InstrumentationMode` is a sample-level config that controls which agent class runs and whether middleware is registered. It does NOT control the distro's auto-instrumentation of framework activity sources.
+
+### Disabling Distro Auto-Instrumentation
+
+The distro's `UseMicrosoftOpenTelemetry()` auto-subscribes to framework activity sources by default. To disable specific auto-instrumentation:
+
+```csharp
+builder.Services.AddOpenTelemetry()
+    .UseMicrosoftOpenTelemetry(o =>
+    {
+        // Disable specific framework auto-instrumentation (all default to true)
+        o.Instrumentation.EnableSemanticKernelInstrumentation = false;  // Microsoft.SemanticKernel* sources
+        o.Instrumentation.EnableOpenAIInstrumentation = false;          // OpenAI.* sources
+        o.Instrumentation.EnableAgentFrameworkInstrumentation = false;  // Experimental.Microsoft.Agents.AI* sources
+        o.Instrumentation.EnableAspNetCoreInstrumentation = false;      // ASP.NET Core HTTP
+        o.Instrumentation.EnableHttpClientInstrumentation = false;      // Outbound HTTP
+        o.Instrumentation.EnableSqlClientInstrumentation = false;       // SQL
+        o.Instrumentation.EnableAzureSdkInstrumentation = false;        // Azure SDK
+        o.Instrumentation.EnableAgent365Instrumentation = false;        // Agent365 scopes/baggage
+
+        // Master toggles
+        o.Instrumentation.EnableTracing = false;   // Disable all tracing
+        o.Instrumentation.EnableMetrics = false;    // Disable all metrics
+        o.Instrumentation.EnableLogging = false;    // Disable all logging
+    });
+```
+
+**Note:** Custom activity sources registered via `.WithTracing(t => t.AddSource("MySource"))` are OTel SDK level and are NOT controlled by these distro flags.
+
 ### Custom Token Resolver
 
 **Distro** — set on `UseMicrosoftOpenTelemetry` options:
@@ -51,10 +80,7 @@ builder.Services.AddOpenTelemetry()
         };
     });
 ```
-**Distro gotcha**: When `TokenResolver` is set, the distro skips `AddAgenticTracingExporter()` internally (conditional logic in `UseAgent365()`). If your agent injects `IExporterTokenCache<AgenticTokenStruct>`, you must register it manually. This is different from the base SDK where `AddAgenticTracingExporter()` and `AddA365Tracing()` are always two independent calls — no conditional skip:
-```csharp
-builder.Services.AddSingleton<IExporterTokenCache<AgenticTokenStruct>, AgenticTokenCache>();
-```
+**Distro gotcha (FIXED in beta.1)**: Previously (alpha.3), setting `TokenResolver` caused the distro to skip registering `IExporterTokenCache<AgenticTokenStruct>`, breaking DI. This is fixed in v1.0.0-beta.1 — custom `TokenResolver` and `IExporterTokenCache` now coexist. Issue #42 closed.
 
 **Base SDK** — register `Agent365ExporterOptions` directly:
 ```csharp
@@ -77,8 +103,37 @@ builder.AddA365Tracing();
 
 ### Connector Emulator
 - Located at `connector-emulator/`
-- Sends messages to `http://localhost:3978/api/messages`
 - Agent must be running before launching emulator
+- Use `AGENT_URL` env var to target specific agent port
+
+### Agent Port Assignments (for concurrent testing)
+
+Each agent has a unique default port (override via `AGENT_PORT` env var):
+
+| Agent | Port | Emulator Command |
+|-------|------|-----------------|
+| Distro SK | 3978 | `AGENT_URL=http://localhost:3978/api/messages dotnet run` |
+| Distro AF | 3979 | `AGENT_URL=http://localhost:3979/api/messages dotnet run` |
+| Distro OpenAI | 3980 | `AGENT_URL=http://localhost:3980/api/messages dotnet run` |
+| Base SK | 3981 | `AGENT_URL=http://localhost:3981/api/messages dotnet run` |
+| Base AF | 3982 | `AGENT_URL=http://localhost:3982/api/messages dotnet run` |
+
+To run all agents concurrently:
+```bash
+# Start all agents in background
+cd dotnet/distro/semantic-kernel/sample-agent && dotnet run &
+cd dotnet/distro/agent-framework/sample-agent && dotnet run &
+cd dotnet/distro/openai/sample-agent && dotnet run &
+cd dotnet/base/semantic-kernel/sample-agent && dotnet run &
+cd dotnet/base/agent-framework/sample-agent && dotnet run &
+
+# Send message to each
+AGENT_URL=http://localhost:3978/api/messages TESTER_NAME=distro-sk dotnet run
+AGENT_URL=http://localhost:3979/api/messages TESTER_NAME=distro-af dotnet run
+AGENT_URL=http://localhost:3980/api/messages TESTER_NAME=distro-openai dotnet run
+AGENT_URL=http://localhost:3981/api/messages TESTER_NAME=base-sk dotnet run
+AGENT_URL=http://localhost:3982/api/messages TESTER_NAME=base-af dotnet run
+```
 
 ## Python
 

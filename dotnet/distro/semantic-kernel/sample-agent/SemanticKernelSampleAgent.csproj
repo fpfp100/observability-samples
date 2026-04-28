@@ -36,7 +36,7 @@
 		<PackageReference Include="ModelContextProtocol.Core" Version="1.2.0" />
 
 		<!-- Telemetry - single distro replaces all individual OTel + A365 observability packages -->
-		<PackageReference Include="Microsoft.OpenTelemetry" Version="1.0.0-alpha.3" />
+		<PackageReference Include="Microsoft.OpenTelemetry" Version="1.0.0-beta.1" />
 	</ItemGroup>
 
 </Project>

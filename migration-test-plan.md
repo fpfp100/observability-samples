@@ -211,7 +211,39 @@ For each supported combination:
 - **Large payload**: spans with large input/output messages are handled without truncation errors
 - **Multiple concurrent requests**: baggage scopes are isolated per request (no cross-contamination)
 
-## 13. Store Publishing Validation
+## 13. Disabled Auto-Instrumentation & Disabled Middleware
+
+Verify behavior when auto-instrumentation and/or middleware are explicitly disabled.
+
+### 13a. Auto-Instrumentation Disabled (Manual Scopes Only)
+
+- Set `InstrumentationMode: "Manual"` in config
+- Verify Agent365Sdk manual scopes (`invoke_agent`, `Chat`, `execute_tool`) still emit correctly
+- Verify SK/OpenAI auto-instrumented spans (`Microsoft.SemanticKernel.Diagnostics`, `OpenAI.ChatClient`) are **still emitted** (the distro auto-subscribes to these sources regardless of the InstrumentationMode config — it only controls sample-level middleware/scope code, not the distro's activity source subscriptions)
+- Verify no duplicate spans when only manual scopes are used (no auto-instrumentation middleware creating overlapping scopes)
+
+### 13b. Middleware Disabled, BaggageBuilder Active (No BaggageTurnMiddleware / OutputLoggingMiddleware)
+
+- Remove or do not register `BaggageTurnMiddleware` and `OutputLoggingMiddleware` from the middleware pipeline
+- Keep `BaggageBuilder` in `A365OtelWrapper` active (sets `TenantId`/`AgentId` baggage)
+- Verify manual Agent365Sdk scopes still work (they set their own attributes via `AgentDetails`, `Request`, etc.)
+- Verify `output_messages` spans are **NOT emitted** (since OutputLoggingMiddleware is not registered)
+- Verify SK auto-instrumented spans **still have core identity** (`gen_ai.agent.id`, `microsoft.tenant.id`) — because BaggageBuilder sets baggage and the distro's SpanProcessor propagates it to all child spans
+- Verify SK auto spans are **missing middleware-only attributes** (`user.id`, `user.name`, `microsoft.channel.name`, `microsoft.conversation.item.link`, etc.)
+- Verify the agent still starts and processes messages normally (no crash from missing middleware)
+- Verify export works for all spans with identity (HTTP 200)
+
+### 13c. Both Middleware AND BaggageBuilder Disabled
+
+- Set `InstrumentationMode: "Manual"` AND remove middleware registration AND comment out `BaggageBuilder` in A365OtelWrapper
+- Verify manual Agent365Sdk scopes still produce spans with correct identity (set directly by scope's `AgentDetails`)
+- Verify `output_messages` spans are **NOT emitted**
+- Verify SK auto-instrumented spans appear in console but are **missing identity attributes** (`gen_ai.agent.id`, `microsoft.tenant.id`)
+- Verify SK auto spans are silently dropped by A365 exporter's `PartitionByIdentity` (no identity = no export)
+- Verify manual Agent365Sdk spans still export successfully (they have identity from the scope itself)
+- Verify agent starts and processes messages normally
+
+## 14. Store Publishing Validation
 
 Per the AO guide, store publishing requires:
 - `InvokeAgentScope` implemented with all required attributes

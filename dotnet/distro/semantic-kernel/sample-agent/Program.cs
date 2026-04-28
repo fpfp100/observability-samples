@@ -19,6 +19,9 @@ using Microsoft.OpenTelemetry;
 using Microsoft.SemanticKernel;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using System;
+using System.Collections.Generic;
 using System.Threading;
 
 
@@ -26,6 +29,17 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Setup OpenTelemetry via Microsoft.OpenTelemetry distro
 builder.Services.AddOpenTelemetry()
+    .ConfigureResource(r => r
+        .Clear()
+        .AddService(
+            serviceName: "A365.SemanticKernel",
+            serviceVersion: "1.0.0",
+            serviceInstanceId: Environment.MachineName)
+        .AddAttributes(new Dictionary<string, object>
+        {
+            ["deployment.environment"] = builder.Environment.EnvironmentName,
+            ["service.namespace"] = "Microsoft.Agents"
+        }))
     .UseMicrosoftOpenTelemetry(o =>
     {
         o.Exporters = ExportTarget.Agent365;
@@ -97,34 +111,23 @@ builder.Services.AddControllers();
 builder.Services.AddAgentAspNetAuthentication(builder.Configuration);
 builder.Services.AddSingleton<IAgentHttpAdapter, CloudAdapter>();
 
-if (useAutoInstrumentation)
-{
-    // Auto: Register the A365 Scope Middleware for auto-instrumentation
-    // BaggageTurnMiddleware handles InvokeAgentScope; OutputLoggingMiddleware handles OutputScope
-    builder.Services.AddSingleton<BaggageTurnMiddleware>();
-    builder.Services.AddSingleton<OutputLoggingMiddleware>();
+// Always register observability middleware — BaggageTurnMiddleware populates baggage context
+// (tenant, agent, conversation, user) on all spans including SK auto-instrumented ones.
+// OutputLoggingMiddleware emits output_messages spans. Both are needed in auto AND manual modes
+// so that SK auto spans get identity attributes and aren't dropped by the A365 exporter.
+builder.Services.AddSingleton<BaggageTurnMiddleware>();
+builder.Services.AddSingleton<OutputLoggingMiddleware>();
 
-    builder.Services.AddSingleton<Microsoft.Agents.Builder.IMiddleware[]>(sp =>
-    {
-        var scopeMiddleware = sp.GetRequiredService<BaggageTurnMiddleware>();
-        var outputMiddleware = sp.GetRequiredService<OutputLoggingMiddleware>();
-        return [
-            scopeMiddleware,  // Scope middleware runs first
-            outputMiddleware, // Output logging middleware runs second
-            new TranscriptLoggerMiddleware(new FileTranscriptLogger())  // Transcript logging
-        ];
-    });
-}
-else
+builder.Services.AddSingleton<Microsoft.Agents.Builder.IMiddleware[]>(sp =>
 {
-    // Manual: No observability middleware — scopes are created explicitly in ManualInstrumentationAgent
-    builder.Services.AddSingleton<Microsoft.Agents.Builder.IMiddleware[]>(sp =>
-    {
-        return [
-            new TranscriptLoggerMiddleware(new FileTranscriptLogger())
-        ];
-    });
-}
+    var scopeMiddleware = sp.GetRequiredService<BaggageTurnMiddleware>();
+    var outputMiddleware = sp.GetRequiredService<OutputLoggingMiddleware>();
+    return [
+        scopeMiddleware,  // Scope middleware runs first
+        outputMiddleware, // Output logging middleware runs second
+        new TranscriptLoggerMiddleware(new FileTranscriptLogger())  // Transcript logging
+    ];
+});
 WebApplication app = builder.Build();
 
 // Enable AspNet authentication and authorization
@@ -149,9 +152,8 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Playg
     app.UseDeveloperExceptionPage();
     app.MapControllers().AllowAnonymous();
 
-    // Hard coded for brevity and ease of testing. 
-    // In production, this should be set in configuration.
-    app.Urls.Add($"http://localhost:3978");
+    var port = Environment.GetEnvironmentVariable("AGENT_PORT") ?? "3978";
+    app.Urls.Add($"http://localhost:{port}");
 }
 else
 {

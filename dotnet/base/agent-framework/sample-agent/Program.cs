@@ -165,8 +165,8 @@ app.MapPost("/api/messages", async (HttpRequest request, HttpResponse response, 
 // Health check endpoint for CI/CD pipelines and monitoring
 app.MapGet("/api/health", () => Results.Ok(new { status = "healthy", timestamp = System.DateTime.UtcNow }));
 
-// Ensure the app listens on port 3978
-app.Urls.Add("http://localhost:3978");
+var agentPort = Environment.GetEnvironmentVariable("AGENT_PORT") ?? "3982";
+app.Urls.Add($"http://localhost:{agentPort}");
 
 if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Playground")
 {

@@ -6,41 +6,44 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - **DM** — Distro + Manual (`dotnet/distro/semantic-kernel/agentoutput_manual.txt`)
 - **DA** — Distro + Auto (`dotnet/distro/semantic-kernel/autoinstrument_distro.txt`)
 
-## Test Progress (as of 2026-04-26)
+## Test Progress (as of 2026-04-27, distro v1.0.0-beta.1)
 
 | # | Test Area | Status | Notes |
 |---|-----------|--------|-------|
-| 1a | Scopes exist | DONE (all 4) | invoke_agent + Chat in all 4. output_messages in BA only. DA missing output_messages. |
-| 1b | InvokeAgentScope required attrs | DONE | 5-9 required attrs MISSING across configs. |
-| 1c | InferenceScope exists | DONE (all 4) | DM has duplicate Chat span (SK Diagnostics + Agent365Sdk). |
-| 1d | InferenceScope required attrs | DONE | gen_ai.provider.name missing in auto mode. 5-6 identity attrs missing. |
-| 1e | ExecuteToolScope exists | DONE (BM, DM) | Added DateTimePlugin. Span: `execute_tool DateTimePlugin-get_current_datetime`. |
-| 1f | ExecuteToolScope required attrs | DONE (BM, DM) | 10/17 required present. Missing: blueprint.id, user.email, user.id, microsoft.agent.user.email, microsoft.agent.user.id, client.address, gen_ai.tool.type. |
-| 1g | OutputScope exists | DONE | BA has 2 output_messages spans. DA does NOT emit. BM/DM: none (by design). |
-| 1h | OutputScope required attrs | DONE (BA only) | microsoft.agent.user.email set to GUID (wrong). user.email empty. |
-| 2 | Error Handling on Scopes | DONE | Validated from existing outputs. `error.type` set correctly (exception type or HTTP status). `StatusCode: Error` set. Error spans exported. Process doesn't crash. Same identity baggage on error spans. Base auto has richer `Activity.Events` with exception.stacktrace that distro omits. |
-| 3a | BaggageBuilder - core fields | DONE | tenant_id/agent_id/conversation_id present as span tags. |
+| 1a | Scopes exist | DONE | **beta.1 Auto**: invoke_agent + Chat x2 + execute_tool + output_messages — all present. **beta.1 Manual**: invoke_agent + Chat x2 + execute_tool (Agent365Sdk) + 2 SK auto duplicates. |
+| 1b | InvokeAgentScope required attrs | DONE | Auto: 9/16 present. Missing: blueprint.id, agent.user.email, client.address, user.email, server.address, server.port. Manual: 8/16 (also missing user.id, microsoft.agent.user.id — no baggage middleware). |
+| 1c | InferenceScope exists | DONE | Auto: 2 Chat spans from SK Diagnostics. Manual: 2 Agent365Sdk + 1 SK auto duplicate. |
+| 1d | InferenceScope required attrs | DONE | Auto: 9/17. Missing: blueprint.id, agent.user.email, client.address, user.email, gen_ai.provider.name. Manual: 11/17. Has gen_ai.provider.name but missing user identity + server attrs. |
+| 1e | ExecuteToolScope exists | DONE | Auto: execute_tool from Microsoft.SemanticKernel (tool auto-invoked!). Manual: Agent365Sdk + SK auto duplicate. |
+| 1f | ExecuteToolScope required attrs | DONE | Auto: 9/16. Missing: blueprint.id, agent.user.email, client.address, user.email, tool.call.id, tool.type. Manual: 8/16 + naming bug (`gen_ai.tool.arguments` should be `gen_ai.tool.call.arguments`). |
+| 1g | OutputScope exists | DONE | Auto: YES (1 output_messages from Agent365Sdk) — **Issue #36 FIXED in beta.1**. Manual: NO (by design). |
+| 1h | OutputScope required attrs | DONE | Auto: 9/12. microsoft.agent.user.email = GUID (wrong). user.email = empty. client.address missing. blueprint.id missing. Structured JSON format correct. |
+| 2 | Error Handling on Scopes | DONE | Manual: error.type=System.NotSupportedException, StatusCode=Error on both Chat and invoke_agent. Error spans exported to A365 (HTTP 200). Auto: no errors (clean run). |
+| 3a | BaggageBuilder - core fields | DONE | Auto: tenant_id, agent_id, conversation_id on all spans. Manual: only on Agent365Sdk spans (no baggage scope). |
 | 3b | BaggageBuilder - additional fields | DONE | caller_agent_id: not set. channel: set. session_id: not set. |
-| 3c | BaggageBuilder - TurnContext auto-populate | DONE | Auto mode gets user.id, microsoft.agent.user.id, user.name via middleware. |
-| 4a | Baggage Middleware | DONE | Baggage propagation to HTTP spans identical across all 4 auto configs. All fields propagate correctly. |
+| 3c | BaggageBuilder - TurnContext auto-populate | DONE | Auto: user.id, microsoft.agent.user.id, user.name populated via BaggageTurnMiddleware. Manual: missing (no middleware). |
+| 4a | Baggage Middleware | DONE | Auto: all 9 baggage fields on every System.Net.Http span. Manual: no HTTP spans exported (infrastructure instrumentation disabled in A365-only mode). |
 | 4b | Baggage Middleware - ContinueConversation skip | NOT STARTED | |
 | 4c | HTTP-level baggage middleware | NOT STARTED | |
-| 4d | OutputLoggingMiddleware | DONE | Distro SK Auto missing all middleware spans (Issue #36). AF: works in both base and distro — output_messages attrs identical. Base AF has HTTP enrichment fields (headers, host, useragent) that distro AF lacks. |
-| 5a | BatchSpanProcessor - defaults | DONE | Source code verified: base SDK and distro both match AO guide exactly (max_queue: 2048, batch_size: 512, delay: 5000ms, timeout: 30000ms). Defaults identical between base and distro. |
-| 5b | BatchSpanProcessor - configurable | DONE (code review) | Both base and distro pass all 4 values from `Agent365ExporterOptions` to processor constructors. Custom values are accepted. |
-| 6a | Exporter - console fallback | DONE | All 4 captured outputs used console exporter. |
-| 6b | Exporter - A365 service | DONE | Verified with A365-only export (console disabled). POST to `agent365.svc.cloud.microsoft/observability/tenants/.../otlp/agents/.../traces` returned HTTP 200. Token resolved successfully. Latency: 14.7s. No console span output (confirmed console disabled). No errors or warnings. Output: `dotnet/distro/semantic-kernel/exporter_test_output.txt`. |
-| 6c | Exporter - missing identity span drop | DONE | Spans without user identity are NOT dropped — console and A365 exporter both export them. A365 only skips when token resolution fails, not for missing span identity attrs. |
-| 7 | TokenResolver | DONE | Default: AgenticTokenCache resolves via OBO, exported to A365 HTTP 200. Custom: `o.Agent365.Exporter.TokenResolver` is called with correct agentId/tenantId (verified). Null return: export silently skipped. Note: custom TokenResolver skips `AddAgenticTracingExporter()` — must manually register `IExporterTokenCache` if agent depends on it. |
-| 8 | Auth (OBO/S2S) | NOT STARTED | |
-| 9a | Auto-instrumentation - SK | DONE (BA, DA) | Works. DA missing output_messages. DM has duplicate Chat. |
-| 9b | Auto-instrumentation - OpenAI | DONE | Sample created at `dotnet/distro/openai/`. OpenAI.ChatClient spans emitted. See below. |
-| 9c | Auto-instrumentation - AgentFramework | DONE | Base AF auto: works — invoke_agent, chat, output_messages spans emitted via `A365.AgentFramework` source. Distro AF auto: only output_messages (Issue #34 — custom source name not subscribed). Distro AF manual: works — invoke_agent + Chat from Agent365Sdk, no duplicates. |
-| 10a | Resource attrs - base | DONE | Fully compliant. |
-| 10b | Resource attrs - distro | DONE - BUG FILED | Issue #28. |
-| 11 | Configuration Options | DONE (code review) | `suppress_invoke_agent_input`: NOT in .NET SDK (JS/Python only). `ClusterCategory`: NOT in .NET (JS only). `A365_OBSERVABILITY_DOMAIN_OVERRIDE`/`SCOPES_OVERRIDE`: JS/Python only, not .NET. BatchSpanProcessor defaults configurable via `Agent365ExporterOptions` in both. Log level: generic .NET `Logging.LogLevel` works, no A365-specific category tested. Test plan has errors: these are JS features, not .NET. |
-| 12 | Edge Cases | DONE | Missing identity: spans NOT dropped. Token failure: graceful skip, no crash. Large payload: no truncation. Concurrent requests: TESTED — 2 simultaneous msgs with different user/conv contexts, baggage correctly isolated per trace, no cross-contamination. Exporter timeout: 14.8s latency, no timeout enforced. Output: `dotnet/distro/semantic-kernel/concurrent_test_output.txt`. |
-| 13 | Store Publishing Validation | DONE | Full checklist run. Multiple gaps found. |
+| 4d | OutputLoggingMiddleware | DONE | Auto: output_messages emitted with structured JSON — **FIXED in beta.1**. Manual: not emitted (by design). |
+| 5a | BatchSpanProcessor - defaults | DONE | Verified: max_queue=2048, batch_size=512, delay=5000ms, timeout=30000ms. Same in base and distro. |
+| 5b | BatchSpanProcessor - configurable | DONE | Both accept custom values via Agent365ExporterOptions. |
+| 6a | Exporter - console fallback | DONE | Both auto and manual output spans to console. |
+| 6b | Exporter - A365 service | DONE | Both auto and manual: POST to agent365.svc.cloud.microsoft returned HTTP 200. Latency ~14.7s. |
+| 6c | Exporter - missing identity span drop | DONE | Spans without tenant/agent identity silently dropped by PartitionByIdentity. SK auto spans in manual mode dropped (Issue #45). |
+| 7 | TokenResolver | DONE | Default AgenticTokenCache works (OBO). Custom TokenResolver verified. Issue #42 **FIXED in beta.1** — custom TokenResolver no longer breaks DI for `IExporterTokenCache<AgenticTokenStruct>`. |
+| 8 | Auth (OBO/S2S) | NOT STARTED | Requires real Azure AD. |
+| 9a | Auto-instrumentation - SK | DONE | beta.1 Auto: all scopes work, tools auto-invoked, output_messages emitted. beta.1 Manual: Agent365Sdk scopes + SK auto duplicates (duplicates lack identity in manual mode). |
+| 9b | Auto-instrumentation - OpenAI | DONE | beta.1: `chat gpt-4o-mini` (OpenAI.ChatClient) + `output_messages` (Agent365Sdk). Same as alpha.3. No infrastructure spans in console (A365-only mode suppresses). |
+| 9c | Auto-instrumentation - AgentFramework | DONE - **FIXED** | beta.1 Auto + `.AddSource("A365.AgentFramework")`: all spans present — `agent.process_message`, `MessageProcessor`, `invoke_agent`, `chat gpt-4o-mini`, `output_messages`. Root cause was custom ActivitySource name not registered with OTel SDK. Fix: `.WithTracing(t => t.AddSource("A365.AgentFramework"))`. |
+| 10a | Resource attrs - base | DONE | Fully compliant (service.name, namespace, version, environment). |
+| 10b | Resource attrs - distro | DONE - **FIXED** | Issue #28. `ConfigureResource()` chained before `UseMicrosoftOpenTelemetry()` works. Verified: `service.name=A365.SemanticKernel`, `service.namespace=Microsoft.Agents`, `service.version=1.0.0`, `deployment.environment=Development`. Distro merges with auto-detected Azure VM attrs. |
+| 11 | Configuration Options | DONE | .NET: suppress_invoke_agent_input, ClusterCategory, domain/scope overrides NOT available. JS/Python only. |
+| 12 | Edge Cases | DONE | All tested: missing identity (dropped by exporter), token failure (graceful), large payload (no truncation), concurrent requests (isolated), exporter timeout (14.8s, no enforcement). |
+| 13a | Disabled auto-instr (manual + middleware) | DONE | Verified via #45 test: manual scopes + SK auto spans all have identity, `output_messages` emitted, all exported HTTP 200. |
+| 13b | Disabled middleware (BaggageBuilder active) | DONE | No middleware: manual scopes work, `output_messages` NOT emitted, SK auto spans still have core identity via BaggageBuilder, but missing `user.id`/`user.name`/`microsoft.channel.name`. All exported HTTP 200. |
+| 13c | Both middleware + BaggageBuilder disabled | DONE | SK auto span (`Microsoft.SemanticKernel.Diagnostics`) has NO identity — silently dropped by exporter. Manual Agent365Sdk spans have identity (from scope), exported HTTP 200. `output_messages` NOT emitted. |
+| 14 | Store Publishing Validation | DONE | All 4 scopes checked. Universally missing: blueprint.id, client.address. user.email always empty. Message format: plain arrays in auto, structured JSON in manual Agent365Sdk spans. |
 
 ## Issues Found
 
@@ -57,7 +60,7 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 | 7 | `gen_ai.provider.name` not set (uses `gen_ai.system`) | Yes | Yes | No | Auto only | Medium |
 | 8 | `output_messages` span not emitted | No | Distro only | N/A | Auto only | Medium |
 | 9 | Duplicate Chat span (SK Diagnostics + Agent365Sdk) | No | Distro only | Manual only | No | By design — distro enables SK auto-instrumentation by default (`EnableSemanticKernelInstrumentation=true`). Set to `false` to avoid duplicates in manual mode. |
-| 10 | Resource attrs: `unknown_service`, missing namespace/version/env | No | Distro only | Yes | Yes | High |
+| 10 | Resource attrs: `unknown_service`, missing namespace/version/env | No | **FIXED** — use `ConfigureResource()` before `UseMicrosoftOpenTelemetry()` | Yes | Yes | Was High, now resolved |
 | 11 | `gen_ai.tool.type` missing on ExecuteToolScope | Yes | Yes | Yes | N/A | Medium |
 | 12 | Duplicate execute_tool span in distro manual | No | Distro only | Manual only | N/A | By design — same as #9, SK auto-instrumentation enabled by default. |
 | 13 | ManualInstrumentationAgent crash after tool use | Yes | Yes | Manual only | N/A | High |
@@ -88,13 +91,12 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - Status: Builds, starts on port 3978, accepts messages, LLM responds successfully
 - Observability: `UseMicrosoftOpenTelemetry()` with `ExportTarget.Agent365`
 - User-secrets copied from SK distro sample (same Azure AD app + OpenAI key)
-- **Spans emitted**: `output_messages` from `Agent365Sdk` (2 instances) — attributes match SK distro pattern
-- **Spans NOT emitted**: `invoke_agent`, `Chat`/inference — `IChatClient` streaming does not produce these without `WithAgentFramework()` auto-instrumentation, and that extension doesn't exist as a separate package in the distro approach
-- **Auto mode gap**: The distro `UseMicrosoftOpenTelemetry()` does NOT provide AgentFramework auto-instrumentation equivalent to `WithAgentFramework()` from the base SDK. Only `output_messages` spans come from the middleware.
+- **Spans emitted (auto mode, after fix)**: `agent.process_message`, `MessageProcessor`, `invoke_agent`, `chat gpt-4o-mini`, `output_messages` — all from `A365.AgentFramework` or `Agent365Sdk`
+- **Issue #34 fix**: Added `.WithTracing(t => t.AddSource("A365.AgentFramework")).WithMetrics(m => m.AddMeter("A365.AgentFramework"))` — custom ActivitySource name must be registered with OTel SDK via standard `.AddSource()` API
 - **Manual mode works**: `invoke_agent` and `Chat gpt-4o-mini` spans emitted from `Agent365Sdk` with structured JSON message format
 - Manual mode attributes match SK distro pattern: same missing identity attrs (blueprint.id, client.address, user.email, etc.)
 - No duplicate spans in AgentFramework manual mode (unlike SK distro which has SK Diagnostics duplicates)
-- Same resource issues: `service.name` = `unknown_service:AgentFrameworkSampleAgent`, missing namespace/version/env
+- Resource attrs: **FIXED** — `ConfigureResource()` added, `service.name=A365.AgentFramework`, namespace/version/env all present
 - IChatClient doesn't auto-invoke tools — LLM returns `{{DateTimePlugin.GetDateTime}}` in text instead of calling it
 - Output: `dotnet/distro/agent-framework/agent_output.txt` (auto), `dotnet/distro/agent-framework/manual_output.txt` (manual)
 
@@ -134,7 +136,7 @@ Microsoft.AspNetCore.Hosting.HttpRequestIn (root)
 ```
 
 ### Known gaps (same as other distro samples)
-- Resource attrs: `service.name` = `unknown_service:OpenAISampleAgent`, missing namespace/version/env (Issue #28)
+- Resource attrs: **FIXED** — `ConfigureResource()` added, `service.name=A365.OpenAI`, namespace/version/env all present
 - OpenAI call returns 401 due to placeholder API key — telemetry pipeline works regardless
 - Tool calling not exercised yet (needs valid API key for LLM to request tool calls)
 - Distro missing `ChatToolCallExtensions.Trace()` and `OpenAISpanProcessor` that exist in A365 SDK (Issue #37)
@@ -156,6 +158,78 @@ Microsoft.AspNetCore.Hosting.HttpRequestIn (root)
 | OpenAI Distro Auto | `dotnet/distro/openai/sample-agent/stdout.txt` |
 | Concurrent Test (Distro SK Manual) | `dotnet/distro/semantic-kernel/concurrent_test_output.txt` |
 | A365 Exporter Test (Distro SK Manual) | `dotnet/distro/semantic-kernel/exporter_test_output.txt` |
+| **Distro SK Auto (beta.1)** | `dotnet/distro/semantic-kernel/beta1_auto_output.txt` |
+| **Distro SK Manual (beta.1)** | `dotnet/distro/semantic-kernel/beta1_manual_output.txt` |
+
+## Distro v1.0.0-beta.1 Retest (2026-04-27)
+
+Upgraded from `Microsoft.OpenTelemetry` v1.0.0-alpha.3 to **v1.0.0-beta.1**.
+
+### SK Auto Mode — Major Fixes
+
+| Span | alpha.3 | beta.1 | Fixed? |
+|------|---------|--------|--------|
+| `invoke_agent Agent365Agent` | YES | YES | — |
+| `Chat gpt-4o-mini` (1st inference) | YES | YES | — |
+| `Chat gpt-4o-mini` (2nd, after tool) | NO | **YES** | NEW |
+| `execute_tool get_current_datetime` | NO | **YES** | NEW — tool auto-invoked! |
+| `output_messages` | NO (Issue #36) | **YES** | **FIXED** |
+| Tool invocation | LLM didn't call tool | **Tool invoked + returned time** | FIXED |
+
+### Identity on SK Auto Spans (beta.1)
+
+All SK auto spans now have `microsoft.tenant.id` and `gen_ai.agent.id`:
+- `invoke_agent`: YES (from `Microsoft.SemanticKernel.Diagnostics`)
+- `Chat gpt-4o-mini`: YES
+- `execute_tool get_current_datetime`: YES (from `Microsoft.SemanticKernel`) — has `gen_ai.agent.id`, `microsoft.tenant.id`, `user.id`, `user.name`
+- `output_messages`: YES (from `Agent365Sdk`)
+
+### SK Manual Mode (beta.1)
+
+| Span | Source | Identity? |
+|------|--------|-----------|
+| `invoke_agent Agent365Agent` | Agent365Sdk | YES (manual scope sets it) |
+| `Chat gpt-4o-mini` (1st) | Agent365Sdk | YES |
+| `execute_tool DateTimePlugin-get_current_datetime` | Agent365Sdk | YES |
+| `Chat gpt-4o-mini` (2nd, error) | Agent365Sdk | YES |
+| `Chat gpt-4o-mini` (SK auto dup) | Microsoft.SemanticKernel.Diagnostics | **NO** — no baggage scope |
+| `execute_tool get_current_datetime` (SK auto dup) | Microsoft.SemanticKernel | **NO** — no baggage scope |
+
+ManualInstrumentationAgent crash **FIXED** — replaced raw `AuthorRole.Tool` chat message with `FunctionResultContent.ToChatMessage()` so SK's OpenAI connector maps tool results back to the correct `tool_call_id`. Both base and distro samples fixed.
+SK auto spans in manual mode now have full baggage identity — BaggageBuilder uncommented, middleware always registered (Issue #45 fix).
+
+### Remaining Issues in beta.1
+
+- Issue #28: Resource attributes — **FIXED** by adding `ConfigureResource()` before `UseMicrosoftOpenTelemetry()`. Verified: all 4 attrs present, distro merges with Azure VM auto-detected attrs.
+- Issue #35: SK auto-instrumented spans now use structured JSON envelope (`{"messages":[...],"version":"0.1.0"}`) — **FIXED** in beta.1. AF spans still use plain arrays but this matches base AF behavior (comes from `M.E.AI` `.UseOpenTelemetry()` pipeline, not a distro issue).
+- Issue #45: SK auto spans in manual mode still lack identity — **NOT FIXED** (sample issue, not distro)
+- `microsoft.agent.user.email`: still GUID on output_messages span
+- `user.email`: still empty
+- ManualInstrumentationAgent crash after tool use: **FIXED** — `FunctionResultContent.ToChatMessage()` replaces raw `AuthorRole.Tool` message
+
+### Issues Fixed in beta.1 (vs alpha.3)
+
+- **Issue #36**: output_messages now emitted in auto mode — **FIXED**
+- SK auto now invokes tools correctly in auto mode — **FIXED**
+- execute_tool spans now present in auto mode — **FIXED**
+
+### AF Distro Auto (beta.1)
+
+**FIXED** — added `.WithTracing(t => t.AddSource("A365.AgentFramework")).WithMetrics(m => m.AddMeter("A365.AgentFramework"))` after `UseMicrosoftOpenTelemetry()`. All spans now emitted: `agent.process_message`, `MessageProcessor`, `invoke_agent`, `chat gpt-4o-mini`, `output_messages`. The distro subscribes to default MAF sources (`Experimental.Microsoft.Agents.AI*`) but custom source names need explicit `.AddSource()` registration — this is by design per OTel SDK pattern.
+Output: `dotnet/distro/agent-framework/beta1_auto_output.txt`
+
+### beta.1 Issue Status Summary
+
+| Issue | Status in beta.1 |
+|-------|-----------------|
+| #28 Resource attributes | **FIXED** — `ConfigureResource()` before `UseMicrosoftOpenTelemetry()` works. All 3 distro samples updated. |
+| #34 AF auto spans dropped | **FIXED** — added `.WithTracing(t => t.AddSource("A365.AgentFramework"))` after `UseMicrosoftOpenTelemetry()`. All spans now emitted. |
+| #35 SK auto message format | **FIXED** — SK spans now use structured JSON envelope. AF plain arrays match base (M.E.AI behavior, not distro). |
+| #36 SK auto output_messages missing | **FIXED** — output_messages now emitted |
+| #42 Custom TokenResolver DI | **FIXED** — full cycle verified: (1) `IExporterTokenCache` resolves in DI with custom TokenResolver set, (2) `RegisterObservability()` writes to cache with no errors, (3) custom TokenResolver called by exporter with correct agentId/tenantId, (4) exporter POSTs to agent365.svc.cloud.microsoft using custom token. |
+| #45 SK auto spans no identity (manual) | **FIXED** — middleware now always registered (not gated by auto/manual), BaggageBuilder uncommented. SK auto spans (`Microsoft.SemanticKernel.Diagnostics`, `Microsoft.SemanticKernel`) now have all baggage attrs in manual mode. `output_messages` also emitted. |
+
+Output files: `beta1_auto_output.txt`, `beta1_manual_output.txt`, `dotnet/distro/agent-framework/beta1_auto_output.txt`
 
 ## AF Auto: Base vs Distro Comparison (2026-04-25)
 
@@ -226,4 +300,4 @@ Output: `dotnet/distro/semantic-kernel/concurrent_test_output.txt`
 | #36 | Distro SK auto missing output_messages from OutputLoggingMiddleware | opentelemetry-distro-dotnet |
 | #37 | OpenAI extension helpers not ported to distro | opentelemetry-distro-dotnet |
 
-Resource attributes: Base fully configured (A365.AgentFramework, Microsoft.Agents, 1.0.0, Development). Distro broken (Issue #28).
+Resource attributes: Base fully configured. Distro **FIXED** (Issue #28) — all 3 distro samples now use `ConfigureResource()` before `UseMicrosoftOpenTelemetry()`. Verified on SK distro with beta.1: `service.name=A365.SemanticKernel`, `service.namespace=Microsoft.Agents`, `service.version=1.0.0`, `deployment.environment=Development`, merged with Azure VM auto-detected attrs. A365 export HTTP 200.

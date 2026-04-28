@@ -131,10 +131,9 @@ public class ManualInstrumentationAgent
                         var toolResult = await functionCall.InvokeAsync(_kernel);
                         var resultText = toolResult?.Result?.ToString() ?? string.Empty;
 
-                        chatHistory.Add(new ChatMessageContent(
-                            AuthorRole.Tool,
-                            resultText,
-                            metadata: new Dictionary<string, object?> { ["ChatResponseMessage.FunctionToolCallId"] = functionCall.Id }));
+                        // Use FunctionResultContent so SK's OpenAI connector can map the
+                        // result back to the correct tool_call_id in the next LLM request.
+                        chatHistory.Add(new FunctionResultContent(functionCall, resultText).ToChatMessage());
 
                         toolScope.RecordResponse(resultText);
                     }
@@ -143,10 +142,7 @@ public class ManualInstrumentationAgent
                         toolScope.RecordError(ex);
                         _logger.LogError(ex, "Tool execution failed for {ToolName}", toolName);
 
-                        chatHistory.Add(new ChatMessageContent(
-                            AuthorRole.Tool,
-                            $"Error: {ex.Message}",
-                            metadata: new Dictionary<string, object?> { ["ChatResponseMessage.FunctionToolCallId"] = functionCall.Id }));
+                        chatHistory.Add(new FunctionResultContent(functionCall, $"Error: {ex.Message}").ToChatMessage());
                     }
                 }
             }
