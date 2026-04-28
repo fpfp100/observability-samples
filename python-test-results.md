@@ -6,14 +6,14 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - **DM** — Distro + Manual
 - **DA** — Distro + Auto
 
-## Test Progress (as of 2026-04-27)
+## Test Progress (as of 2026-04-28, distro upgraded to 0.1.0b1)
 
 | # | Test Area | Status | Notes |
 |---|-----------|--------|-------|
 | 1 | Scopes (InvokeAgent, Inference, ExecuteTool, Output) | **DONE** | Base: Inference/Tool/Output all required attrs present. InvokeAgent missing 6. Distro: P-2 missing Inference+Tool |
 | 2 | Error Handling on Scopes | **DONE** | Framework error spans work (agents.adapter.process). A365 RecordError() path exists but not triggered in test |
-| 3 | BaggageBuilder | **DONE** | Base: ALL baggage fields propagate to ALL child spans. Distro: **ALL 10 fields missing from ALL framework spans** (P-1 upgraded) |
-| 4 | Baggage Middleware | **DONE** | Base: fully working. Distro: BaggageMiddleware registered but NOT propagating fields to child spans |
+| 3 | BaggageBuilder | **DONE** | Base: ALL baggage fields propagate. Distro: **FIXED** with correct config (`enable_a365=True, EXPORTER=false`). #65 was test config issue — but dual-control is confusing |
+| 4 | Baggage Middleware | **DONE** | Both working when `enable_a365=True`. Distro requires `enable_a365=True` for `A365SpanProcessor` to propagate baggage |
 | 5 | BatchSpanProcessor | **DONE** | Identical defaults in both (2048/512/5000/30000). Both use `_EnrichingBatchSpanProcessor` subclass |
 | 6 | Exporter | **DONE** | Console works both. A365 exporter: identical logic. Both partition by identity, skip on missing |
 | 7 | TokenResolver | **DONE** | Identical logic. Base: fallback only at runtime. Distro: AgenticTokenCache works on 2nd call |
@@ -21,7 +21,7 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 | 9a | Auto-instrumentation - Semantic Kernel | **DONE** | Base: processor only (no inference span). Distro: `chat gpt-4o-mini` auto-generated |
 | 9b | Auto-instrumentation - OpenAI Agents | **DONE** | Base: `response/turn/Agent workflow` spans (v0.3.0.dev6). Distro: `chat gpt-4o-mini` + `invoke_agent Assistant` |
 | 9c | Auto-instrumentation - LangChain | **DONE** | Base: `chat AzureChatOpenAI` (v0.3.0.dev6 + wrapt<2). Distro: `chat gpt-4o-mini` (P-7 workaround) |
-| 10 | Resource Attributes | **DONE** | Base: service.name/namespace correct. Distro: **`unknown_service`**, missing namespace (P-9) |
+| 10 | Resource Attributes | **DONE** | Base: service.name/namespace via `configure()`. Distro: **FIXED** — use `resource=Resource.create(...)` param on `use_microsoft_opentelemetry()` |
 | 11 | Configuration Options | **DONE** | Code inspection — see details below |
 | 12 | Edge Cases | **DONE** | Code inspection — identical handling in both |
 | 13 | Store Publishing Validation | **DONE** | Base: passes (with 6 missing invoke_agent attrs). Distro: **FAILS** (P-2, missing Inference+Tool scopes) |
@@ -69,25 +69,23 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 
 ## Issues Found
 
-### Issue P-1: Distro `invoke_agent` span missing baggage attributes
-- **Severity:** HIGH
-- **Affects:** All distro samples
-- **Details:** The distro's `invoke_agent` span is missing `gen_ai.conversation.id`, `user.id`, `user.name`, `microsoft.agent.user.email`, `microsoft.channel.name`, `microsoft.conversation.item.link`. The base SDK has all of these. Baggage middleware is registered in both, but the distro doesn't propagate baggage into manually-created A365 scopes.
+### Issue P-1 (#65): Distro baggage not propagating — TEST CONFIG ISSUE + DESIGN FEEDBACK
+- **Severity:** ~~CRITICAL~~ DESIGN FEEDBACK
+- **Status:** Baggage works when `enable_a365=True`. Was caused by using `enable_a365=False` which disables `A365SpanProcessor`. Filed feedback that `enable_a365` controls both exporter AND baggage — confusing dual-control with `ENABLE_A365_OBSERVABILITY_EXPORTER`.
+- **Correct config:** `enable_a365=True` + `ENABLE_A365_OBSERVABILITY_EXPORTER=false` + `enable_console=True`
 
-### Issue P-2: Distro missing `Chat gpt-4o-mini` InferenceScope span
-- **Severity:** HIGH
+### Issue P-2 (#66): Distro manual InferenceScope/ExecuteToolScope spans not emitted
+- **Severity:** HIGH — **STILL OPEN in 0.1.0b1**
 - **Affects:** distro/openaisample
-- **Details:** Both samples call `InferenceScope.start()` manually with identical patterns, but the distro doesn't emit the span. The base SDK emits it correctly with full attributes (model, tokens, messages, finish reasons).
+- **Details:** Spans are created (confirmed in server log) but do not reach any exporter. `invoke_agent` and `output_messages` reach exporters, but `Chat` and `execute_tool` do not. Same code pattern works in base SDK.
 
-### Issue P-3: Blueprint ID attribute renamed in distro
-- **Severity:** MEDIUM
-- **Affects:** All distro samples
-- **Details:** Base uses `microsoft.a365.agent.blueprint.id`, distro uses `microsoft.opentelemetry.a365.agent.blueprint.id`. Breaking change for downstream span consumers.
+### Issue P-3 (#68): Blueprint ID attribute renamed
+- **Severity:** ~~MEDIUM~~ **FIXED in 0.1.0b1**
+- **Details:** Now uses `microsoft.a365.agent.blueprint.id` (matching base SDK).
 
-### Issue P-4: Distro SDK version reports `0.0.0-unknown`
-- **Severity:** LOW
-- **Affects:** All distro samples
-- **Details:** `telemetry.sdk.version` is `0.0.0-unknown` in distro vs `0.3.0.dev6` in base.
+### Issue P-4 (#69): Distro SDK version `0.0.0-unknown`
+- **Severity:** ~~LOW~~ **FIXED in 0.1.0b1**
+- **Details:** Now reports `telemetry.sdk.version: 0.1.0b1`.
 
 ### Issue P-5: Base `CustomLangChainInstrumentor` requires `wrapt<2`
 - **Severity:** MEDIUM (workaround available)
@@ -101,11 +99,13 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - **Details:** Extensions v0.1.0 was missing constants and had API mismatches with core v0.3.0.dev6. Fixed by upgrading all extensions to v0.3.0.dev6.
 - **Resolution:** Pin all extension packages to `==0.3.0.dev6` to match core.
 
-### Issue P-7: Distro LangChain `KeyError: 'gen_ai.request.model'`
-- **Severity:** HIGH
-- **Affects:** distro/langchainsample
-- **Details:** `opentelemetry-instrumentation-openai-v2` crashes in `traced_method` when `gen_ai.request.model` attribute is not set. Happens when LangChain calls Azure OpenAI through its `AzureChatOpenAI` wrapper (model name not in the span attributes dict).
-- **File:** `opentelemetry-instrumentation-openai-v2` v2.3b0, `patch.py:118`
+### Issue P-7 (#70): Distro LangChain `KeyError: 'gen_ai.request.model'`
+- **Severity:** ~~HIGH~~ **FIXED in 0.1.0b1**
+- **Details:** `opentelemetry-instrumentation-openai-v2` no longer crashes when `model=None`. `chat gpt-4o-mini` span now appears correctly.
+
+### Issue P-9 (#67): Distro resource attributes missing service.name/namespace
+- **Severity:** ~~HIGH~~ **FIXED in 0.1.0b1**
+- **Details:** Use `resource=Resource.create({"service.name": "...", "service.namespace": "..."})` parameter on `use_microsoft_opentelemetry()`. Replaces base SDK's `configure(service_name=..., service_namespace=...)`.
 
 ### Issue P-8: Distro OpenAI Agents requires OPENAI_API_KEY (not Azure)
 - **Severity:** INFO
