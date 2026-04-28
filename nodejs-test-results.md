@@ -6,58 +6,56 @@ Tracks testing progress against [migration-test-plan.md](migration-test-plan.md)
 - **DM** — Distro + Manual
 - **DA** — Distro + Auto
 
-## Test Progress (as of 2026-04-27)
+## Test Progress (as of 2026-04-28, distro v0.1.0-beta.1)
 
 | # | Test Area | Status | Notes |
 |---|-----------|--------|-------|
-| 1 | Scopes (InvokeAgent, Inference, ExecuteTool, Output) | PARTIAL (DA only) | DA: invoke_agent (manual+auto), chat, execute_tool, output_messages all present. See span analysis below. |
+| 1 | Scopes (InvokeAgent, Inference, ExecuteTool, Output) | PASS (DA) | All 3 samples: invoke_agent (manual+auto), chat, execute_tool, output_messages all present. |
 | 2 | Error Handling on Scopes | NOT STARTED | |
 | 3 | BaggageBuilder | NOT STARTED | |
-| 4 | Baggage Middleware | ISSUE FOUND (DA) | Both samples show "Baggage: false" at startup. BaggageMiddleware not enabled in hosting config. |
+| 4 | Baggage Middleware | PARTIAL | basic-agent-sdk: Baggage=true, telemetry.sdk.* propagated on all spans. OpenAI + LangChain: Baggage=false (not configured). |
 | 5 | BatchSpanProcessor | TESTED (DA) | Exporter=true: spans routed through BatchSpanProcessor to A365 exporter. No console spans emitted (expected). See exporter analysis. |
 | 6 | Exporter | ISSUE FOUND (DA) | Exporter=true: "N spans skipped (missing tenant or agent ID)" — OpenAI: 7 skipped (1+6), LangChain: 9 skipped (1+8). A365 exporter drops auto-instrumented + HTTP spans lacking identity. No export success/failure event logs visible. |
 | 7 | TokenResolver | TESTED (DA) | LangChain: token preloaded + cached ("hit"). OpenAI: token cache "miss" — `registerObservability()` not called so cache not pre-populated; custom resolver returns empty string. |
 | 8 | Auth (OBO/S2S) | NOT STARTED | |
 | 9a | Auto-instrumentation - OpenAI | PASS (DA) | `OpenAIAgentsTraceInstrumentor` active. Spans: invoke_agent, chat, execute_tool all present with gen_ai.* attributes. Warning: "Module @openai/agents loaded before instrumentor" but works. |
 | 9b | Auto-instrumentation - LangChain | PASS (DA) | `LangChainTraceInstrumentor` active. Spans: invoke_agent, chat present with gen_ai.* attributes + microsoft.sample_rate. |
-| 10 | Resource Attributes | ISSUE FOUND (DA) | service.name/version present. Missing: telemetry.sdk.* attributes (name, language, version). os/host attributes auto-populated. |
+| 10 | Resource Attributes | **FIXED in beta.1** | telemetry.sdk.name=A365ObservabilitySDK, telemetry.sdk.language=nodejs, telemetry.sdk.version=0.1.0-beta.1 — present on spans when baggage is enabled (basic-agent-sdk sample). |
 | 11 | Configuration Options | TESTED (DA) | exporter=false: console export works. exporter=true: A365 exporter active, console suppressed. Azure Monitor disabled OK. No crash without CONNECTION_STRING. PerRequestExport=false confirmed. |
 | 12 | Edge Cases | NOT STARTED | |
 | 13 | Store Publishing Validation | NOT STARTED | |
 
-## Closed Bug Validation (distro v0.1.0-alpha.6)
+## Bug Validation (distro v0.1.0-beta.1, tested 2026-04-28)
 
-| Issue | Title | Validated | Result |
-|-------|-------|-----------|--------|
-| #37 | useMicrosoftOpenTelemetry crashes without CONNECTION_STRING | YES | **FIXED** — Both samples start with empty CONNECTION_STRING |
-| #39 | Console span export not working when exporters disabled | YES | **FIXED** — Console spans emitted when exporter=false |
-| #46 | JsonConfig logs ENOENT for missing applicationinsights.json | YES | **FIXED** — No ENOENT errors in startup logs |
-| #53 | Add telemetry.sdk.* attributes | YES | **NOT FIXED** — Resource attributes missing telemetry.sdk.name/language/version |
-| #59 | GenAI auto-instrumentations silently ignored | YES | **FIXED** — OpenAI and LangChain auto-instrumented spans present |
-| #61 | ObservabilityHostingManager middleware silently skips spans | YES | **FIXED** — output_messages spans present with correct attributes |
-| #50 | Exporter event logs missing | YES | **NOT FIXED** — With exporter=true, no export success/failure event logs visible (e.g., `[EVENT]: export-group succeeded`). Only `[export-partition-span-missing-identity] N spans skipped` log appears. No confirmation of export result. |
-| #56 | PerRequestSpanProcessor not migrated | YES | **FIXED** (claimed) — `ENABLE_A365_OBSERVABILITY_PER_REQUEST_EXPORT` env var is recognized. With it set to false, BatchSpanProcessor is used. Cannot verify per-request behavior without end-to-end export, but the config path exists. |
-| #58 | AgenticTokenCache not migrated | PARTIAL | **PARTIALLY FIXED** — LangChain sample successfully preloads + caches token via `registerObservability()`. OpenAI sample has cache miss (different auth flow). Token resolver callback is invoked by exporter. |
-| #40 | PerRequestSpanProcessor config should not be public | YES | **FIXED** — `ENABLE_A365_OBSERVABILITY_PER_REQUEST_EXPORT` is an env var (not a public API option). Config tunables (maxConcurrentExports, maxTraces, maxSpansPerTrace) are env-var-only, matching the fix intent. |
-| #42 | Configuration gap no longer supported | YES | **FIXED** — Closed as documentation/design issue. Exporter tunables, serviceNamespace, internal logger injection now handled via env vars or `useMicrosoftOpenTelemetry()` options. |
-| #57 | Migration guide issue | YES | **FIXED** — Documentation issue, closed with guide updates. |
-
-## Open Issues Confirmed
-
-| Issue | Title | Confirmed |
-|-------|-------|-----------|
-| #52 | Auto HTTP span is parent of manual instrumented span | YES — HTTP POST root is parent of manual invoke_agent in both samples |
-| #43 | Console exporter returns http span | YES — HTTP spans (GET, POST, outbound) appear in console output |
-| #73 | ESM imports don't work | PARTIALLY — LangChain (ESM) works; may affect other import patterns |
-| #34 | Filter out non-GenAI spans | YES — HTTP/OAuth spans exported to A365 exporter but skipped due to missing identity |
+| Issue | Title | Status | Verified | Result |
+|-------|-------|--------|----------|--------|
+| #37 | useMicrosoftOpenTelemetry crashes without CONNECTION_STRING | CLOSED | PASS | **FIXED** — All 3 samples start with empty CONNECTION_STRING. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/37#issuecomment-4337722690). |
+| #39 | Console span export not working when exporters disabled | CLOSED | PASS | **FIXED** — Console spans emitted when exporter=false. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/39#issuecomment-4337723576). |
+| #40 | PerRequestSpanProcessor config should not be public | CLOSED | PASS | **FIXED** — Config is env-var only, not public API. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/40#issuecomment-4337724453). |
+| #42 | Configuration gap no longer supported | CLOSED | PASS | **FIXED** — Tunables handled via env vars or `useMicrosoftOpenTelemetry()` options. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/42#issuecomment-4337725284). |
+| #46 | JsonConfig logs ENOENT for missing applicationinsights.json | CLOSED | PASS | **FIXED** — No ENOENT errors in startup logs. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/46#issuecomment-4337726175). |
+| #53 | Add telemetry.sdk.* attributes | CLOSED | PASS | **FIXED in beta.1** — `telemetry.sdk.name=A365ObservabilitySDK`, `telemetry.sdk.language=nodejs`, `telemetry.sdk.version=0.1.0-beta.1` present on spans. Was broken in alpha.6. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/53#issuecomment-4337727036). |
+| #56 | PerRequestSpanProcessor not migrated | CLOSED | PASS | **FIXED** — Env var recognized, BatchSpanProcessor used when set to false. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/56#issuecomment-4337727887). |
+| #57 | Migration guide issue | CLOSED | PASS | **FIXED** — Documentation closed with guide updates. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/57#issuecomment-4337728722). |
+| #59 | GenAI auto-instrumentations silently ignored | CLOSED | PASS | **FIXED** — Both OpenAI and LangChain auto-instrumented spans present. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/59#issuecomment-4337729648). |
+| #61 | ObservabilityHostingManager middleware silently skips spans | CLOSED | PASS | **FIXED** — output_messages spans present with correct attributes. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/61#issuecomment-4337730450). |
+| #73 | Distro instrumentations don't work with ESM imports | CLOSED | PASS | **FIXED** — LangChain (ESM) works, no ESM errors. [Commented](https://github.com/microsoft/opentelemetry-distro-javascript/issues/73#issuecomment-4337731369). |
+| #50 | Exporter event logs missing | CLOSED | FAIL | **NOT FIXED** — No export success/failure event logs visible. Only `[export-partition-span-missing-identity]` appears. |
+| #58 | AgenticTokenCache not migrated | CLOSED | PARTIAL | **PARTIAL** — LangChain: token preloaded + cached. OpenAI: cache miss, `registerObservability()` not called. |
+| #43 | Console exporter returns http span | CLOSED | FAIL | **NOT FIXED** — HTTP spans still appear in console output (4 in basic, 2 in OpenAI). |
+| #34 | Filter out non-GenAI spans | CLOSED | FAIL | **NOT FIXED** — HTTP/OAuth spans still exported, skipped by A365 exporter due to missing identity. |
+| #52 | Auto HTTP span is parent of manual instrumented span | **OPEN** | FAIL | **NOT FIXED** — HTTP POST root span is parent of all manual + auto spans. |
 
 ## Issues Found
 
-### 1. telemetry.sdk.* attributes missing (#53 not fully fixed)
-- **Severity:** Medium
-- **Affected:** Both OpenAI and LangChain samples
-- **Details:** Resource attributes show os.type, os.version, host.name, host.arch, host.id, service.name, service.version but NOT telemetry.sdk.name, telemetry.sdk.language, telemetry.sdk.version. Standard OTel SDK usually auto-adds these.
-- **Issue:** #53 was CLOSED but attributes still missing in v0.1.0-alpha.6
+### 1. ~~telemetry.sdk.* attributes missing~~ — FIXED in beta.1
+- **Status:** RESOLVED
+- **Details:** beta.1 now adds telemetry.sdk.name=A365ObservabilitySDK, telemetry.sdk.language=nodejs, telemetry.sdk.version=0.1.0-beta.1 as span attributes (via baggage propagation). Present on all spans when BaggageMiddleware is enabled.
+
+### 1b. Breaking API change: `isContentRecordingEnabled` removed in beta.1
+- **Severity:** Medium (build-breaking)
+- **Affected:** All samples using `LangChainInstrumentationConfig` or `OpenAIAgentsInstrumentationConfig`
+- **Details:** The `isContentRecordingEnabled` property was removed from both `LangChainInstrumentationConfig` and `OpenAIAgentsInstrumentationConfig` in beta.1. TypeScript compilation fails if set. Samples updated to remove this property.
 
 ### 2. Exporter event logs missing (#50 not fully fixed)
 - **Severity:** High
@@ -140,3 +138,7 @@ With exporter enabled:
 | DA - LangChain exporter=false (emulator) | `nodejs_langchain_emulator_output.txt` |
 | DA - OpenAI exporter=true (agent, debug) | `nodejs_openai_exporter_on_output.txt` |
 | DA - LangChain exporter=true (agent, debug) | `nodejs_langchain_exporter_on_output.txt` |
+| **beta.1 validation** | |
+| DA - basic-agent-sdk beta.1 (agent) | `nodejs_beta1_basic_output.txt` |
+| DA - OpenAI beta.1 (agent) | `nodejs_beta1_openai_output.txt` |
+| DA - LangChain beta.1 (agent) | `nodejs_beta1_langchain_output.txt` |

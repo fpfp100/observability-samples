@@ -50,7 +50,7 @@ useMicrosoftOpenTelemetry({
     enabled: Boolean(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING),
   },
   instrumentationOptions: {
-    langchain: { isContentRecordingEnabled: true },
+    http: { enabled: false },
   },
   a365: {
     // Re-read env var at init time; dotenv has already run above.

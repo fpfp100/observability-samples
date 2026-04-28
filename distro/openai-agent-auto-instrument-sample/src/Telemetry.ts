@@ -33,10 +33,10 @@ useMicrosoftOpenTelemetry({
     enabled: Boolean(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING),
   },
   instrumentationOptions: {
+    http: { enabled: false },
     openaiAgents: {
       tracerName: 'openai-agent-auto-instrumentation',
       tracerVersion: '1.0.0',
-      isContentRecordingEnabled: true,
     },
   },
   a365: {

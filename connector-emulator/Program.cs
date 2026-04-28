@@ -6,7 +6,9 @@ const string ConnectorBase = "/_connector";
 
 // Tester identity — set these env vars to distinguish your data in Defender/Purview when multiple testers share the same app ID.
 string testerName = Environment.GetEnvironmentVariable("TESTER_NAME") ?? Environment.MachineName;
-string conversationId = Environment.GetEnvironmentVariable("CONVERSATION_ID") ?? $"conv-{testerName}-{Guid.NewGuid().ToString("N")[..8]}";
+string agentType = Environment.GetEnvironmentVariable("AGENT_TYPE") ?? "unknown";   // e.g. openai, langchain, sk, af
+string language = Environment.GetEnvironmentVariable("LANGUAGE") ?? "unknown";       // e.g. nodejs, dotnet, python
+string conversationId = Environment.GetEnvironmentVariable("CONVERSATION_ID") ?? $"conv-{testerName}-{agentType}-{language}-{Guid.NewGuid().ToString("N")[..8]}";
 string sessionId = Environment.GetEnvironmentVariable("SESSION_ID") ?? $"session-{testerName}-{DateTime.UtcNow:yyyyMMdd-HHmmss}";
 
 // Use port 0 so the OS assigns an available port automatically.
@@ -97,6 +99,8 @@ app.Lifetime.ApplicationStarted.Register(() =>
     resolvedListenUrl = addr;
     Console.WriteLine($"  Callback URL: {resolvedListenUrl}{ConnectorBase}");
     Console.WriteLine($"  Tester: {testerName}");
+    Console.WriteLine($"  Agent Type: {agentType}");
+    Console.WriteLine($"  Language: {language}");
     Console.WriteLine($"  ConversationId: {conversationId}");
     Console.WriteLine($"  SessionId: {sessionId}");
 
