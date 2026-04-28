@@ -18,7 +18,7 @@ dependencies = [
   "microsoft-agents-a365-runtime==0.3.0.dev6",
 
   # OTel Distro
-  "microsoft-opentelemetry==0.1.0a3",
+  "microsoft-opentelemetry==0.1.0b1",
 
   # OpenAI Agents auto-instrumentation
   "opentelemetry-instrumentation-openai-agents",

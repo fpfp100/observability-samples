@@ -18,7 +18,7 @@ dependencies = [
   "microsoft-agents-a365-runtime==0.3.0.dev6",
 
   # OTel Distro
-  "microsoft-opentelemetry==0.1.0a3",
+  "microsoft-opentelemetry==0.1.0b1",
 
   # HTTP/server stack
   "uvicorn[standard]~=0.35.0",

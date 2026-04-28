@@ -1360,7 +1360,7 @@ wheels = [
 
 [[package]]
 name = "microsoft-opentelemetry"
-version = "0.1.0a3"
+version = "0.1.0b1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -1390,9 +1390,9 @@ dependencies = [
     { name = "requests" },
     { name = "wrapt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ad/b2/1cdd9a9563860603c1241f5f6301e14ca64877be8149a5be1e7525ec4c97/microsoft_opentelemetry-0.1.0a3.tar.gz", hash = "sha256:754988da0f5cfabfd383760511f99a530d2d390f90734a71f71d2fe8a3a12c52", size = 115310, upload-time = "2026-04-22T23:26:11.845Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/0e/41/a5124dc302bd16476d0eab3613da6a0a5b05608e5868fd78b695b4a3cc43/microsoft_opentelemetry-0.1.0b1.tar.gz", hash = "sha256:0b9343425121de7a5cd09e47a80d593c238a9df844360e59c26b161fa373180e", size = 118116, upload-time = "2026-04-28T02:54:33.043Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0e/72/6ef5220075970ae2703d9173adeaf6b4abe33173d66e47a36d4cfd1651d6/microsoft_opentelemetry-0.1.0a3-py3-none-any.whl", hash = "sha256:fc34d9b61641c297f40808d3beb293a43a4d803c1962f5630ac8a99076d79731", size = 147473, upload-time = "2026-04-22T23:26:13.304Z" },
+    { url = "https://files.pythonhosted.org/packages/28/dd/a0d9856f9effb295f0f97916da305fe863926e99a2511bd68957a713c83c/microsoft_opentelemetry-0.1.0b1-py3-none-any.whl", hash = "sha256:84dde01e60851dc91612d885b25d04bb7b9bea3d6820549464feb84d745cdcbc", size = 148862, upload-time = "2026-04-28T02:54:34.579Z" },
 ]
 
 [[package]]
@@ -2945,7 +2945,7 @@ requires-dist = [
     { name = "microsoft-agents-authentication-msal", specifier = "==0.9.0" },
     { name = "microsoft-agents-hosting-aiohttp", specifier = "==0.9.0" },
     { name = "microsoft-agents-hosting-core", specifier = "==0.9.0" },
-    { name = "microsoft-opentelemetry", specifier = "==0.1.0a3" },
+    { name = "microsoft-opentelemetry", specifier = "==0.1.0b1" },
     { name = "openai" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0.0" },
     { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.21.0" },
