@@ -1,0 +1,19 @@
+{
+  "tenantId": "bc51ddf2-9c8b-45e7-8e08-c7ac238f6520",
+  "subscriptionId": "9ea8a27b-bd4b-43d6-94af-6e0e155d5442",
+  "resourceGroup": "rg-simpledemo-agent365002",
+  "location": "centralus",
+  "environment": "prod",
+  "messagingEndpoint": "https://pf-obs-agent-4006.usw2.devtunnels.ms/api/messages",
+  "needDeployment": false,
+  "graphBaseUrl": "https://graph.microsoft.com",
+  "clientAppId": "8e2560a2-5348-499e-84f0-f6d343ffa354",
+  "agentIdentityDisplayName": "pf-obs-agent Identity",
+  "agentBlueprintDisplayName": "pf-obs-agent Blueprint",
+  "agentUserPrincipalName": "UPN.pf-obs-agent@agent365002.onmicrosoft.com",
+  "agentUserDisplayName": "pf-obs-agent Agent User",
+  "managerEmail": "pefan@agent365002.onmicrosoft.com",
+  "agentUserUsageLocation": "US",
+  "deploymentProjectPath": "D:\\repos\\sdk\\Agent365-nodejs\\tests-agent\\default-token-cache-sample",
+  "agentDescription": "pf-obs-agent - Default Token Cache Sample"
+}
