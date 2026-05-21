@@ -1,0 +1,28 @@
+[project]
+name = "nonagentic-sample"
+version = "0.1.0"
+description = "Non-agentic token acquisition sample — OBO and S2S flows."
+authors = [{ name = "Microsoft", email = "example@microsoft.com" }]
+requires-python = ">=3.11"
+dependencies = [
+  "aiohttp",
+  "microsoft-agents-hosting-aiohttp==0.9.0",
+  "microsoft-agents-hosting-core==0.9.0",
+  "microsoft-agents-authentication-msal==0.9.0",
+  "microsoft-agents-activity==0.9.0",
+  "microsoft-agents-a365-runtime==0.3.0.dev6",
+  "microsoft-opentelemetry==0.1.0b3",
+  "python-dotenv==1.1.1",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+exclude = ["__pycache__"]
