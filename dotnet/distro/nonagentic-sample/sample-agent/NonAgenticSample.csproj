@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Agents.A365.Runtime" Version="0.3.4-beta" />
+		<PackageReference Include="Microsoft.Agents.Authentication.Msal" Version="1.6.55-beta" />
+		<PackageReference Include="Microsoft.Agents.Hosting.AspNetCore" Version="1.6.55-beta" />
+		<PackageReference Include="Microsoft.OpenTelemetry" Version="1.0.2" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+	</ItemGroup>
+
+</Project>

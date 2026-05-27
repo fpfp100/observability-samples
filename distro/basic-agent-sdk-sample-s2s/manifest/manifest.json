@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/vdevPreview/MicrosoftTeams.schema.json",
+  "id": "9dc7847a-f82b-410c-bae6-548bf3e8b50e",
+  "name": {
+    "short": "PF Obs Agent",
+    "full": "PF Agent 365 Observability Test Agent"
+  },
+  "description": {
+    "short": "Observability testing agent for Agent 365 SDK",
+    "full": "Test agent to validate Agent 365 SDK observability: OpenTelemetry tracing, span processors, telemetry export."
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#0078D4",
+  "version": "1.0.0",
+  "manifestVersion": "devPreview",
+  "developer": {
+    "name": "Microsoft",
+    "mpnId": "",
+    "websiteUrl": "https://go.microsoft.com/fwlink/?LinkId=518028",
+    "privacyUrl": "https://go.microsoft.com/fwlink/?LinkId=518028",
+    "termsOfUseUrl": "https://shares.datatransfer.microsoft.com/assets/Microsoft_Terms_of_Use.html"
+  },
+  "agenticUserTemplates": [
+    {
+      "id": "7b0926a6-c4ee-445a-a913-bd054594bd09",
+      "file": "agenticUserTemplateManifest.json"
+    }
+  ]
+}

@@ -1,9 +1,8 @@
-# Non-agentic token acquisition sample — mirrors Node.js test-agents/agentic-ai/index.ts.
-# TOKEN_MODE=s2s (default): connection.get_access_token → export to /observabilityService
-# TOKEN_MODE=obo: authorization.exchange_token → export to /observability (requires dev tunnel)
+# Non-agentic token acquisition sample — S2S + OBO token + span export.
+# TOKEN_MODE=obo (default): uses adapter pipeline with auth handler (requires dev tunnel)
+# TOKEN_MODE=s2s: bypasses adapter, handles HTTP POST directly (works with emulator)
 
 import json
-import jwt
 import logging
 from base64 import b64decode
 from os import environ
@@ -19,7 +18,6 @@ from microsoft_agents.hosting.core import (
     TurnContext,
     TurnState,
 )
-from microsoft_agents.hosting.core.app.oauth.auth_handler import AuthHandler
 from microsoft.opentelemetry.a365.core import (
     AgentDetails,
     BaggageBuilder,
@@ -38,24 +36,7 @@ agents_sdk_config = load_configuration_from_env(environ)
 STORAGE = MemoryStorage()
 CONNECTION_MANAGER = MsalConnectionManager(**agents_sdk_config)
 ADAPTER = CloudAdapter(connection_manager=CONNECTION_MANAGER)
-
-# Non-agentic auth — AzureBotUserAuthorization (same as Node.js azureBotOAuthConnectionName)
-AUTHORIZATION = Authorization(
-    STORAGE,
-    CONNECTION_MANAGER,
-    auth_handlers={
-        "agentic": AuthHandler(
-            name="agentic",
-            abs_oauth_connection_name="agentic",
-            scopes=["https://graph.microsoft.com/.default"],
-        ),
-        "oboConnectionProfile": AuthHandler(
-            name="oboConnectionProfile",
-            abs_oauth_connection_name="oboConnectionProfile",
-            scopes=[environ.get("oboConnectionProfile_scopes", "api://botid-b6e564b2-c909-452d-9e9f-9a48dfdfa043/default")],
-        ),
-    },
-)
+AUTHORIZATION = Authorization(STORAGE, CONNECTION_MANAGER, **agents_sdk_config)
 
 AGENT_APP = AgentApplication[TurnState](
     storage=STORAGE,
@@ -65,7 +46,6 @@ AGENT_APP = AgentApplication[TurnState](
 )
 
 CLIENT_ID = environ.get("CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTID", "")
-CLIENT_SECRET = environ.get("CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTSECRET", "")
 TENANT_ID = environ.get("CONNECTIONS__SERVICE_CONNECTION__SETTINGS__TENANTID", "")
 
 
@@ -78,58 +58,6 @@ def _decode_jwt(token: str | None) -> dict:
         return json.loads(b64decode(payload))
     except Exception:
         return {}
-
-
-async def _test_s2s(agent_id: str, tenant_id: str) -> str | None:
-    """Mirrors JS: connection.getAccessToken('api://9b975845-.../.default')"""
-    try:
-        connection = CONNECTION_MANAGER.get_connection("SERVICE_CONNECTION")
-        token = await connection.get_access_token(
-            resource_url="https://login.microsoftonline.com",
-            scopes=["api://9b975845-388f-4429-889e-eab1ef63949c/.default"],
-        )
-        if token:
-            cache_token(agent_id, tenant_id, token)
-            logger.info(f"[S2S] Token acquired and cached: agentId={agent_id}, tenantId={tenant_id}, len={len(token)}")
-        else:
-            logger.info("[S2S] Token was empty")
-        return token
-    except Exception as e:
-        logger.error(f"[S2S] Token acquisition failed: {e}")
-        return None
-
-
-async def _test_obo(context: TurnContext, user_token: str | None, agent_id: str, tenant_id: str) -> str | None:
-    """Manual OBO exchange — Python SDK exchange_token doesn't do real OBO yet (TODO in source).
-    Uses MSAL acquire_token_on_behalf_of directly, same as .NET ExchangeTurnTokenAsync."""
-    if not user_token:
-        logger.error("[OBO] No user token to exchange")
-        return None
-    try:
-        import msal
-        client_id = environ.get("CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTID", "")
-        client_secret = environ.get("CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTSECRET", "")
-        tenant = environ.get("CONNECTIONS__SERVICE_CONNECTION__SETTINGS__TENANTID", "")
-
-        app = msal.ConfidentialClientApplication(
-            client_id,
-            authority=f"https://login.microsoftonline.com/{tenant}",
-            client_credential=client_secret,
-        )
-        result = app.acquire_token_on_behalf_of(
-            user_assertion=user_token,
-            scopes=["api://9b975845-388f-4429-889e-eab1ef63949c/Agent365.Observability.OtelWrite"],
-        )
-        token = result.get("access_token")
-        if token:
-            cache_token(agent_id, tenant_id, token)
-            logger.info(f"[OBO] Token exchanged and cached: agentId={agent_id}, tenantId={tenant_id}, len={len(token)}")
-        else:
-            logger.error(f"[OBO] Exchange failed: {result.get('error_description', result.get('error', 'unknown'))}")
-        return token
-    except Exception as e:
-        logger.error(f"[OBO] Token exchange failed: {e}")
-        return None
 
 
 def _build_response(user_message: str, token_mode: str, token: str | None,
@@ -148,7 +76,6 @@ def _build_response(user_message: str, token_mode: str, token: str | None,
 
     response_text = ""
     try:
-        # Set baggage so the Agent365 exporter knows which agent/tenant to resolve tokens for
         with BaggageBuilder().tenant_id(tenant_id).agent_id(agent_id).build():
             invoke_scope = InvokeAgentScope.start(
                 request=request,
@@ -174,11 +101,19 @@ def _build_response(user_message: str, token_mode: str, token: str | None,
     return response_text
 
 
+# ── Signout handler ───────────────────────────────────────────────────────
+
+@AGENT_APP.message("logout", auth_handlers=["OBOCONNECTIONPROFILE"])
+async def on_signout(context: TurnContext, _state: TurnState):
+    await AGENT_APP.auth.sign_out(context)
+    await context.send_activity("You have signed out")
+
+
 # ── OBO handler (via adapter, for dev tunnel) ──────────────────────────────
 
-@AGENT_APP.activity("message", auth_handlers=["oboConnectionProfile"])
+@AGENT_APP.activity("message", auth_handlers=["OBOCONNECTIONPROFILE"])
 async def on_message(context: TurnContext, _state: TurnState):
-    """Non-agentic OBO — uses AGENT_APP.auth.get_token to get user token via Azure Bot OAuth."""
+    """OBO flow — uses AGENT_APP.auth.get_token (same pattern as SDK obo-authorization sample)."""
     user_message = context.activity.text
     if not user_message:
         return
@@ -186,16 +121,13 @@ async def on_message(context: TurnContext, _state: TurnState):
     agent_id = CLIENT_ID or "unknown"
     tenant_id = TENANT_ID or "unknown"
 
-    # Get user token via auth handler
-    aau_token = await AGENT_APP.auth.get_token(context, "oboConnectionProfile")
-    decoded = jwt.decode(aau_token.token, options={"verify_signature": False})
+    token_response = await AGENT_APP.auth.get_token(context, "OBOCONNECTIONPROFILE")
+    decoded = _decode_jwt(token_response.token)
     logger.info(f"[OBO] Token claims: aud={decoded.get('aud')}, name={decoded.get('name')}, upn={decoded.get('upn')}, scp={decoded.get('scp')}, tid={decoded.get('tid')}")
 
-    # Cache the token for the exporter
-    cache_token(agent_id, tenant_id, aau_token.token)
-    logger.info(f"[OBO] Token cached for agentId={agent_id}, tenantId={tenant_id}, len={len(aau_token.token)}")
+    cache_token(agent_id, tenant_id, token_response.token)
 
-    response_text = _build_response(user_message, "obo", aau_token.token, agent_id, tenant_id)
+    response_text = _build_response(user_message, "obo", token_response.token, agent_id, tenant_id)
 
     try:
         await context.send_activity(response_text)
@@ -205,20 +137,34 @@ async def on_message(context: TurnContext, _state: TurnState):
 
 # ── S2S handler (direct HTTP, for emulator) ────────────────────────────────
 
-async def on_message_direct(activity: dict) -> str:
-    """Handle message directly from HTTP POST — bypasses adapter pipeline.
-    Python adapter calls get_agentic_instance_token during process_activity,
-    which fails with the emulator. This handler works without the adapter."""
+async def _acquire_s2s_token(agent_id: str, tenant_id: str) -> str | None:
+    try:
+        connection = CONNECTION_MANAGER.get_connection("SERVICE_CONNECTION")
+        token = await connection.get_access_token(
+            resource_url="https://login.microsoftonline.com",
+            scopes=["api://9b975845-388f-4429-889e-eab1ef63949c/.default"],
+        )
+        if token:
+            cache_token(agent_id, tenant_id, token)
+            logger.info(f"[S2S] Token acquired: agentId={agent_id}, tenantId={tenant_id}, len={len(token)}")
+        else:
+            logger.info("[S2S] Token was empty")
+        return token
+    except Exception as e:
+        logger.error(f"[S2S] Token acquisition failed: {e}")
+        return None
 
+
+async def on_message_direct(activity: dict) -> str:
+    """S2S handler — bypasses adapter pipeline, works with emulator."""
     user_message = activity.get("text", "").strip()
     if not user_message:
         return "No message text"
 
-    agent_id = environ.get("CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTID", "unknown")
-    tenant_id = environ.get("CONNECTIONS__SERVICE_CONNECTION__SETTINGS__TENANTID", "unknown")
+    agent_id = CLIENT_ID or "unknown"
+    tenant_id = TENANT_ID or "unknown"
 
-    token = await _test_s2s(agent_id, tenant_id)
-
+    token = await _acquire_s2s_token(agent_id, tenant_id)
     return _build_response(user_message, "s2s", token, agent_id, tenant_id)
 
 
